@@ -29,7 +29,7 @@
 				<tr>
 					<td>비밀번호</td>
 					<td>
-						<form:input path="pass" />
+						<form:password path="pass" />
 					</td>
 				</tr>	
 				
@@ -69,7 +69,21 @@
 					</td>
 				</tr>
 				
-				<!-- 관심 상품 드롭박스 추가 바람 -->
+				<tr>
+					<td>관심 상품</td>
+					<td>
+						<form:select path="favorite">
+							<form:option value="육류" label="육류" />
+							<form:option value="해산물" label="해산물" />
+							<form:option value="과일" label="과일" />
+							<form:option value="채소" label="채소" />
+							<form:option value="곡류" label="곡류" />
+							<form:option value="견과류" label="견과류" />
+						</form:select>
+					</td>
+				</tr>
+				
+				<!-- 조건문으로 사업자 관련 정보  -->
 				
 				<tr height="40px;">
 					<td colspan="2" align="center">
