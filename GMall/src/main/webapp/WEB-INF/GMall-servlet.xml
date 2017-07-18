@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- WebContent/WEB-INF/shop-3-servlet.xml -->
+<beans
+xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:p="http://www.springframework.org/schema/p"
+xmlns:aop="http://www.springframework.org/schema/aop"
+xmlns:mvc="http://www.springframework.org/schema/mvc"
+xmlns:context="http://www.springframework.org/schema/context"
+xsi:schemaLocation=
+"http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans.xsd
+ http://www.springframework.org/schema/aop
+ http://www.springframework.org/schema/aop/spring-aop.xsd
+ http://www.springframework.org/schema/mvc
+ http://www.springframework.org/schema/mvc/spring-mvc.xsd
+ http://www.springframework.org/schema/context
+ http://www.springframework.org/schema/context/spring-context.xsd">
+ <mvc:annotation-driven/>
+ <!-- 핸들러매핑 -->
+ <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
+ <context:component-scan base-package="controller,dao,logic"/>
+ <!-- ViewResolver -->
+  <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+ <property name="viewClass">
+ <value>org.springframework.web.servlet.view.JstlView</value>
+ </property>
+ <property name="prefix">
+  <value>/WEB-INF/jsp/</value>
+ </property>
+ <property name="suffix"><value>.jsp</value></property>
+ </bean>
+ 
+ <!-- /login.shop 요청시 뷰를 masterLogin으로 지정 -->
+ <!-- /logout.shop 요청시 뷰를 logout으로 지정 -->
+ <mvc:view-controller path="/login.shop" view-name="masterLogin"/>
+ <mvc:view-controller path="/logout.shop" view-name="logout"/>
+</beans>
