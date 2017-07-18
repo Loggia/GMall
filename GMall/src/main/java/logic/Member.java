@@ -33,7 +33,8 @@ public class Member
 	private boolean prim;
 	private int money;
 	private int point;
-	
+	private String favorite;
+
 	public String getId() 
 	{
 		return id;
@@ -170,5 +171,15 @@ public class Member
 	public void setPoint(int point)
 	{
 		this.point = point;
+	}
+	
+	public String getFavorite() 
+	{
+		return favorite;
+	}
+
+	public void setFavorite(String favorite) 
+	{
+		this.favorite = favorite;
 	}
 }
