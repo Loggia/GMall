@@ -125,15 +125,14 @@
 					
 						<!-- 모달 로그인창 띄우는 버튼 -->
 						<button type="button"
-							data-toggle="modal" data-target="#myModal"
+							data-toggle="modal" data-target="#loginFormModal"
 							class="btn btn-success btn-sm pull-right"
 							style="margin-right: 15px; margin-top: 3px;">로그인</button>
 
 						<!-- 모달 로그인폼 바디-->
-						<div class="modal fade" id="myModal" role="dialog">
+						<div class="modal fade" id="loginFormModall" role="dialog">
 							<div class="modal-dialog">
 
-								<!-- Modal content-->
 								<div class="modal-content">
 									<div class="modal-header">
 										<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -152,7 +151,38 @@
 										</form>
 									</div>
 									<div class="modal-footer">
-										<button type="submit" class="btn btn-info" data-dismiss="modal" onclick="location.href='joinForm.mall'">회원가입</button>
+										<button type="submit" class="btn btn-info" data-dismiss="modal" data-toggle="modal" data-target="#joinFomrModal">회원가입</button>
+										<button type="submit" class="btn btn-success" data-dismiss="modal" onclick="location.href='login.mall'">로그인</button>
+										<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+									</div>
+								</div>
+
+							</div>
+						</div>
+						
+						<!-- 조인폼 모달 -->
+						<div class="modal fade" id="joinFormModal" role="dialog">
+							<div class="modal-dialog">
+
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal">&times;</button>
+										<h4 class="modal-title">로그인</h4>
+									</div>
+									<div class="modal-body">
+										<form>
+											<div class="form-group">
+												<label for="recipient-name" class="control-label">ID:</label>
+												<input name="" type="text" class="form-control" id="recipient-name" placeholder="아이디를 입력해주세요">
+											</div>
+											<div class="form-group">
+												<label for="message-text" class="control-label">PASSWORD:</label>
+												<input name="" type="text" class="form-control" id="message-text" placeholder="비밀번호를 입력해주세요">
+											</div>
+										</form>
+									</div>
+									<div class="modal-footer">
+										<button type="submit" class="btn btn-info" data-dismiss="modal" data-toggle="modal" data-target="#joinFomrModal">회원가입</button>
 										<button type="submit" class="btn btn-success" data-dismiss="modal" onclick="location.href='login.mall'">로그인</button>
 										<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
 									</div>
