@@ -7,6 +7,6 @@
   </typeAliases>
   <mappers>
     <mapper resource="dao/mapper/Board.xml"/>
-    <mapper resource="dao/mapper/Member.mxl" />
+    <mapper resource="dao/mapper/Member.xml" />
   </mappers>    
 </configuration>  
