@@ -45,7 +45,7 @@ public class MemberController
 		member.setGender(Integer.parseInt(request.getParameter("gender")));
 		member.setTel(request.getParameter("tel"));
 		member.setAddress(request.getParameter("address"));
-		member.setFavorite(request.getParameter("favorite"));
+		member.setInterest(request.getParameter("interest"));
 		
 		if(member.getType() == 2)
 		{

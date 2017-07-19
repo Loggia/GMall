@@ -89,7 +89,7 @@
 				<tr>
 					<td>관심 상품</td>
 					<td>
-						<form:select path="favorite">
+						<form:select path="interest">
 							<form:option value="육류" label="육류" />
 							<form:option value="해산물" label="해산물" />
 							<form:option value="과일" label="과일" />

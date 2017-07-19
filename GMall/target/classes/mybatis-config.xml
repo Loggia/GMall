@@ -3,8 +3,10 @@
 <configuration>
   <typeAliases>
     <typeAlias type="logic.Board" alias="Board"/>
+    <typeAlias type="logic.Member" alias="Member" />
   </typeAliases>
   <mappers>
     <mapper resource="dao/mapper/Board.xml"/>
+    <mapper resource="dao/mapper/Member.mxl" />
   </mappers>    
 </configuration>  

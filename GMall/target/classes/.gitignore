@@ -1,2 +1,4 @@
 /controller/
 /dao/
+/logic/
+/mybatis.properties

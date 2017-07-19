@@ -33,7 +33,7 @@ public class Member
 	private boolean prim;
 	private int money;
 	private int point;
-	private String favorite;
+	private String interest;
 
 	public String getId() 
 	{
@@ -173,13 +173,13 @@ public class Member
 		this.point = point;
 	}
 	
-	public String getFavorite() 
+	public String getInterest() 
 	{
-		return favorite;
+		return interest;
 	}
 
-	public void setFavorite(String favorite) 
+	public void setInterest(String interest) 
 	{
-		this.favorite = favorite;
+		this.interest = interest;
 	}
 }
