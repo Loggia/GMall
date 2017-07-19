@@ -82,15 +82,15 @@
 
 .gap_white {
 	display: block;
-	height: 1px;
+	height: 2px;
 	z-index: 1;
 	background-color: #fff;
-	opacity: .1;
+	opacity: .2;
 }
 
 .gap_black {
 	display: block;
-	height: 1px;
+	height: 2px;
 	z-index: 1;
 	background-color: #000;
 	opacity: .2;
