@@ -4,5 +4,5 @@ import logic.Member;
 
 public interface MemberDao 
 {
-	boolean createMember(Member member); // 회원가입 
+	boolean insert(Member member); // 회원가입 
 }

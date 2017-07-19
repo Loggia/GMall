@@ -10,11 +10,14 @@ import org.springframework.stereotype.Service;
 import com.oreilly.servlet.MultipartRequest;
 
 import dao.BoardDao;
+import dao.MemberDao;
 
 @Service
 public class ShopServiceImpl implements ShopService{
 	@Autowired
 	BoardDao boardDao;
+	@Autowired
+	MemberDao memberDao;
 	
 	@Override
 	public List<Board> infiniteScrollDown(int numToStart) {
@@ -64,5 +67,13 @@ public class ShopServiceImpl implements ShopService{
 		}
 	}
 
-	
+	/*
+	 * 주한울
+	 * 회원가입
+	 */
+	@Override
+	public boolean insertMember(Member member) 
+	{
+		return memberDao.insert(member);
+	}
 }

@@ -1,5 +1,6 @@
 package dao;
 
+import org.apache.ibatis.session.SqlSessionException;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -13,10 +14,19 @@ public class MemberDaoImpl implements MemberDao
 	private final String NS = "dao.mapper.MemberMapper."; 
 	
 	@Override
-	public boolean createMember(Member member) 
+	public boolean insert(Member member) 
 	{
 		
-		return sqlSession.getMapper(MemberMapper.class).createMember(member);
+		try
+		{
+			sqlSession.getMapper(MemberMapper.class).insert(member);
+			
+			return true;
+		}
+		catch (Exception e) 
+		{
+			return false;
+		}
 	}
 
 }

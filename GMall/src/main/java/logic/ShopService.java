@@ -12,5 +12,5 @@ public interface ShopService {
 	List<Board> centerList(String searchType, String searchContent, Integer pageNum, int limit);
 	void centerInsert(Board board, HttpServletRequest request);
 	
-	
+	boolean insertMember(Member member); // 주한울 - 회원가입
 }
