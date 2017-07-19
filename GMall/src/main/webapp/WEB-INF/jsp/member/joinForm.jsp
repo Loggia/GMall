@@ -103,14 +103,14 @@
 				<tr id="tr_bis_no" style="display:none;">
 					<td>사업자 번호</td>
 					<td>
-						<input type="text" id="bis_no"> <input type="button" value="중복확인">
+						<form:input path="bis_no" /> <input type="button" value="중복확인">
 					</td>
 				</tr>
 					
 				<tr id="tr_bis_name" style="display:none;">
 					<td>상호</td>
 					<td>
-						<input type="text" id="bis_name">
+						<form:input path="bis_name" />
 					</td>
 				</tr>
 				
