@@ -14,7 +14,7 @@ import logic.Board;
 
 @Repository
 public class BoardDaoImpl implements BoardDao{
-	@Autowired
+	@Autowired(required=false)
 	private SqlSessionTemplate sqlSession; 
 	private final String NS = "dao.mapper.BoardMapper."; 
 	
