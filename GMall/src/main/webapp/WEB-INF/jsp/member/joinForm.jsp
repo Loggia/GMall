@@ -6,6 +6,13 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 		<title>회원가입</title>
+		
+		<script type="text/javascript">
+			function typeChange(type)
+			{
+		   		location.href="joinForm.mall?type=" + type;
+	   		}
+		</script>
 	</head>
 	
 	<body>
@@ -14,8 +21,8 @@
 				<tr valign="top" height="50">
 					<td>회원 구분</td>
 					<td>
-						<form:radiobutton path="type" value="1" label="일반 회원" />
-						<form:radiobutton path="type" value="2" label="사업자 회원" />
+						<form:radiobutton path="type" value="1" label="일반 회원" onchange="javascript:typeChange(1)" />
+						<form:radiobutton path="type" value="2" label="사업자 회원" onchange="javascript:typeChange(2)" />
 					</td>
 				</tr>
 				
@@ -84,6 +91,21 @@
 				</tr>
 				
 				<!-- 조건문으로 사업자 관련 정보  -->
+				<c:if test="${type == 2 }">
+					<tr>
+						<td>사업자 번호</td>
+						<td>
+							<form:input path="bis_no" /> <form:button>중복확인</form:button>
+						</td>
+					</tr>
+					
+					<tr>
+						<td>상호</td>
+						<td>
+							<form:input path="bis_name" />
+						</td>
+					</tr>
+				</c:if>
 				
 				<tr height="40px;">
 					<td colspan="2" align="center">
