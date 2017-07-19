@@ -13,10 +13,6 @@ public class MemberController
 {
 	/*
 	 * 주한울
-	 * 회원가입 폼(joinForm) 이동 메서드
-	 */
-	/*
-	 * 주한울
 	 * 회원가입 폼으로 이동
 	 */
 	@RequestMapping("member/joinForm")
@@ -24,18 +20,8 @@ public class MemberController
 	{
 		ModelAndView mav = new ModelAndView();
 		Member member = new Member();
-		String type = request.getParameter("type");
 		
-		if(type == null)
-		{
-			member.setType(1); 
-		}
-		else
-		{
-			member.setType(Integer.parseInt(type));
-			mav.addObject("type", member.getType());
-		}
-		
+		member.setType(1); 
 		mav.addObject("member", member);
 		
 		return mav;

@@ -1,17 +1,27 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ include file="/WEB-INF/jsp/jspHeader.jsp" %>
 
 <html>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-		<title>È¸¿ø°¡ÀÔ</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>íšŒì›ê°€ì…</title>
 		
 		<script type="text/javascript">
-			function typeChange(type)
+			$(document).ready(function() 
 			{
-		   		location.href="joinForm.mall?type=" + type;
-	   		}
+				$("#type1").click(function()
+				{
+					$("#tr_bis_no").css("display", "none");
+					$("#tr_bis_name").css("display", "none"); 
+				});
+				
+				$("#type2").click(function()
+				{
+					$("#tr_bis_no").css("display", "");
+					$("#tr_bis_name").css("display", ""); 
+				});
+			});
 		</script>
 	</head>
 	
@@ -19,98 +29,95 @@
 		<form:form modelAttribute="member" method="post" action="join.mall">
 			<table>
 				<tr valign="top" height="50">
-					<td>È¸¿ø ±¸ºĞ</td>
+					<td>íšŒì› êµ¬ë¶„</td>
 					<td>
-						<form:radiobutton path="type" value="1" label="ÀÏ¹İ È¸¿ø" onchange="javascript:typeChange(1)" />
-						<form:radiobutton path="type" value="2" label="»ç¾÷ÀÚ È¸¿ø" onchange="javascript:typeChange(2)" />
+						<form:radiobutton path="type" value="1" label="ì¼ë°˜ íšŒì›" />
+						<form:radiobutton path="type" value="2" label="ì‚¬ì—…ì íšŒì›" />
 					</td>
 				</tr>
 				
 				<tr>
-					<td>¾ÆÀÌµğ</td>
+					<td>ì•„ì´ë””</td>
 					<td>
 						<form:input path="id" /> 
 					</td>
 				</tr>
 				
 				<tr>
-					<td>ºñ¹Ğ¹øÈ£</td>
+					<td>ë¹„ë°€ë²ˆí˜¸</td>
 					<td>
 						<form:password path="pass" />
 					</td>
 				</tr>	
 				
 				<tr>
-					<td>ÀÌ¸§</td>
+					<td>ì´ë¦„</td>
 					<td>
 						<form:input path="name" />
 					</td>
 				</tr>
 				
 				<tr>
-					<td>´Ğ³×ÀÓ</td>
+					<td>ë‹‰ë„¤ì„</td>
 					<td>
 						<form:input path="nickname" />
 					</td>
 				</tr>
 				
 				<tr>
-					<td>¼ºº°</td>
+					<td>ì„±ë³„</td>
 					<td>
-						<form:radiobutton path="gender" value="1" label="³²" />
-						<form:radiobutton path="gender" value="2" label="¿©" />
+						<form:radiobutton path="gender" value="1" label="ë‚¨" />
+						<form:radiobutton path="gender" value="2" label="ì—¬" />
 					</td>
 				</tr>
 				
 				<tr>
-					<td>¿¬¶ôÃ³</td>
+					<td>ì—°ë½ì²˜</td>
 					<td>
 						<form:input path="tel" />
 					</td>
 				</tr>
 				
 				<tr>
-					<td>ÁÖ¼Ò</td>
+					<td>ì£¼ì†Œ</td>
 					<td>
 						<form:input path="address" />
 					</td>
 				</tr>
 				
 				<tr>
-					<td>°ü½É »óÇ°</td>
+					<td>ê´€ì‹¬ ìƒí’ˆ</td>
 					<td>
 						<form:select path="favorite">
-							<form:option value="À°·ù" label="À°·ù" />
-							<form:option value="ÇØ»ê¹°" label="ÇØ»ê¹°" />
-							<form:option value="°úÀÏ" label="°úÀÏ" />
-							<form:option value="Ã¤¼Ò" label="Ã¤¼Ò" />
-							<form:option value="°î·ù" label="°î·ù" />
-							<form:option value="°ß°ú·ù" label="°ß°ú·ù" />
+							<form:option value="ìœ¡ë¥˜" label="ìœ¡ë¥˜" />
+							<form:option value="í•´ì‚°ë¬¼" label="í•´ì‚°ë¬¼" />
+							<form:option value="ê³¼ì¼" label="ê³¼ì¼" />
+							<form:option value="ì±„ì†Œ" label="ì±„ì†Œ" />
+							<form:option value="ê³¡ë¥˜" label="ê³¡ë¥˜" />
+							<form:option value="ê²¬ê³¼ë¥˜" label="ê²¬ê³¼ë¥˜" />
 						</form:select>
 					</td>
 				</tr>
 				
-				<!-- Á¶°Ç¹®À¸·Î »ç¾÷ÀÚ °ü·Ã Á¤º¸  -->
-				<c:if test="${type == 2 }">
-					<tr>
-						<td>»ç¾÷ÀÚ ¹øÈ£</td>
-						<td>
-							<form:input path="bis_no" /> <form:button>Áßº¹È®ÀÎ</form:button>
-						</td>
-					</tr>
+				<tr id="tr_bis_no" style="display:none;">
+					<td>ì‚¬ì—…ì ë²ˆí˜¸</td>
+					<td>
+						<input type="text" id="bis_no"> <input type="button" value="ì¤‘ë³µí™•ì¸">
+					</td>
+				</tr>
 					
-					<tr>
-						<td>»óÈ£</td>
-						<td>
-							<form:input path="bis_name" />
-						</td>
-					</tr>
-				</c:if>
+				<tr id="tr_bis_name" style="display:none;">
+					<td>ìƒí˜¸</td>
+					<td>
+						<input type="text" id="bis_name">
+					</td>
+				</tr>
 				
 				<tr height="40px;">
 					<td colspan="2" align="center">
-						<input type="submit" value="µî·Ï" />
-						<input type="reset" value="¸®¼Â" />
+						<input type="submit" value="ë“±ë¡" />
+						<input type="reset" value="ë¦¬ì…‹" />
 					</td>
 				</tr>
 			</table>				
