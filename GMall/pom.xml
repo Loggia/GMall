@@ -178,6 +178,12 @@
 	    <version>1.16.6</version>
 	    <scope>provided</scope>
 	</dependency>
+	<!-- https://mvnrepository.com/artifact/com.servlets/cos -->
+    <dependency>
+        <groupId>com.servlets</groupId>
+        <artifactId>cos</artifactId>
+        <version>05Nov2002</version>
+    </dependency>
   </dependencies>
   <build>
     <finalName>GMall</finalName>

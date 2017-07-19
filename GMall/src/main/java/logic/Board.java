@@ -22,6 +22,9 @@ public class Board
 	@NotEmpty
 	private Date regdate;
 	
+	@NotEmpty
+	private int board_type;
+	
 	private int readcnt;
 	private int ref;
 	private int reflevel;
@@ -90,6 +93,14 @@ public class Board
 		this.regdate = regdate;
 	}
 	
+	public int getBoard_type() {
+		return board_type;
+	}
+
+	public void setBoard_type(int board_type) {
+		this.board_type = board_type;
+	}
+
 	public int getReadcnt() 
 	{
 		return readcnt;

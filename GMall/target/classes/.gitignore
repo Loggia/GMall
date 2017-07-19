@@ -1,1 +1,4 @@
+/dao/
 /controller/
+/logic/
+/mybatis-config.xml
