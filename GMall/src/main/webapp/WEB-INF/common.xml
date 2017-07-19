@@ -37,5 +37,12 @@ xsi:schemaLocation=
        </list>
     </property>
  </bean>
- 
+ <!-- Mybatis 관련 설정 -->
+<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"> <!-- sqlSessionFactory : 커넥션을 여기서 해줌 -->
+  <property name="dataSource" ref="dataSource" />
+  <property name="configLocation" value="classpath:mybatis-config.xml" />  
+</bean>
+<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate"> <!-- SqlSessionTemplate : 링크를 해줌 -->
+  <constructor-arg ref="sqlSessionFactory" />
+</bean>   
 </beans>
