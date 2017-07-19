@@ -13,5 +13,6 @@
 		테에에에에스트
 		
 		<a href="member/joinForm.mall">테스트시 이런식으로 추가</a>
+		<a href="board/main.mall">main</a>
 	</body>
 </html>

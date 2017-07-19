@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- /WEB-INF/decorator.xml -->
+<decorators defaultdir="/decorator">
+  <decorator name="main" page="decorator.jsp">
+     <pattern>*.mall</pattern>
+  </decorator>
+  <!-- layout 설정을 제외 함. -->
+  <excludes>
+  	<pattern></pattern>
+  </excludes>
+</decorators>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
@@ -12,6 +13,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <!-- 부트스트랩 js, cdn -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<decorator:head />
 <title>GMall</title>
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -116,7 +118,7 @@
 	<header class="container-fluid">
 		<div class="row">
 		
-			<div id="header_topbar" class="col-lg-12 header_topbar">
+			<div id="header_topbar" class="col-xs-12 header_topbar">
 				<div class="row">
 					<div class="col-xs-2"></div>
 					<div class="col-xs-8" style="padding: 0px;">
@@ -131,9 +133,9 @@
 				</div>
 			</div>
 			
-			<div class="gap_black col-lg-12"></div>
+			<div class="gap_black col-xs-12"></div>
 
-			<div id="header_bottombar" class="col-lg-12">
+			<div id="header_bottombar" class="col-xs-12">
 				<div class="row">
 
 					<div class="col-xs-2"></div>
@@ -145,7 +147,7 @@
 						<form class="navbar-form navbar-left" style="margin-top: 15px;">
 							<!-- 검색창 시작 -->
 							<div class="input-group">
-								<input type="text" class="form-control" placeholder="Search">
+								<input type="text" class="form-control" placeholder="검색어를 입력해주세요">
 								<div class="input-group-btn">
 									<button class="btn btn-default" type="submit">
 										<i class="glyphicon glyphicon-search"></i>
@@ -188,7 +190,7 @@
 		<div class="row">
 			<div class="col-xs-2"></div>
 			<div class="col-xs-8" style="margin: 15px 0px 15px 0px; padding: 0px 0px 0px 0px; background-color: rgba(255,255,0,0.15); height: 1000px;">
-				<!-- 사이트메시 바디가 들어갈부분 노란부분이 실질적인 구현 장소 -->
+				<decorator:body />
 			</div>
 			<div class="col-xs-2 "></div>
 		</div>
