@@ -58,8 +58,7 @@ public class MemberController
 			member.setBis_name(request.getParameter("bis_name"));
 		}
 		
-		// 추가 요망
-		
+		shopService.insertMember(member);
 		return mav;
 	}
 }

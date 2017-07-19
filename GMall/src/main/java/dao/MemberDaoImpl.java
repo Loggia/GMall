@@ -17,7 +17,6 @@ public class MemberDaoImpl implements MemberDao
 	@Override
 	public boolean insert(Member member) 
 	{
-		
 		try
 		{
 			sqlSession.getMapper(MemberMapper.class).insert(member);
