@@ -97,9 +97,8 @@
 }
 
 .TOP {
-    overflow: hidden;
-    width: 44px;
-    height: 42px;
+    width: 50px;
+    height: 50px;
     background-position: -450px -40px;
     vertical-align: top;
     display: block;
@@ -110,6 +109,13 @@
     margin-right: 30px;
     background-color: green;
     color: white;
+}
+
+#bus_img {
+	display: none;
+}
+#bus_num {
+	display: none;
 }
 </style>
 </head>
@@ -124,13 +130,10 @@
 					<div class="col-xs-8" style="padding: 0px;">
 					
 						<!-- 모달 로그인창 띄우는 버튼 -->
-						<button type="button"
-							data-toggle="modal" data-target="#loginFormModal"
-							class="btn btn-success btn-sm pull-right"
-							style="margin-right: 15px; margin-top: 3px;">로그인</button>
+						<button type="button" data-toggle="modal" data-target="#loginFormModal" class="btn btn-success btn-sm pull-right" style="margin-right: 15px; margin-top: 3px;">로그인</button>
 
 						<!-- 모달 로그인폼 바디-->
-						<div class="modal fade" id="loginFormModall" role="dialog">
+						<div class="modal fade" id="loginFormModal" role="dialog">
 							<div class="modal-dialog">
 
 								<div class="modal-content">
@@ -151,7 +154,7 @@
 										</form>
 									</div>
 									<div class="modal-footer">
-										<button type="submit" class="btn btn-info" data-dismiss="modal" data-toggle="modal" data-target="#joinFomrModal">회원가입</button>
+										<button type="submit" class="btn btn-info" data-dismiss="modal" data-toggle="modal" data-target="#joinFormModal">회원가입</button>
 										<button type="submit" class="btn btn-success" data-dismiss="modal" onclick="location.href='login.mall'">로그인</button>
 										<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
 									</div>
@@ -160,30 +163,87 @@
 							</div>
 						</div>
 						
-						<!-- 조인폼 모달 -->
+						<!-- 조인폼 모달 바디-->
 						<div class="modal fade" id="joinFormModal" role="dialog">
+							<script type="text/javascript">
+								$(document).ready(function() {
+									$("#type_nomal").click(function() {
+										$("#bus_num").slideUp("slow");
+										$("#bus_img").slideUp("slow");
+									});
+
+									$("#type_bussiness").click(function() {
+										$("#bus_num").slideDown("slow");
+										$("#bus_img").slideDown("slow");
+									});
+								});
+							</script>
 							<div class="modal-dialog">
 
 								<div class="modal-content">
 									<div class="modal-header">
 										<button type="button" class="close" data-dismiss="modal">&times;</button>
-										<h4 class="modal-title">로그인</h4>
+										<h4 class="modal-title">Goodee 가족되기</h4>
 									</div>
 									<div class="modal-body">
 										<form>
 											<div class="form-group">
-												<label for="recipient-name" class="control-label">ID:</label>
+												<label class="radio-inline-lg" id="type_nomal" style="cursor: pointer;"> <input type="radio" name="optradio">일반 회원</label>&nbsp;&nbsp;&nbsp;
+												<label class="radio-inline-lg" id="type_bussiness" style="cursor: pointer;"> <input type="radio" name="optradio">사업자 회원</label>
+											</div>
+											<div class="form-group">
+												<label for="recipient-name" class="control-label">아이디:</label>
 												<input name="" type="text" class="form-control" id="recipient-name" placeholder="아이디를 입력해주세요">
 											</div>
 											<div class="form-group">
-												<label for="message-text" class="control-label">PASSWORD:</label>
+												<label for="message-text" class="control-label">비밀번호:</label>
 												<input name="" type="text" class="form-control" id="message-text" placeholder="비밀번호를 입력해주세요">
 											</div>
+											<div class="form-group">
+												<label for="recipient-name" class="control-label">이름:</label>
+												<input name="" type="text" class="form-control" id="recipient-name" placeholder="이름을 입력해주세요">
+											</div>
+											<div class="form-group">
+												<label for="message-text" class="control-label">닉네임:</label>
+												<input name="" type="text" class="form-control" id="message-text" placeholder="닉네임을 입력해주세요">
+											</div>
+											<div class="form-group">
+												<label for="recipient-name" class="control-label">성별:</label>
+												<input name="" type="text" class="form-control" id="recipient-name" placeholder="성별를 입력해주세요">
+											</div>
+											<div class="form-group">
+												<label for="message-text" class="control-label">연락처:</label>
+												<input name="" type="text" class="form-control" id="message-text" placeholder="연락처를 입력해주세요">
+											</div>
+											<div class="form-group">
+												<label for="message-text" class="control-label">주소:</label>
+												<input name="" type="text" class="form-control" id="message-text" placeholder="주소를 입력해주세요">
+											</div>
+											<div class="form-group">
+												<label for="sel1">관심 상품:</label>
+												<select class="form-control" id="sel1" style="width: 80px; cursor: pointer;">
+													<option>육류</option>
+													<option>해산물</option>
+													<option>과일</option>
+													<option>채소</option>
+													<option>곡류</option>
+													<option>견과류</option>
+												</select>
+											</div>
+												<div class="form-group" id="bus_num">
+													<label for="message-text" class="control-label">사업자
+														번호:</label> <input name="" type="text" class="form-control"
+														id="message-text" placeholder="사업자 번호를 입력해주세요">
+												</div>
+												<div class="form-group" id="bus_img">
+													<label for="message-text" class="control-label">상호:</label>
+													<input name="" type="text" class="form-control"
+														id="message-text" placeholder="상호를 입력해주세요">
+												</div>
 										</form>
 									</div>
 									<div class="modal-footer">
-										<button type="submit" class="btn btn-info" data-dismiss="modal" data-toggle="modal" data-target="#joinFomrModal">회원가입</button>
-										<button type="submit" class="btn btn-success" data-dismiss="modal" onclick="location.href='login.mall'">로그인</button>
+										<button type="submit" class="btn btn-success" data-dismiss="modal" onclick="location.href='join.mall'">가입 완료</button>
 										<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
 									</div>
 								</div>
@@ -229,7 +289,7 @@
 							style="margin-top: 25px; margin-right: 15px;">
 							<div id="mymenu" data-toggle="popover">
 								<span class="glyphicon glyphicon-user" aria-hidden="true"
-									style="color: white;"></span> <b style="color: white">MY 쇼핑</b>
+									style="color: white;"></span><b style="color: white">MY 쇼핑</b>
 								<div class="hide">
 									<ol id="mymenu_Form">
 										<li><a href="infoForm.mall" class="mymenu_list">내 정보</a></li>
@@ -253,19 +313,19 @@
 	</header>
 
 	<!-- 섹션 영역 -->
-	<section class="container-fluid">
-		<div class="row">
-			<div class="col-xs-2"></div>
-			<div class="col-xs-8" style="margin: 15px 0px 15px 0px; padding: 0px 0px 0px 0px; background-color: rgba(255,255,0,0.15); height: 1000px;">
-				<decorator:body />
-			</div>
-			<div class="col-xs-2 "></div>
+	<%-- <section class="container-fluid">
+		<div class="col-xs-2"></div>
+		<div class="col-xs-8"
+			style="margin: 0px 0px 0px 0px; padding: 0px 0px 0px 0px;">
+			<decorator:body />
 		</div>
-	</section>
-	
+		<div class="col-xs-2 "></div>
+	</section> --%>
+	<decorator:body />
+
 	<!-- 푸터 영역 -->
 	<footer class="container-fluid" style="padding: 0px 0px 0px 0px;">
-		<div class="col-xs-12" style="background-color: rgba(255, 0, 0, 0.15); height: 100px;">
+		<div class="col-xs-12" style="background-color: rgba(255, 0, 0, 0.15); height: 100px; position: absolute;">
 		</div>
 		<button type="button" class="btn btn-success btn-sm TOP" onclick="location.href='#'">TOP</button>
 	</footer>

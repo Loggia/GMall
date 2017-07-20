@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import logic.Board;
+import logic.Member;
 import logic.ShopService;
 
 @Controller
@@ -25,8 +26,8 @@ public class BoardController
 	
 	@RequestMapping("board/main")
 	public ModelAndView main() {
-		
 		ModelAndView mav = new ModelAndView();
+		mav.addObject(new Member());
 		return mav;
 	}
 	
