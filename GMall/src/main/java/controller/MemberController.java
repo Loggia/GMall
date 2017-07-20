@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import logic.Member;
 import logic.ShopService;
+import logic.Trade;
 
 @Controller
 public class MemberController 
@@ -54,5 +57,20 @@ public class MemberController
 		// 팝업창이 생기면 로그인이 안됬을 때 팝업창이 뜨게 설정
 		
 		return mav;
+		
+	}
+	
+	/*
+	 * 구정연
+	 * 회원거래목록
+	 */
+	@RequestMapping("member/adminMain")
+	public ModelAndView admin(){
+			
+			ModelAndView mav = new ModelAndView();
+			List<Trade> tradeList = shopService.tradeList();
+			mav.addObject("tradeList",tradeList);
+			return mav;
+		
 	}
 }

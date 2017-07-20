@@ -11,6 +11,7 @@ import com.oreilly.servlet.MultipartRequest;
 
 import dao.BoardDao;
 import dao.MemberDao;
+import dao.TradeDao;
 
 @Service
 public class ShopServiceImpl implements ShopService{
@@ -18,6 +19,8 @@ public class ShopServiceImpl implements ShopService{
 	BoardDao boardDao;
 	@Autowired
 	MemberDao memberDao;
+	@Autowired
+	TradeDao tradedao;
 	
 	@Override
 	public List<Board> infiniteScrollDown(int numToStart) {
@@ -85,5 +88,15 @@ public class ShopServiceImpl implements ShopService{
 	public Member selectMember(String id) 
 	{
 		return memberDao.selectOne(id);
+	}
+	
+	/*
+	 * 구정연 
+	 * 회원관리목록
+	 */
+	@Override
+	public List<Trade> tradeList() {
+		
+		return tradedao.tradeList();
 	}
 }

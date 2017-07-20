@@ -13,5 +13,8 @@
 	<br>
 	<br>
 	<a href="board/main.mall">&nbsp;&nbsp;&nbsp;Main</a>
+	<br>
+	<br>
+	<a href="member/adminMain.mall">&nbsp;&nbsp;&nbsp;adminMain</a>
 </body>
 </html>

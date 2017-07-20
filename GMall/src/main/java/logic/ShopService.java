@@ -14,4 +14,5 @@ public interface ShopService {
 	
 	boolean insertMember(Member member); // 주한울 - 회원가입
 	Member selectMember(String id); // 주한울 - 로그인을 위한 메서드
+	List<Trade> tradeList(); //구정연 - 회원거래목록
 }
