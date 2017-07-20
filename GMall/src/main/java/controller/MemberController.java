@@ -73,16 +73,15 @@ public class MemberController
 	}
 	
 	/*
-	 * 구정연
-	 * 회원거래목록
+	 * 우동
+	 * 인포폼
 	 */
 	
-	@RequestMapping("board/infoForm")
+	@RequestMapping("member/infoForm")
 	public ModelAndView infoForm(HttpServletRequest request, HttpSession session)
 	{
 		ModelAndView mav = new ModelAndView();
 		return mav;
-		
 	}
 	
 	@RequestMapping("member/adminMain")

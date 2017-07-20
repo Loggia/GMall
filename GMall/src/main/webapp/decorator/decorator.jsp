@@ -4,6 +4,7 @@
 	uri="http://www.opensymphony.com/sitemesh/decorator"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<c:set var="path" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -136,13 +137,14 @@
 					<c:if test="${LOGIN_MEMBER.id == null}">
 						<button type="button" data-toggle="modal"
 							data-target="#loginFormModal" class="btn btn-success pull-right"
-							style="margin-right: 15px; margin-top: 1px;">로그인</button>
+							style="margin-top: 1px;">로그인</button>
 					</c:if>
 					<c:if test="${LOGIN_MEMBER.id != null}">
 						<button type="submit" onclick="location.href='logout.mall'"
 							class="btn btn-success pull-right"
-							style="margin-right: 29px; margin-top: 1px;">${LOGIN_MEMBER.id }</button>
+							style="margin-top: 1px;">${LOGIN_MEMBER.id }</button>
 					</c:if>
+					
 					<!-- 모달 로그인폼 바디-->
 					<div class="modal fade" id="loginFormModal" role="dialog">
 						<div class="modal-dialog">
@@ -300,8 +302,8 @@
 
 				<div class="col-xs-2"></div>
 
-				<div class="col-xs-8">
-					<a href="main.mall" class="pull-left" style="margin-top: 5px;"><img
+				<div class="col-xs-8" style="padding: 0px;">
+					<a href="${path }/board/main.mall" class="pull-left" style="margin-top: 5px;"><img
 						id="logo" src="../img/logo.png"></a>
 
 					<form class="navbar-form pull-left" style="margin-top: 15px;">
@@ -318,18 +320,16 @@
 					</form>
 
 					<!-- 마이메뉴 시작 -->
-					<div id="mymenu_wrap" class="pull-right"
-						style="margin-top: 25px; margin-right: 4px;">
-						<div id="mymenu" data-toggle="popover">
+					<div id="mymenu_wrap" class="pull-right" style="margin-top: 25px; margin-right: 4px;">
+						<div id="mymenu" data-toggle="popover" data-container="body">
 							<span class="glyphicon glyphicon-user" aria-hidden="true"
 								style="color: white;"></span><b style="color: white">MY 쇼핑</b>
 							<div class="hide">
 								<ol id="mymenu_Form">
-									<li><a href="infoForm.mall" class="mymenu_list">내 정보</a></li>
-									<li><a href="cartForm.mall" class="mymenu_list">장바구니</a></li>
-									<li><a href="deleveryForm.mall" class="mymenu_list">배송
-											정보</a></li>
-									<li><a href="logout.mall" class="mymenu_list">로그아웃</a></li>
+									<li style="margin: 3px;"><a href="${path }/member/infoForm.mall" class="mymenu_list">내 정보</a></li>
+									<li style="margin: 3px;"><a href="cartForm.mall" class="mymenu_list">장바구니</a></li>
+									<li style="margin: 3px;"><a href="deleveryForm.mall" class="mymenu_list">배송정보</a></li>
+									<li style="margin: 3px;"><a href="${path }/member/logout.mall" class="mymenu_list">로그아웃</a></li>
 								</ol>
 							</div>
 						</div>
@@ -351,11 +351,9 @@
 	<!-- 바디영역 끝 -->
 	<!-- 푸터 영역 -->
 	<footer class="container-fluid" style="padding: 0px 0px 0px 0px;">
-		<div class="col-xs-12"
-			style="background-color: rgba(255, 0, 0, 0.15); height: 100px; position: absolute;">
+		<div class="col-xs-12" style="background-color: rgba(255, 0, 0, 0.15); height: 100px; position: absolute;">
 		</div>
-		<button type="button" class="btn btn-success btn-sm TOP"
-			onclick="location.href='#'">TOP</button>
+		<button type="button" class="btn btn-success btn-sm TOP" onclick="location.href='#'">TOP</button>
 	</footer>
 </body>
 </html>
