@@ -17,56 +17,33 @@ body {
 }
  .col-xs-3 {
 	padding: 0px 0px 0px 0px;
-	width: 308px;
+	width: 332px;
 }
 
 .fir_line {
 	background-color: rgba(255, 255, 255, 1);
 	height: 500px;
-	margin: 14px 0px 0px 14px;
-}
-
-.fir_line_end {
-	background-color: rgba(255, 255, 255, 1);
-	height: 500px;
-	margin: 14px 0px 0px 0px;
+	margin: 0px 0px 16px 16px;
 }
 
 .sec_line {
 	background-color: rgba(255, 255, 255, 1);
 	height: 240px;
-	margin: 14px 0px 0px 14px;
-}
-
-.sec_line_end{
-	background-color: rgba(255, 255, 255, 1);
-	height: 240px;
-	margin: 14px 0px 0px 0px;
+	margin: 0px 0px 16px 16px;
 }
 
 .thr_line {
 	background-color: rgba(255, 255, 255, 1);
 	height: 240px;
-	margin: 14px 0px 0px 14px;
-}
-
-.thr_line_end {
-	background-color: rgba(255, 255, 255, 1);
-	height: 240px;
-	margin: 14px 0px 0px 0px;
+	margin: 0px 0px 16px 16px;
 }
 
 .for_line { 
 	background-color: rgba(255, 255, 255, 1);
 	height: 240px;
-	margin: 14px 0px 0px 14px;
+	margin: 0px 0px 16px 16px;
 }
 
-.for_line_end {
-	background-color: rgba(255, 255, 255, 1);
-	height: 240px;
-	margin: 14px 0px 14px 0px;
-}
 </style>
 </head>
 <body>
