@@ -12,7 +12,7 @@ body {
 	background-color: #e9ecef;
 }
 #category_bar {
-	height: 100px;
+	height: 45px;
 	background-color: rgba(255, 255, 255, 1);
 }
  .col-xs-3 {
@@ -44,13 +44,38 @@ body {
 	margin: 0px 0px 16px 16px;
 }
 
+#category ul {
+	overflow: hidden;
+	list-style: none;
+}
+
+#category ul li{
+	width: 100px;
+	float: left;
+	display: inline;
+}
+
 </style>
 </head>
 <body>
 <div class="container-fluid" style="padding: 0px 0px 0px 0px;">
-<div class="row">
-<!-- <div id="category_bar" style="padding: 0px 0px 0px 0px; width: 100%"></div> -->
+<div id="category_bar" style="padding: 0px 0px 0px 0px;">
+	<div id="catogory">
+		<ul>
+			<li>육류</li>
+			<li>해산물</li>
+			<li>채소</li>
+			<li>과일</li>
+			<li>곡류</li>
+			<li>견과류</li>
+		</ul>
+	</div>
 </div>
+
+<div class="gap_black col-lg-12"></div>
+
+</div>
+	<div id="content-wrap" style="padding: 16px 0px 0px 0px;">
 	<div class="col-xs-2">&nbsp;</div>
 	<div class="col-xs-8" style="padding: 0px 0px 0px 0px;">
         <div style="display: inline; float: left;">
@@ -81,6 +106,6 @@ body {
 		</div>
 	</div>
 	<div class="col-xs-2">&nbsp;</div>
-</div>
+	</div>
 </body>
 </html>
