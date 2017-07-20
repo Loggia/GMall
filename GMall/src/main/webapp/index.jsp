@@ -16,5 +16,8 @@
 	<br>
 	<br>
 	<a href="member/adminMain.mall">&nbsp;&nbsp;&nbsp;adminMain</a>
+	<br>
+	<br>
+	<a href="member/infoForm.mall">&nbsp;&nbsp;&nbsp;infoForm</a>
 </body>
 </html>

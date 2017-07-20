@@ -346,8 +346,8 @@
 
 	</header>
 	<!-- 헤더 영역 끝 -->
-	<section>
 	<!-- 실질적인 바디영역 -->
+	<decorator:body />
 	<!-- 바디영역 끝 -->
 	<!-- 푸터 영역 -->
 	<footer class="container-fluid" style="padding: 0px 0px 0px 0px;">

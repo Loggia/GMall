@@ -50,9 +50,11 @@ body {
 }
 
 #category ul li{
+	background-color : rgba(255, 95, 162, 0.15);
 	width: 100px;
 	float: left;
 	display: inline;
+	margin: 0px 10px 0px 10px;
 }
 
 </style>
@@ -60,14 +62,14 @@ body {
 <body>
 <div class="container-fluid" style="padding: 0px 0px 0px 0px;">
 <div id="category_bar" style="padding: 0px 0px 0px 0px;">
-	<div id="catogory">
-		<ul>
-			<li>육류</li>
+	<div id="category">
+		<ul style="margin-left: 300px;">
+			<li style="color: skyblue; font-size: 20px;"><em style="border-bottom: 2px solid #4cc370;"><b>육류</b></em></li>
 			<li>해산물</li>
 			<li>채소</li>
 			<li>과일</li>
 			<li>곡류</li>
-			<li>견과류</li>
+			<li><em style="border-bottom: 2px solid #4cc370;">견과류</em></li>
 		</ul>
 	</div>
 </div>
@@ -75,37 +77,39 @@ body {
 <div class="gap_black col-lg-12"></div>
 
 </div>
-	<div id="content-wrap" style="padding: 16px 0px 0px 0px;">
-	<div class="col-xs-2">&nbsp;</div>
-	<div class="col-xs-8" style="padding: 0px 0px 0px 0px;">
-        <div style="display: inline; float: left;">
-            <div class="col-xs-3 fir_line">col-xs-3 fir_line</div>
-			<div class="col-xs-3 fir_line">col-xs-3 fir_line</div>
-			<div class="col-xs-3 fir_line">col-xs-3 fir_line</div>
-			<div class="col-xs-3 fir_line">col-xs-3 fir_line</div>	
-		</div>
-         <div>
-			<div class="col-xs-3 sec_line">col-xs-3 sec_line</div>
-			<div class="col-xs-3 sec_line"></div>
-			<div class="col-xs-3 sec_line"></div>
-			<div class="col-xs-3 sec_line"></div>
-		</div>
+<div class="container-fluid" style="padding: 0px 0px 0px 0px;">
+		<div class="col-xs-2">&nbsp;</div>
+		<div id="content-wrap" style="padding: 16px 0px 0px 0px;">
+			<div class="col-xs-8" style="padding: 0px 0px 0px 0px;">
+				<div style="display: inline; float: left;">
+					<div class="col-xs-3 fir_line">프리미엄 상품</div>
+					<div class="col-xs-3 fir_line"></div>
+					<div class="col-xs-3 fir_line"></div>
+					<div class="col-xs-3 fir_line"></div>
+				</div>
+				<div>
+					<div class="col-xs-3 sec_line">나의관심 상품</div>
+					<div class="col-xs-3 sec_line"></div>
+					<div class="col-xs-3 sec_line"></div>
+					<div class="col-xs-3 sec_line"></div>
+				</div>
 
-		<div>
-			<div class="col-xs-3 thr_line">col-xs-3 thr_line</div>
-			<div class="col-xs-3 thr_line"></div>
-			<div class="col-xs-3 thr_line"></div>
-			<div class="col-xs-3 thr_line"></div>
-		</div>
+				<div>
+					<div class="col-xs-3 thr_line">최다 검색 상품</div>
+					<div class="col-xs-3 thr_line"></div>
+					<div class="col-xs-3 thr_line"></div>
+					<div class="col-xs-3 thr_line"></div>
+				</div>
 
-		<div>
-			<div class="col-xs-3 for_line">col-xs-3 for_line</div>
-			<div class="col-xs-3 for_line"></div>
-			<div class="col-xs-3 for_line"></div>
-			<div class="col-xs-3 for_line"></div>
+				<div>
+					<div class="col-xs-3 for_line">최다 구매 상품</div>
+					<div class="col-xs-3 for_line"></div>
+					<div class="col-xs-3 for_line"></div>
+					<div class="col-xs-3 for_line"></div>
+				</div>
+			</div>
 		</div>
-	</div>
-	<div class="col-xs-2">&nbsp;</div>
+		<div class="col-xs-2">&nbsp;</div>
 	</div>
 </body>
 </html>

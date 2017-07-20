@@ -76,6 +76,15 @@ public class MemberController
 	 * 구정연
 	 * 회원거래목록
 	 */
+	
+	@RequestMapping("board/infoForm")
+	public ModelAndView infoForm(HttpServletRequest request, HttpSession session)
+	{
+		ModelAndView mav = new ModelAndView();
+		return mav;
+		
+	}
+	
 	@RequestMapping("member/adminMain")
 	public ModelAndView admin(){
 			
