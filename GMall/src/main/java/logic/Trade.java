@@ -5,7 +5,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class Trade 
 {
 	@NotEmpty
-	private int ord_no;
+	private int trd_no;
 	
 	@NotEmpty
 	private String id;
@@ -14,110 +14,94 @@ public class Trade
 	private int pro_no;
 	
 	@NotEmpty
-	private int ord_type;
+	private int trd_type;
 	
 	@NotEmpty
 	private String delivery;
 	
 	@NotEmpty
-	private String ord_code;
+	private String trd_code;
 	
 	@NotEmpty
-	private int ord_cnt;
+	private int trd_cnt;
 	
 	@NotEmpty
-	private int ord_money;
+	private int trd_money;
 	
 	@NotEmpty
-	private int ord_fee;
+	private int trd_fee;
 
-	public int getOrd_no()
-	{
-		return ord_no;
+	public int getTrd_no() {
+		return trd_no;
 	}
 
-	public void setOrd_no(int ord_no)
-	{
-		this.ord_no = ord_no;
+	public void setTrd_no(int trd_no) {
+		this.trd_no = trd_no;
 	}
 
-	public String getId()
-	{
+	public String getId() {
 		return id;
 	}
 
-	public void setId(String id)
-	{
+	public void setId(String id) {
 		this.id = id;
 	}
 
-	public int getPro_no()
-	{
+	public int getPro_no() {
 		return pro_no;
 	}
 
-	public void setPro_no(int pro_no)
-	{
+	public void setPro_no(int pro_no) {
 		this.pro_no = pro_no;
 	}
 
-	public int getOrd_type()
-	{
-		return ord_type;
+	public int getTrd_type() {
+		return trd_type;
 	}
 
-	public void setOrd_type(int ord_type)
-	{
-		this.ord_type = ord_type;
+	public void setTrd_type(int trd_type) {
+		this.trd_type = trd_type;
 	}
 
-	public String getDelivery()
-	{
+	public String getDelivery() {
 		return delivery;
 	}
 
-	public void setDelivery(String delivery)
-	{
+	public void setDelivery(String delivery) {
 		this.delivery = delivery;
 	}
 
-	public String getOrd_code() 
-	{
-		return ord_code;
+	public String getTrd_code() {
+		return trd_code;
 	}
 
-	public void setOrd_code(String ord_code) 
-	{
-		this.ord_code = ord_code;
+	public void setTrd_code(String trd_code) {
+		this.trd_code = trd_code;
 	}
 
-	public int getOrd_cnt()
-	{
-		return ord_cnt;
+	public int getTrd_cnt() {
+		return trd_cnt;
 	}
 
-	public void setOrd_cnt(int ord_cnt) 
-	{
-		this.ord_cnt = ord_cnt;
+	public void setTrd_cnt(int trd_cnt) {
+		this.trd_cnt = trd_cnt;
 	}
 
-	public int getOrd_money()
-	{
-		return ord_money;
+	public int getTrd_money() {
+		return trd_money;
 	}
 
-	public void setOrd_money(int ord_money)
-	{
-		this.ord_money = ord_money;
+	public void setTrd_money(int trd_money) {
+		this.trd_money = trd_money;
 	}
 
-	public int getOrd_fee()
-	{
-		return ord_fee;
+	public int getTrd_fee() {
+		return trd_fee;
 	}
 
-	public void setOrd_fee(int ord_fee) 
-	{
-		this.ord_fee = ord_fee;
+	public void setTrd_fee(int trd_fee) {
+		this.trd_fee = trd_fee;
 	}
+
+	
 }
