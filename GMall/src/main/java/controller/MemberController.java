@@ -47,8 +47,6 @@ public class MemberController
 	{
 		ModelAndView mav = new ModelAndView("board/main");
 		Member login = shopService.selectMember(member.getId());
-		System.out.println(member.getId());
-		
 		if(login.getId().equals(member.getId()) && login.getPass().equals(member.getPass()))
 		{
 			request.getSession().setAttribute("LOGIN_MEMBER", login);
