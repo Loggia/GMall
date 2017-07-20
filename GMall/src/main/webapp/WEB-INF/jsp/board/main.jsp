@@ -9,7 +9,11 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <style type="text/css">
 body {
-	background-color: 
+	background-color: #e9ecef;
+}
+#category_bar {
+	height: 100px;
+	background-color: rgba(255, 255, 255, 1);
 }
 .col-xs-3 {
 	padding: 0px 0px 0px 0px;
@@ -17,49 +21,49 @@ body {
 }
 
 .fir_line {
-	background-color: rgba(255, 0, 0, 0.15);
+	background-color: rgba(255, 255, 255, 1);
 	height: 500px;
 	margin: 14px 14px 0px 0px;
 }
 
 .fir_line_end {
-	background-color: rgba(255, 0, 0, 0.15);
+	background-color: rgba(255, 255, 255, 1);
 	height: 500px;
 	margin: 14px 0px 0px 0px;
 }
 
 .sec_line {
-	background-color: rgba(0, 255, 0, 0.15);
+	background-color: rgba(255, 255, 255, 1);
 	height: 240px;
 	margin: 14px 14px 0px 0px;
 }
 
 .sec_line_end {
-	background-color: rgba(0, 255, 0, 0.15);
+	background-color: rgba(255, 255, 255, 1);
 	height: 240px;
 	margin: 14px 0px 0px 0px;
 }
 
 .thr_line {
-	background-color: rgba(0, 0, 255, 0.15);
+	background-color: rgba(255, 255, 255, 1);
 	height: 240px;
 	margin: 14px 14px 0px 0px;
 }
 
 .thr_line_end {
-	background-color: rgba(0, 0, 255, 0.15);
+	background-color: rgba(255, 255, 255, 1);
 	height: 240px;
 	margin: 14px 0px 0px 0px;
 }
 
 .for_line {
-	background-color: rgba(255, 255, 0, 0.15);
+	background-color: rgba(255, 255, 255, 1);
 	height: 240px;
 	margin: 14px 14px 14px 0px;
 }
 
 .for_line_end {
-	background-color: rgba(255, 255, 0, 0.15);
+	background-color: rgba(255, 255, 255, 1);
 	height: 240px;
 	margin: 14px 0px 14px 0px;
 }
@@ -67,6 +71,7 @@ body {
 </head>
 <body>
 <div class="container-fluid">
+<div class="col-xs-12" id="category_bar"></div>
 <div class="row">
 	<div class="col-xs-2"></div>
 	<div class="col-xs-8" style="padding: 0px 0px 0px 0px;">

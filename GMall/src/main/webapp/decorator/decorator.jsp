@@ -82,18 +82,18 @@
 
 .gap_white {
 	display: block;
-	height: 2px;
+	height: 1px;
 	z-index: 1;
 	background-color: #fff;
-	opacity: .2;
+	opacity: 0.15;
 }
 
 .gap_black {
 	display: block;
-	height: 2px;
+	height: 1px;
 	z-index: 1;
 	background-color: #000;
-	opacity: .2;
+	opacity: 0.15;
 }
 
 .TOP {
@@ -260,7 +260,7 @@
 				</div>
 			</div>
 			
-			<div class="gap_black col-xs-12"></div>
+			<div class="gap_white col-xs-12"></div>
 
 			<div id="header_bottombar" class="col-xs-12">
 				<div class="row">
