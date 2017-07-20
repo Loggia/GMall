@@ -74,7 +74,6 @@ body {
 <div class="row">
 <!-- <div id="category_bar" style="padding: 0px 0px 0px 0px; width: 100%"></div> -->
 </div>
-<div class="row">
 	<div class="col-xs-2">&nbsp;</div>
 	<div class="col-xs-8" style="padding: 0px 0px 0px 0px;">
         <div style="display: inline; float: left;">
@@ -105,7 +104,6 @@ body {
 		</div>
 	</div>
 	<div class="col-xs-2">&nbsp;</div>
-</div>
 </div>
 </body>
 </html>

@@ -121,7 +121,7 @@
 </head>
 <body>
 	<!-- 헤더 영역 -->
-	<header class="container-fluid">
+	<header class="container-fluid" style="padding: 0px;">
 		<div class="row">
 		
 			<div id="header_topbar" class="col-xs-12 header_topbar">
@@ -131,10 +131,10 @@
 					
 						<!-- 모달 로그인창 띄우는 버튼 -->
 						<c:if test="${LOGIN_MEMBER.id == null}">
-						<button type="button" data-toggle="modal" data-target="#loginFormModal" class="btn btn-success btn-sm pull-right" style="margin-right: 15px; margin-top: 3px;">로그인</button>
+						<button type="button" data-toggle="modal" data-target="#loginFormModal" class="btn btn-success pull-right" style="margin-right: 29px; margin-top: 3px;">로그인</button>
 						</c:if>
 						<c:if test="${LOGIN_MEMBER.id != null}">
-						<button type="submit" onclick="location.href='logout.mall'" class="btn btn-success btn-sm pull-right" style="margin-right: 15px; margin-top: 3px;">${LOGIN_MEMBER.id }</button>
+						<button type="submit" onclick="location.href='logout.mall'" class="btn btn-success pull-right" style="margin-right: 29px; margin-top: 3px;">${LOGIN_MEMBER.id }</button>
 						</c:if>
 						<!-- 모달 로그인폼 바디-->
 						<div class="modal fade" id="loginFormModal" role="dialog">
@@ -258,10 +258,6 @@
 
 							</div>
 						</div>
-						
-						<c:if test="">
-						<button type="button" class="btn btn-success btn-sm pull-right" style="margin-right: 15px; margin-top: 3px;"></button>
-						</c:if>
 						
 					</div>
 					<div class="col-xs-2"></div>
