@@ -208,8 +208,12 @@
 												<input name="nickname" type="text" class="form-control" id="message-text" placeholder="닉네임을 입력해주세요">
 											</div>
 											<div class="form-group">
-												<label for="recipient-name" class="control-label">성별:</label>
-												<input name="gender" type="text" class="form-control" id="recipient-name" placeholder="성별를 입력해주세요">
+												<label for="recipient-name" class="control-label">성별:&nbsp;&nbsp;</label>
+												<label class="radio-inline-lg" style="cursor: pointer;">
+												<input type="radio"name="gender" value="1" style="cursor: pointer;">남자</label>
+												&nbsp;&nbsp;
+												<label class="radio-inline-lg" style="cursor: pointer;">
+												<input type="radio"name="gender" value="2" style="cursor: pointer;">여자</label>
 											</div>
 											<div class="form-group">
 												<label for="message-text" class="control-label">연락처:</label>
@@ -221,7 +225,7 @@
 											</div>
 											<div class="form-group">
 												<label for="sel1">관심 상품:</label>
-												<select name="interest" class="form-control" id="sel1" style="width: 80px; cursor: pointer;">
+												<select name="interest" class="form-control" id="sel1" style="width: 100px; cursor: pointer;">
 													<option>육류</option>
 													<option>해산물</option>
 													<option>과일</option>
