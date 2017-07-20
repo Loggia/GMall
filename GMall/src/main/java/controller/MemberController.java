@@ -3,6 +3,7 @@ package controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -54,6 +55,19 @@ public class MemberController
 		
 		// 팝업창이 생기면 로그인이 안됬을 때 팝업창이 뜨게 설정
 		
+		return mav;
+		
+	}
+	/*
+	 * 우동
+	 * 로그아웃
+	 */
+	@RequestMapping("board/logout")
+	public ModelAndView logout(HttpServletRequest request, HttpSession session)
+	{
+		ModelAndView mav = new ModelAndView("board/main");
+		session.invalidate();
+		System.out.println("로그아웃 성공");
 		return mav;
 		
 	}

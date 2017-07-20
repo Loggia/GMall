@@ -130,11 +130,11 @@
 					<div class="col-xs-8" style="padding: 0px;">
 					
 						<!-- 모달 로그인창 띄우는 버튼 -->
-						<c:if test="${session.LOGIN_MEMBER == null}">
+						<c:if test="${LOGIN_MEMBER.id == null}">
 						<button type="button" data-toggle="modal" data-target="#loginFormModal" class="btn btn-success btn-sm pull-right" style="margin-right: 15px; margin-top: 3px;">로그인</button>
 						</c:if>
-						<c:if test="${!Session.LOGIN_MEMBER == null}">
-						<button type="button" data-toggle="modal" data-target="#loginFormModal" class="btn btn-success btn-sm pull-right" style="margin-right: 15px; margin-top: 3px;">${Session.LOGIN_MEMBER }</button>
+						<c:if test="${LOGIN_MEMBER.id != null}">
+						<button type="submit" onclick="location.href='logout.mall'" class="btn btn-success btn-sm pull-right" style="margin-right: 15px; margin-top: 3px;">${LOGIN_MEMBER.id }</button>
 						</c:if>
 						<!-- 모달 로그인폼 바디-->
 						<div class="modal fade" id="loginFormModal" role="dialog">
