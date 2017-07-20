@@ -1,7 +1,5 @@
 package controller;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,22 +13,6 @@ public class MemberController
 {
 	@Autowired
 	public ShopService shopService;
-	
-	/*
-	 * 주한울
-	 * 회원가입 폼으로 이동
-	 */
-	@RequestMapping("member/joinForm")
-	public ModelAndView moveJoinForm(HttpServletRequest request)
-	{
-		ModelAndView mav = new ModelAndView();
-		Member member = new Member();
-		
-		member.setType(1); 
-		mav.addObject("member", member);
-		
-		return mav;
-	}
 	
 	/*
 	 * 주한울
