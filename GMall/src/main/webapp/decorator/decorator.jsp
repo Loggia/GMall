@@ -142,7 +142,7 @@
 										<h4 class="modal-title">로그인</h4>
 									</div>
 									<div class="modal-body">
-										<form>
+										<form action="login.mall" method="post" name="loginform">
 											<div class="form-group">
 												<label for="recipient-name" class="control-label">ID:</label>
 												<input name="" type="text" class="form-control" id="recipient-name" placeholder="아이디를 입력해주세요">
@@ -155,7 +155,7 @@
 									</div>
 									<div class="modal-footer">
 										<button type="submit" class="btn btn-info" data-dismiss="modal" data-toggle="modal" data-target="#joinFormModal">회원가입</button>
-										<button type="submit" class="btn btn-success" data-dismiss="modal" onclick="location.href='login.mall'">로그인</button>
+										<button type="submit" class="btn btn-success" data-dismiss="modal" onclick="document.loginform.submit()">로그인</button>
 										<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
 									</div>
 								</div>
@@ -186,42 +186,42 @@
 										<h4 class="modal-title">Goodee 가족되기</h4>
 									</div>
 									<div class="modal-body">
-										<form>
+										<form action="join.mall" method="post" name="joinform">
 											<div class="form-group">
-												<label class="radio-inline-lg" id="type_nomal" style="cursor: pointer;"> <input type="radio" name="optradio">일반 회원</label>&nbsp;&nbsp;&nbsp;
-												<label class="radio-inline-lg" id="type_bussiness" style="cursor: pointer;"> <input type="radio" name="optradio">사업자 회원</label>
+												<label class="radio-inline-lg" id="type_nomal" style="cursor: pointer;"> <input type="radio" name="type" value="1">일반 회원</label>&nbsp;&nbsp;&nbsp;
+												<label class="radio-inline-lg" id="type_bussiness" style="cursor: pointer;"> <input type="radio" name="type" value="2">사업자 회원</label>
 											</div>
 											<div class="form-group">
 												<label for="recipient-name" class="control-label">아이디:</label>
-												<input name="" type="text" class="form-control" id="recipient-name" placeholder="아이디를 입력해주세요">
+												<input name="id" type="text" class="form-control" id="recipient-name" placeholder="아이디를 입력해주세요">
 											</div>
 											<div class="form-group">
 												<label for="message-text" class="control-label">비밀번호:</label>
-												<input name="" type="text" class="form-control" id="message-text" placeholder="비밀번호를 입력해주세요">
+												<input name="pass" type="password" class="form-control" id="message-text" placeholder="비밀번호를 입력해주세요">
 											</div>
 											<div class="form-group">
 												<label for="recipient-name" class="control-label">이름:</label>
-												<input name="" type="text" class="form-control" id="recipient-name" placeholder="이름을 입력해주세요">
+												<input name="name" type="text" class="form-control" id="recipient-name" placeholder="이름을 입력해주세요">
 											</div>
 											<div class="form-group">
 												<label for="message-text" class="control-label">닉네임:</label>
-												<input name="" type="text" class="form-control" id="message-text" placeholder="닉네임을 입력해주세요">
+												<input name="nickname" type="text" class="form-control" id="message-text" placeholder="닉네임을 입력해주세요">
 											</div>
 											<div class="form-group">
 												<label for="recipient-name" class="control-label">성별:</label>
-												<input name="" type="text" class="form-control" id="recipient-name" placeholder="성별를 입력해주세요">
+												<input name="gender" type="text" class="form-control" id="recipient-name" placeholder="성별를 입력해주세요">
 											</div>
 											<div class="form-group">
 												<label for="message-text" class="control-label">연락처:</label>
-												<input name="" type="text" class="form-control" id="message-text" placeholder="연락처를 입력해주세요">
+												<input name="tel" type="text" class="form-control" id="message-text" placeholder="연락처를 입력해주세요">
 											</div>
 											<div class="form-group">
 												<label for="message-text" class="control-label">주소:</label>
-												<input name="" type="text" class="form-control" id="message-text" placeholder="주소를 입력해주세요">
+												<input name="address" type="text" class="form-control" id="message-text" placeholder="주소를 입력해주세요">
 											</div>
 											<div class="form-group">
 												<label for="sel1">관심 상품:</label>
-												<select class="form-control" id="sel1" style="width: 80px; cursor: pointer;">
+												<select name="interest" class="form-control" id="sel1" style="width: 80px; cursor: pointer;">
 													<option>육류</option>
 													<option>해산물</option>
 													<option>과일</option>
@@ -232,18 +232,18 @@
 											</div>
 												<div class="form-group" id="bus_num">
 													<label for="message-text" class="control-label">사업자
-														번호:</label> <input name="" type="text" class="form-control"
+														번호:</label> <input name="bis_no" type="text" class="form-control"
 														id="message-text" placeholder="사업자 번호를 입력해주세요">
 												</div>
 												<div class="form-group" id="bus_img">
 													<label for="message-text" class="control-label">상호:</label>
-													<input name="" type="text" class="form-control"
+													<input name="bis_name" type="text" class="form-control"
 														id="message-text" placeholder="상호를 입력해주세요">
 												</div>
 										</form>
 									</div>
 									<div class="modal-footer">
-										<button type="submit" class="btn btn-success" data-dismiss="modal" onclick="location.href='join.mall'">가입 완료</button>
+										<button type="submit" class="btn btn-success" data-dismiss="modal" onclick="document.joinform.submit()">가입 완료</button>
 										<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
 									</div>
 								</div>
