@@ -29,4 +29,18 @@ public class MemberDaoImpl implements MemberDao
 		}
 	}
 
+	@Override
+	public Member selectOne(String id) 
+	{
+		try
+		{
+			return sqlSession.getMapper(MemberMapper.class).selectOne(id);
+		}
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+			
+			return null;
+		}
+	}
 }

@@ -145,11 +145,11 @@
 										<form action="login.mall" method="post" name="loginform">
 											<div class="form-group">
 												<label for="recipient-name" class="control-label">ID:</label>
-												<input name="" type="text" class="form-control" id="recipient-name" placeholder="아이디를 입력해주세요">
+												<input name="id" type="text" class="form-control" id="recipient-name" placeholder="아이디를 입력해주세요">
 											</div>
 											<div class="form-group">
 												<label for="message-text" class="control-label">PASSWORD:</label>
-												<input name="" type="text" class="form-control" id="message-text" placeholder="비밀번호를 입력해주세요">
+												<input name="pass" type="password" class="form-control" id="message-text" placeholder="비밀번호를 입력해주세요">
 											</div>
 										</form>
 									</div>

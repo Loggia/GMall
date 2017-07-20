@@ -76,4 +76,14 @@ public class ShopServiceImpl implements ShopService{
 	{
 		return memberDao.insert(member);
 	}
+	
+	/*
+	 * 주한울
+	 * 로그인
+	 */
+	@Override
+	public Member selectMember(String id) 
+	{
+		return memberDao.selectOne(id);
+	}
 }
