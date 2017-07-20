@@ -56,7 +56,7 @@ body {
 	margin: 14px 0px 0px 0px;
 }
 
-.for_line {
+.for_line { 
 	background-color: rgba(255, 255, 255, 1);
 	height: 240px;
 	margin: 14px 0px 0px 14px;
