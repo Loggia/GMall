@@ -271,11 +271,11 @@
 
 					<div class="col-xs-2"></div>
 
-					<div class="col-xs-8" style="padding: 0px;">
+					<div class="col-xs-8">
 						<a href="main.mall" class="pull-left" style="margin-top: 5px;"><img
 							id="logo" src="../img/logo.png"></a>
 
-						<form class="navbar-form navbar-left" style="margin-top: 15px;">
+						<form class="navbar-form pull-left" style="margin-top: 15px;">
 							<!-- 검색창 시작 -->
 							<div class="input-group">
 								<input type="text" class="form-control" placeholder="검색어를 입력해주세요">
