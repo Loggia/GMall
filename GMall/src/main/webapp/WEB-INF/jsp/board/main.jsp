@@ -15,9 +15,8 @@ body {
 	height: 100px;
 	background-color: rgba(255, 255, 255, 1);
 }
-.col-xs-3 {
+ .c-xs-3 {
 	padding: 0px 0px 0px 0px;
-	width: 300px;
 }
 
 .fir_line {
@@ -71,19 +70,19 @@ body {
 </head>
 <body>
 <div class="container-fluid">
-<div class="col-xs-12" id="category_bar"></div>
 <div class="row">
-	<div class="col-xs-2"></div>
-	<div class="col-xs-8" style="padding: 0px 0px 0px 0px;">
-	
-		<div>
+<div class="col-xs-12" id="category_bar"></div>
+</div>
+<div class="row">
+	<div class="col-xs-2">&nbsp;</div>
+	<div class="col-xs-8" >
+         <div>
+           <div class="col-xs-3 fir_line">col-xs-3 fir_line</div>
 			<div class="col-xs-3 fir_line">col-xs-3 fir_line</div>
-			<div class="col-xs-3 fir_line"></div>
-			<div class="col-xs-3 fir_line"></div>
-			<div class="col-xs-3 fir_line_end"></div>
+			<div class="col-xs-3 fir_line">col-xs-3 fir_line</div>
+			<div class="col-xs-3 fir_line_end">col-xs-3 fir_line</div>	
 		</div>
-		
-		<div>
+         <div>
 			<div class="col-xs-3 sec_line">col-xs-3 sec_line</div>
 			<div class="col-xs-3 sec_line"></div>
 			<div class="col-xs-3 sec_line"></div>
@@ -103,9 +102,8 @@ body {
 			<div class="col-xs-3 for_line"></div>
 			<div class="col-xs-3 for_line_end"></div>
 		</div>
-		
 	</div>
-	<div class="col-xs-2"></div>
+	<div class="col-xs-2">&nbsp;</div>
 </div>
 </div>
 </body>
