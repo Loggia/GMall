@@ -26,7 +26,6 @@
 		<td colspan="3">
 	 <table border="1">
 	<tr>
-	<th align="center" width="80">거래타입</th>
 	<th align="center" width="200">상품목록</th>
 	<th align="center" width="100">가격</th>
 	<th align="center" width="80">판매자</th>
@@ -36,19 +35,13 @@
 
 	<c:forEach items="${tradeList}" var="trade">
 	<tr>
-	<td align="center">
-	<c:if test="${trade.trd_type == 1}">
-	구입</c:if>
-	<c:if test="${trade.trd_type == 2}">
-	판매</c:if>
-	</td>
 	<td align="left"></td>
 	<td align="right">
 	<f:formatNumber type="CURRENCY"
 	currencySymbol="" value="${trade.trd_money}" minFractionDigits="0"/>원</td>
-	<td align="center"></td>
-	<td align="center"></td>
-	<td align="center"></td>
+	<td align="center">${trade.sell_id}</td>
+	<td align="center">${trade.buy_id}</td>
+	<td align="center">${trade.trd_date }</td>
 	</tr>
 	</c:forEach>
 </table> 
