@@ -56,7 +56,6 @@ public class MemberController
 		// 팝업창이 생기면 로그인이 안됬을 때 팝업창이 뜨게 설정
 		
 		return mav;
-		
 	}
 	/*
 	 * 우동
@@ -68,8 +67,8 @@ public class MemberController
 		ModelAndView mav = new ModelAndView("board/main");
 		session.invalidate();
 		System.out.println("로그아웃 성공");
-		return mav;
 		
+		return mav;
 	}
 	
 	/*
@@ -81,16 +80,17 @@ public class MemberController
 	public ModelAndView infoForm(HttpServletRequest request, HttpSession session)
 	{
 		ModelAndView mav = new ModelAndView();
+		
 		return mav;
 	}
 	
 	@RequestMapping("member/adminMain")
-	public ModelAndView admin(){
+	public ModelAndView admin()
+	{
+		ModelAndView mav = new ModelAndView();
+		List<Trade> tradeList = shopService.tradeList();
+		mav.addObject("tradeList",tradeList);
 			
-			ModelAndView mav = new ModelAndView();
-			List<Trade> tradeList = shopService.tradeList();
-			mav.addObject("tradeList",tradeList);
-			return mav;
-		
+		return mav;
 	}
 }
