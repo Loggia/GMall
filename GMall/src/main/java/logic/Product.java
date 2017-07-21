@@ -29,6 +29,7 @@ public class Product
 	
 	@NotEmpty
 	private String category;
+	private String favorite;
 	private String pro_content;
 	private String main_img;
 	private String sub_img1;
@@ -113,6 +114,16 @@ public class Product
 	public void setCategory(String category)
 	{
 		this.category = category;
+	}
+	
+	public String getFavorite() 
+	{
+		return favorite;
+	}
+
+	public void setFavorite(String favorite) 
+	{
+		this.favorite = favorite;
 	}
 	
 	public String getPro_content() 

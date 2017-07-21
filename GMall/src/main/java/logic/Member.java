@@ -33,6 +33,7 @@ public class Member
 	private boolean prim;
 	private int money;
 	private int point;
+	private String cop_no;
 	private String interest;
 
 	public String getId() 
@@ -171,6 +172,16 @@ public class Member
 	public void setPoint(int point)
 	{
 		this.point = point;
+	}
+	
+	public String getCop_no() 
+	{
+		return cop_no;
+	}
+
+	public void setCop_no(String cop_no) 
+	{
+		this.cop_no = cop_no;
 	}
 	
 	public String getInterest() 

@@ -7,7 +7,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class Board
 {
 	@NotEmpty
-	private int num;
+	private int board_no;
 	
 	@NotEmpty
 	private String id;
@@ -20,27 +20,27 @@ public class Board
 	private String content;
 	
 	@NotEmpty
-	private Date regdate;
-	
-	@NotEmpty
 	private int board_type;
 	
+	@NotEmpty
+	private Date regdate;
+	
 	private int readcnt;
-	private int ref;
-	private int reflevel;
-	private int refstep;
+	
+	@NotEmpty
+	private int ans_chk;
 	private String img1;
 	private String img2;
 	private String img3;
 	
-	public int getNum() 
+	public int getBoard_no() 
 	{
-		return num;
+		return board_no;
 	}
 	
-	public void setNum(int num) 
+	public void setBoard_no(int board_no) 
 	{
-		this.num = num;
+		this.board_no = board_no;
 	}
 	
 	public String getId() 
@@ -58,12 +58,12 @@ public class Board
 		return pass;
 	}
 	
-	public void setPass(String pass) 
+	public void setPass(String pass)
 	{
 		this.pass = pass;
 	}
 	
-	public String getSubject() 
+	public String getSubject()
 	{
 		return subject;
 	}
@@ -83,6 +83,16 @@ public class Board
 		this.content = content;
 	}
 	
+	public int getBoard_type() 
+	{
+		return board_type;
+	}
+	
+	public void setBoard_type(int board_type) 
+	{
+		this.board_type = board_type;
+	}
+	
 	public Date getRegdate() 
 	{
 		return regdate;
@@ -93,14 +103,6 @@ public class Board
 		this.regdate = regdate;
 	}
 	
-	public int getBoard_type() {
-		return board_type;
-	}
-
-	public void setBoard_type(int board_type) {
-		this.board_type = board_type;
-	}
-
 	public int getReadcnt() 
 	{
 		return readcnt;
@@ -111,37 +113,17 @@ public class Board
 		this.readcnt = readcnt;
 	}
 	
-	public int getRef() 
+	public int getAns_chk()
 	{
-		return ref;
+		return ans_chk;
 	}
 	
-	public void setRef(int ref) 
+	public void setAns_chk(int ans_chk)
 	{
-		this.ref = ref;
+		this.ans_chk = ans_chk;
 	}
 	
-	public int getReflevel() 
-	{
-		return reflevel;
-	}
-	
-	public void setReflevel(int reflevel) 
-	{
-		this.reflevel = reflevel;
-	}
-	
-	public int getRefstep() 
-	{
-		return refstep;
-	}
-	
-	public void setRefstep(int refstep) 
-	{
-		this.refstep = refstep;
-	}
-	
-	public String getImg1() 
+	public String getImg1()
 	{
 		return img1;
 	}
@@ -161,7 +143,7 @@ public class Board
 		this.img2 = img2;
 	}
 	
-	public String getImg3() 
+	public String getImg3()
 	{
 		return img3;
 	}

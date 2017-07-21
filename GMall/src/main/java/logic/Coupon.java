@@ -5,45 +5,32 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class Coupon 
 {
 	@NotEmpty
-	private int coup_no;
+	private String cop_no;
 	
 	@NotEmpty
-	private int coup_type;
-	
-	@NotEmpty
-	private String id;
+	private String bis_no;
 	
 	@NotEmpty
 	private int discount;
 
-	public int getCoup_no() 
+	public String getCop_no() 
 	{
-		return coup_no;
+		return cop_no;
 	}
 
-	public void setCoup_no(int coup_no) 
+	public void setCop_no(String cop_no) 
 	{
-		this.coup_no = coup_no;
+		this.cop_no = cop_no;
 	}
 
-	public int getCoup_type() 
+	public String getBis_no() 
 	{
-		return coup_type;
+		return bis_no;
 	}
 
-	public void setCoup_type(int coup_type) 
+	public void setBis_no(String bis_no) 
 	{
-		this.coup_type = coup_type;
-	}
-
-	public String getId() 
-	{
-		return id;
-	}
-
-	public void setId(String id) 
-	{
-		this.id = id;
+		this.bis_no = bis_no;
 	}
 
 	public int getDiscount() 
