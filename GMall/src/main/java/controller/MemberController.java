@@ -57,6 +57,7 @@ public class MemberController
 		
 		return mav;
 	}
+	 
 	/*
 	 * 우동
 	 * 로그아웃
@@ -75,7 +76,6 @@ public class MemberController
 	 * 우동
 	 * 인포폼
 	 */
-	
 	@RequestMapping("member/infoForm")
 	public ModelAndView infoForm(HttpServletRequest request, HttpSession session)
 	{
@@ -84,7 +84,7 @@ public class MemberController
 		return mav;
 	}
 	
-	@RequestMapping("member/adminMain")
+	@RequestMapping("member/adminForm")
 	public ModelAndView admin()
 	{
 		ModelAndView mav = new ModelAndView();
