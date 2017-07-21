@@ -209,4 +209,14 @@ public class ShopServiceImpl implements ShopService{
 		
 		return tradedao.tradeList();
 	}
+
+	/*
+	 * 구정연 
+	 * 일반회원목록
+	 */
+	@Override
+	public List<Member> nomalList() {
+		
+		return memberDao.nomalList();
+	}
 }

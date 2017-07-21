@@ -93,4 +93,19 @@ public class MemberController
 			
 		return mav;
 	}
+	
+	/*
+	 * 구정연 
+	 * 일반회원관리
+	 */
+	
+	@RequestMapping("member/adminNomal")
+	public ModelAndView adminNomal () {
+		
+		ModelAndView mav = new ModelAndView() ;
+		List<Member> nomalList = shopService.nomalList();
+		mav.addObject ("nomalList" , nomalList) ;
+		return mav; 
+		
+	}
 }

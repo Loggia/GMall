@@ -15,8 +15,8 @@
 <table border="1" >
 	<tr>
 		<td>관리자</td>
-		<td>일반회원관리</td>
-		<td>사업자관리</td>
+		<td><a href="adminNomal.mall">일반회원관리</a></td>
+		<td><a href="adminBusiness.mall">사업자관리</a></td>
 		<td>수익금</td>
 		<td>GMail톡톡</td>
 	</tr>

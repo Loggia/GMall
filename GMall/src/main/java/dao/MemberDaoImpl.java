@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -42,5 +44,15 @@ public class MemberDaoImpl implements MemberDao
 			
 			return null;
 		}
+	}
+
+	/*
+	 * 구정연
+	 * 일반회원목록
+	 */
+	@Override
+	public List<Member> nomalList() {
+		
+		return sqlSession.selectOne( NS + "list");
 	}
 }
