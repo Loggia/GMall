@@ -18,6 +18,9 @@
 	<a href="member/adminForm.mall">&nbsp;&nbsp;&nbsp;adminForm</a>
 	<br>
 	<br>
-	<a href="member/infoForm.mall">&nbsp;&nbsp;&nbsp;infoForm</a>
+	<a href="member/mypage.mall">&nbsp;&nbsp;&nbsp;mypage</a>
+	<br>
+	<br>
+	<a href="board/centerAdd.mall">&nbsp;&nbsp;&nbsp;centerAdd</a>
 </body>
 </html>

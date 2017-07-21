@@ -14,7 +14,7 @@ import logic.Board;
 
 @Repository
 public class BoardDaoImpl implements BoardDao{
-	@Autowired(required=false)
+	@Autowired
 	private SqlSessionTemplate sqlSession; 
 	private final String NS = "dao.mapper.BoardMapper."; 
 	
@@ -34,32 +34,29 @@ public class BoardDaoImpl implements BoardDao{
 	}
 	
 	@Override
-	public int centerCount(String searchType, String searchContent) {
+	public int centerCount() {
 		return sqlSession.selectOne(NS+"customerCount");
 	}
 	
 	@Override
-	public List<Board> centerList(String searchType, String searchContent, Integer pageNum, int limit) {
+	public List<Board> centerList(Integer pageNum, int limit) {
 		int startrow = (pageNum - 1) * limit + 1;
     	int endrow = startrow + limit - 1;
     	Map<String, Object> paramMap = new HashMap<String, Object>();
     	paramMap.put("startrow", startrow);
     	paramMap.put("endrow", endrow);
-    	paramMap.put("searchType", searchType);
-    	paramMap.put("searchContent", searchContent);
     	return sqlSession.selectList(NS+"centerList", paramMap);
 	}
 
 	@Override
-	public int getMaxNum() {
-		return sqlSession.getMapper(BoardMapper.class).getMaxNum();
+	public int getMaxNum(int typenum) {
+		return sqlSession.getMapper(BoardMapper.class).getMaxNum(typenum);
 	}
 
 	@Override
 	public void centerInsert(Board board) {
 		sqlSession.getMapper(BoardMapper.class).centerInsert(board);
 	}
-
 	
 	
 	

@@ -15,18 +15,14 @@
   
   <select id="centerCount" resultType="int" parameterType="map">
     select count(*) from board
-    <if test="searchType != null and searchContent != null">
-      where ${searchType} like '%${searchContent}%'
-    </if>
   </select>
   
    <select id="centerList" resultType="board" parameterType="map">
-   	select * from ( select rownum rnum, num, id, pass, subject, content, regdate, readcnt, ref, reflevel, 
+    select * from board limit ${startrow}, ${endrow};
+    
+   <!-- 	select * from ( select rownum rnum, num, id, pass, subject, content, regdate, readcnt, ref, reflevel, 
    	refstep, img1, img2, img3 from ( select * from board
-    <if test="searchType != null and searchContent != null">
-      where ${searchType} like '%${searchContent}%'
-    </if>
-    order by ref desc, refstep asc )) where rnum &gt;= #{startrow} and rnum &lt;= #{endrow}
+    order by ref desc, refstep asc )) where rnum &gt;= #{startrow} and rnum &lt;= #{endrow} -->
   </select>
   
   

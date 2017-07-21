@@ -1,11 +1,15 @@
 package logic;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.oreilly.servlet.MultipartRequest;
 
@@ -38,35 +42,141 @@ public class ShopServiceImpl implements ShopService{
 	}
 	
 	@Override
-	public int centerCount(String searchType, String searchContent) {
-		return boardDao.centerCount(searchType, searchContent);
+	public int centerCount() {
+		return boardDao.centerCount();
 	}
 	
 	@Override
-	public List<Board> centerList(String searchType, String searchContent, Integer pageNum, int limit) {
-		return boardDao.centerList(searchType, searchContent, pageNum, limit);
+	public List<Board> centerList(Integer pageNum, int limit) {
+		return boardDao.centerList(pageNum, limit);
 	}
 
 	@Override
 	public void centerInsert(Board board, HttpServletRequest request) {
+		board.setFileurl(board.getImg1().getOriginalFilename());
+		board.setFileurl2(board.getImg2().getOriginalFilename());
+		board.setFileurl3(board.getImg3().getOriginalFilename());
+		if(board.getImg1() != null && !board.getImg1().isEmpty())
+		{
+			uploadFileCreate(board.getImg1(), request);
+		}
+		if(board.getImg2() != null && !board.getImg2().isEmpty())
+		{
+			uploadFileCreate2(board.getImg2(), request);
+		}
+		if(board.getImg3() != null && !board.getImg3().isEmpty())
+		{
+			uploadFileCreate3(board.getImg3(), request);
+		}
+		board.setBoard_type(1);
+		board.setAns_chk(0);
+		int num = boardDao.getMaxNum(board.getBoard_type());
+		board.setBoard_no(++num);
+		boardDao.centerInsert(board);	
+	}	
+	
+	private void uploadFileCreate(MultipartFile img1, HttpServletRequest request) {
+		String uploadPath = request.getServletContext().getRealPath("/") + "/fileupload/";
+		FileOutputStream fos = null;
 		try
 		{
-			String path = request.getServletContext().getRealPath("/") + "/jsp/board/picture/";
-			int num = boardDao.getMaxNum();
-			MultipartRequest multi = new MultipartRequest(request, path, 5*1024*1024, "euc-kr");
-			board.setImg1(multi.getFilesystemName("img1"));
-			board.setImg2(multi.getFilesystemName("img2"));
-			board.setImg3(multi.getFilesystemName("img3"));
-			board.setBoard_type(1);
-			board.setNum(++num);
-			board.setRef(num);
-			board.setReflevel(0);
-			board.setRefstep(0);
-			boardDao.centerInsert(board);	
+			fos = new FileOutputStream(uploadPath + img1.getOriginalFilename());
+			InputStream in = img1.getInputStream();
+			int data;
+			byte[] buf = new byte[10240];
+			while((data = in.read(buf)) != -1)
+			{
+				fos.write(buf,0,data);
+			}
 		}
-		catch(Exception e)
+		catch(IOException e) 
 		{
 			e.printStackTrace();
+		}
+		finally
+		{
+			try
+			{
+				if(fos != null)
+				{
+					fos.flush();
+					fos.close();
+				}
+			}
+			catch(IOException e)
+			{
+				e.printStackTrace();
+			}
+		}
+	}	
+	
+	private void uploadFileCreate2(MultipartFile img2, HttpServletRequest request) {
+		String uploadPath = request.getServletContext().getRealPath("/") + "/fileupload/";
+		FileOutputStream fos = null;
+		try
+		{
+			fos = new FileOutputStream(uploadPath + img2.getOriginalFilename());
+			InputStream in = img2.getInputStream();
+			int data;
+			byte[] buf = new byte[10240];
+			while((data = in.read(buf)) != -1)
+			{
+				fos.write(buf,0,data);
+			}
+		}
+		catch(IOException e) 
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			try
+			{
+				if(fos != null)
+				{
+					fos.flush();
+					fos.close();
+				}
+			}
+			catch(IOException e)
+			{
+				e.printStackTrace();
+			}
+		}
+	}	
+	
+	private void uploadFileCreate3(MultipartFile img3, HttpServletRequest request) {
+		String uploadPath = request.getServletContext().getRealPath("/") + "/fileupload/";
+		FileOutputStream fos = null;
+		try
+		{
+			fos = new FileOutputStream(uploadPath + img3.getOriginalFilename());
+			InputStream in = img3.getInputStream();
+			int data;
+			byte[] buf = new byte[10240];
+			while((data = in.read(buf)) != -1)
+			{
+				fos.write(buf,0,data);
+			}
+		}
+		catch(IOException e) 
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			try
+			{
+				if(fos != null)
+				{
+					fos.flush();
+					fos.close();
+				}
+			}
+			catch(IOException e)
+			{
+				e.printStackTrace();
+			}
 		}
 	}
 

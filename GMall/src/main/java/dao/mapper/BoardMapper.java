@@ -8,12 +8,13 @@ import logic.Board;
 
 public interface BoardMapper {
 
-	@Select("SELECT IFNULL(MAX(num),0) FROM board")
-	int getMaxNum();
+	@Select("SELECT IFNULL(MAX(board_no),0) FROM board WHERE board_type = #{value}")
+	int getMaxNum(int typenum);
 
-	@Insert("insert into board (num, id, pass, subject, content, regdate, board_type, readcnt, ref, reflevel, refstep, img1, img2, img3) values(#{num}, #{id}, #{pass}, #{subject}, #{content}, sysdate, #{board_type}, #{readcnt}, #{ref}, #{reflevel}, #{refstep}, #{img1}, #{img2}, #{img3})")
+	@Insert("insert into board (board_no, id, pass, subject, content, board_type, regdate, readcnt, ans_chk, "
+			+ "img1, img2, img3) values(#{board_no}, #{id}, #{pass}, #{subject}, #{content}, #{board_type}, "
+			+ "now(), #{readcnt}, #{ans_chk}, #{fileurl}, #{fileurl2}, #{fileurl3})")
 	void centerInsert(Board board);
-	
 	
 	
 }

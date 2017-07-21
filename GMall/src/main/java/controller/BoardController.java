@@ -31,18 +31,27 @@ public class BoardController
 		return mav;
 	}
 	
+	/*
+	 무한스크롤 아래목록 불러오는 기능 
+	*/
 	@RequestMapping(value="board/infiniteScrollDown", method=RequestMethod.POST)
 	public @ResponseBody List<Board> infiniteScrollDownPOST(@RequestBody Board board) {
-		int numToStart = board.getNum()-1;
+		int numToStart = board.getBoard_no()-1;
 		return shopService.infiniteScrollDown(numToStart);		
 	}
 	
+	/*
+	 무한스크롤 위목록 불러오는 기능 
+	*/
 	@RequestMapping(value="board/infiniteScrollUp", method=RequestMethod.POST)
 	public @ResponseBody List<Board> infiniteScrollUpPOST(@RequestBody Board board) {
-		int numToEnd = board.getNum()+1;
+		int numToEnd = board.getBoard_no()+1;
 		return shopService.infiniteScrollUp(numToEnd);	 	
 	}	
 	
+	/*
+	 상품 리스트 불러오는 기능 
+	*/
 	@RequestMapping(value="board/proList", method = RequestMethod.GET)
 	public ModelAndView proList() {
 		ModelAndView mav = new ModelAndView();
@@ -54,16 +63,19 @@ public class BoardController
 		return mav;
 	}
 	
+	/*
+	 고객센터 리스트 불러오는 기능 
+	*/
 	@RequestMapping("board/centerlist")
-	public ModelAndView list(Integer pageNum, String searchType, String searchContent) {
+	public ModelAndView list(Integer pageNum) {
 		if(pageNum == null || pageNum.toString().equals(""))
 		{
 			pageNum = 1;
 		}
 		ModelAndView mav = new ModelAndView();
 		int limit = 10;
-		int listcount = shopService.centerCount(searchType, searchContent);
-		List<Board> centerlist = shopService.centerList(searchType, searchContent, pageNum, limit);
+		int listcount = shopService.centerCount();
+		List<Board> centerlist = shopService.centerList(pageNum, limit);
 		int maxpage = (int)((double)listcount/limit + 0.95);
 		int startpage = (((int)((double)pageNum/10 + 0.9)) -1) * 10 + 1;
 		int endpage = startpage + 9;
@@ -83,18 +95,25 @@ public class BoardController
 		return mav;
 	}
 	
+	/*
+	  고객센터 글 추가 기능
+	*/
 	@RequestMapping("board/centerAdd")
-	public ModelAndView customerAdd() {
+	public ModelAndView centerAdd() {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject(new Board());
 		return mav;
 	}
 	
+	/*
+	 고객센터 글 작성 기능
+	*/
 	@RequestMapping("board/centerwrite")
-	public ModelAndView write(Board board, HttpServletRequest request) {
+	public ModelAndView centerwrite(Board board, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView(); 
 		shopService.centerInsert(board, request);
-		mav.setViewName("redirect:/board/centerlist.shop");
+		mav.setViewName("redirect:/board/main.mall");
 		return mav;
 	}
+	
 }

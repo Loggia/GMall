@@ -3,6 +3,7 @@ package logic;
 import java.util.Date;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.web.multipart.MultipartFile;
 
 public class Board
 {
@@ -27,11 +28,15 @@ public class Board
 	
 	private int readcnt;
 	
+	private String fileurl;
+	private String fileurl2;
+	private String fileurl3;
+	
 	@NotEmpty
 	private int ans_chk;
-	private String img1;
-	private String img2;
-	private String img3;
+	private MultipartFile img1;
+	private MultipartFile img2;
+	private MultipartFile img3;
 	
 	public int getBoard_no() 
 	{
@@ -113,6 +118,33 @@ public class Board
 		this.readcnt = readcnt;
 	}
 	
+	public String getFileurl() {
+		if(fileurl == null) return "";
+		return fileurl;
+	}
+
+	public void setFileurl(String fileurl) {
+		this.fileurl = fileurl;
+	}
+
+	public String getFileurl2() {
+		if(fileurl2 == null) return "";
+		return fileurl2;
+	}
+
+	public void setFileurl2(String fileurl2) {
+		this.fileurl2 = fileurl2;
+	}
+
+	public String getFileurl3() {
+		if(fileurl3 == null) return "";
+		return fileurl3;
+	}
+
+	public void setFileurl3(String fileurl3) {
+		this.fileurl3 = fileurl3;
+	}
+
 	public int getAns_chk()
 	{
 		return ans_chk;
@@ -122,34 +154,36 @@ public class Board
 	{
 		this.ans_chk = ans_chk;
 	}
-	
-	public String getImg1()
-	{
+
+	public MultipartFile getImg1() {
 		return img1;
 	}
-	
-	public void setImg1(String img1) 
-	{
+
+	public void setImg1(MultipartFile img1) {
 		this.img1 = img1;
 	}
-	
-	public String getImg2() 
-	{
+
+	public MultipartFile getImg2() {
 		return img2;
 	}
-	
-	public void setImg2(String img2) 
-	{
+
+	public void setImg2(MultipartFile img2) {
 		this.img2 = img2;
 	}
-	
-	public String getImg3()
-	{
+
+	public MultipartFile getImg3() {
 		return img3;
 	}
-	
-	public void setImg3(String img3) 
-	{
+
+	public void setImg3(MultipartFile img3) {
 		this.img3 = img3;
+	}
+
+	@Override
+	public String toString() {
+		return "Board [board_no=" + board_no + ", id=" + id + ", pass=" + pass + ", subject=" + subject + ", content="
+				+ content + ", board_type=" + board_type + ", regdate=" + regdate + ", readcnt=" + readcnt
+				+ ", fileurl=" + fileurl + ", fileurl2=" + fileurl2 + ", fileurl3=" + fileurl3 + ", ans_chk=" + ans_chk
+				+ ", img1=" + img1 + ", img2=" + img2 + ", img3=" + img3 + "]";
 	}
 }

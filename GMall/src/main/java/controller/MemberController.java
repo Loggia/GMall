@@ -76,8 +76,8 @@ public class MemberController
 	 * 우동
 	 * 인포폼
 	 */
-	@RequestMapping("member/infoForm")
-	public ModelAndView infoForm(HttpServletRequest request, HttpSession session)
+	@RequestMapping("member/mypage")
+	public ModelAndView mypage(HttpServletRequest request, HttpSession session)
 	{
 		ModelAndView mav = new ModelAndView();
 		
