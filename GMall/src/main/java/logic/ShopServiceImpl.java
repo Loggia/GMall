@@ -219,4 +219,13 @@ public class ShopServiceImpl implements ShopService{
 		
 		return memberDao.nomalList();
 	}
+	/*
+	 * 구정연
+	 * 사업자관리
+	 */
+	@Override
+	public List<Member> businessList() {
+		
+		return memberDao.businessList();
+	}
 }

@@ -1,6 +1,8 @@
 package dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,9 +52,25 @@ public class MemberDaoImpl implements MemberDao
 	 * 구정연
 	 * 일반회원목록
 	 */
+	
 	@Override
 	public List<Member> nomalList() {
 		
-		return sqlSession.selectOne( NS + "list");
+		Map<String, Integer> paramMap = new HashMap<String,Integer>();
+		paramMap.put("type", 1);
+		
+		return sqlSession.selectList(NS + "list" , paramMap);
+	}
+	/*
+	 * 구정연
+	 * 사업자 관리
+	 */
+	@Override
+	public List<Member> businessList() {
+		
+		Map<String, Integer> paramMap = new HashMap<String,Integer>();
+		paramMap.put("type", 2);
+		
+		return sqlSession.selectList(NS + "list" , paramMap);
 	}
 }

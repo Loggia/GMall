@@ -9,4 +9,5 @@ public interface MemberDao
 	boolean insert(Member member); // 회원가입 
 	Member selectOne(String id); // 로그인에 이용될 메서드
 	List<Member> nomalList(); //구정연 - 일반회원목록 
+	List<Member> businessList(); //구정연 -사업자목록
 }

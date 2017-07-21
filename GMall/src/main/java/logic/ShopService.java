@@ -16,4 +16,5 @@ public interface ShopService {
 	Member selectMember(String id); // 주한울 - 로그인을 위한 메서드
 	List<Trade> tradeList(); //구정연 - 회원거래목록
 	List<Member> nomalList(); //구정연 - 일반회원관리
+	List<Member> businessList();//구정연 - 사업자관리
 }

@@ -108,4 +108,17 @@ public class MemberController
 		return mav; 
 		
 	}
+	/*
+	 * 구정연 
+	 * 사업자관리
+	 */
+	@RequestMapping("member/adminBusiness")
+	public ModelAndView adminBusiness () {
+		
+		ModelAndView mav = new ModelAndView() ;
+		List<Member> businessList = shopService.businessList();
+		mav.addObject ("businessList" , businessList) ;
+		return mav; 
+		
+	}
 }

@@ -1,5 +1,7 @@
 package dao.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
@@ -13,4 +15,5 @@ public interface MemberMapper
 	
 	@Select("select * from member where id=#{id}")
 	Member selectOne(String id);
+
 }
