@@ -25,11 +25,10 @@ body {
 </style>
 </head>
 <body>
-<div>
+<div class="container-fluid">
 <div class="col-xs-2"></div>
-<div class="col-xs-8" id="info_content">
+<div class="col-xs-8" id="info_content"></div>
 <div class="col-xs-2"></div>
-</div>
 </div>
 </body>
 </html>

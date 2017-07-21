@@ -57,6 +57,17 @@ body {
 	margin: 0px 10px 0px 10px;
 }
 
+.mask {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	display: block;
+	overflow: hidden;
+	border: 1px solid #ced2d7
+}
+
 </style>
 </head>
 <body>
@@ -82,30 +93,66 @@ body {
 		<div id="content-wrap" style="padding: 16px 0px 0px 0px;">
 			<div class="col-xs-8" style="padding: 0px 0px 0px 0px;">
 				<div style="display: inline; float: left;">
-					<div class="col-xs-3 fir_line">프리미엄 상품</div>
-					<div class="col-xs-3 fir_line"></div>
-					<div class="col-xs-3 fir_line"></div>
-					<div class="col-xs-3 fir_line"></div>
+					<div class="col-xs-3 fir_line">
+						<div class="mask"></div>
+					프리미엄 상품
+					</div>
+					<div class="col-xs-3 fir_line">
+					<div class="mask"></div>
+					</div>
+					<div class="col-xs-3 fir_line">
+					<div class="mask"></div>
+					</div>
+					<div class="col-xs-3 fir_line">
+					<div class="mask"></div>
+					</div>
 				</div>
 				<div>
-					<div class="col-xs-3 sec_line">나의관심 상품</div>
-					<div class="col-xs-3 sec_line"></div>
-					<div class="col-xs-3 sec_line"></div>
-					<div class="col-xs-3 sec_line"></div>
+					<div class="col-xs-3 sec_line">
+					<div class="mask"></div>
+					나의관심 상품
+					</div>
+					<div class="col-xs-3 sec_line">
+					<div class="mask"></div>
+					</div>
+					<div class="col-xs-3 sec_line">
+					<div class="mask"></div>
+					</div>
+					<div class="col-xs-3 sec_line">
+					<div class="mask"></div>
+					</div>
 				</div>
 
 				<div>
-					<div class="col-xs-3 thr_line">최다 검색 상품</div>
-					<div class="col-xs-3 thr_line"></div>
-					<div class="col-xs-3 thr_line"></div>
-					<div class="col-xs-3 thr_line"></div>
+					<div class="col-xs-3 thr_line">
+					<div class="mask"></div>
+					최다 검색 상품
+					</div>
+					<div class="col-xs-3 thr_line">
+					<div class="mask"></div>
+					</div>
+					<div class="col-xs-3 thr_line">
+					<div class="mask"></div>
+					</div>
+					<div class="col-xs-3 thr_line">
+					<div class="mask"></div>
+					</div>
 				</div>
 
 				<div>
-					<div class="col-xs-3 for_line">최다 구매 상품</div>
-					<div class="col-xs-3 for_line"></div>
-					<div class="col-xs-3 for_line"></div>
-					<div class="col-xs-3 for_line"></div>
+					<div class="col-xs-3 for_line">
+					<div class="mask"></div>
+					최다 구매 상품
+					</div>
+					<div class="col-xs-3 for_line">
+					<div class="mask"></div>
+					</div>
+					<div class="col-xs-3 for_line">
+					<div class="mask"></div>
+					</div>
+					<div class="col-xs-3 for_line">
+					<div class="mask"></div>
+					</div>
 				</div>
 			</div>
 		</div>

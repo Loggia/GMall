@@ -326,10 +326,10 @@
 								style="color: white;"></span><b style="color: white">MY 쇼핑</b>
 							<div class="hide">
 								<ol id="mymenu_Form">
-									<li style="margin: 3px;"><a href="${path }/member/infoForm.mall" class="mymenu_list">내 정보</a></li>
-									<li style="margin: 3px;"><a href="cartForm.mall" class="mymenu_list">장바구니</a></li>
-									<li style="margin: 3px;"><a href="deleveryForm.mall" class="mymenu_list">배송정보</a></li>
-									<li style="margin: 3px;"><a href="${path }/member/logout.mall" class="mymenu_list">로그아웃</a></li>
+									<li class="mymemu_list" style="margin: 3px;"><a href="${path }/member/infoForm.mall">내 정보</a></li>
+									<li class="mymemu_list" style="margin: 3px;"><a href="cartForm.mall">장바구니</a></li>
+									<li class="mymemu_list" style="margin: 3px;"><a href="deleveryForm.mall">배송정보</a></li>
+									<li class="mymemu_list" style="margin: 3px;"><a href="${path }/member/logout.mall">로그아웃</a></li>
 								</ol>
 							</div>
 						</div>
