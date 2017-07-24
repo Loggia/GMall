@@ -5,10 +5,12 @@
     <typeAlias type="logic.Board" alias="Board"/>
     <typeAlias type="logic.Member" alias="Member" />
     <typeAlias type="logic.Trade" alias="Trade" />
+    <typeAlias type="logic.Product" alias="Product" />
   </typeAliases>
   <mappers>
     <mapper resource="dao/mapper/Board.xml"/>
     <mapper resource="dao/mapper/Member.xml" />
     <mapper resource="dao/mapper/Trade.xml" />
+    <mapper resource="dao/mapper/Product.xml" />
   </mappers>    
 </configuration>  

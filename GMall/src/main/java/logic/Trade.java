@@ -39,6 +39,24 @@ public class Trade
 	
 	@NotEmpty
 	private String delivery;
+	
+	/*
+	 * 구정연 
+	 * 회원거래목록 
+	 */
+	@NotEmpty
+	private String pro_name;
+	
+	
+	
+
+	public String getPro_name() {
+		return pro_name;
+	}
+
+	public void setPro_name(String pro_name) {
+		this.pro_name = pro_name;
+	}
 
 	public int getTrd_no() 
 	{

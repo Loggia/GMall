@@ -20,4 +20,6 @@ public interface ShopService {
 	List<Trade> tradeList(); //구정연 - 회원거래목록
 	List<Member> nomalList(); //구정연 - 일반회원관리
 	List<Member> businessList();//구정연 - 사업자관리
+	void ProductAdd(Product product, HttpServletRequest request);//고종환 사업자 물품등록
+	int prono();//고종환 -물품번호
 }
