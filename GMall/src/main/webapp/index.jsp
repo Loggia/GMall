@@ -22,5 +22,8 @@
 	<br>
 	<br>
 	<a href="board/centerAdd.mall">&nbsp;&nbsp;&nbsp;centerAdd</a>
+	<br>
+	<br>
+	<a href="product/productAddForm.mall">&nbsp;&nbsp;&nbsp;productAdd</a>
 </body>
 </html>

@@ -15,6 +15,7 @@ import com.oreilly.servlet.MultipartRequest;
 
 import dao.BoardDao;
 import dao.MemberDao;
+import dao.ProductDao;
 import dao.TradeDao;
 
 @Service
@@ -25,6 +26,8 @@ public class ShopServiceImpl implements ShopService{
 	MemberDao memberDao;
 	@Autowired
 	TradeDao tradedao;
+	@Autowired
+	ProductDao productDao;
 	
 	@Override
 	public List<Board> infiniteScrollDown(int numToStart) {
@@ -227,5 +230,130 @@ public class ShopServiceImpl implements ShopService{
 	public List<Member> businessList() {
 		
 		return memberDao.businessList();
+	}
+	/*
+	 * 고종환 
+	 * 사업자 물품등록
+	 */
+	@Override
+	public void ProductAdd(Product product , HttpServletRequest request) {
+		product.setFileurl(product.getMain_img().getOriginalFilename());
+		product.setFileurl1(product.getSub_img1().getOriginalFilename());
+		product.setFileurl2(product.getSub_img2().getOriginalFilename());
+		product.setFileurl3(product.getSub_img3().getOriginalFilename());	
+		if(product.getMain_img() !=null && !product.getMain_img().isEmpty() ){
+			uploadFile(product.getMain_img(),request);
+		}
+		if(product.getSub_img1() !=null && !product.getSub_img1().isEmpty() ){
+			uploadFile1(product.getSub_img1(),request);
+		}
+		if(product.getSub_img2() !=null && !product.getSub_img2().isEmpty() ){
+			uploadFile2(product.getSub_img2(),request);
+		}
+		if(product.getSub_img3() !=null && !product.getSub_img3().isEmpty() ){
+			uploadFile3(product.getSub_img3(),request);
+		}
+		System.out.println("에러없지 들어왔어?"+product);
+		productDao.ProductAdd(product);
+		
+	}
+	
+	
+	private void uploadFile(MultipartFile Main_img, HttpServletRequest request) {
+		String uploadpath=request.getServletContext().getRealPath("/")+"/picture/";
+		FileOutputStream fos=null;
+		//picture.getOriginalFilename(): 업로드된 파일의 원래 파일이름
+		try{
+			fos= new FileOutputStream(uploadpath+Main_img.getOriginalFilename());
+			//picture.getInputStream(): 파일의 내용을 읽기위한 스트림
+			InputStream in=Main_img.getInputStream();
+			int data;
+			byte[] buf=new byte[1024];
+			while((data=in.read(buf)) != -1)
+				fos.write(buf,0,data);
+		}catch (IOException e) {
+			e.printStackTrace();
+		}finally{
+			try{
+				if(fos !=null){
+					fos.flush(); fos.close();
+				}
+			}catch (IOException e) {}
+		}
+	}
+	//sub1
+	private void uploadFile1(MultipartFile Sub_img1, HttpServletRequest request) {
+		String uploadpath=request.getServletContext().getRealPath("/")+"/picture/";
+		FileOutputStream fos=null;
+		//picture.getOriginalFilename(): 업로드된 파일의 원래 파일이름
+		try{
+			fos= new FileOutputStream(uploadpath+Sub_img1.getOriginalFilename());
+			//picture.getInputStream(): 파일의 내용을 읽기위한 스트림
+			InputStream in=Sub_img1.getInputStream();
+			int data;
+			byte[] buf=new byte[1024];
+			while((data=in.read(buf)) != -1)
+				fos.write(buf,0,data);
+		}catch (IOException e) {
+			e.printStackTrace();
+		}finally{
+			try{
+				if(fos !=null){
+					fos.flush(); fos.close();
+				}
+			}catch (IOException e) {}
+		}
+	}
+	//sub2
+	private void uploadFile2(MultipartFile Sub_img2, HttpServletRequest request) {
+		String uploadpath=request.getServletContext().getRealPath("/")+"/picture/";
+		FileOutputStream fos=null;
+		//picture.getOriginalFilename(): 업로드된 파일의 원래 파일이름
+		try{
+			fos= new FileOutputStream(uploadpath+Sub_img2.getOriginalFilename());
+			//picture.getInputStream(): 파일의 내용을 읽기위한 스트림
+			InputStream in=Sub_img2.getInputStream();
+			int data;
+			byte[] buf=new byte[1024];
+			while((data=in.read(buf)) != -1)
+				fos.write(buf,0,data);
+		}catch (IOException e) {
+			e.printStackTrace();
+		}finally{
+			try{
+				if(fos !=null){
+					fos.flush(); fos.close();
+				}
+			}catch (IOException e) {}
+		}
+	}
+	//sub3
+	private void uploadFile3(MultipartFile Sub_img3, HttpServletRequest request) {
+		String uploadpath=request.getServletContext().getRealPath("/")+"/picture/";
+		System.out.println(uploadpath);
+		FileOutputStream fos=null;
+		//picture.getOriginalFilename(): 업로드된 파일의 원래 파일이름
+		try{
+			fos= new FileOutputStream(uploadpath+Sub_img3.getOriginalFilename());
+			//picture.getInputStream(): 파일의 내용을 읽기위한 스트림
+			InputStream in=Sub_img3.getInputStream();
+			int data;
+			byte[] buf=new byte[1024];
+			while((data=in.read(buf)) != -1)
+				fos.write(buf,0,data);
+		}catch (IOException e) {
+			e.printStackTrace();
+		}finally{
+			try{
+				if(fos !=null){
+					fos.flush(); fos.close();
+				}
+			}catch (IOException e) {}
+		}
+	}
+
+	@Override
+	public int prono() {
+		return productDao.prono();
 	}
 }

@@ -3,6 +3,7 @@ package logic;
 import java.util.Date;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.web.multipart.MultipartFile;
 
 public class Product 
 {
@@ -31,10 +32,18 @@ public class Product
 	private String category;
 	private String favorite;
 	private String pro_content;
-	private String main_img;
-	private String sub_img1;
-	private String sub_img2;
-	private String sub_img3;
+	private String fileurl;
+	private String fileurl1;
+	private String fileurl2;
+	private String fileurl3;
+	
+	private MultipartFile main_img;
+	private MultipartFile sub_img1;
+	private MultipartFile sub_img2;
+	private MultipartFile sub_img3;
+	
+
+	
 	
 	public int getPro_no() 
 	{
@@ -136,43 +145,84 @@ public class Product
 		this.pro_content = pro_content;
 	}
 	
-	public String getMain_img()
-	{
+	
+
+
+	public String getFileurl() {
+		if(fileurl == null) return "";
+		return fileurl;
+	}
+
+	public void setFileurl(String fileurl) {
+		this.fileurl = fileurl;
+	}
+
+	public String getFileurl1() {
+		if(fileurl1 == null) return "";
+		return fileurl1;
+	}
+
+	public void setFileurl1(String fileurl1) {
+		this.fileurl1 = fileurl1;
+	}
+
+	public String getFileurl2() {
+		if(fileurl2 == null) return "";
+		return fileurl2;
+	}
+
+	public void setFileurl2(String fileurl2) {
+		this.fileurl2 = fileurl2;
+	}
+
+	public String getFileurl3() {
+		if(fileurl3 == null) return "";
+		return fileurl3;
+	}
+
+	public void setFileurl3(String fileurl3) {
+		this.fileurl3 = fileurl3;
+	}
+
+	public MultipartFile getMain_img() {
 		return main_img;
 	}
-	
-	public void setMain_img(String main_img)
-	{
+
+	public void setMain_img(MultipartFile main_img) {
 		this.main_img = main_img;
 	}
-	
-	public String getSub_img1()
-	{
+
+	public MultipartFile getSub_img1() {
 		return sub_img1;
 	}
-	
-	public void setSub_img1(String sub_img1) 
-	{
+
+	public void setSub_img1(MultipartFile sub_img1) {
 		this.sub_img1 = sub_img1;
 	}
-	
-	public String getSub_img2()
-	{
+
+	public MultipartFile getSub_img2() {
 		return sub_img2;
 	}
-	
-	public void setSub_img2(String sub_img2) 
-	{
+
+	public void setSub_img2(MultipartFile sub_img2) {
 		this.sub_img2 = sub_img2;
 	}
-	
-	public String getSub_img3() 
-	{
+
+	public MultipartFile getSub_img3() {
 		return sub_img3;
 	}
-	
-	public void setSub_img3(String sub_img3)
-	{
+
+	public void setSub_img3(MultipartFile sub_img3) {
 		this.sub_img3 = sub_img3;
 	}
+
+	@Override
+	public String toString() {
+		return "Product [pro_no=" + pro_no + ", bis_no=" + bis_no + ", id=" + id + ", date=" + date + ", pro_name="
+				+ pro_name + ", price=" + price + ", cnt=" + cnt + ", category=" + category + ", favorite=" + favorite
+				+ ", pro_content=" + pro_content + ", main_img=" + main_img + ", sub_img1=" + sub_img1 + ", sub_img2="
+				+ sub_img2 + ", sub_img3=" + sub_img3 + ", fileurl=" + fileurl + ", fileurl1=" + fileurl1
+				+ ", fileurl2=" + fileurl2 + ", fileurl3=" + fileurl3 + "]";
+	}
+	
 }
