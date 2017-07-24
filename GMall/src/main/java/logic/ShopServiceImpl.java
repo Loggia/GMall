@@ -201,6 +201,26 @@ public class ShopServiceImpl implements ShopService{
 	}
 	
 	/*
+	 * 주한울
+	 * 회원 수정
+	 */
+	@Override
+	public void updateMember(Member member) 
+	{
+		memberDao.update(member);
+	}
+	
+	/*
+	 * 주한울
+	 * 회원 탈퇴
+	 */
+	@Override
+	public void deleteMember(Member member) 
+	{
+		memberDao.delete(member);
+	}
+	
+	/*
 	 * 구정연 
 	 * 회원관리목록
 	 */

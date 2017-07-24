@@ -18,6 +18,10 @@ public class MemberDaoImpl implements MemberDao
 	private SqlSessionTemplate sqlSession; 
 	private final String NS = "dao.mapper.MemberMapper."; 
 	
+	/*
+	 * 주한울
+	 * 회원 가입
+	 */
 	@Override
 	public boolean insert(Member member) 
 	{
@@ -33,6 +37,11 @@ public class MemberDaoImpl implements MemberDao
 		}
 	}
 
+	/*
+	 * 주한울	
+	 * 하나의 레코드만 쿼리해옴
+	 *  - 로그인
+	 */
 	@Override
 	public Member selectOne(String id) 
 	{
@@ -45,6 +54,40 @@ public class MemberDaoImpl implements MemberDao
 			e.printStackTrace();
 			
 			return null;
+		}
+	}
+	
+	/*
+	 * 주한울
+	 * 회원 수정
+	 */
+	@Override
+	public void update(Member member) 
+	{
+		try
+		{
+			sqlSession.getMapper(MemberMapper.class).update(member);
+		}
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	/*
+	 * 주한울
+	 * 회원 탈퇴
+	 */
+	@Override
+	public void delete(Member member) 
+	{
+		try
+		{
+			sqlSession.getMapper(MemberMapper.class).delete(member);
+		}
+		catch (Exception e) 
+		{
+			e.printStackTrace();
 		}
 	}
 

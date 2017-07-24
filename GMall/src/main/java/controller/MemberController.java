@@ -73,13 +73,66 @@ public class MemberController
 	}
 	
 	/*
-	 * 우동
-	 * 인포폼
+	 * 주한울
+	 * 상세보기
 	 */
 	@RequestMapping("member/mypage")
 	public ModelAndView mypage(HttpServletRequest request, HttpSession session)
 	{
 		ModelAndView mav = new ModelAndView();
+		Member login = (Member)session.getAttribute("LOGIN_MEMBER");
+		mav.addObject("member", login);
+		
+		/* 
+		 * form 만들어지면 추가
+		 */
+		
+		return mav;
+	}
+	
+	/*
+	 * 주한울
+	 * 회원 수정 기능
+	 */
+	@RequestMapping("member/update")
+	public ModelAndView update(Member member, HttpSession session)
+	{
+		ModelAndView mav = new ModelAndView();
+		Member login = (Member)session.getAttribute("LOGIN_MEMBER");
+		
+		if(login.getId().equals(member.getId()) && login.getPass().equals(member.getPass()) ||
+		   login.getId().equals("admin"))
+		{
+			shopService.updateMember(member);
+		}
+		
+		return mav;
+	}
+	
+	/*
+	 * 주한울
+	 * 회원 탈퇴
+	 */
+	@RequestMapping("member/delete")
+	public ModelAndView delete(Member member, HttpSession session)
+	{
+		ModelAndView mav = new ModelAndView();
+		Member login = (Member)session.getAttribute("LOGIN_MEMBER");
+		
+		if(login.getId().equals(member.getId()) && login.getPass().equals(member.getPass()) ||
+		   login.getId().equals("admin"))
+		{
+			try
+			{
+				shopService.deleteMember(member);
+				session.invalidate();
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+			}
+			
+		}
 		
 		return mav;
 	}
