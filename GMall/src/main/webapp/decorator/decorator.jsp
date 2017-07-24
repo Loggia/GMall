@@ -140,7 +140,7 @@
 							style="margin-top: 1px;">로그인</button>
 					</c:if>
 					<c:if test="${LOGIN_MEMBER.id != null}">
-						<button type="submit" onclick="location.href='logout.mall'"
+						<button type="submit" onclick="location.href='${path }/member/logout.mall'"
 							class="btn btn-success pull-right"
 							style="margin-top: 1px;">${LOGIN_MEMBER.id }</button>
 					</c:if>
@@ -155,7 +155,7 @@
 									<h4 class="modal-title">로그인</h4>
 								</div>
 								<div class="modal-body">
-									<form action="login.mall" method="post" name="loginform">
+									<form action="${path }/member/login.mall" method="post" name="loginform">
 										<div class="form-group">
 											<label for="recipient-name" class="control-label">ID:</label>
 											<input name="id" type="text" class="form-control"
@@ -204,7 +204,7 @@
 									<h4 class="modal-title">Goodee 가족되기</h4>
 								</div>
 								<div class="modal-body">
-									<form action="join.mall" method="post" name="joinform">
+									<form action="${path }/member/join.mall" method="post" name="joinform">
 										<div class="form-group">
 											<label class="radio-inline-lg" id="type_nomal"
 												style="cursor: pointer;"> <input type="radio"

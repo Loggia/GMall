@@ -24,7 +24,7 @@ public class MemberController
 	 * 주한울
 	 * 회원가입 
 	 */
-	@RequestMapping("board/join")
+	@RequestMapping("member/join")
 	public ModelAndView join(Member member)
 	{
 		ModelAndView mav = new ModelAndView("board/main");
@@ -43,7 +43,7 @@ public class MemberController
 	 * 주한울
 	 * 로그인 기능
 	 */
-	@RequestMapping("board/login")
+	@RequestMapping("member/login")
 	public ModelAndView login(Member member, HttpServletRequest request)
 	{
 		ModelAndView mav = new ModelAndView("board/main");
@@ -62,7 +62,7 @@ public class MemberController
 	 * 우동
 	 * 로그아웃
 	 */
-	@RequestMapping("board/logout")
+	@RequestMapping("member/logout")
 	public ModelAndView logout(HttpServletRequest request, HttpSession session)
 	{
 		ModelAndView mav = new ModelAndView("board/main");
