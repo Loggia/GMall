@@ -30,18 +30,18 @@
 	<th align="center" width="100">가격</th>
 	<th align="center" width="80">판매자</th>
 	<th align="center" width="80">구매자</th>
-	<th align="center" width="100">일자</th>
+	<th align="center" width="100">배송현황</th>
 	</tr>
 
 	<c:forEach items="${tradeList}" var="trade">
 	<tr>
-	<td align="left"></td>
+	<td align="left">${trade.pro_name}</td>
 	<td align="right">
 	<f:formatNumber type="CURRENCY"
 	currencySymbol="" value="${trade.trd_money}" minFractionDigits="0"/>원</td>
 	<td align="center">${trade.sell_id}</td>
 	<td align="center">${trade.buy_id}</td>
-	<td align="center">${trade.trd_date }</td>
+	<td align="center">${trade.delivery}</td>
 	</tr>
 	</c:forEach>
 </table> 
