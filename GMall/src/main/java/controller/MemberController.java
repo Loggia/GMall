@@ -174,4 +174,18 @@ public class MemberController
 		return mav; 
 		
 	}
+	/*
+	 * 구정연
+	 * 수익금관리
+	 */
+	@RequestMapping("member/adminFee")
+	public ModelAndView adminFee () {
+		
+		ModelAndView mav = new ModelAndView();
+		List<Trade> tradeList = shopService.tradeList();
+		mav.addObject("tradeList",tradeList);
+			
+		return mav;
+		
+	}
 }

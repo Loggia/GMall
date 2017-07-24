@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<table border="1" cellpadding="0" cellspacing="0">
+<table border="1" cellpadding="0" cellspacing="0"align="center" width="70%">
 	<tr>
 		<th>아이디</th>
 		<th>닉네임</th>

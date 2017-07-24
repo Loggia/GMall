@@ -12,7 +12,7 @@ public interface TradeMapper {
 	 * 구정연
 	 * 회원거래목록
 	 */
-	@Select("select a.trd_money , a.sell_id , a.buy_id , a.delivery , b.pro_name from trade a , product b  where a.pro_no = b.pro_no")
+	@Select("select a.trd_money , a.sell_id , a.buy_id , a.delivery , a.trd_date, b.pro_name from trade a , product b  where a.pro_no = b.pro_no")
 	List<Trade> tradeList();
 
 }

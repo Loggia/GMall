@@ -12,19 +12,19 @@
 	<!--  구정연
 	             회원거래목록
 	  -->
-<table border="1" >
+<table border="1"align="center" width="70%" >
 	<tr>
 		<td>관리자</td>
 		<td><a href="adminNomal.mall">일반회원관리</a></td>
 		<td><a href="adminBusiness.mall">사업자관리</a></td>
-		<td>수익금</td>
+		<td><a href="adminFee.mall">수익금</a></td>
 		<td>GMail톡톡</td>
 	</tr>
 	<tr>
 		<td>회원거래목록</td>
 		<td>고객센터</td>
 		<td colspan="3">
-	 <table border="1">
+	 <table border="1" align="center" width="100%">
 	<tr>
 	<th align="center" width="200">상품목록</th>
 	<th align="center" width="100">가격</th>

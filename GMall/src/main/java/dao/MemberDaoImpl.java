@@ -116,4 +116,5 @@ public class MemberDaoImpl implements MemberDao
 		
 		return sqlSession.selectList(NS + "list" , paramMap);
 	}
+	
 }
