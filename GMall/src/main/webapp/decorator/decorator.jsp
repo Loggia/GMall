@@ -10,6 +10,11 @@
 <head>
 <meta name="viewport" content="width=divice-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<!-- alert CSS 라이브러리 -->
+<script src="${path }/dist/sweetalert.min.js"></script>
+<link rel="stylesheet" type="text/css" href="${path }/dist/sweetalert.css">
+
 <!-- jquery cdn -->
 <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
 <!-- 부트스트랩 css, cdn -->
