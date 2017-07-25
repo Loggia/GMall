@@ -8,6 +8,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+<meta name="viewport" content="width=divice-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- jquery cdn -->
 <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
@@ -35,7 +36,7 @@
 			html : true,
 			content : $('#mymenu_Form').html()
 		});
-
+		
 	});
 </script>
 <style type="text/css">
@@ -121,6 +122,9 @@
 
 #bus_num {
 	display: none;
+}
+.on {
+	color: #12d8fa;
 }
 </style>
 </head>
