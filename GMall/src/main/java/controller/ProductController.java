@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -18,13 +20,13 @@ public class ProductController
 {
 	@Autowired
 	ShopService shopService;
-	
+
 	@RequestMapping("product/productAddForm")
 	public ModelAndView productAddForm(){
 		ModelAndView mav = new ModelAndView();
 		return mav;
 	}
-	
+	//상품추가 폼이동
 	@RequestMapping("product/addProduct")
 	public ModelAndView addProduct()
 	{
@@ -32,7 +34,7 @@ public class ProductController
 		mav.addObject(new Product());
 		return mav;
 	}
-	//productupdate 
+	//고종환 상품 업데이트 
 	@RequestMapping("product/productUpdate")
 	public ModelAndView productupdate(Product product,BindingResult bindingResult, HttpServletRequest request,HttpSession session){
 		ModelAndView mav=new ModelAndView("product/productAddForm");
@@ -47,6 +49,25 @@ public class ProductController
 
 
 		shopService.ProductAdd(product,request);
+		return mav;
+	}
+	//고종환 내 사업장 관리
+	//product/myBusiness.mall
+	@RequestMapping("product/myBusiness")
+	public ModelAndView myBusinessList(){
+		List<Product> myBis_list=shopService.getProductList();
+		ModelAndView mav=new ModelAndView("product/myBusinessList");
+		mav.addObject("myBis_list",myBis_list);
+		return mav;
+	}
+	//고종환 내 사업장 관리에서 카테고리 클릭시
+	@RequestMapping("product/categoryCheck")
+	public ModelAndView categoryCheck(HttpServletRequest request){
+		String category=request.getParameter("category");
+		System.out.println(category);
+		List<Product> myBis_list=shopService.categoryCheck(category);
+		ModelAndView mav=new ModelAndView("product/myBusinessList");
+		mav.addObject("myBis_list",myBis_list);
 		return mav;
 	}
 	

@@ -1,5 +1,7 @@
 package dao.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
@@ -13,6 +15,9 @@ public interface ProductMapper {
 	@Insert("insert into product ( pro_no, bis_no, id, date, pro_name, price, cnt, category, favorite, pro_content,main_img,sub_img1,sub_img2,sub_img3 )"
 	         +" values ( #{pro_no}, #{bis_no}, #{id}, now(), #{pro_name}, #{price}, #{cnt}, #{category}, #{favorite},#{pro_content},#{fileurl},#{fileurl1}, #{fileurl2}, #{fileurl3})")
 	void ProductAdd(Product product);
+	
+	@Select("select * from product where category=#{category}")
+	List<Product> categoryCheck(String category);
 
 	
 	

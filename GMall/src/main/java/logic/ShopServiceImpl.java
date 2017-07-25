@@ -376,4 +376,14 @@ public class ShopServiceImpl implements ShopService{
 	public int prono() {
 		return productDao.prono();
 	}
+	//내사업장 관리
+	@Override
+	public List<Product> getProductList() {
+		return productDao.findAll();
+	}
+	//내사업장관리에서 카테고리 클릭시
+	@Override
+	public List<Product> categoryCheck(String category) {
+		return productDao.categoryCheck(category);
+	}
 }

@@ -25,5 +25,8 @@
 	<br>
 	<br>
 	<a href="product/productAddForm.mall">&nbsp;&nbsp;&nbsp;productAdd</a>
+    <br>
+	<br>
+	<a href="product/myBusiness.mall">&nbsp;&nbsp;&nbsp;myBis_List</a>
 </body>
 </html>
