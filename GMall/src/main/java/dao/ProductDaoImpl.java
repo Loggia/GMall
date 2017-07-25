@@ -16,7 +16,7 @@ public class ProductDaoImpl implements ProductDao{
 	
 	@Autowired
 	private SqlSessionTemplate sqlSession; 
-	private final String NS = "dao.mapper.TradeMapper."; 
+	private final String NS = "dao.mapper.ProductMapper."; 
 
 	@Override
 	public int prono() {
