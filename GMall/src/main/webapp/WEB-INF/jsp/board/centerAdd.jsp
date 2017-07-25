@@ -11,7 +11,7 @@
 <form:form modelAttribute="board" action="centerwrite.mall" method="post" enctype="multipart/form-data" name="centerinform">
 	<table cellpadding="0" cellspacing="0">
 	  <tr align="center" valign="middle">
-	    <td colspan="2">Spring 게시판 등록</td>
+	    <td colspan="2">고객센터 글 작성</td>
 	  </tr>
 	  <tr><td>글쓴이</td>
 	      <td><form:input path="id" />
@@ -36,7 +36,7 @@
 	  </tr>
 	  <tr><td colspan="2" align="center">
 	      <a href="javascript:document.centerinform.submit()">[등록]</a>
-	      <a href="list.shop">[게시물 목록]</a>
+	      <a href="centerList.mall">[게시물 목록]</a>
 	      </td>
 	  </tr>                    
 	</table>  

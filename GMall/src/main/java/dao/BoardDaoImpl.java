@@ -34,17 +34,19 @@ public class BoardDaoImpl implements BoardDao{
 	}
 	
 	@Override
-	public int centerCount() {
-		return sqlSession.selectOne(NS+"customerCount");
+	public int centerCount(String searchType, String searchContent) {
+		return sqlSession.selectOne(NS+"centerCount");
 	}
 	
 	@Override
-	public List<Board> centerList(Integer pageNum, int limit) {
-		int startrow = (pageNum - 1) * limit + 1;
-    	int endrow = startrow + limit - 1;
+	public List<Board> centerList(String searchType, String searchContent, Integer pageNum, int limit) {
+		int startrow = (pageNum - 1) * (limit + 1);
+    	int endrow = startrow + limit - 1;  	
     	Map<String, Object> paramMap = new HashMap<String, Object>();
     	paramMap.put("startrow", startrow);
     	paramMap.put("endrow", endrow);
+    	paramMap.put("searchType", searchType);
+    	paramMap.put("searchContent", searchContent);
     	return sqlSession.selectList(NS+"centerList", paramMap);
 	}
 

@@ -29,6 +29,9 @@ public class ShopServiceImpl implements ShopService{
 	@Autowired
 	ProductDao productDao;
 	
+	/*
+	   배기수 
+	*/
 	@Override
 	public List<Board> infiniteScrollDown(int numToStart) {
 		return boardDao.infiniteScrollDown(numToStart);
@@ -45,13 +48,13 @@ public class ShopServiceImpl implements ShopService{
 	}
 	
 	@Override
-	public int centerCount() {
-		return boardDao.centerCount();
+	public int centerCount(String searchType, String searchContent) {
+		return boardDao.centerCount(searchType, searchContent);
 	}
 	
 	@Override
-	public List<Board> centerList(Integer pageNum, int limit) {
-		return boardDao.centerList(pageNum, limit);
+	public List<Board> centerList(String searchType, String searchContent, Integer pageNum, int limit) {
+		return boardDao.centerList(searchType, searchContent, pageNum, limit);
 	}
 
 	@Override
@@ -65,26 +68,26 @@ public class ShopServiceImpl implements ShopService{
 		}
 		if(board.getImg2() != null && !board.getImg2().isEmpty())
 		{
-			uploadFileCreate2(board.getImg2(), request);
+			uploadFileCreate(board.getImg2(), request);
 		}
 		if(board.getImg3() != null && !board.getImg3().isEmpty())
 		{
-			uploadFileCreate3(board.getImg3(), request);
+			uploadFileCreate(board.getImg3(), request);
 		}
-		board.setBoard_type(1);
+		board.setBoard_type(1); 
 		board.setAns_chk(0);
 		int num = boardDao.getMaxNum(board.getBoard_type());
 		board.setBoard_no(++num);
 		boardDao.centerInsert(board);	
 	}	
 	
-	private void uploadFileCreate(MultipartFile img1, HttpServletRequest request) {
+	private void uploadFileCreate(MultipartFile img, HttpServletRequest request) {
 		String uploadPath = request.getServletContext().getRealPath("/") + "/fileupload/";
 		FileOutputStream fos = null;
 		try
 		{
-			fos = new FileOutputStream(uploadPath + img1.getOriginalFilename());
-			InputStream in = img1.getInputStream();
+			fos = new FileOutputStream(uploadPath + img.getOriginalFilename());
+			InputStream in = img.getInputStream();
 			int data;
 			byte[] buf = new byte[10240];
 			while((data = in.read(buf)) != -1)
@@ -113,75 +116,7 @@ public class ShopServiceImpl implements ShopService{
 		}
 	}	
 	
-	private void uploadFileCreate2(MultipartFile img2, HttpServletRequest request) {
-		String uploadPath = request.getServletContext().getRealPath("/") + "/fileupload/";
-		FileOutputStream fos = null;
-		try
-		{
-			fos = new FileOutputStream(uploadPath + img2.getOriginalFilename());
-			InputStream in = img2.getInputStream();
-			int data;
-			byte[] buf = new byte[10240];
-			while((data = in.read(buf)) != -1)
-			{
-				fos.write(buf,0,data);
-			}
-		}
-		catch(IOException e) 
-		{
-			e.printStackTrace();
-		}
-		finally
-		{
-			try
-			{
-				if(fos != null)
-				{
-					fos.flush();
-					fos.close();
-				}
-			}
-			catch(IOException e)
-			{
-				e.printStackTrace();
-			}
-		}
-	}	
 	
-	private void uploadFileCreate3(MultipartFile img3, HttpServletRequest request) {
-		String uploadPath = request.getServletContext().getRealPath("/") + "/fileupload/";
-		FileOutputStream fos = null;
-		try
-		{
-			fos = new FileOutputStream(uploadPath + img3.getOriginalFilename());
-			InputStream in = img3.getInputStream();
-			int data;
-			byte[] buf = new byte[10240];
-			while((data = in.read(buf)) != -1)
-			{
-				fos.write(buf,0,data);
-			}
-		}
-		catch(IOException e) 
-		{
-			e.printStackTrace();
-		}
-		finally
-		{
-			try
-			{
-				if(fos != null)
-				{
-					fos.flush();
-					fos.close();
-				}
-			}
-			catch(IOException e)
-			{
-				e.printStackTrace();
-			}
-		}
-	}
 
 	/*
 	 * 주한울

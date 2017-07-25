@@ -28,5 +28,8 @@
     <br>
 	<br>
 	<a href="product/myBusiness.mall">&nbsp;&nbsp;&nbsp;myBis_List</a>
+	<br>
+	<br>
+	<a href="board/centerList.mall">&nbsp;&nbsp;&nbsp;centerList</a>
 </body>
 </html>

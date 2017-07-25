@@ -8,8 +8,8 @@ public interface ShopService {
 	List<Board> infiniteScrollDown(int numToStart); //배기수 - 무한스크롤 아래목록 가져옴
 	List<Board> infiniteScrollUp(int numToEnd); //배기수 - 무한스크롤 위목록 가져옴
 	List<Board> proList(); //배기수 - 상품리스트 가져옴
-	int centerCount(); //배기수 - 고객센터 검색된 내용 가져옴
-	List<Board> centerList(Integer pageNum, int limit); //배기수 - 고객센터 목록 가져옴
+	int centerCount(String searchType, String searchContent); //배기수 - 고객센터 검색된 내용 가져옴
+	List<Board> centerList(String searchType, String searchContent, Integer pageNum, int limit); //배기수 - 고객센터 목록 가져옴
 	void centerInsert(Board board, HttpServletRequest request); //배기수 - 고객센터 내용 입력
 	
 	boolean insertMember(Member member); // 주한울 - 회원가입
