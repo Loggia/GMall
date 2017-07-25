@@ -54,20 +54,24 @@ public class ProductController
 	//고종환 내 사업장 관리
 	//product/myBusiness.mall
 	@RequestMapping("product/myBusiness")
-	public ModelAndView myBusinessList(){
-		List<Product> myBis_list=shopService.getProductList();
+	public ModelAndView myBusinessList(HttpSession session){
+		Member member=(Member)session.getAttribute("LOGIN_MEMBER");
+		List<Product> myBis_list=shopService.getProductList(member.getId());//내아이디만
 		ModelAndView mav=new ModelAndView("product/myBusinessList");
 		mav.addObject("myBis_list",myBis_list);
 		return mav;
 	}
 	//고종환 내 사업장 관리에서 카테고리 클릭시
 	@RequestMapping("product/categoryCheck")
-	public ModelAndView categoryCheck(HttpServletRequest request){
+	public ModelAndView categoryCheck(HttpSession session,HttpServletRequest request){
 		String category=request.getParameter("category");
-		System.out.println(category);
-		List<Product> myBis_list=shopService.categoryCheck(category);
+		Member member=(Member)session.getAttribute("LOGIN_MEMBER");
+		String id=member.getId();
+		
+		List<Product> myBis_list=shopService.categoryCheck(id,category);
 		ModelAndView mav=new ModelAndView("product/myBusinessList");
 		mav.addObject("myBis_list",myBis_list);
+		//System.out.println(myBis_list.get(1));
 		return mav;
 	}
 	

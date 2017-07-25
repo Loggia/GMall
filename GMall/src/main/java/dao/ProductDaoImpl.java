@@ -1,6 +1,8 @@
 package dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -28,15 +30,21 @@ public class ProductDaoImpl implements ProductDao{
 		sqlSession.getMapper(ProductMapper.class).ProductAdd(product);
 		
 	}
-	
+	//고종환 내사업장 다뽑기
 	@Override
-	public List<Product> findAll() {//고종환 내사업장 다뽑기
-		return sqlSession.selectList(NS+"getProductList");
+	public List<Product> findAll(String id) {
+		return sqlSession.getMapper(ProductMapper.class).findAll(id);
 	}
-
+	//고종환 내사업장 카테고리
 	@Override
-	public List<Product> categoryCheck(String category) {//고종환 나사업장 카테고리 분류
-		return sqlSession.getMapper(ProductMapper.class).categoryCheck(category);
+	public List<Product> categoryCheck(String id, String category) {
+		System.out.println(id);
+		System.out.println(category);
+		Map<String,String> map=new HashMap<String,String>();
+		map.put("id",id);
+		map.put("category", category);
+		
+		return sqlSession.getMapper(ProductMapper.class).categoryCheck(map);
 	}
 
 }

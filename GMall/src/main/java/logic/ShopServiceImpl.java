@@ -315,14 +315,15 @@ public class ShopServiceImpl implements ShopService{
 	public int prono() {
 		return productDao.prono();
 	}
-	//내사업장 관리
+	//고종환 내사업장 관리
 	@Override
-	public List<Product> getProductList() {
-		return productDao.findAll();
+	public List<Product> getProductList(String id) {
+		return productDao.findAll(id);
 	}
-	//내사업장관리에서 카테고리 클릭시
+	//고종환 내사업장관리에서 카테고리 클릭시
 	@Override
-	public List<Product> categoryCheck(String category) {
-		return productDao.categoryCheck(category);
+	public List<Product> categoryCheck(String id, String category) {
+
+		return productDao.categoryCheck(id,category);
 	}
 }
