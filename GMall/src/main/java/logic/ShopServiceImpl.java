@@ -198,9 +198,9 @@ public class ShopServiceImpl implements ShopService{
 	 * 로그인
 	 */
 	@Override
-	public Member selectMember(String id) 
+	public Member getUserByIdAndPw(String id, String pass)
 	{
-		return memberDao.selectOne(id);
+		return memberDao.getUserByIdAndPw(id, pass);
 	}
 	
 	/*
@@ -221,6 +221,16 @@ public class ShopServiceImpl implements ShopService{
 	public void deleteMember(Member member) 
 	{
 		memberDao.delete(member);
+	}
+	
+	/*
+	 * 주한울
+	 * 사업자 번호 확인
+	 */
+	@Override
+	public List<String> selectBis_no() 
+	{
+		return memberDao.selectBis_no();
 	}
 	
 	/*

@@ -43,18 +43,13 @@ public class MemberDaoImpl implements MemberDao
 	 *  - 로그인
 	 */
 	@Override
-	public Member selectOne(String id) 
+	public Member getUserByIdAndPw(String id, String pass) 
 	{
-		try
-		{
-			return sqlSession.getMapper(MemberMapper.class).selectOne(id);
-		}
-		catch (Exception e) 
-		{
-			e.printStackTrace();
-			
-			return null;
-		}
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("id", id);
+		map.put("pass", pass);
+		
+		return sqlSession.getMapper(MemberMapper.class).getUserByIdAndPw(map);
 	}
 	
 	/*
@@ -88,6 +83,25 @@ public class MemberDaoImpl implements MemberDao
 		catch (Exception e) 
 		{
 			e.printStackTrace();
+		}
+	}
+	
+	/*
+	 * 주한울
+	 * 사업자 번호 확인
+	 */
+	@Override
+	public List<String> selectBis_no() 
+	{
+		try
+		{
+			return sqlSession.getMapper(MemberMapper.class).selectBis_no();
+		}
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+			
+			return null;
 		}
 	}
 

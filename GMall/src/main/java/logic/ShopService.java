@@ -13,9 +13,10 @@ public interface ShopService {
 	void centerInsert(Board board, HttpServletRequest request); //배기수 - 고객센터 내용 입력
 	
 	boolean insertMember(Member member); // 주한울 - 회원가입
-	Member selectMember(String id); // 주한울 - 로그인을 위한 메서드
+	Member getUserByIdAndPw(String id, String pass); // 주한울 - 로그인을 위한 메서드
 	void updateMember(Member member); // 주한울 - 회원 수정
 	void deleteMember(Member member); // 주한울 - 회원 탈퇴
+	List<String> selectBis_no(); // 주한울 - 사업자 번호 확인
 	
 	List<Trade> tradeList(); //구정연 - 회원거래목록
 	List<Member> nomalList(); //구정연 - 일반회원관리

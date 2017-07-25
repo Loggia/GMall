@@ -1,6 +1,7 @@
 package dao.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
@@ -23,6 +24,9 @@ public interface MemberMapper
 	@Delete("delete from member where id=#{id} and pass=#{pass}")
 	void delete(Member member);
 
-	@Select("select * from member where id=#{id}")
-	Member selectOne(String id);
+	@Select("select * from member where id=#{id} and pass=#{pass}")
+	Member getUserByIdAndPw(Map<String, String> map);
+	
+	@Select("select * from bis_table")
+	List<String> selectBis_no();
 }

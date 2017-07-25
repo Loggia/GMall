@@ -25,17 +25,44 @@ public class MemberController
 	 * 회원가입 
 	 */
 	@RequestMapping("member/join")
-	public ModelAndView join(Member member)
+	public ModelAndView join(Member member) // id=resd  // 5자리 이상을 넣으면 
 	{
-		ModelAndView mav = new ModelAndView("board/main");
+		ModelAndView mav = new ModelAndView("alert");
+		mav.addObject("url", "../board/main.mall");
+		mav.addObject("msg", "회원가입이 완료되었습니다.");
 		
 		if(member.getType() == 1)
 		{
 			member.setBis_no("");
 			member.setBis_name("");
+			
+			shopService.insertMember(member);
+		}
+		else if(member.getType() == 2)
+		{
+			List<String> bis_no = shopService.selectBis_no(); // 임의로 추가한 사업자 번호를 쿼리
+			boolean flag = false;
+			
+			for(String no : bis_no) // 입력한 사업자 번호가 추가되어 있는 사업자 번호와 일치하는지 비교
+			{
+				if(no.equals(member.getBis_no()))
+				{
+					flag = !flag; // bis_table에 일치하는 사업자 번호가 있다면 flag의 값을 true로 변경
+				}
+			}
+			
+			if(!flag)
+			{
+				mav.addObject("msg", "사업자 번호를 확인하세요.");
+			}
+			
+			shopService.insertMember(member);
+		}
+		else
+		{
+			mav.addObject("msg", "회원가입이 실패하였습니다.");
 		}
 		
-		shopService.insertMember(member);
 		return mav;
 	}
 	
@@ -47,12 +74,29 @@ public class MemberController
 	public ModelAndView login(Member member, HttpServletRequest request)
 	{
 		ModelAndView mav = new ModelAndView("board/main");
-		Member login = shopService.selectMember(member.getId());
-		if(login.getId().equals(member.getId()) && login.getPass().equals(member.getPass()))
+		
+		try
 		{
+			Member login = shopService.getUserByIdAndPw(member.getId(), member.getPass());
+			
+			
+			if(login == null || !login.getId().equals(member.getId()) || !login.getPass().equals(member.getPass()))
+			{
+				mav.setViewName("alert");
+				mav.addObject("url", "../board/main.mall");
+				mav.addObject("msg", "아이디나 비밀번호를 잘못입력하셨습니다.");
+				
+				return mav;
+			}
+			
 			request.getSession().setAttribute("LOGIN_MEMBER", login);
 		}
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
 		
+			
 		// 팝업창이 생기면 로그인이 안됬을 때 팝업창이 뜨게 설정
 		
 		return mav;

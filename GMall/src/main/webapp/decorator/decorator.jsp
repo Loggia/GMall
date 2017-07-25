@@ -163,22 +163,23 @@
 										<div class="form-group">
 											<label for="recipient-name" class="control-label">ID:</label>
 											<input name="id" type="text" class="form-control"
-												id="recipient-name" placeholder="아이디를 입력해주세요">
+												id="recipient-name" placeholder="아이디를 입력해주세요" required="required">
 										</div>
 										<div class="form-group">
 											<label for="message-text" class="control-label">PASSWORD:</label>
 											<input name="pass" type="password" class="form-control"
-												id="message-text" placeholder="비밀번호를 입력해주세요">
+												id="message-text" placeholder="비밀번호를 입력해주세요" required="required">
+										</div>
+										
+										<div class="modal-footer">
+											<input type="submit" class="btn btn-info" data-dismiss="modal"
+												value="회원가입" data-toggle="modal" data-target="#joinFormModal">
+											<input type="submit" class="btn btn-success"
+												value="로그인">
+											<input type="button" class="btn btn-default"
+												value="닫기" data-dismiss="modal">
 										</div>
 									</form>
-								</div>
-								<div class="modal-footer">
-									<button type="submit" class="btn btn-info" data-dismiss="modal"
-										data-toggle="modal" data-target="#joinFormModal">회원가입</button>
-									<button type="submit" class="btn btn-success"
-										data-dismiss="modal" onclick="document.loginform.submit()">로그인</button>
-									<button type="button" class="btn btn-default"
-										data-dismiss="modal">닫기</button>
 								</div>
 							</div>
 
@@ -212,56 +213,56 @@
 										<div class="form-group">
 											<label class="radio-inline-lg" id="type_nomal"
 												style="cursor: pointer;"> <input type="radio"
-												name="type" value="1">일반 회원
+												name="type" value="1" required="required">일반 회원
 											</label>&nbsp;&nbsp;&nbsp; <label class="radio-inline-lg"
 												id="type_bussiness" style="cursor: pointer;"> <input
-												type="radio" name="type" value="2">사업자 회원
+												type="radio" name="type" value="2" required="required">사업자 회원
 											</label>
 										</div>
 										<div class="form-group">
 											<label for="recipient-name" class="control-label">아이디:</label>
-											<input name="id" type="text" class="form-control"
-												id="recipient-name" placeholder="아이디를 입력해주세요">
+											<input name="id" type="text" class="form-control" 
+												id="recipient-name" placeholder="아이디를 입력해주세요" required="required">
 										</div>
 										<div class="form-group">
 											<label for="message-text" class="control-label">비밀번호:</label>
 											<input name="pass" type="password" class="form-control"
-												id="message-text" placeholder="비밀번호를 입력해주세요">
+												id="message-text" placeholder="비밀번호를 입력해주세요" required="required">
 										</div>
 										<div class="form-group">
 											<label for="recipient-name" class="control-label">이름:</label>
 											<input name="name" type="text" class="form-control"
-												id="recipient-name" placeholder="이름을 입력해주세요">
+												id="recipient-name" placeholder="이름을 입력해주세요" required="required">
 										</div>
 										<div class="form-group">
 											<label for="message-text" class="control-label">닉네임:</label>
 											<input name="nickname" type="text" class="form-control"
-												id="message-text" placeholder="닉네임을 입력해주세요">
+												id="message-text" placeholder="닉네임을 입력해주세요" required="required">
 										</div>
 										<div class="form-group">
 											<label for="recipient-name" class="control-label">성별:&nbsp;&nbsp;</label>
 											<label class="radio-inline-lg" style="cursor: pointer;">
 												<input type="radio" name="gender" value="1"
-												style="cursor: pointer;">남자
+												style="cursor: pointer;" required="required">남자
 											</label> &nbsp;&nbsp; <label class="radio-inline-lg"
 												style="cursor: pointer;"> <input type="radio"
-												name="gender" value="2" style="cursor: pointer;">여자
+												name="gender" value="2" style="cursor: pointer;" required="required">여자
 											</label>
 										</div>
 										<div class="form-group">
 											<label for="message-text" class="control-label">연락처:</label>
 											<input name="tel" type="text" class="form-control"
-												id="message-text" placeholder="연락처를 입력해주세요">
+												id="message-text" placeholder="연락처를 입력해주세요" required="required">
 										</div>
 										<div class="form-group">
 											<label for="message-text" class="control-label">주소:</label> <input
 												name="address" type="text" class="form-control"
-												id="message-text" placeholder="주소를 입력해주세요">
+												id="message-text" placeholder="주소를 입력해주세요" required="required">
 										</div>
 										<div class="form-group">
 											<label for="sel1">관심 상품:</label> <select name="interest"
 												class="form-control" id="sel1"
-												style="width: 100px; cursor: pointer;">
+												style="width: 100px; cursor: pointer;" required="required">
 												<option>육류</option>
 												<option>해산물</option>
 												<option>과일</option>
@@ -280,14 +281,14 @@
 												name="bis_name" type="text" class="form-control"
 												id="message-text" placeholder="상호를 입력해주세요">
 										</div>
+										
+										<div class="modal-footer">
+											<input type="submit" class="btn btn-success"
+												 value="가입 완료">
+											<input type="button" class="btn btn-default"
+												value="닫기" data-dismiss="modal">
+										</div>
 									</form>
-								</div>
-								<div class="modal-footer">
-									<button type="submit" class="btn btn-success"
-										data-dismiss="modal" onclick="document.joinform.submit()">가입
-										완료</button>
-									<button type="button" class="btn btn-default"
-										data-dismiss="modal">닫기</button>
 								</div>
 							</div>
 
