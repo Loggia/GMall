@@ -20,6 +20,7 @@ public interface ShopService {
 	List<String> selectBis_no(); // 주한울 - 사업자 번호 확인
 	List<Member> selectBookmark(String id); // 주한울 - 관심 사업자 조회
 	List<Product> selectNewsFeed(String id); // 주한울 - 관심 사업자 최근 등록 목록 조회
+	List<Trade> tradeBuyList(String id); // 주한울 - 일반 회원 구매 목록 확인
 	
 	List<Trade> tradeList(); //구정연 - 회원거래목록
 	List<Member> nomalList(); //구정연 - 일반회원관리
@@ -28,4 +29,5 @@ public interface ShopService {
 	int prono();//고종환 -물품번호
 	List<Product> getProductList(String Bis_no);//고종환 내 사업장 관리
 	List<Product> categoryCheck(String bis_name, String category);//고종환 내사업장 카테고리분류
+	
 }

@@ -25,7 +25,7 @@ public class ShopServiceImpl implements ShopService{
 	@Autowired
 	MemberDao memberDao;
 	@Autowired
-	TradeDao tradedao;
+	TradeDao tradeDao;
 	@Autowired
 	ProductDao productDao;
 	
@@ -199,13 +199,23 @@ public class ShopServiceImpl implements ShopService{
 	}
 	
 	/*
+	 * 주한울
+	 * 일반 회원 구매 목록 확인
+	 */
+	@Override
+	public List<Trade> tradeBuyList(String id) 
+	{
+		return tradeDao.tradeBuyList(id);
+	}
+	
+	/*
 	 * 구정연 
 	 * 회원관리목록
 	 */
 	@Override
 	public List<Trade> tradeList() {
 		
-		return tradedao.tradeList();
+		return tradeDao.tradeList();
 	}
 
 	/*

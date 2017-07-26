@@ -47,11 +47,9 @@ public class Trade
 	 * 구정연 
 	 * 회원거래목록 
 	 */
-	@NotEmpty
 	private String pro_name;
-	
-	
-	
+	private String bis_name;
+	private String nickname;
 
 	public String getPro_name() {
 		return pro_name;
@@ -189,5 +187,25 @@ public class Trade
 	public void setRv_chk(int rv_chk) 
 	{
 		this.rv_chk = rv_chk;
+	}
+
+	public String getBis_name() 
+	{
+		return bis_name;
+	}
+
+	public void setBis_name(String bis_name) {
+		
+		this.bis_name = bis_name;
+	}
+
+	public String getNickname() 
+	{
+		return nickname;
+	}
+
+	public void setNickname(String nickname) 
+	{
+		this.nickname = nickname;
 	}
 }

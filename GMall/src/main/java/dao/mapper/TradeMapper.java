@@ -15,4 +15,6 @@ public interface TradeMapper {
 	@Select("select a.trd_money , a.sell_id , a.buy_id , a.delivery , a.trd_date, b.pro_name from trade a , product b  where a.pro_no = b.pro_no")
 	List<Trade> tradeList();
 
+	@Select("")
+	List<Trade> tradeBuyList(String id);
 }

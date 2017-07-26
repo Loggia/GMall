@@ -26,7 +26,15 @@ public class TradeDaoImpl implements TradeDao{
 			return sqlSession.getMapper(TradeMapper.class).tradeList();
 		}
 
-		
-	
+		/*
+		 * 주한울
+		 * 일반 회원 구매 목록
+		 */
+		@Override
+		public List<Trade> tradeBuyList(String id) 
+		{
+			
+			return sqlSession.getMapper(TradeMapper.class).tradeBuyList(id);
+		}
 	}
 
