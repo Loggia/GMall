@@ -37,11 +37,10 @@ public class ProductDaoImpl implements ProductDao{
 	}
 	//고종환 내사업장 카테고리
 	@Override
-	public List<Product> categoryCheck(String id, String category) {
-		System.out.println(id);
-		System.out.println(category);
+	public List<Product> categoryCheck(String bis_name, String category) {
+	
 		Map<String,String> map=new HashMap<String,String>();
-		map.put("id",id);
+		map.put("bis_name",bis_name);
 		map.put("category", category);
 		
 		return sqlSession.getMapper(ProductMapper.class).categoryCheck(map);

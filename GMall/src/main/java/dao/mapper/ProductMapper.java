@@ -21,7 +21,7 @@ public interface ProductMapper {
 	List<Product> findAll(String Bis_no);
 
 	
-	@Select("select * from product where id=#{id} and category=#{category} order by pro_no")
+	@Select("select * from product where bis_name=#{bis_name} and category=#{category} order by pro_no")
 	List<Product> categoryCheck(Map<String, String> map);
 	
 	/*

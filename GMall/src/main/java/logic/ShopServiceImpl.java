@@ -276,8 +276,8 @@ public class ShopServiceImpl implements ShopService{
 	}
 	//고종환 내사업장관리에서 카테고리 클릭시
 	@Override
-	public List<Product> categoryCheck(String id, String category) {
+	public List<Product> categoryCheck(String bis_name, String category) {
 
-		return productDao.categoryCheck(id,category);
+		return productDao.categoryCheck(bis_name,category);
 	}
 }
