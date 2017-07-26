@@ -17,6 +17,8 @@ public interface ShopService {
 	void updateMember(Member member); // 주한울 - 회원 수정
 	void deleteMember(Member member); // 주한울 - 회원 탈퇴
 	List<String> selectBis_no(); // 주한울 - 사업자 번호 확인
+	List<Member> selectBookmark(String id); // 주한울 - 관심 사업자 조회
+	List<Product> selectNewsFeed(String id); // 주한울 - 관심 사업자 최근 등록 목록 조회
 	
 	List<Trade> tradeList(); //구정연 - 회원거래목록
 	List<Member> nomalList(); //구정연 - 일반회원관리

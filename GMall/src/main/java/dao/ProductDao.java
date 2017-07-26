@@ -14,4 +14,5 @@ public interface ProductDao {
 
 	List<Product> categoryCheck(String id, String category);//고종환 내사업장 카테고리
 
+	List<Product> selectNewsFeed(String id); // 주한울 - 관심 사업자 최근 등록 목록 조회
 }

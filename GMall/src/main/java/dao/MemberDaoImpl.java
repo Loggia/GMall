@@ -104,6 +104,25 @@ public class MemberDaoImpl implements MemberDao
 			return null;
 		}
 	}
+	
+	/*
+	 * 주한울
+	 * 관심 사업자 조회
+	 */
+	@Override
+	public List<Member> selectBookmark(String id) 
+	{
+		try
+		{
+			return sqlSession.getMapper(MemberMapper.class).bookmark(id);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			
+			return null;
+		}
+	}
 
 	/*
 	 * 구정연

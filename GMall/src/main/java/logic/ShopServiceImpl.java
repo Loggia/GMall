@@ -169,6 +169,26 @@ public class ShopServiceImpl implements ShopService{
 	}
 	
 	/*
+	 * 주한울
+	 * 관심 사업자 조회
+	 */
+	@Override
+	public List<Member> selectBookmark(String id) 
+	{
+		return memberDao.selectBookmark(id);
+	}
+
+	/*
+	 * 주한울
+	 * 관심 사업자 최근 등록 상품 조회
+	 */
+	@Override
+	public List<Product> selectNewsFeed(String id) 
+	{
+		return productDao.selectNewsFeed(id);
+	}
+	
+	/*
 	 * 구정연 
 	 * 회원관리목록
 	 */

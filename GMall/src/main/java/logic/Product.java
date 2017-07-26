@@ -14,7 +14,7 @@ public class Product
 	private String bis_no;
 	
 	@NotEmpty
-	private String id;
+	private String bis_name;
 	
 	@NotEmpty
 	private Date date;
@@ -65,14 +65,14 @@ public class Product
 		this.bis_no = bis_no;
 	}
 	
-	public String getId() 
+	public String getBis_name() 
 	{
-		return id;
+		return bis_name;
 	}
 	
-	public void setId(String id) 
+	public void setBis_name(String bis_name) 
 	{
-		this.id = id;
+		this.bis_name = bis_name;
 	}
 	
 	public Date getDate() 
@@ -218,7 +218,7 @@ public class Product
 
 	@Override
 	public String toString() {
-		return "Product [pro_no=" + pro_no + ", bis_no=" + bis_no + ", id=" + id + ", date=" + date + ", pro_name="
+		return "Product [pro_no=" + pro_no + ", bis_no=" + bis_no + ", bis_name=" + bis_name + ", date=" + date + ", pro_name="
 				+ pro_name + ", price=" + price + ", cnt=" + cnt + ", category=" + category + ", favorite=" + favorite
 				+ ", pro_content=" + pro_content + ", main_img=" + main_img + ", sub_img1=" + sub_img1 + ", sub_img2="
 				+ sub_img2 + ", sub_img3=" + sub_img3 + ", fileurl=" + fileurl + ", fileurl1=" + fileurl1

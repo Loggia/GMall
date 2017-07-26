@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import logic.Member;
+import logic.Product;
 import logic.ShopService;
 import logic.Trade;
 
@@ -125,11 +126,26 @@ public class MemberController
 	{
 		ModelAndView mav = new ModelAndView();
 		Member login = (Member)session.getAttribute("LOGIN_MEMBER");
-		mav.addObject("member", login);
+		List<Member> bookmark = shopService.selectBookmark(login.getId());
+		List<Product> newsfeed = shopService.selectNewsFeed(login.getId());
 		
-		/* 
-		 * form 만들어지면 추가
-		 */
+		if(!(bookmark == null))
+		{
+			mav.addObject("bookmark", bookmark);
+			
+			if(!(newsfeed == null))
+			{
+				mav.addObject("newsfeed", newsfeed);
+			}
+			else
+			{
+				mav.addObject("newsfeed", new Product());
+			}
+		}
+		else
+		{
+			mav.addObject("bookmark", new Member());
+		}
 		
 		return mav;
 	}

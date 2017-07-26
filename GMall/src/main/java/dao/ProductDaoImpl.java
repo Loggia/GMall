@@ -47,4 +47,22 @@ public class ProductDaoImpl implements ProductDao{
 		return sqlSession.getMapper(ProductMapper.class).categoryCheck(map);
 	}
 
+	/*
+	 * 주한울
+	 * 관심 사업자 최근 등록 상품 조회
+	 */
+	@Override
+	public List<Product> selectNewsFeed(String id) 
+	{
+		try
+		{
+			return sqlSession.getMapper(ProductMapper.class).newsFeed(id);
+		}
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+			
+			return null;
+		}
+	}
 }
