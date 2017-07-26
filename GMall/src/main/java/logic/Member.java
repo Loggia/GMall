@@ -32,7 +32,7 @@ public class Member
 	private String bis_name;
 	private boolean prim;
 	private int money;
-	private int point;
+	private double score;
 	private String cop_no;
 	private String interest;
 
@@ -164,14 +164,14 @@ public class Member
 		this.money = money;
 	}
 	
-	public int getPoint()
+	public double getScore()
 	{
-		return point;
+		return score;
 	}
 	
-	public void setPoint(int point)
+	public void setScore(double score)
 	{
-		this.point = point;
+		this.score = score;
 	}
 	
 	public String getCop_no() 

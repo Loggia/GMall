@@ -40,6 +40,9 @@ public class Trade
 	@NotEmpty
 	private String delivery;
 	
+	@NotEmpty
+	private int rv_chk;
+	
 	/*
 	 * 구정연 
 	 * 회원거래목록 
@@ -176,5 +179,15 @@ public class Trade
 	public void setDelivery(String delivery)
 	{
 		this.delivery = delivery;
+	}
+
+	public int getRv_chk() 
+	{
+		return rv_chk;
+	}
+
+	public void setRv_chk(int rv_chk) 
+	{
+		this.rv_chk = rv_chk;
 	}
 }
