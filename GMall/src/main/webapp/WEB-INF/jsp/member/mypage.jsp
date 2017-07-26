@@ -320,7 +320,7 @@ body {
 					</h3>
 					<table class="table table-hover" style="border-bottom: 1px solid #e5e5e5;">
 						<thead>
-							<tr>
+							<tr> 
 								<th>상호</th><th>상품명</th><th>가격</th><th>카테고리</th><th>상세구분</th><th>등록일</th>
 							</tr>
 						</thead>
