@@ -36,6 +36,30 @@ public class MemberDaoImpl implements MemberDao
 			return false;
 		}
 	}
+	
+	/*
+	 * 주한울
+	 * 회원가입시 중복된 사업자 번호를 사용했는지를 판별
+	 */
+	@Override
+	public boolean cheakBis_no(String bis_no) 
+	{
+		try
+		{
+			Member member = sqlSession.getMapper(MemberMapper.class).cheakBis_no(bis_no);
+			
+			if(member == null || member.getId().equals(""))
+			{
+				return true;
+			}
+			
+			return false;
+		}
+		catch (Exception e) 
+		{
+			return true;
+		}
+	}
 
 	/*
 	 * 주한울	
@@ -98,6 +122,25 @@ public class MemberDaoImpl implements MemberDao
 			return sqlSession.getMapper(MemberMapper.class).selectBis_no();
 		}
 		catch (Exception e) 
+		{
+			e.printStackTrace();
+			
+			return null;
+		}
+	}
+	
+	/*
+	 * 주한울
+	 * 관심 사업자 조회
+	 */
+	@Override
+	public List<Member> selectBookmark(String id) 
+	{
+		try
+		{
+			return sqlSession.getMapper(MemberMapper.class).bookmark(id);
+		}
+		catch (Exception e)
 		{
 			e.printStackTrace();
 			

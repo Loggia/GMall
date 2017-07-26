@@ -130,6 +130,16 @@ public class ShopServiceImpl implements ShopService{
 	
 	/*
 	 * 주한울
+	 * 회원가입시 중복된 사업자 번호를 사용했는지를 판별
+	 */
+	@Override
+	public boolean cheakBis_no(String bis_no) 
+	{
+		return memberDao.cheakBis_no(bis_no);
+	}
+	
+	/*
+	 * 주한울
 	 * 로그인
 	 */
 	@Override
@@ -166,6 +176,26 @@ public class ShopServiceImpl implements ShopService{
 	public List<String> selectBis_no() 
 	{
 		return memberDao.selectBis_no();
+	}
+	
+	/*
+	 * 주한울
+	 * 관심 사업자 조회
+	 */
+	@Override
+	public List<Member> selectBookmark(String id) 
+	{
+		return memberDao.selectBookmark(id);
+	}
+
+	/*
+	 * 주한울
+	 * 관심 사업자 최근 등록 상품 조회
+	 */
+	@Override
+	public List<Product> selectNewsFeed(String id) 
+	{
+		return productDao.selectNewsFeed(id);
 	}
 	
 	/*
@@ -218,7 +248,6 @@ public class ShopServiceImpl implements ShopService{
 		if(product.getSub_img3() !=null && !product.getSub_img3().isEmpty() ){
 			uploadFile(product.getSub_img3(),request);
 		}
-		System.out.println("에러없지 들어왔어?"+product);
 		productDao.ProductAdd(product);
 		
 	}
@@ -252,13 +281,13 @@ public class ShopServiceImpl implements ShopService{
 	}
 	//고종환 내사업장 관리
 	@Override
-	public List<Product> getProductList(String id) {
-		return productDao.findAll(id);
+	public List<Product> getProductList(String Bis_no) {
+		return productDao.findAll(Bis_no);
 	}
 	//고종환 내사업장관리에서 카테고리 클릭시
 	@Override
-	public List<Product> categoryCheck(String id, String category) {
+	public List<Product> categoryCheck(String bis_name, String category) {
 
-		return productDao.categoryCheck(id,category);
+		return productDao.categoryCheck(bis_name,category);
 	}
 }

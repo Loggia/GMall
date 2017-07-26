@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 
 <script>
-	alert("${msg}");
-	location.href="${url}";
+	swal({title: "Error", text: "${msg}", type: "error"}, function() { location.href="${url}"; });
 </script>

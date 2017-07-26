@@ -44,8 +44,8 @@ public class ProductController
 		Member member=(Member)session.getAttribute("LOGIN_MEMBER");
 
         product.setPro_no(pro_no);	
-        product.setBis_no("ABCDEF");
-        product.setId(member.getId());
+        product.setBis_no(member.getBis_no());
+        product.setBis_name(member.getBis_name());
 
 
 		shopService.ProductAdd(product,request);
@@ -56,7 +56,7 @@ public class ProductController
 	@RequestMapping("product/myBusiness")
 	public ModelAndView myBusinessList(HttpSession session){
 		Member member=(Member)session.getAttribute("LOGIN_MEMBER");
-		List<Product> myBis_list=shopService.getProductList(member.getId());//내아이디만
+		List<Product> myBis_list=shopService.getProductList(member.getBis_no());//내아이디만
 		ModelAndView mav=new ModelAndView("product/myBusinessList");
 		mav.addObject("myBis_list",myBis_list);
 		return mav;
@@ -66,9 +66,9 @@ public class ProductController
 	public ModelAndView categoryCheck(HttpSession session,HttpServletRequest request){
 		String category=request.getParameter("category");
 		Member member=(Member)session.getAttribute("LOGIN_MEMBER");
-		String id=member.getId();
+		String bis_name=member.getBis_name();
 		
-		List<Product> myBis_list=shopService.categoryCheck(id,category);
+		List<Product> myBis_list=shopService.categoryCheck(bis_name,category);
 		ModelAndView mav=new ModelAndView("product/myBusinessList");
 		mav.addObject("myBis_list",myBis_list);
 		//System.out.println(myBis_list.get(1));

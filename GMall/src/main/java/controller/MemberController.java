@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import logic.Member;
+import logic.Product;
 import logic.ShopService;
 import logic.Trade;
 
@@ -27,9 +28,8 @@ public class MemberController
 	@RequestMapping("member/join")
 	public ModelAndView join(Member member) // id=resd  // 5자리 이상을 넣으면 
 	{
-		ModelAndView mav = new ModelAndView("alert");
+		ModelAndView mav = new ModelAndView("board/main");
 		mav.addObject("url", "../board/main.mall");
-		mav.addObject("msg", "회원가입이 완료되었습니다.");
 		
 		if(member.getType() == 1)
 		{
@@ -40,26 +40,36 @@ public class MemberController
 		}
 		else if(member.getType() == 2)
 		{
-			List<String> bis_no = shopService.selectBis_no(); // 임의로 추가한 사업자 번호를 쿼리
-			boolean flag = false;
-			
-			for(String no : bis_no) // 입력한 사업자 번호가 추가되어 있는 사업자 번호와 일치하는지 비교
+			if(shopService.cheakBis_no(member.getBis_no()))
 			{
-				if(no.equals(member.getBis_no()))
+				List<String> bis_no = shopService.selectBis_no(); // 임의로 추가한 사업자 번호를 쿼리
+				boolean flag = false;
+				
+				for(String no : bis_no) // 입력한 사업자 번호가 추가되어 있는 사업자 번호와 일치하는지 비교
 				{
-					flag = !flag; // bis_table에 일치하는 사업자 번호가 있다면 flag의 값을 true로 변경
+					if(no.equals(member.getBis_no()))
+					{
+						flag = !flag; // bis_table에 일치하는 사업자 번호가 있다면 flag의 값을 true로 변경
+					}
 				}
+				
+				if(!flag)
+				{
+					mav.setViewName("alert");
+					mav.addObject("msg", "사업자 번호를 확인하세요.");
+				}
+				
+				shopService.insertMember(member);
 			}
-			
-			if(!flag)
+			else
 			{
-				mav.addObject("msg", "사업자 번호를 확인하세요.");
+				mav.setViewName("alert");
+				mav.addObject("msg", "회원가입이 실패하였습니다.");
 			}
-			
-			shopService.insertMember(member);
 		}
 		else
 		{
+			mav.setViewName("alert");
 			mav.addObject("msg", "회원가입이 실패하였습니다.");
 		}
 		
@@ -125,11 +135,26 @@ public class MemberController
 	{
 		ModelAndView mav = new ModelAndView();
 		Member login = (Member)session.getAttribute("LOGIN_MEMBER");
-		mav.addObject("member", login);
+		List<Member> bookmark = shopService.selectBookmark(login.getId());
+		List<Product> newsfeed = shopService.selectNewsFeed(login.getId());
 		
-		/* 
-		 * form 만들어지면 추가
-		 */
+		if(!(bookmark == null))
+		{
+			mav.addObject("bookmark", bookmark);
+			
+			if(!(newsfeed == null))
+			{
+				mav.addObject("newsfeed", newsfeed);
+			}
+			else
+			{
+				mav.addObject("newsfeed", new Product());
+			}
+		}
+		else
+		{
+			mav.addObject("bookmark", new Member());
+		}
 		
 		return mav;
 	}
