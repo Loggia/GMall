@@ -32,8 +32,8 @@ public class ProductDaoImpl implements ProductDao{
 	}
 	//고종환 내사업장 다뽑기
 	@Override
-	public List<Product> findAll(String id) {
-		return sqlSession.getMapper(ProductMapper.class).findAll(id);
+	public List<Product> findAll(String Bis_no) {
+		return sqlSession.getMapper(ProductMapper.class).findAll(Bis_no);
 	}
 	//고종환 내사업장 카테고리
 	@Override

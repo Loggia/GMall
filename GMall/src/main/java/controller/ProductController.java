@@ -56,7 +56,7 @@ public class ProductController
 	@RequestMapping("product/myBusiness")
 	public ModelAndView myBusinessList(HttpSession session){
 		Member member=(Member)session.getAttribute("LOGIN_MEMBER");
-		List<Product> myBis_list=shopService.getProductList(member.getId());//내아이디만
+		List<Product> myBis_list=shopService.getProductList(member.getBis_no());//내아이디만
 		ModelAndView mav=new ModelAndView("product/myBusinessList");
 		mav.addObject("myBis_list",myBis_list);
 		return mav;

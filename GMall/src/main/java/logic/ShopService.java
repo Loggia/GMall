@@ -25,6 +25,6 @@ public interface ShopService {
 	List<Member> businessList();//구정연 - 사업자관리
 	void ProductAdd(Product product, HttpServletRequest request);//고종환 사업자 물품등록
 	int prono();//고종환 -물품번호
-	List<Product> getProductList(String id);//고종환 내 사업장 관리
+	List<Product> getProductList(String Bis_no);//고종환 내 사업장 관리
 	List<Product> categoryCheck(String id, String category);//고종환 내사업장 카테고리분류
 }

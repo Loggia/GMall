@@ -271,8 +271,8 @@ public class ShopServiceImpl implements ShopService{
 	}
 	//고종환 내사업장 관리
 	@Override
-	public List<Product> getProductList(String id) {
-		return productDao.findAll(id);
+	public List<Product> getProductList(String Bis_no) {
+		return productDao.findAll(Bis_no);
 	}
 	//고종환 내사업장관리에서 카테고리 클릭시
 	@Override

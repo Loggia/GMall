@@ -17,8 +17,8 @@ public interface ProductMapper {
 	         +" values ( #{pro_no}, #{bis_no}, #{bis_name}, now(), #{pro_name}, #{price}, #{cnt}, #{category}, #{favorite},#{pro_content},#{fileurl},#{fileurl1}, #{fileurl2}, #{fileurl3})")
 	void ProductAdd(Product product);
 	
-	@Select("select * from product where id=#{id} order by pro_no")
-	List<Product> findAll(String id);
+	@Select("select * from product where Bis_no=#{Bis_no} order by pro_no")
+	List<Product> findAll(String Bis_no);
 
 	
 	@Select("select * from product where id=#{id} and category=#{category} order by pro_no")

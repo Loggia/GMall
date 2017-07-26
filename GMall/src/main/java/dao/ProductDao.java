@@ -10,7 +10,7 @@ public interface ProductDao {
 
 	void ProductAdd(Product product);
 	
-	List<Product> findAll(String id); //고종환 내 사업장 다 뽑기
+	List<Product> findAll(String Bis_no); //고종환 내 사업장 다 뽑기
 
 	List<Product> categoryCheck(String id, String category);//고종환 내사업장 카테고리
 
