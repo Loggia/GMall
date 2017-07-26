@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="/WEB-INF/jsp/jspHeader.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,17 +9,17 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	
-	    $(".list_buylist a").mouseover(function(){
-	        $(".list_buylist a").css("color", "#12d8fa");
+	    $(".list_2nd a").mouseover(function(){
+	        $(".list_2nd a").css("color", "#12d8fa");
 	    });
-	    $(".list_buylist a").mouseout(function(){
-	        $(".list_buylist a").css("color", "black");
+	    $(".list_2nd a").mouseout(function(){
+	        $(".list_2nd a").css("color", "black");
 	    });
-	    $(".list_cs a").mouseover(function(){
-	        $(".list_cs a").css("color", "#12d8fa");
+	    $(".list_3th a").mouseover(function(){
+	        $(".list_3th a").css("color", "#12d8fa");
 	    });
-	    $(".list_cs a").mouseout(function(){
-	        $(".list_cs a").css("color", "black");
+	    $(".list_3th a").mouseout(function(){
+	        $(".list_3th a").css("color", "black");
 	    });
 	
 	
@@ -81,19 +81,19 @@ body {
 	margin: 0px;
 	font-size: 20px;
 }
-.list_fav{
+.list_1st{
 	border-bottom: 1px solid #e5e5e5;
 	margin-top: 20px;
 	margin-bottom: 20px;
 	padding-bottom: 20px;
 }
-.list_buylist{
+.list_2nd{
 	border-bottom: 1px solid #e5e5e5;
 	margin-top: 20px;
 	margin-bottom: 20px;
 	padding-bottom: 20px;
 }
-.list_cs{
+.list_3th{
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
@@ -196,22 +196,22 @@ body {
 				<div class="left_list">
 					<ul>
 						<c:if test="${member.type == 1 }">
-						<li class="list_1st"><a class="on" href="mypage.mall">관심 사업장</a></li>
-						<li class="list_2nd"><a href="trade/BSList.mall">구매 목록</a></li>
-						<li class="list_3th"><a href="cs.mall">고객 센터</a></li>
+						<li class="list_1st"><a class="on" href="${path }/member/mypage.mall">관심 사업장</a></li>
+						<li class="list_2nd"><a href="${path }/trade/BSList.mall">구매 목록</a></li>
+						<li class="list_3th"><a href="${path }/member/cs.mall">고객 센터</a></li>
 						</c:if>
 						<c:if test="${member.type == 2 }">
-						<li class="list_1st"><a class="on" href="mypage.mall">내사업장</a></li>
-						<li class="list_2nd"><a href="trade/BSList.mall">판매 목록</a></li>
-						<li class="list_3th"><a href="cs.mall">고객 센터</a></li>
+						<li class="list_1st"><a class="on" href="${path }/member/mypage.mall">내사업장</a></li>
+						<li class="list_2nd"><a href="${path }/trade/BSList.mall">판매 목록</a></li>
+						<li class="list_3th"><a href="${path }/member/cs.mall">고객 센터</a></li>
 						</c:if>
 						<c:if test="${member.type == 3 }">
-						<li class="list_1st"><a class="on" href="mypage.mall">사이트 관리</a></li>
-						<li class="list_2nd"><a href="trade/BSList.mall">회원 거래 목록</a></li>
-						<li class="list_3th"><a href="cs.mall">고객 센터</a></li>
+						<li class="list_1st"><a class="on" href="${path }/member/mypage.mall">사이트 관리</a></li>
+						<li class="list_2nd"><a href="${path }/trade/BSList.mall">회원 거래 목록</a></li>
+						<li class="list_3th"><a href="${path }/member/cs.mall">고객 센터</a></li>
 						</c:if>
 						<c:if test="${member.id == sana }">
-						<li class="list_1st"><a class="on" href="mypage.mall">찌릿찌릿</a></li>
+						<li class="list_1st"><a class="on" href="${path }/member/mypage.mall">찌릿찌릿</a></li>
 						<li class="list_2nd"><a href="">샤샤샤</a></li>
 						<li class="list_3th"><a href="">낙낙!</a></li>
 						</c:if>
