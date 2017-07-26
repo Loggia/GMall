@@ -238,7 +238,6 @@ public class ShopServiceImpl implements ShopService{
 		if(product.getSub_img3() !=null && !product.getSub_img3().isEmpty() ){
 			uploadFile(product.getSub_img3(),request);
 		}
-		System.out.println("에러없지 들어왔어?"+product);
 		productDao.ProductAdd(product);
 		
 	}

@@ -44,8 +44,8 @@ public class ProductController
 		Member member=(Member)session.getAttribute("LOGIN_MEMBER");
 
         product.setPro_no(pro_no);	
-        product.setBis_no("ABCDEF");
-        product.setId(member.getId());
+        product.setBis_no(member.getBis_no());
+        product.setBis_name(member.getBis_name());
 
 
 		shopService.ProductAdd(product,request);
