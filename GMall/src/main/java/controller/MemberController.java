@@ -40,7 +40,7 @@ public class MemberController
 		}
 		else if(member.getType() == 2)
 		{
-			if(shopService.cheakBis_no(member.getBis_no()))
+			if(shopService.cheakMember(member.getBis_no()))
 			{
 				List<String> bis_no = shopService.selectBis_no(); // 임의로 추가한 사업자 번호를 쿼리
 				boolean flag = false;

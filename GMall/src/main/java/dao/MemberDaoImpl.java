@@ -42,11 +42,11 @@ public class MemberDaoImpl implements MemberDao
 	 * 회원가입시 중복된 사업자 번호를 사용했는지를 판별
 	 */
 	@Override
-	public boolean cheakBis_no(String bis_no) 
+	public boolean cheakMember(String bis_no) 
 	{
 		try
 		{
-			Member member = sqlSession.getMapper(MemberMapper.class).cheakBis_no(bis_no);
+			Member member = sqlSession.getMapper(MemberMapper.class).cheakMember(bis_no);
 			
 			if(member == null || member.getId().equals(""))
 			{

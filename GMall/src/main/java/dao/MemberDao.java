@@ -7,7 +7,7 @@ import logic.Member;
 public interface MemberDao 
 {
 	boolean insert(Member member); // 주한울 - 회원가입 
-	boolean cheakBis_no(String bis_no); // 주한울 - 회원가입시 중복된 사업자 번호를 사용했는지를 판별
+	boolean cheakMember(String bis_no); // 주한울 - 회원가입시 중복된 사업자 번호를 사용했는지를 판별
 	Member getUserByIdAndPw(String id, String pass); // 주한울 - 로그인에 이용될 메서드
 	void update(Member member); // 주한울 - 회원 수정
 	void delete(Member member); // 주한울 - 회원 탈퇴
