@@ -8,7 +8,28 @@
 <title></title>
 <script type="text/javascript">
 $(document).ready(function(){
-
+		$(".list_1st a").mouseover(function(){
+        	$(".list_1st a").css("color", "#12d8fa");
+    	});
+   	 	$(".list_1st a").mouseout(function(){
+        	$(".list_1st a").css("color", "black");
+    	});
+   	 	
+	    $(".list_2nd a").mouseover(function(){
+	        $(".list_2nd a").css("color", "#12d8fa");
+	    });
+	    $(".list_2nd a").mouseout(function(){
+	        $(".list_2nd a").css("color", "black");
+	    });
+	    
+	    $(".list_3th a").mouseover(function(){
+	        $(".list_3th a").css("color", "#12d8fa");
+	    });
+	    $(".list_3th a").mouseout(function(){
+	        $(".list_3th a").css("color", "black");
+	    });
+	
+	
 });
 </script>
 <style type="text/css">
@@ -67,32 +88,32 @@ body {
 	margin: 0px;
 	font-size: 20px;
 }
-.list_fav{
+.list_1st {
 	border-bottom: 1px solid #e5e5e5;
 	margin-top: 20px;
 	margin-bottom: 20px;
 	padding-bottom: 20px;
 }
-.list_buylist{
+.list_2nd {
 	border-bottom: 1px solid #e5e5e5;
 	margin-top: 20px;
 	margin-bottom: 20px;
 	padding-bottom: 20px;
 }
-.list_cs{
+.list_3th {
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
 
-.list_fav a{
+.list_1st a{
 	text-decoration: none;
 	color: black;
 }
-.list_buylist a{
+.list_2nd a{
 	text-decoration: none;
 	color: black;
 }
-.list_cs a{
+.list_3th a{
 	text-decoration: none;
 	color: black;
 }
@@ -159,9 +180,26 @@ body {
 				</div>
 				<div class="left_list">
 					<ul>
-						<li class="list_fav"><a class="on" href="mypage.mall">관심 사업장</a></li>
-						<li class="list_buylist"><a href="buylist.mall">구매 목록</a></li>
-						<li class="list_cs"><a href="cs.mall">고객 센터</a></li>
+						<c:if test="${member.type == 1 }">
+						<li class="list_1st"><a href="${path }/member/mypage.mall">관심 사업장</a></li>
+						<li class="list_2nd"><a href="${path }/trade/BSList.mall">구매 목록</a></li>
+						<li class="list_3th"><a href="${path }/member/cs.mall">고객 센터</a></li>
+						</c:if>
+						<c:if test="${member.type == 2 }">
+						<li class="list_1st"><a href="${path }/member/mypage.mall">내사업장</a></li>
+						<li class="list_2nd"><a href="${path }/trade/BSList.mall">판매 목록</a></li>
+						<li class="list_3th"><a href="${path }/member/cs.mall">고객 센터</a></li>
+						</c:if>
+						<c:if test="${member.type == 3 }">
+						<li class="list_1st"><a href="${path }/member/mypage.mall">사이트 관리</a></li>
+						<li class="list_2nd"><a href="${path }/trade/BSList.mall">회원 거래 목록</a></li>
+						<li class="list_3th"><a href="${path }/member/cs.mall">고객 센터</a></li>
+						</c:if>
+						<c:if test="${member.id == sana }">
+						<li class="list_1st"><a href="${path }/member/mypage.mall">찌릿찌릿</a></li>
+						<li class="list_2nd"><a href="">샤샤샤</a></li>
+						<li class="list_3th"><a href="">낙낙!</a></li>
+						</c:if>
 					</ul>
 				</div>
 			</div>
@@ -175,7 +213,7 @@ body {
 						<div class="form-group">
 							<label class="control-label">아이디:</label> <input disabled
 								name="id" type="text" class="form-control"
-								placeholder="el태그 알아서 코딩해주세염">
+								placeholder="${member.id }">
 						</div>
 						<div class="form-group">
 							<label for="message-text" class="control-label">비밀번호:</label> <input

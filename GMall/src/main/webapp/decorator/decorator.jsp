@@ -39,7 +39,14 @@
 			html : true,
 			content : $('#mymenu_Form').html()
 		});
-		
+
+		$(".ml").mouseover(function() {
+			$(".ml").css("color", "#12d8fa");
+		});
+		$(".ml").mouseout(function() {
+			$(".ml").css("color", "black");
+		});
+
 	});
 </script>
 <style type="text/css">
@@ -80,7 +87,6 @@
 }
 
 .ml {
-	text-decoration: none;
 	cursor: pointer;
 	color: black;
 }
