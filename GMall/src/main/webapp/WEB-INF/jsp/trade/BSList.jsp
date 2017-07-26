@@ -189,7 +189,7 @@ body {
 			<div class="my_left">
 				<div class="left_prof">
 					<div style="text-align: center;"><img style="margin-top: 30px;" src="../img/sanaprof.PNG" class="img-circle" width="150px" height="150px"></div>
-					<a href=""><img style="position: absolute; margin-left: 143px; margin-top: 18px;" src="../img/option.png"></a>
+					<a href="${path }/member/infoForm.mall"><img style="position: absolute; margin-left: 150px; margin-top: 18px;" src="../img/option.png"></a>
 					<br>
 					<div style="text-align: center;">사나</div>
 				</div>
