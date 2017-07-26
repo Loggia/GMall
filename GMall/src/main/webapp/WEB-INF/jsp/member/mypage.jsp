@@ -323,7 +323,7 @@ body {
 							<tr> 
 								<th>상호</th><th>상품명</th><th>가격</th><th>카테고리</th><th>상세구분</th><th>등록일</th>
 							</tr>
-						</thead>
+						</thead> 
 						<tbody>
 							<c:forEach items="">
 							<tr>
