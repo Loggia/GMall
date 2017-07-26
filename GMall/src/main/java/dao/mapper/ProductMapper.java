@@ -13,8 +13,8 @@ public interface ProductMapper {
 	@Select("select count(*) from product")
 	int prono();
 
-	@Insert("insert into product ( pro_no, bis_no, id, date, pro_name, price, cnt, category, favorite, pro_content,main_img,sub_img1,sub_img2,sub_img3 )"
-	         +" values ( #{pro_no}, #{bis_no}, #{id}, now(), #{pro_name}, #{price}, #{cnt}, #{category}, #{favorite},#{pro_content},#{fileurl},#{fileurl1}, #{fileurl2}, #{fileurl3})")
+	@Insert("insert into product ( pro_no, bis_no, bis_name, date, pro_name, price, cnt, category, favorite, pro_content,main_img,sub_img1,sub_img2,sub_img3 )"
+	         +" values ( #{pro_no}, #{bis_no}, #{bis_name}, now(), #{pro_name}, #{price}, #{cnt}, #{category}, #{favorite},#{pro_content},#{fileurl},#{fileurl1}, #{fileurl2}, #{fileurl3})")
 	void ProductAdd(Product product);
 	
 	@Select("select * from product where id=#{id} order by pro_no")
