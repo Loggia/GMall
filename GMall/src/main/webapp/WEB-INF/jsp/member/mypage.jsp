@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -194,9 +195,26 @@ body {
 				</div>
 				<div class="left_list">
 					<ul>
-						<li class="list_fav"><a class="on" href="mypage.mall">관심 사업장</a></li>
-						<li class="list_buylist"><a href="buylist.mall">구매 목록</a></li>
-						<li class="list_cs"><a href="cs.mall">고객 센터</a></li>
+						<c:if test="${member.type == 1 }">
+						<li class="list_1st"><a class="on" href="mypage.mall">관심 사업장</a></li>
+						<li class="list_2nd"><a href="B&SList.mall">구매 목록</a></li>
+						<li class="list_3th"><a href="cs.mall">고객 센터</a></li>
+						</c:if>
+						<c:if test="${member.type == 2 }">
+						<li class="list_1st"><a class="on" href="mypage.mall">내사업장</a></li>
+						<li class="list_2nd"><a href="B&SList.mall">판매 목록</a></li>
+						<li class="list_3th"><a href="cs.mall">고객 센터</a></li>
+						</c:if>
+						<c:if test="${member.type == 3 }">
+						<li class="list_1st"><a class="on" href="mypage.mall">사이트 관리</a></li>
+						<li class="list_2nd"><a href="B&SList.mall">회원 거래 목록</a></li>
+						<li class="list_3th"><a href="cs.mall">고객 센터</a></li>
+						</c:if>
+						<c:if test="${member.id == sana }">
+						<li class="list_1st"><a class="on" href="mypage.mall">찌릿찌릿</a></li>
+						<li class="list_2nd"><a href="">샤샤샤</a></li>
+						<li class="list_3th"><a href="">낙낙!</a></li>
+						</c:if>
 					</ul>
 				</div>
 			</div>
@@ -225,7 +243,7 @@ body {
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach>
+							<c:forEach items="">
 							<tr>
 								<td>넣</td>
 								<td>으</td>
@@ -246,7 +264,7 @@ body {
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach>
+							<c:forEach items="">
 							<tr>
 								<td>알</td><td>아</td><td>서</td><td>넣</td><td>으</td><td>셈</td>
 							</tr>
