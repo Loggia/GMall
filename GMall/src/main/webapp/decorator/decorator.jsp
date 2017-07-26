@@ -232,7 +232,7 @@
 										<div class="form-group">
 											<label for="recipient-name" class="control-label">아이디:</label>
 											<input name="id" type="text" class="form-control" 
-												id="recipient-name" placeholder="아이디를 입력해주세요" required="required">
+												id="recipient-name" placeholder="아이디를 입력해주세요" required="required" minlength="3" maxlength="10">
 										</div>
 										<div class="form-group">
 											<label for="message-text" class="control-label">비밀번호:</label>
