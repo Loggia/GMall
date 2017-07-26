@@ -245,7 +245,7 @@ body {
 						</c:if>
 						<c:if test="${member.id==sana }">
 							<strong>TWICE</strong>
-						</c:if>
+						</c:if> 
 					</h3>
 					<table class="table table-hover" style="border-bottom: 1px solid #e5e5e5;">
 						<thead>
