@@ -272,7 +272,7 @@ body {
 					<table class="table table-hover" style="border-bottom: 1px solid #e5e5e5;">
 						<thead>
 							<tr>
-								<th>거래코드</th><th>거래 물품</th><th>구매 금액</th><th>상호명</th><th>일자</th>
+								<th>NO</th><th>제목</th><th>작성자</th><th>일자</th><th>답변여부</th>
 							</tr>
 						</thead>
 						<tbody>

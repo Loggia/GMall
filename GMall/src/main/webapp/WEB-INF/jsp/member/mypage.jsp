@@ -377,6 +377,9 @@ body {
 							</tbody>
 						</table>
 					</c:if>
+					<c:if test="${member.type == 2 }">
+						<button type="button" class="btn btn-info">상품 등록</button>
+					</c:if>
 				</div>
 			</div>
 		</div>
