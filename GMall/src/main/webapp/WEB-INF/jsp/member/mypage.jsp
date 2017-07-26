@@ -235,7 +235,7 @@ body {
 							<li class="menu_delv"><a href="${path }/trade/delvpage.mall"><img
 									src="../img/truck2_color.png" width="64px" height="64px"><br>배송 관리</a></li>
 							<li class="menu_coup"><a href="${path }/member/couppage.mall"><img
-									src="../img/coupon_color.png"><br>쿠폰관리</a></li>
+									src="../img/coupon_color.png"><br>쿠폰 관리</a></li>
 							<li class="menu_money"><a href="${path }/member/moneypage.mall"><img
 									src="../img/money_color.png"><br>보유 금액</a></li>
 							<li class="menu_talk"><a href="${path }/member/talkpage.mall"><img
@@ -378,7 +378,7 @@ body {
 						</table>
 					</c:if>
 					<c:if test="${member.type == 2 }">
-						<button type="button" class="btn btn-info">상품 등록</button>
+						<button type="button" onclick="location.href='${path}/product/addProduct.mall'" class="btn btn-info">상품 등록</button>
 					</c:if>
 				</div>
 			</div>

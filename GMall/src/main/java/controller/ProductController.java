@@ -21,11 +21,6 @@ public class ProductController
 	@Autowired
 	ShopService shopService;
 
-	@RequestMapping("product/productAddForm")
-	public ModelAndView productAddForm(){
-		ModelAndView mav = new ModelAndView();
-		return mav;
-	}
 	//상품추가 폼이동
 	@RequestMapping("product/addProduct")
 	public ModelAndView addProduct()
