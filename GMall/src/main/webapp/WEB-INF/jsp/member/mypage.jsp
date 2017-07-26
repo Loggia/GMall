@@ -191,7 +191,7 @@ body {
 					<div style="text-align: center;"><img style="margin-top: 30px;" src="../img/sanaprof.PNG" class="img-circle" width="150px" height="150px"></div>
 					<a href="infoForm.mall"><img style="position: absolute; margin-left: 143px; margin-top: 18px;" src="../img/option.png"></a>
 					<br>
-					<div style="text-align: center;">사나</div>
+					<div style="text-align: center;">${member.name }</div>
 				</div>
 				<div class="left_list">
 					<ul>
@@ -221,51 +221,83 @@ body {
 			<div class="my_right">
 				<div class="right_menu">
 					<ul>
-						<li class="menu_delv"><a href="delvpage.mall"><img
-								src="../img/truck2_color.png" width="64px" height="64px"><br>배송 정보</a></li>
-						<li class="menu_coup"><a href="couppage.mall"><img
-								src="../img/coupon_color.png"><br>보유 쿠폰</a></li>
-						<li class="menu_money"><a href="moneypage.mall"><img
-								src="../img/money_color.png"><br>보유 금액</a></li>
-						<li class="menu_talk"><a href="talkpage.mall"><img
-								src="../img/talk_color.png"><br>구디 톡톡!</a></li>
+						<c:if test="${member.type == 1 }">
+							<li class="menu_delv"><a href="${path }/trade/delvpage.mall"><img
+									src="../img/truck2_color.png" width="64px" height="64px"><br>배송 정보</a></li>
+							<li class="menu_coup"><a href="${path }/member/couppage.mall"><img
+									src="../img/coupon_color.png"><br>보유 쿠폰</a></li>
+							<li class="menu_money"><a href="${path }/member/moneypage.mall"><img
+									src="../img/money_color.png"><br>보유 금액</a></li>
+							<li class="menu_talk"><a href="${path }/member/talkpage.mall"><img
+									src="../img/talk_color.png"><br>구디 톡톡!</a></li>
+						</c:if>
+						<c:if test="${member.type == 2 }">
+							<li class="menu_delv"><a href="${path }/trade/delvpage.mall"><img
+									src="../img/truck2_color.png" width="64px" height="64px"><br>배송 관리</a></li>
+							<li class="menu_coup"><a href="${path }/member/couppage.mall"><img
+									src="../img/coupon_color.png"><br>쿠폰관리</a></li>
+							<li class="menu_money"><a href="${path }/member/moneypage.mall"><img
+									src="../img/money_color.png"><br>보유 금액</a></li>
+							<li class="menu_talk"><a href="${path }/member/talkpage.mall"><img
+									src="../img/talk_color.png"><br>구디 톡톡!</a></li>
+						</c:if>
+						<c:if test="${member.type == 3 }">
+							<li class="menu_delv"><a href="${path }/member/delvpage.mall"><img
+									src="../img/truck2_color.png" width="64px" height="64px"><br>일반회원 관리</a></li>
+							<li class="menu_coup"><a href="${path }/member/couppage.mall"><img
+									src="../img/coupon_color.png"><br>사업자회원 관리</a></li>
+							<li class="menu_money"><a href="${path }/member/moneypage.mall"><img
+									src="../img/money_color.png"><br>보유 금액</a></li>
+							<li class="menu_talk"><a href="${path }/member/talkpage.mall"><img
+									src="../img/talk_color.png"><br>구디 톡톡!</a></li>
+						</c:if>
+						<c:if test="${member.id==sana }">
+							<li class="menu_delv"><a href="delvpage.mall"><img
+									src="../img/truck2_color.png" width="64px" height="64px"><br>사나</a></li>
+							<li class="menu_coup"><a href="couppage.mall"><img
+									src="../img/coupon_color.png"><br>샤샤샤</a></li>
+							<li class="menu_money"><a href="moneypage.mall"><img
+									src="../img/money_color.png"><br>낙낙!</a></li>
+							<li class="menu_talk"><a href="talkpage.mall"><img
+									src="../img/talk_color.png"><br>오효오효쨩</a></li>
+						</c:if>
 					</ul>
 				</div>
 				<div class="left_cont">
 					<br><br>
 					<h3>
-						<c:if test="${member.type==1 }">
+						<c:if test="${member.type == 1 }">
 							<strong>관심 사업장</strong>
 						</c:if>
-						<c:if test="${member.type==2 }">
+						<c:if test="${member.type == 2 }">
 							<strong>내 사업장 관리</strong>
 						</c:if>
-						<c:if test="${member.type==3 }">
+						<c:if test="${member.type == 3 }">
 							<strong>사이트 관리</strong>
 						</c:if>
-						<c:if test="${member.id==sana }">
+						<c:if test="${member.id == sana }">
 							<strong>TWICE</strong>
 						</c:if> 
 					</h3>
 					<table class="table table-hover" style="border-bottom: 1px solid #e5e5e5;">
 						<thead>
 							<tr>
-								<c:if test="${member.type==1 }">
+								<c:if test="${member.type == 1 }">
 									<th>상호</th>
 									<th>연락처</th>
 									<th>프리미엄 여부</th>
 								</c:if>
-								<c:if test="${member.type==2 }">
+								<c:if test="${member.type == 2 }">
 									<th>상호</th>
 									<th>연락처</th>
 									<th>프리미엄 여부</th>
 								</c:if>
-								<c:if test="${member.type==3 }">
+								<c:if test="${member.type == 3 }">
 									<th>상호</th>
 									<th>연락처</th>
 									<th>프리미엄 여부</th>
 								</c:if>
-								<c:if test="${member.type==4 }">
+								<c:if test="${member.type == 4 }">
 									<th>트</th>
 									<th>와</th>
 									<th>이</th>
@@ -274,7 +306,7 @@ body {
 							</tr>
 						</thead>
 						<tbody>
-							<c:if test="${member.type==1 }">
+							<c:if test="${member.type == 1 }">
 								<c:forEach items="">
 									<tr>
 										<td>일</td>
@@ -283,7 +315,7 @@ body {
 									</tr>
 								</c:forEach>
 							</c:if>
-							<c:if test="${member.type==2 }">
+							<c:if test="${member.type == 2 }">
 								<c:forEach items="">
 									<tr>
 										<td>사</td>
@@ -292,7 +324,7 @@ body {
 									</tr>
 								</c:forEach>
 							</c:if>
-							<c:if test="${member.type==3 }">
+							<c:if test="${member.type == 3 }">
 								<c:forEach items="">
 									<tr>
 										<td>관</td>
@@ -301,7 +333,7 @@ body {
 									</tr>
 								</c:forEach>
 							</c:if>
-							<c:if test="${member.id==sana }">
+							<c:if test="${member.id == sana }">
 								<c:forEach items="">
 									<tr>
 										<td>사</td>
@@ -314,24 +346,36 @@ body {
 						</tbody>
 					</table>
 					<c:if test="${member.type==1 }">
-					<br><br>
-					<h3>
-						<strong>관심사업장 뉴스피드</strong>
-					</h3>
-					<table class="table table-hover" style="border-bottom: 1px solid #e5e5e5;">
-						<thead>
-							<tr> 
-								<th>상호</th><th>상품명</th><th>가격</th><th>카테고리</th><th>상세구분</th><th>등록일</th>
-							</tr>
-						</thead> 
-						<tbody>
-							<c:forEach items="">
-							<tr>
-								<td>알</td><td>아</td><td>서</td><td>넣</td><td>으</td><td>셈</td>
-							</tr>
-							</c:forEach>
-						</tbody>
-					</table>
+						<br>
+						<br>
+						<h3>
+							<strong>관심사업장 뉴스피드</strong>
+						</h3>
+						<table class="table table-hover"
+							style="border-bottom: 1px solid #e5e5e5;">
+							<thead>
+								<tr>
+									<th>상호</th>
+									<th>상품명</th>
+									<th>가격</th>
+									<th>카테고리</th>
+									<th>상세구분</th>
+									<th>등록일</th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach items="">
+									<tr>
+										<td>알</td>
+										<td>아</td>
+										<td>서</td>
+										<td>넣</td>
+										<td>으</td>
+										<td>셈</td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
 					</c:if>
 				</div>
 			</div>
