@@ -156,6 +156,8 @@ public class MemberController
 			mav.addObject("bookmark", new Member());
 		}
 		
+		mav.addObject("member", login);
+		
 		return mav;
 	}
 	
