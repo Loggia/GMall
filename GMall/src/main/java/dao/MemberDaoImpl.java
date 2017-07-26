@@ -36,6 +36,30 @@ public class MemberDaoImpl implements MemberDao
 			return false;
 		}
 	}
+	
+	/*
+	 * 주한울
+	 * 회원가입시 중복된 사업자 번호를 사용했는지를 판별
+	 */
+	@Override
+	public boolean cheakBis_no(String bis_no) 
+	{
+		try
+		{
+			Member member = sqlSession.getMapper(MemberMapper.class).cheakBis_no(bis_no);
+			
+			if(member == null || member.getId().equals(""))
+			{
+				return true;
+			}
+			
+			return false;
+		}
+		catch (Exception e) 
+		{
+			return true;
+		}
+	}
 
 	/*
 	 * 주한울	
