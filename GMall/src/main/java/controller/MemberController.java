@@ -161,14 +161,29 @@ public class MemberController
 		return mav;
 	}
 	
-	@RequestMapping("member/cs.mall")
-	public ModelAndView BSList(Member member, HttpSession session)
-	{
+	/*
+	 * 우동
+	 * 고객센터폼
+	 */
+	@RequestMapping("member/cs")
+	public ModelAndView cs(Member member, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		Member login = (Member)session.getAttribute("LOGIN_MEMBER");
 		mav.addObject("member", login);
 		return mav;
 	}
+	
+	/*
+	 * 사나쨩
+	 * 회원 인포폼
+	 */
+	@RequestMapping("member/infoForm")
+	public ModelAndView infoForm(Member member, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		Member login = (Member)session.getAttribute("LOGIN_MEMBER");
+		mav.addObject("member", login);
+		return mav;
+	} 
 	
 	/*
 	 * 주한울

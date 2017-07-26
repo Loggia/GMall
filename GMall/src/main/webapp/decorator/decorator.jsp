@@ -79,7 +79,8 @@
 	
 }
 
-.mymenu_list {
+.ml {
+	text-decoration: none;
 	cursor: pointer;
 	color: black;
 }
@@ -334,10 +335,16 @@
 								style="color: white;"></span><b style="color: white">MY 쇼핑</b>
 							<div class="hide">
 								<ol id="mymenu_Form">
-									<li class="mymemu_list" style="margin: 3px;"><a href="${path }/member/mypage.mall">내 정보</a></li>
-									<li class="mymemu_list" style="margin: 3px;"><a href="cartForm.mall">장바구니</a></li>
-									<li class="mymemu_list" style="margin: 3px;"><a href="deleveryForm.mall">배송정보</a></li>
-									<li class="mymemu_list" style="margin: 3px;"><a href="${path }/member/logout.mall">로그아웃</a></li>
+									<c:if test="${LOGIN_MEMBER.id == null }">
+									<li class="mymemu_list" style="margin: 5px;"><a style="text-decoration: none;" class="ml" data-toggle="modal" data-target="#loginFormModal">내 정보</a></li>
+									<li class="mymemu_list" style="margin: 5px;"><a style="text-decoration: none;" class="ml" data-toggle="modal" data-target="#loginFormModal">장바구니</a></li>
+									<li class="mymemu_list" style="margin: 5px;"><a style="text-decoration: none;" class="ml" data-toggle="modal" data-target="#loginFormModal">배송정보</a></li>
+									</c:if>
+									<c:if test="${LOGIN_MEMBER.id != null }">
+									<li class="mymemu_list" style="margin: 5px;"><a style="text-decoration: none;" class="ml" href="${path }/member/mypage.mall">내 정보</a></li>
+									<li class="mymemu_list" style="margin: 5px;"><a style="text-decoration: none;" class="ml" href="cartForm.mall">장바구니</a></li>
+									<li class="mymemu_list" style="margin: 5px;"><a style="text-decoration: none;" class="ml" href="deleveryForm.mall">배송정보</a></li>
+									</c:if>
 								</ol>
 							</div>
 						</div>
