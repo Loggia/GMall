@@ -161,6 +161,15 @@ public class MemberController
 		return mav;
 	}
 	
+	@RequestMapping("member/cs.mall")
+	public ModelAndView BSList(Member member, HttpSession session)
+	{
+		ModelAndView mav = new ModelAndView();
+		Member login = (Member)session.getAttribute("LOGIN_MEMBER");
+		mav.addObject("member", login);
+		return mav;
+	}
+	
 	/*
 	 * 주한울
 	 * 회원 수정 기능

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -80,19 +81,19 @@ body {
 	margin: 0px;
 	font-size: 20px;
 }
-.list_fav{
+.list_1st{
 	border-bottom: 1px solid #e5e5e5;
 	margin-top: 20px;
 	margin-bottom: 20px;
 	padding-bottom: 20px;
 }
-.list_buylist{
+.list_2nd{
 	border-bottom: 1px solid #e5e5e5;
 	margin-top: 20px;
 	margin-bottom: 20px;
 	padding-bottom: 20px;
 }
-.list_cs{
+.list_3th{
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
@@ -194,9 +195,26 @@ body {
 				</div>
 				<div class="left_list">
 					<ul>
-						<li class="list_fav"><a href="mypage.mall">관심 사업장</a></li>
-						<li class="list_buylist"><a href="buylist.mall">구매 목록</a></li>
-						<li class="list_cs"><a class="on" href="cs.mall">고객 센터</a></li>
+						<c:if test="${member.type == 1 }">
+						<li class="list_1st"><a href="mypage.mall">관심 사업장</a></li>
+						<li class="list_2nd"><a href="trade/BSList.mall">구매 목록</a></li>
+						<li class="list_3th"><a class="on" href="cs.mall">고객 센터</a></li>
+						</c:if>
+						<c:if test="${member.type == 2 }">
+						<li class="list_1st"><a href="mypage.mall">내사업장</a></li>
+						<li class="list_2nd"><a href="trade/BSList.mall">판매 목록</a></li>
+						<li class="list_3th"><a class="on" href="cs.mall">고객 센터</a></li>
+						</c:if>
+						<c:if test="${member.type == 3 }">
+						<li class="list_1st"><a href="mypage.mall">사이트 관리</a></li>
+						<li class="list_2nd"><a href="trade/BSList.mall">회원 거래 목록</a></li>
+						<li class="list_3th"><a class="on" href="cs.mall">고객 센터</a></li>
+						</c:if>
+						<c:if test="${member.id == sana }">
+						<li class="list_1st"><a href="mypage.mall">찌릿찌릿</a></li>
+						<li class="list_2nd"><a href="">샤샤샤</a></li>
+						<li class="list_3th"><a class="on" href="">낙낙!</a></li>
+						</c:if>
 					</ul>
 				</div>
 			</div>
@@ -226,7 +244,7 @@ body {
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach>
+							<c:forEach items="">
 							<tr>
 								<td>넣</td>
 								<td>으</td>

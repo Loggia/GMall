@@ -98,15 +98,15 @@ body {
 	margin-bottom: 20px;
 }
 
-.list_fav a{
+.list_1st a{
 	text-decoration: none;
 	color: #12d8fa;
 }
-.list_buylist a{
+.list_2nd a{
 	text-decoration: none;
 	color: black;
 }
-.list_cs a{
+.list_3th a{
 	text-decoration: none;
 	color: black;
 }
@@ -189,7 +189,7 @@ body {
 			<div class="my_left">
 				<div class="left_prof">
 					<div style="text-align: center;"><img style="margin-top: 30px;" src="../img/sanaprof.PNG" class="img-circle" width="150px" height="150px"></div>
-					<a href=""><img style="position: absolute; margin-left: 143px; margin-top: 18px;" src="../img/option.png"></a>
+					<a href="infoForm.mall"><img style="position: absolute; margin-left: 143px; margin-top: 18px;" src="../img/option.png"></a>
 					<br>
 					<div style="text-align: center;">사나</div>
 				</div>
@@ -197,17 +197,17 @@ body {
 					<ul>
 						<c:if test="${member.type == 1 }">
 						<li class="list_1st"><a class="on" href="mypage.mall">관심 사업장</a></li>
-						<li class="list_2nd"><a href="B&SList.mall">구매 목록</a></li>
+						<li class="list_2nd"><a href="trade/BSList.mall">구매 목록</a></li>
 						<li class="list_3th"><a href="cs.mall">고객 센터</a></li>
 						</c:if>
 						<c:if test="${member.type == 2 }">
 						<li class="list_1st"><a class="on" href="mypage.mall">내사업장</a></li>
-						<li class="list_2nd"><a href="B&SList.mall">판매 목록</a></li>
+						<li class="list_2nd"><a href="trade/BSList.mall">판매 목록</a></li>
 						<li class="list_3th"><a href="cs.mall">고객 센터</a></li>
 						</c:if>
 						<c:if test="${member.type == 3 }">
 						<li class="list_1st"><a class="on" href="mypage.mall">사이트 관리</a></li>
-						<li class="list_2nd"><a href="B&SList.mall">회원 거래 목록</a></li>
+						<li class="list_2nd"><a href="trade/BSList.mall">회원 거래 목록</a></li>
 						<li class="list_3th"><a href="cs.mall">고객 센터</a></li>
 						</c:if>
 						<c:if test="${member.id == sana }">
