@@ -234,25 +234,86 @@ body {
 				<div class="left_cont">
 					<br><br>
 					<h3>
-						<strong>관심 사업장</strong>
+						<c:if test="${member.type==1 }">
+							<strong>관심 사업장</strong>
+						</c:if>
+						<c:if test="${member.type==2 }">
+							<strong>내 사업장 관리</strong>
+						</c:if>
+						<c:if test="${member.type==3 }">
+							<strong>사이트 관리</strong>
+						</c:if>
+						<c:if test="${member.id==sana }">
+							<strong>TWICE</strong>
+						</c:if>
 					</h3>
 					<table class="table table-hover" style="border-bottom: 1px solid #e5e5e5;">
 						<thead>
 							<tr>
-								<th>상호</th><th>연락처</th><th>프리미엄 여부</th>
+								<c:if test="${member.type==1 }">
+									<th>상호</th>
+									<th>연락처</th>
+									<th>프리미엄 여부</th>
+								</c:if>
+								<c:if test="${member.type==2 }">
+									<th>상호</th>
+									<th>연락처</th>
+									<th>프리미엄 여부</th>
+								</c:if>
+								<c:if test="${member.type==3 }">
+									<th>상호</th>
+									<th>연락처</th>
+									<th>프리미엄 여부</th>
+								</c:if>
+								<c:if test="${member.type==4 }">
+									<th>트</th>
+									<th>와</th>
+									<th>이</th>
+									<th>스</th>
+								</c:if>
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach items="">
-							<tr>
-								<td>넣</td>
-								<td>으</td>
-								<td>셈</td>
-							</tr>
-							</c:forEach>
+							<c:if test="${member.type==1 }">
+								<c:forEach items="">
+									<tr>
+										<td>일</td>
+										<td>반</td>
+										<td>인</td>
+									</tr>
+								</c:forEach>
+							</c:if>
+							<c:if test="${member.type==2 }">
+								<c:forEach items="">
+									<tr>
+										<td>사</td>
+										<td>업</td>
+										<td>자</td>
+									</tr>
+								</c:forEach>
+							</c:if>
+							<c:if test="${member.type==3 }">
+								<c:forEach items="">
+									<tr>
+										<td>관</td>
+										<td>리</td>
+										<td>자</td>
+									</tr>
+								</c:forEach>
+							</c:if>
+							<c:if test="${member.id==sana }">
+								<c:forEach items="">
+									<tr>
+										<td>사</td>
+										<td>나</td>
+										<td>쨩</td>
+										<td>걸</td>
+									</tr>
+								</c:forEach>
+							</c:if>
 						</tbody>
 					</table>
-					
+					<c:if test="${member.type==1 }">
 					<br><br>
 					<h3>
 						<strong>관심사업장 뉴스피드</strong>
@@ -271,6 +332,7 @@ body {
 							</c:forEach>
 						</tbody>
 					</table>
+					</c:if>
 				</div>
 			</div>
 		</div>
