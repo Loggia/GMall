@@ -56,7 +56,7 @@ public class MemberController
 				if(!flag)
 				{
 					mav.setViewName("alert");
-					mav.addObject("msg", "사업자 번호를 확인하세요.");
+					mav.addObject("msg", "중복되는 아이디나 사업자 번호입니다.");
 				}
 				
 				shopService.insertMember(member);
