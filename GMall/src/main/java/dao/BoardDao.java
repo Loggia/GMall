@@ -14,6 +14,10 @@ public interface BoardDao {
 	List<Board> centerList(String searchType, String searchContent, Integer pageNum, int limit);
 	int getMaxNum(int typenum);
 	void centerInsert(Board board);
+	Board passthrough(String num);
+	Board getBoard(int num);
+	String getBoardPassword(int board_no);
+	void boardUpdate(Board board);
 	
 	
 }

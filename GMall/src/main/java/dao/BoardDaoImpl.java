@@ -59,6 +59,28 @@ public class BoardDaoImpl implements BoardDao{
 	public void centerInsert(Board board) {
 		sqlSession.getMapper(BoardMapper.class).centerInsert(board);
 	}
+
+	@Override
+	public Board passthrough(String num) {
+		/*Map<String, String> paramMap = new HashMap<String, String>();
+    	paramMap.put("num", num);*/
+    	return sqlSession.getMapper(BoardMapper.class).passthrough(num);
+	}
+
+	@Override
+	public Board getBoard(int num) {
+    	return sqlSession.getMapper(BoardMapper.class).getBoard(num);
+	}
+
+	@Override
+	public String getBoardPassword(int board_no) {
+		return sqlSession.getMapper(BoardMapper.class).getBoardPassword(board_no);
+	}
+
+	@Override
+	public void boardUpdate(Board board) {
+		sqlSession.getMapper(BoardMapper.class).boardUpdate(board);
+	}
 	
 	
 	

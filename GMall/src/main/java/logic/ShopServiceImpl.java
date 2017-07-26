@@ -114,7 +114,51 @@ public class ShopServiceImpl implements ShopService{
 				e.printStackTrace();
 			}
 		}
-	}	
+	}
+	
+	/*
+	  배기수 - 글번호에 해당하는 정보를 가져옴 
+	*/
+	@Override
+	public Board passthrough(String num) {
+		return boardDao.passthrough(num);
+	}
+	
+	/*
+	 배기수 - 글번호에 해당하는 글을 가져옴
+	*/
+	@Override
+	public Board getBoard(int num) {
+		return boardDao.getBoard(num);
+	}
+	
+	/*
+	  배기수 - 글번호에 해당하는 비밀번호를 가져옴 
+	*/
+	@Override
+	public String getBoardPassword(int board_no) {
+		return boardDao.getBoardPassword(board_no);
+	}
+	
+	/*
+	  배기수 - 글 업데이트 기능
+	*/
+	@Override
+	public void boardUpdate(Board board, HttpServletRequest request) {
+		if(!board.getImg1().isEmpty())
+		{
+			uploadFileCreate(board.getImg1(), request);
+		}
+		if(!board.getImg2().isEmpty())
+		{
+			uploadFileCreate(board.getImg2(), request);
+		}
+		if(!board.getImg3().isEmpty())
+		{
+			uploadFileCreate(board.getImg3(), request);
+		}
+		boardDao.boardUpdate(board);	
+	}
 	
 	
 
