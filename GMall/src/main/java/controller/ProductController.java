@@ -32,7 +32,7 @@ public class ProductController
 	//고종환 상품 업데이트 
 	@RequestMapping("product/productUpdate")
 	public ModelAndView productupdate(Product product,BindingResult bindingResult, HttpServletRequest request,HttpSession session){
-		ModelAndView mav=new ModelAndView("member/mypage.mall");
+		ModelAndView mav=new ModelAndView("member/mypage");
 		int pro_no = shopService.prono()+1;
 		
 		//Member member=(Member)request.getSession().getAttribute("LOGIN_MEMBER");
@@ -42,7 +42,8 @@ public class ProductController
         product.setBis_no(login.getBis_no());
         product.setBis_name(login.getBis_name());
 		shopService.ProductAdd(product,request);
-		
+		List<Product> myBis_list=shopService.getProductList(login.getBis_no());//내아이디만
+		mav.addObject("myBis_list",myBis_list);
 		mav.addObject("member",login);
 		
 		return mav;

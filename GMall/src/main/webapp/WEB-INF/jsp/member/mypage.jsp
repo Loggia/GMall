@@ -290,13 +290,13 @@ body {
 					<c:if test="${member.type == 2 }">
 						<div class="my_category pull-right" style="margin-bottom: 25px;">
 						<ul>
-							<li><input type="button" class="btn btn-default" onclick="location.href='categoryCheck.mall?category=육류'" value="육류"></li>
-							<li><input type="button" class="btn btn-default" onclick="location.href='categoryCheck.mall?category=해산물'" value="해산물"></li>
-							<li><input type="button" class="btn btn-default" onclick="location.href='categoryCheck.mall?category=과일'" value="과일"></li>
-							<li><input type="button" class="btn btn-default" onclick="location.href='categoryCheck.mall?category=채소'" value="채소"></li>
-							<li><input type="button" class="btn btn-default" onclick="location.href='categoryCheck.mall?category=곡류'" value="곡류"></li>
-							<li><input type="button" class="btn btn-default" onclick="location.href='categoryCheck.mall?category=견과류'" value="견과류"></li>
-							<li><input type="button" class="btn btn-default" onclick="location.href='categoryCheck.mall?category=조미료'" value="조미료"></li>
+							<li><input type="button" class="btn btn-default" onclick="location.href='${path}/member/categoryCheck.mall?category=육류'" value="육류"></li>
+							<li><input type="button" class="btn btn-default" onclick="location.href='${path}/member/categoryCheck.mall?category=해산물'" value="해산물"></li>
+							<li><input type="button" class="btn btn-default" onclick="location.href='${path}/member/categoryCheck.mall?category=과일'" value="과일"></li>
+							<li><input type="button" class="btn btn-default" onclick="location.href='${path}/member/categoryCheck.mall?category=채소'" value="채소"></li>
+							<li><input type="button" class="btn btn-default" onclick="location.href='${path}/member/categoryCheck.mall?category=곡류'" value="곡류"></li>
+							<li><input type="button" class="btn btn-default" onclick="location.href='${path}/member/categoryCheck.mall?category=견과류'" value="견과류"></li>
+							<li><input type="button" class="btn btn-default" onclick="location.href='${path}/member/categoryCheck.mall?category=조미료'" value="조미료"></li>
 						</ul>
 						</div>
 					</c:if>
