@@ -249,9 +249,9 @@ body {
 									src="../img/talk_color.png"><br>구디 톡톡!</a></li>
 						</c:if>
 						<c:if test="${member.type == 3 }">
-							<li class="menu_delv"><a href="${path }/member/delvpage.mall"><img
+							<li class="menu_delv"><a href="${path }/member/nomalList.mall"><img
 									src="../img/truck2_color.png" width="64px" height="64px"><br>일반회원 관리</a></li>
-							<li class="menu_coup"><a href="${path }/member/couppage.mall"><img
+							<li class="menu_coup"><a href="${path }/member/businessList.mall"><img
 									src="../img/coupon_color.png"><br>사업자회원 관리</a></li>
 							<li class="menu_money"><a href="${path }/member/moneypage.mall"><img
 									src="../img/money_color.png"><br>보유 금액</a></li>

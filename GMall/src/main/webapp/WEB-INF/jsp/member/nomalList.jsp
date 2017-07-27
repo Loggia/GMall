@@ -119,29 +119,7 @@ $(document).ready(function(){
 					</ul>
 				</div>
 				<div class="right_cont">
-					
-					<div class="panel panel-default" style="margin-top: 40px;">
-						<div id="delv_chk">
-							<ul style="margin: 14px; padding: 0;" >
-								<li class="nomal">
-									<img src="../img/delv_pro_ready.png">
-									<span class="delv_chk_font">0</span>
-								</li>
-								<li class="nomal">
-									<img src="../img/delv_trans_ready.png">
-									<span class="delv_chk_font">0</span>
-								</li>
-								<li class="nomal">
-									<img src="../img/delv_trans.png">
-									<span class="delv_chk_font">0</span>
-								</li>
-								<li class="last">
-									<img src="../img/delv_comp.png">
-									<span class="delv_chk_font">0</span>
-								</li>
-							</ul>
-						</div>
-					</div>					
+				
 				
 					<br><br>
 
@@ -153,24 +131,24 @@ $(document).ready(function(){
 							style="border-bottom: 1px solid #e5e5e5;">
 							<thead>
 								<tr>
-									<th>거래코드</th>
-									<th>거래 물품</th>
-									<th>구매 금액</th>
-									<th>상호명</th>
-									<th>일자</th>
-									<th>배송현황</th>
-								</tr>
+								<th>아이디</th>
+								<th>닉네임</th>
+								<th>패스워드</th>
+								<th>이름</th>
+								<th>성별</th>
+								<th>연락처</th>
+							</tr>
 							</thead>
 							<tbody>
-								<c:forEach items="">
-									<tr>
-										<td>넣</td>
-										<td>으</td>
-										<td>셈</td>
-										<td>뿌</td>
-										<td>잉</td>
-										<td>잉</td>
-									</tr>
+								<c:forEach items="${nomalList}" var="nomal">
+								<tr>
+								<td>${nomal.id}</td>
+								<td>${nomal.nickname}</td>
+								<td>${nomal.pass}</td>
+								<td>${nomal.name}</td>
+								<td>${nomal.gender}</td>
+								<td>${nomal.tel}</td>
+								</tr>
 								</c:forEach>
 							</tbody>
 						</table>

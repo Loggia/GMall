@@ -354,11 +354,13 @@ public class MemberController
 	 */
 	
 	@RequestMapping("member/nomalList")
-	public ModelAndView nomalList () {
+	public ModelAndView nomalList (HttpSession session) {
 		
+		Member login = (Member)session.getAttribute("LOGIN_MEMBER");
 		ModelAndView mav = new ModelAndView() ;
 		List<Member> nomalList = shopService.nomalList();
 		mav.addObject ("nomalList" , nomalList) ;
+		mav.addObject("member", login);
 		return mav; 
 		
 	}
@@ -367,11 +369,13 @@ public class MemberController
 	 * 사업자관리
 	 */
 	@RequestMapping("member/businessList")
-	public ModelAndView businessList () {
+	public ModelAndView businessList (HttpSession session) {
 		
+		Member login = (Member)session.getAttribute("LOGIN_MEMBER");
 		ModelAndView mav = new ModelAndView() ;
 		List<Member> businessList = shopService.businessList();
 		mav.addObject ("businessList" , businessList) ;
+		mav.addObject("member", login);
 		return mav; 
 		
 	}
