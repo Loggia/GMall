@@ -280,7 +280,7 @@ body {
 							<tr>
 								<td>${trd.trd_code }</td>
 								<td>${trd.pro_name }</td>
-								<td>${trd.trd_money }</td>
+								<td>${trd.trd_money }원</td>
 								<td>${trd.bis_name }</td>
 								<td><f:formatDate value="${trd.trd_date }" pattern="yy-MM-dd"/></td>
 							</tr>
