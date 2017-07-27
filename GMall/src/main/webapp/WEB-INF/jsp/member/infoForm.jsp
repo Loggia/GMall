@@ -176,7 +176,7 @@ body {
 					<div style="text-align: center;"><img style="margin-top: 30px;" src="../img/sanaprof.PNG" class="img-circle" width="150px" height="150px"></div>
 					<a href="${path }/member/infoForm.mall"><img style="position: absolute; margin-left: 150px; margin-top: 18px;" src="../img/option.png"></a>
 					<br>
-					<div style="text-align: center;">${member.name }</div>
+					<div style="text-align: center;">사나</div>
 				</div>
 				<div class="left_list">
 					<ul>
@@ -209,11 +209,12 @@ body {
 							<h3 class="panel-title">회원 정보 수정</h3>
 						</div>
 					<div class="panel-body">
-
+					<form action="${path }/member/update.mall" method="post" name="infoform">
 						<div class="form-group">
 							<label class="control-label">아이디:</label> <input disabled
-								name="id" type="text" class="form-control"
-								placeholder="${member.id }">
+								type="text" class="form-control"
+								value="${member.id }">
+								<input type="hidden" name="id" value="${member.id }">
 						</div>
 						<div class="form-group">
 							<label for="message-text" class="control-label">비밀번호:</label> <input
@@ -228,56 +229,63 @@ body {
 						<div class="form-group">
 							<label for="recipient-name" class="control-label">이름:</label> <input
 								name="name" type="text" class="form-control" id="recipient-name"
-								placeholder="이름을 입력해주세요">
+								value="${member.name }" placeholder="이름을 입력해주세요">
 						</div>
 						<div class="form-group">
 							<label for="message-text" class="control-label">닉네임:</label> <input
 								name="nickname" type="text" class="form-control"
-								id="message-text" placeholder="닉네임을 입력해주세요">
+								id="message-text" value="${member.nickname }" placeholder="닉네임을 입력해주세요">
 						</div>
 						<div class="form-group">
 							<label for="recipient-name" class="control-label">성별:&nbsp;&nbsp;</label>
 							<label class="radio-inline-lg" style="cursor: pointer;">
-								<input type="radio" name="gender" value="1"
+								<input type="radio" name="gender" id="gender_1" value="1"
 								style="cursor: pointer;">남자
 							</label> &nbsp;&nbsp; <label class="radio-inline-lg"
 								style="cursor: pointer;"> <input type="radio"
-								name="gender" value="2" style="cursor: pointer;">여자
+								name="gender" id="gender_2" value="2" style="cursor: pointer;">여자
 							</label>
+							<script type="text/javascript">
+								$("#gender_${member.gender}").prop("checked", true);
+							</script>
 						</div>
 						<div class="form-group">
 							<label for="message-text" class="control-label">연락처:</label> <input
 								name="tel" type="text" class="form-control" id="message-text"
-								placeholder="연락처를 입력해주세요">
+								value="${member.tel }" placeholder="연락처를 입력해주세요">
 						</div>
 						<div class="form-group">
 							<label for="message-text" class="control-label">주소:</label> <input
 								name="address" type="text" class="form-control"
-								id="message-text" placeholder="주소를 입력해주세요">
+								id="message-text" value="${member.address }" placeholder="주소를 입력해주세요">
 						</div>
 						<div class="form-group">
 							<label for="sel1">관심 상품:</label> <select name="interest"
-								class="form-control" id="sel1"
+								class="form-control" id="interest"
 								style="width: 100px; cursor: pointer;">
-								<option>육류</option>
-								<option>해산물</option>
-								<option>과일</option>
-								<option>채소</option>
-								<option>곡류</option>
-								<option>견과류</option>
+								<option value="육류">육류</option>
+								<option value="해산물">해산물</option>
+								<option value="과일">과일</option>
+								<option value="채소">채소</option>
+								<option value="곡류">곡류</option>
+								<option value="견과류">견과류</option>
 							</select>
+							<script type="text/javascript">
+								$("#interest").val("${member.interest}");
+							</script>
 						</div>
 						<c:if test="${member.type == 2 }">
 							<div class="form-group">
 								<label for="message-text" class="control-label">사업자 번호:</label>
-								<input name="bis_no" type="text" class="form-control" id="message-text" placeholder="사업자 번호를 입력해주세요">
+								<input name="bis_no" type="text" class="form-control" id="message-text" value="${member.bis_no }">
 							</div>
 							<div class="form-group">
 								<label for="message-text" class="control-label">상호:</label>
-								<input name="bis_name" type="text" class="form-control" id="message-text" placeholder="상호를 입력해주세요">
+								<input name="bis_name" type="text" class="form-control" id="message-text" value="${member.bis_name }">
 							</div>
 						</c:if>
-						<button type="button" class="btn btn-info">수정</button>
+						<button type="submit" class="btn btn-info">수정</button>
+					</form>
 					</div> <!-- 패널 바디 -->
 				</div> <!-- 패널  -->
 				

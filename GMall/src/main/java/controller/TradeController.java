@@ -30,6 +30,15 @@ public class TradeController
 		Member login = (Member)session.getAttribute("LOGIN_MEMBER");
 		List<Trade> trdList = null;
 		
+		if(login == null)
+		{
+			mav.setViewName("alert");
+			mav.addObject("url", "../board/main.mall");
+			mav.addObject("msg", "로그인하고 시도하시기 바랍니다.");
+			
+			return mav;
+		}
+		
 		if(login.getType() == 1) // 일반회원 (주한울)
 		{
 			trdList = shopService.tradeBuyList(login.getId());

@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -122,6 +121,7 @@ public class MemberController
 	{
 		ModelAndView mav = new ModelAndView("board/main");
 		session.invalidate();
+		System.out.println("로그아웃 성공");
 		
 		return mav;
 	}
@@ -136,16 +136,25 @@ public class MemberController
 		ModelAndView mav = new ModelAndView();
 		Member login = (Member)session.getAttribute("LOGIN_MEMBER");
 		
+		if(login == null)
+		{
+			mav.setViewName("alert");
+			mav.addObject("url", "../board/main.mall");
+			mav.addObject("msg", "로그인하고 시도하시기 바랍니다.");
+			
+			return mav;
+		}
+		
 		if(login.getType() == 1) 
 		{
 			List<Member> bookmark = shopService.selectBookmark(login.getId());
 			List<Product> newsfeed = shopService.selectNewsFeed(login.getId());
 			
-			if(!(bookmark == null))
+			if(bookmark != null)
 			{
 				mav.addObject("bookmark", bookmark);
 				
-				if(!(newsfeed == null))
+				if(newsfeed != null)
 				{
 					mav.addObject("newsfeed", newsfeed);
 				}
@@ -159,11 +168,14 @@ public class MemberController
 				mav.addObject("bookmark", new Member());
 			}
 		}
-		else if(login.getType() == 2)
+		/*else if(login.getType() == 2)
 		{
-			List<Product> myBis_list=shopService.getProductList(login.getBis_no());//내아이디만
-			mav.addObject("myBis_list",myBis_list);
+			// 사업자
 		}
+		else if(login.getType() == 3)
+		{
+			
+		}*/
 		
 		mav.addObject("member", login);
 		return mav;
@@ -189,6 +201,16 @@ public class MemberController
 	public ModelAndView infoForm(Member member, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		Member login = (Member)session.getAttribute("LOGIN_MEMBER");
+		
+		if(login == null)
+		{
+			mav.setViewName("alert");
+			mav.addObject("url", "../board/main.mall");
+			mav.addObject("msg", "로그인하고 시도하시기 바랍니다.");
+			
+			return mav;
+		}
+		
 		mav.addObject("member", login);
 		return mav;
 	} 
@@ -198,17 +220,37 @@ public class MemberController
 	 * 회원 수정 기능
 	 */
 	@RequestMapping("member/update")
-	public ModelAndView update(Member member, HttpSession session)
+	public ModelAndView update(Member member, HttpServletRequest request, HttpSession session)
 	{
-		ModelAndView mav = new ModelAndView();
+		ModelAndView mav = new ModelAndView("member/mypage");
 		Member login = (Member)session.getAttribute("LOGIN_MEMBER");
+		String passfirm = request.getParameter("passfirm");
 		
-		if(login.getId().equals(member.getId()) && login.getPass().equals(member.getPass()) ||
-		   login.getId().equals("admin"))
+		if(login.getId().equals(member.getId()))
 		{
-			shopService.updateMember(member);
+			if(login.getPass().equals(member.getPass()))
+			{
+				
+			}
+			else
+			{
+				mav.setViewName("alert");
+				mav.addObject("url", "member/mypage.mall");
+				mav.addObject("msg", "비밀번");
+			}
+		}
+		else if(login.getId().equals("admin"))
+		{
+			
+		}
+		else
+		{
+			mav.setViewName("alert");
+			mav.addObject("url", "member/mypage.mall");
+			mav.addObject("msg", "아이디나 비밀번호를 잘못입력하셨습니다.");
 		}
 		
+		mav.addObject("member", login);
 		return mav;
 	}
 	
@@ -234,13 +276,12 @@ public class MemberController
 			{
 				e.printStackTrace();
 			}
-			
 		}
 		
 		return mav;
 	}
 	
-	/*@RequestMapping("member/adminForm")
+	@RequestMapping("member/adminForm")
 	public ModelAndView admin()
 	{
 		ModelAndView mav = new ModelAndView();
@@ -248,7 +289,7 @@ public class MemberController
 		mav.addObject("tradeList",tradeList);
 			
 		return mav;
-	}*/
+	}
 	
 	/*
 	 * 구정연 
@@ -288,16 +329,6 @@ public class MemberController
 		List<Trade> tradeList = shopService.tradeList();
 		mav.addObject("tradeList",tradeList);
 			
-		return mav;
-		
-	}
-	
-	@RequestMapping("member/passConfirm")
-	public ModelAndView passConfirm(HttpServletRequest request, HttpSession session) {
-		
-		ModelAndView mav = new ModelAndView();
-		Member login = (Member)session.getAttribute("LOGIN_MEMBER");
-		mav.addObject("member", login);
 		return mav;
 		
 	}
