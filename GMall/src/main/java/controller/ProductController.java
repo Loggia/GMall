@@ -32,18 +32,18 @@ public class ProductController
 	//고종환 상품 업데이트 
 	@RequestMapping("product/productUpdate")
 	public ModelAndView productupdate(Product product,BindingResult bindingResult, HttpServletRequest request,HttpSession session){
-		ModelAndView mav=new ModelAndView("product/productAddForm");
+		ModelAndView mav=new ModelAndView("member/mypage");
 		int pro_no = shopService.prono()+1;
 		
 		//Member member=(Member)request.getSession().getAttribute("LOGIN_MEMBER");
-		Member member=(Member)session.getAttribute("LOGIN_MEMBER");
+		Member login=(Member)session.getAttribute("LOGIN_MEMBER");
 
         product.setPro_no(pro_no);	
-        product.setBis_no(member.getBis_no());
-        product.setBis_name(member.getBis_name());
-
-
+        product.setBis_no(login.getBis_no());
+        product.setBis_name(login.getBis_name());
 		shopService.ProductAdd(product,request);
+		
+		mav.addObject("login",login);
 		return mav;
 	}
 	//고종환 내 사업장 관리
