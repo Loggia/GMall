@@ -7,6 +7,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<script type="text/javascript">
+$(document).ready(function() {
+	
+});
+</script>
 <style type="text/css">
 body {
 	background-color: #e9ecef;
@@ -50,12 +55,19 @@ body {
 }
 
 #category ul li{
-	background-color : rgba(255, 95, 162, 0.15);
-	width: 100px;
+	width: 150px;
 	float: left;
 	display: inline;
-	margin: 0px 10px 0px 0px;
-	font-size: 20px;
+	margin: 5px 10px 0px 0px;
+	font-size: 25px;
+	font-family: 'Roboto', sans-serif;
+	text-align: center;
+	cursor: pointer;
+	color: rgba(0,0,0,0.75);
+}
+#category ul li:hover {
+	color: #12d8fa;
+	text-decoration: underline;
 }
 
 .mask {
@@ -79,11 +91,11 @@ body {
 			<div id="category" style="margin: 0; padding: 0;">
 				<ul style="margin: 0px; padding: 0px;">
 					<li><b>육류</b></li>
-					<li>해산물</li>
-					<li>채소</li>
-					<li>과일</li>
-					<li>곡류</li>
-					<li>견과류</li>
+					<li><b>해산물</b></li>
+					<li><b>야채</b></li>
+					<li><b>과일</b></li>
+					<li><b>곡류</b></li>
+					<li><b>조미료</b></li>
 				</ul>
 			</div>
 		</div>
