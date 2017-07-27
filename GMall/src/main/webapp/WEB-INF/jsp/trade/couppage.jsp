@@ -26,6 +26,15 @@ $(document).ready(function(){
 	
 });
 </script>
+<style type="text/css">
+.disc_sel ul li{
+	float: left;
+	margin-right: 20px;
+}
+.disc_sel  ul li input{
+
+}
+</style>
 </head>
 <body>
 	<div class="container-fluid"
@@ -113,93 +122,71 @@ $(document).ready(function(){
 					</ul>
 				</div>
 				<div class="right_cont">
-					
-					<div class="panel panel-default" style="margin-top: 40px;">
-						<div id="delv_chk">
-							<ul style="margin: 14px; padding: 0;" >
-								<li class="nomal">
-									<img src="../img/delv_pro_ready.png">
-									<span class="delv_chk_font">0</span>
-								</li>
-								<li class="nomal">
-									<img src="../img/delv_trans_ready.png">
-									<span class="delv_chk_font">0</span>
-								</li>
-								<li class="nomal">
-									<img src="../img/delv_trans.png">
-									<span class="delv_chk_font">0</span>
-								</li>
-								<li class="last">
-									<img src="../img/delv_comp.png">
-									<span class="delv_chk_font">0</span>
-								</li>
-							</ul>
-						</div>
-					</div>					
 				
 					<br><br>
-
-					<c:if test="${member.type == 1 }">
-						<h3>
-							<strong>배송 목록</strong>
-						</h3>
-						<table class="table table-hover"
-							style="border-bottom: 1px solid #e5e5e5;">
-							<thead>
-								<tr>
-									<th>거래코드</th>
-									<th>거래 물품</th>
-									<th>구매 금액</th>
-									<th>상호명</th>
-									<th>일자</th>
-									<th>배송현황</th>
-								</tr>
-							</thead>
-							<tbody>
-								<c:forEach items="">
-									<tr>
-										<td>넣</td>
-										<td>으</td>
-										<td>셈</td>
-										<td>뿌</td>
-										<td>잉</td>
-										<td>잉</td>
-									</tr>
-								</c:forEach>
-							</tbody>
-						</table>
-					</c:if>
 					
-					<c:if test="${member.type == 2 }">
 						<h3>
-							<strong>배송 목록</strong>
+							<c:if test="${member.type==1 }">
+							<strong>보유 쿠폰</strong>
+							</c:if>
+							<c:if test="${member.type==2 }">
+							<strong>쿠폰 목록</strong>
+							</c:if>
 						</h3>
-						<table class="table table-hover"
+					
+					<div class="disc_sel pull-right" style="margin-bottom: 40px;">
+						<ul>
+							<li>
+								<label style="cursor: pointer;">
+									<input style="width: 17px; height: 17px;" type="radio" name="type" value="1" required="required"><span style="vertical-align: top;">5%</span>
+								</label>
+							</li>
+							<li>
+								<label style="cursor: pointer;">
+									<input style="width: 17px; height: 17px;" type="radio" name="type" value="2" required="required"><span style="vertical-align: top;">10%</span>
+								</label>
+							</li>
+							<li>
+								<label style="cursor: pointer;">
+									<input style="width: 17px; height: 17px;" type="radio" name="type" value="3" required="required"><span style="vertical-align: top;">15%</span>
+								</label>
+							</li>
+						</ul>
+					</div>
+
+					<table class="table table-hover"
 							style="border-bottom: 1px solid #e5e5e5;">
 							<thead>
 								<tr>
-									<th>거래코드</th>
-									<th>거래 물품</th>
-									<th>구매 금액</th>
-									<th>구매자</th>
-									<th>일자</th>
-									<th>배송현황</th>
+									<c:if test="${member.type == 1 }">
+									<th>할인율</th>
+									<th>발급자</th>
+									<th>사용여부</th>
+									</c:if>
+									<c:if test="${member.type == 2 }">
+									<th>할인율</th>
+									<th>보유자</th>
+									<th>사용 여부</th>
+									</c:if>
 								</tr>
 							</thead>
 							<tbody>
 								<c:forEach items="">
 									<tr>
+										<c:if test="${member.type == 2 }">
 										<td>넣</td>
 										<td>으</td>
 										<td>셈</td>
-										<td>뿌</td>
-										<td>잉</td>
-										<td>잉</td>
+										</c:if>
+										<c:if test="${member.type == 2 }">
+										<td>넣</td>
+										<td>으</td>
+										<td>셈</td>
+										</c:if>
 									</tr>
 								</c:forEach>
 							</tbody>
 						</table>
-					</c:if>
 					
 					<br><br>
 				</div>
