@@ -76,8 +76,7 @@ $(document).ready(function(){
 					</ul>
 				</div>
 			</div>
-			<div class="my_right">
-				<div class="right_menu">
+			<div class="right_menu">
 					<ul>
 						<c:if test="${member.type == 1 }">
 							<li class="menu_delv"><a href="${path }/trade/delvpage.mall"><img
@@ -121,6 +120,8 @@ $(document).ready(function(){
 						</c:if>
 					</ul>
 				</div>
+			<div class="my_right">
+				
 				<div class="right_cont">
 				
 					<br><br>
