@@ -47,4 +47,13 @@ public class TradeController
 		
 		return mav;
 	}
+	
+	@RequestMapping("trade/delvpage.mall")
+	public ModelAndView delvpage(Member member, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		Member login = (Member)session.getAttribute("LOGIN_MEMBER");
+		mav.addObject("member", login);   
+		return mav;
+	}
+	
 }
