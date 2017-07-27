@@ -265,6 +265,7 @@ body {
 				</div>
 				<div class="left_cont">
 					<br><br>
+					<c:if test="${member.type==1 }">
 					<h3>
 						<strong>구매 목록</strong>
 					</h3>
@@ -286,6 +287,55 @@ body {
 							</c:forEach>
 						</tbody>
 					</table>
+					</c:if>
+					
+					<c:if test="${member.type==2 }">
+					<h3>
+						<strong>판매 목록</strong>
+					</h3>
+					<table class="table table-hover" style="border-bottom: 1px solid #e5e5e5;">
+						<thead>
+							<tr>
+								<th>거래코드</th><th>거래 물품</th><th>구매 금액</th><th>상호명</th><th>일자</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach items="">
+							<tr>
+								<td>넣</td>
+								<td>으</td>
+								<td>셈</td>
+								<td>뿌</td>
+								<td>잉</td>
+							</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+					</c:if>
+					
+					<c:if test="${member.type==3 }">
+					<h3>
+						<strong>회원 거래 목록</strong>
+					</h3>
+					<table class="table table-hover" style="border-bottom: 1px solid #e5e5e5;">
+						<thead>
+							<tr>
+								<th>거래코드</th><th>거래 물품</th><th>구매 금액</th><th>상호명</th><th>일자</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach items="">
+							<tr>
+								<td>넣</td>
+								<td>으</td>
+								<td>셈</td>
+								<td>뿌</td>
+								<td>잉</td>
+							</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+					</c:if>
 					
 					<br><br>
 				</div>

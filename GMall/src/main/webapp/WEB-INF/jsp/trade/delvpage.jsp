@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="${path }/css/delvpage.css">
 <title></title>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -25,177 +26,11 @@ $(document).ready(function(){
 	
 });
 </script>
-<style type="text/css">
-body {
-	background-color: #f4f4f4;
-}
-
-.container-fluid {
-	padding-top: 0 !important;
-}
-
-.info_content {
-	border: 1px solid #e5e5e5;
-	height: 1500px;
-	margin: 30px auto 30px auto;
-	padding: 0px;
-	background: #fff;
-	font-family: '나눔고딕', NanumGothic, '맑은고딕', MalgunGothic, '돋움', Dotum,
-		Helvetica, sans-serif;
-}
-
-.my_left {
-	position: absolute;
-	width: 250px;
-	height: 1500px;
-}
-
-.my_right {
-	position: relative;
-	width: 1157.61px;
-	padding: 0px 40px 120px 40px;
-	height: 1500px;
-	margin-left: 250px;
-	border-left: 1px solid #e5e5e5;
-}
-
-.left_prof {
-	width: 250px;
-	height: 240px;
-	background-color: #bbbfc3;
-	border-bottom: 1px solid #e5e5e5;
-}
-
-.left_list {
-	width: 250px;
-	height: 800px;
-	padding-top: 40px;
-	padding-left: 40px;
-	padding-right: 40px;
-	padding-bottom: 20px;
-	text-align: left;
-}
-.left_list ul {
-	text-align: left;
-	padding: 0px;
-	margin: 0px;
-	font-size: 20px;
-}
-.list_1st{
-	border-bottom: 1px solid #e5e5e5;
-	margin-top: 20px;
-	margin-bottom: 20px;
-	padding-bottom: 20px;
-}
-.list_2nd{
-	border-bottom: 1px solid #e5e5e5;
-	margin-top: 20px;
-	margin-bottom: 20px;
-	padding-bottom: 20px;
-}
-.list_3th{
-	margin-top: 20px;
-	margin-bottom: 20px;
-}
-
-.list_1st a{
-	text-decoration: none;
-	color: black;
-}
-.list_2nd a{
-	text-decoration: none;
-	color: #12d8fa;
-}
-.list_3th a{
-	text-decoration: none;
-	color: black;
-}
-
-.right_menu {
-	position: relative;
-	width: 100%;
-	height: 240px;
-	padding: 35px 0px 35px 0px;
-	border-bottom: 1px solid #e5e5e5;
-}
-
-.right_menu ul {
-	list-style: none;
-}
-
-.menu_delv {
-	text-align: center;
-	float: left;
-	border-right: 1px solid #e5e5e5;
-	padding-top: 40px;
-	padding-bottom: 45px;
-	padding-left: 50px;
-	padding-right: 100px;
-}
-
-.menu_coup {
-	text-align: center;
-	float: left;
-	border-right: 1px solid #e5e5e5;
-	padding-top: 40px;
-	padding-bottom: 45px;
-	padding-left: 110px;
-	padding-right: 110px;
-}
-
-.menu_money {
-	text-align: center;
-	float: left;
-	border-right: 1px solid #e5e5e5;
-	padding-top: 40px;
-	padding-bottom: 45px;
-	padding-left: 110px;
-	padding-right: 110px;
-}
-
-.menu_talk {
-	text-align: center;
-	float: left;
-	padding-top: 40px;
-	padding-bottom: 45px;
-	padding-left: 110px;
-}
-
-.right_cont {
-	
-}
-
-.home_group {
-	margin-top :20px;
-	border-top: 1px solid #e5e5e5;
-}
-.bus_list {
-	margin-top: 20px;
-	border-bottom: 1px solid #e5e5e5;
-}
-.bus_cont {
-	margin-top: 20px;
-	margin-bottom: 20px;
-}
-.nomal{
-	display: inline-block;
-	margin-right: 40px;
-	text-align: center;
-}
-
-.last {
-	display: inline-block;
-	margin: 0px;
-}
-.delv_chk_font {
-	margin-left: 20px;
-	font-size: 120px;
-}
-</style>
 </head>
 <body>
 	<div class="container-fluid"
 		style="padding-left: 0px; padding-right: 0px;">
+	<div class="hos"></div>
 
 		<div class="col-xs-2"></div>
 
@@ -211,22 +46,22 @@ body {
 					<ul>
 						<c:if test="${member.type == 1 }">
 						<li class="list_1st"><a href="${path }/member/mypage.mall">관심 사업장</a></li>
-						<li class="list_2nd"><a class="on" href="${path }/trade/BSList.mall">구매 목록</a></li>
+						<li class="list_2nd"><a href="${path }/trade/BSList.mall">구매 목록</a></li>
 						<li class="list_3th"><a href="${path }/member/cs.mall">고객 센터</a></li>
 						</c:if>
 						<c:if test="${member.type == 2 }">
 						<li class="list_1st"><a href="${path }/member/mypage.mall">내사업장</a></li>
-						<li class="list_2nd"><a class="on" href="${path }/trade/BSList.mall">판매 목록</a></li>
+						<li class="list_2nd"><a href="${path }/trade/BSList.mall">판매 목록</a></li>
 						<li class="list_3th"><a href="${path }/member/cs.mall">고객 센터</a></li>
 						</c:if>
 						<c:if test="${member.type == 3 }">
 						<li class="list_1st"><a href="${path }/member/mypage.mall">사이트 관리</a></li>
-						<li class="list_2nd"><a class="on" href="${path }/trade/BSList.mall">회원 거래 목록</a></li>
+						<li class="list_2nd"><a href="${path }/trade/BSList.mall">회원 거래 목록</a></li>
 						<li class="list_3th"><a href="${path }/member/cs.mall">고객 센터</a></li>
 						</c:if>
 						<c:if test="${member.id == sana }">
 						<li class="list_1st"><a href="mypage.mall">찌릿찌릿</a></li>
-						<li class="list_2nd"><a class="on" href="${path }/trade/BSList.mall">샤샤샤</a></li>
+						<li class="list_2nd"><a href="${path }/trade/BSList.mall">샤샤샤</a></li>
 						<li class="list_3th"><a href="">낙낙!</a></li>
 						</c:if>
 					</ul>
