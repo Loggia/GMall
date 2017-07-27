@@ -383,13 +383,16 @@ public class MemberController
 	 * 구정연
 	 * 수익금관리
 	 */
-	@RequestMapping("member/adminFee")
-	public ModelAndView adminFee () {
-		
+	@RequestMapping("member/moneypage")
+	public ModelAndView moneypage(HttpSession session) {
+		Member login = (Member)session.getAttribute("LOGIN_MEMBER");
 		ModelAndView mav = new ModelAndView();
 		List<Trade> tradeList = shopService.tradeList();
 		mav.addObject("tradeList",tradeList);
+		mav.addObject("member", login);
 			
 		return mav;
 	}
+	
+	
 }
