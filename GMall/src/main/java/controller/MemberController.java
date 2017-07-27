@@ -121,7 +121,6 @@ public class MemberController
 	{
 		ModelAndView mav = new ModelAndView("board/main");
 		session.invalidate();
-		System.out.println("로그아웃 성공");
 		
 		return mav;
 	}
@@ -240,7 +239,7 @@ public class MemberController
 		return mav;
 	}
 	
-	@RequestMapping("member/adminForm")
+	/*@RequestMapping("member/adminForm")
 	public ModelAndView admin()
 	{
 		ModelAndView mav = new ModelAndView();
@@ -248,7 +247,7 @@ public class MemberController
 		mav.addObject("tradeList",tradeList);
 			
 		return mav;
-	}
+	}*/
 	
 	/*
 	 * 구정연 

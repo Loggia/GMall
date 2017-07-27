@@ -272,17 +272,17 @@ body {
 					<table class="table table-hover" style="border-bottom: 1px solid #e5e5e5;">
 						<thead>
 							<tr>
-								<th>거래코드</th><th>거래 물품</th><th>구매 금액</th><th>상호명</th><th>일자</th>
+								<th>거래코드</th><th>구매 물품</th><th>구매 금액</th><th>상호명</th><th>일자</th>
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach items="">
+							<c:forEach var="trd" items="${trdList }">
 							<tr>
-								<td>넣</td>
-								<td>으</td>
-								<td>셈</td>
-								<td>뿌</td>
-								<td>잉</td>
+								<td>${trd.trd_code }</td>
+								<td>${trd.pro_name }</td>
+								<td>${trd.trd_money }</td>
+								<td>${trd.bis_name }</td>
+								<td><f:formatDate value="${trd.trd_date }" pattern="yy-MM-dd"/></td>
 							</tr>
 							</c:forEach>
 						</tbody>
@@ -320,17 +320,19 @@ body {
 					<table class="table table-hover" style="border-bottom: 1px solid #e5e5e5;">
 						<thead>
 							<tr>
-								<th>거래코드</th><th>거래 물품</th><th>구매 금액</th><th>상호명</th><th>일자</th>
+								<th>상품목록</th><th>가격</th><th>판매자</th><th>구매자</th><th>배송현황</th>
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach items="">
+							<c:forEach items="${tradeList}" var="trade">
 							<tr>
-								<td>넣</td>
-								<td>으</td>
-								<td>셈</td>
-								<td>뿌</td>
-								<td>잉</td>
+							<td>${trade.pro_name}</td> 
+							<td>
+							<f:formatNumber type="CURRENCY"
+							currencySymbol="" value="${trade.trd_money}" minFractionDigits="0"/>원</td>
+							<td>${trade.sell_id}</td>
+							<td>${trade.buy_id}</td>
+							<td>${trade.delivery}</td>
 							</tr>
 							</c:forEach>
 						</tbody>
