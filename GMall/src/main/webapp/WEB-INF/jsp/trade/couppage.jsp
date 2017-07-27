@@ -108,7 +108,7 @@ $(document).ready(function(){
 							<li class="menu_talk"><a href="${path }/member/talkpage.mall"><img
 									src="../img/talk_color.png"><br>구디 톡톡!</a></li>
 						</c:if>
-						<c:if test="${member.id==sana }">
+						<c:if test="${member.id==sana }"> 
 							<li class="menu_delv"><a href="delvpage.mall"><img
 									src="../img/truck2_color.png" width="64px" height="64px"><br>사나</a></li>
 							<li class="menu_coup"><a href="couppage.mall"><img
