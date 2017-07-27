@@ -54,6 +54,10 @@ public class TradeController
 		}
 		else if(login.getType() == 2) // 사업자
 		{
+			String id=login.getId();
+			
+			List<Trade> tradeList=shopService.tradeList(id);
+			mav.addObject("tradeList",tradeList);
 			
 		}
 		else if(login.getType() == 3) // 관리자

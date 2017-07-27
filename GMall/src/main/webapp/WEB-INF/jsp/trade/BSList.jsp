@@ -296,17 +296,17 @@ body {
 					<table class="table table-hover" style="border-bottom: 1px solid #e5e5e5;">
 						<thead>
 							<tr>
-								<th>거래코드</th><th>거래 물품</th><th>구매 금액</th><th>상호명</th><th>일자</th>
+								<th>거래코드</th><th>상품이름</th><th>구매 금액</th><th>구매자</th><th>일자</th>
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach items="">
+							<c:forEach items="${tradeList}" var="tradeList1">
 							<tr>
-								<td>넣</td>
-								<td>으</td>
-								<td>셈</td>
-								<td>뿌</td>
-								<td>잉</td>
+								<td>${tradeList1.trd_code }</td>
+								<td>${tradeList1.pro_name }</td>
+								<td>${tradeList1.trd_money }원</td>
+								<td>${tradeList1.buy_id }</td>
+								<td><f:formatDate value="${tradeList1.trd_date }" pattern="yy-MM-dd"/></td>
 							</tr>
 							</c:forEach>
 						</tbody>

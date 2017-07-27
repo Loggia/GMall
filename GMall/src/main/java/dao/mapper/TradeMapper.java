@@ -20,4 +20,8 @@ public interface TradeMapper {
 	 */
 	@Select("select t.trd_code,p.pro_name,t.trd_money,p.bis_name,t.trd_date from trade t,product p where t.buy_id=#{id} and t.pro_no=p.pro_no and p.bis_no=(select bis_no from member m where m.id=t.sell_id);")
 	List<Trade> tradeBuyList(String id);
+
+	//고종환 사업자 거래목록
+	@Select("select t.trd_code, p.pro_name, (t.trd_money - t.trd_fee) trd_money, t.buy_id, t.trd_date from product p, trade t where p.pro_no = t.pro_no and sell_id=#{id}")
+	List<Trade> deliveryList(String id);
 }

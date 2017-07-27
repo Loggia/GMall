@@ -47,12 +47,11 @@ public class ProductController
 		return mav;
 	}
 	//고종환 내 사업장 관리
-	//product/myBusiness.mall
-	@RequestMapping("product/myBusiness")
+	@RequestMapping("member/myBusiness")
 	public ModelAndView myBusinessList(HttpSession session){
 		Member member=(Member)session.getAttribute("LOGIN_MEMBER");
 		List<Product> myBis_list=shopService.getProductList(member.getBis_no());//내아이디만
-		ModelAndView mav=new ModelAndView("product/myBusinessList");
+		ModelAndView mav=new ModelAndView("member/myBusinessList");
 		mav.addObject("myBis_list",myBis_list);
 		return mav;
 	}

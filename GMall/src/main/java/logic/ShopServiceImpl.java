@@ -344,4 +344,10 @@ public class ShopServiceImpl implements ShopService{
 
 		return productDao.categoryCheck(bis_name,category);
 	}
+	//고종환 사업자 거래목록
+
+	@Override
+	public List<Trade> tradeList(String id) {
+		return tradeDao.deliveryList(id);
+	}
 }
