@@ -67,6 +67,7 @@ public class ProductController
 		ModelAndView mav=new ModelAndView("member/mypage");
 		mav.addObject("myBis_list",myBis_list);
 		//System.out.println(myBis_list.get(1));
+		mav.addObject("member",member);
 		return mav;
 	}
 	
