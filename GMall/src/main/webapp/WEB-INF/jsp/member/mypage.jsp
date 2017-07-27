@@ -279,6 +279,21 @@ body {
 							<strong>TWICE</strong>
 						</c:if> 
 					</h3>
+					
+					<c:if test="${member.type == 2 }">
+						<div class=""></div>
+						<ul>
+							<li><input type="button" class="btn btn-default" onclick=""></li>
+							<li><input type="button" class="btn btn-default" onclick=""></li>
+							<li><input type="button" class="btn btn-default" onclick=""></li>
+							<li><input type="button" class="btn btn-default" onclick=""></li>
+							<li><input type="button" class="btn btn-default" onclick=""></li>
+							<li><input type="button" class="btn btn-default" onclick=""></li>
+							<li><input type="button" class="btn btn-default" onclick=""></li>
+						</ul>
+						</div>
+					</c:if>
+					
 					<table class="table table-hover" style="border-bottom: 1px solid #e5e5e5;">
 						<thead>
 							<tr>
@@ -298,7 +313,7 @@ body {
 									<th>연락처</th>
 									<th>프리미엄 여부</th>
 								</c:if>
-								<c:if test="${member.type == 4 }">
+								<c:if test="${member.id == sana }">
 									<th>트</th>
 									<th>와</th>
 									<th>이</th>

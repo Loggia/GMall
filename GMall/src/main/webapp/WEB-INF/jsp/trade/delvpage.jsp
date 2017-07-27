@@ -114,13 +114,25 @@ $(document).ready(function(){
 				</div>
 				<div class="left_cont">
 					
-					<div class="panel panel-default" style="margin-top: 30px;">
+					<div class="panel panel-default" style="margin-top: 40px;">
 						<div id="delv_chk">
 							<ul style="margin: 14px; padding: 0;" >
-								<li class="nomal"><img src="../img/delv_pro_ready.png"><span class="delv_chk_font">0</span></li>
-								<li class="nomal"><img src="../img/delv_trans_ready.png"><span class="delv_chk_font">0</span></li>
-								<li class="nomal"><img src="../img/delv_trans.png"><span class="delv_chk_font">0</span></li>
-								<li class="last"><img src="../img/delv_comp.png"><span class="delv_chk_font">0</span></li>
+								<li class="nomal">
+									<img src="../img/delv_pro_ready.png">
+									<span class="delv_chk_font">0</span>
+								</li>
+								<li class="nomal">
+									<img src="../img/delv_trans_ready.png">
+									<span class="delv_chk_font">0</span>
+								</li>
+								<li class="nomal">
+									<img src="../img/delv_trans.png">
+									<span class="delv_chk_font">0</span>
+								</li>
+								<li class="last">
+									<img src="../img/delv_comp.png">
+									<span class="delv_chk_font">0</span>
+								</li>
 							</ul>
 						</div>
 					</div>					
