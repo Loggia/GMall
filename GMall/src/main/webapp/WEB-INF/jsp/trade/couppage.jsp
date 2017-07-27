@@ -166,23 +166,23 @@ $(document).ready(function(){
 									</c:if>
 									<c:if test="${member.type == 2 }">
 									<th>할인율</th>
-									<th>보유자</th>
+									<th>쿠폰 보유자</th>
 									<th>사용 여부</th>
 									</c:if>
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach items="">
+								<c:forEach items="${bus_coupon}" var="coupon">
 									<tr>
-										<c:if test="${member.type == 2 }">
+										<c:if test="${member.type == 1 }">
 										<td>넣</td>
 										<td>으</td>
 										<td>셈</td>
 										</c:if>
 										<c:if test="${member.type == 2 }">
-										<td>넣</td>
-										<td>으</td>
-										<td>셈</td>
+										<td>${coupon.discount }</td>
+										<td>${coupon.id }</td>
+										<td>${coupon.chk }</td>
 										</c:if>
 									</tr>
 								</c:forEach>
