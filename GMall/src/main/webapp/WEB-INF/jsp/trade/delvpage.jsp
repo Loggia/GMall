@@ -184,23 +184,21 @@ $(document).ready(function(){
 							style="border-bottom: 1px solid #e5e5e5;">
 							<thead>
 								<tr>
+									<th>상품명</th>
+									<th>구입자</th>
+									<th>결제금액</th>
 									<th>거래코드</th>
-									<th>거래 물품</th>
-									<th>구매 금액</th>
-									<th>구매자</th>
-									<th>일자</th>
 									<th>배송현황</th>
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach items="">
+								<c:forEach items="${tradeList}" var="list">
 									<tr>
-										<td>넣</td>
-										<td>으</td>
-										<td>셈</td>
-										<td>뿌</td>
-										<td>잉</td>
-										<td>잉</td>
+										<td>${list.pro_name }</td>
+										<td>${list.bis_name }</td>
+										<td>${list.trd_money }</td>
+										<td>${list.trd_code }</td>
+										<td>${list.delivery }</td>
 									</tr>
 								</c:forEach>
 							</tbody>
