@@ -39,7 +39,14 @@
 			html : true,
 			content : $('#mymenu_Form').html()
 		});
-		
+
+		$(".ml").mouseover(function() {
+			$(".ml").css("color", "#12d8fa");
+		});
+		$(".ml").mouseout(function() {
+			$(".ml").css("color", "black");
+		});
+
 	});
 </script>
 <style type="text/css">
@@ -79,7 +86,7 @@
 	
 }
 
-.mymenu_list {
+.ml {
 	cursor: pointer;
 	color: black;
 }
@@ -126,9 +133,21 @@
 #bus_num {
 	display: none;
 }
+
 .on {
 	color: #12d8fa;
 }
+
+.rotatey {
+	transition-property :transform;
+	transition-duration: 1.3s;
+}
+
+.rotatey:hover {
+transform: rotateY(180deg);
+}
+
+
 </style>
 </head>
 <body>
@@ -225,7 +244,7 @@
 										<div class="form-group">
 											<label for="recipient-name" class="control-label">아이디:</label>
 											<input name="id" type="text" class="form-control" 
-												id="recipient-name" placeholder="아이디를 입력해주세요" required="required">
+												id="recipient-name" placeholder="아이디를 입력해주세요" required="required" minlength="3" maxlength="10">
 										</div>
 										<div class="form-group">
 											<label for="message-text" class="control-label">비밀번호:</label>
@@ -311,8 +330,8 @@
 				<div class="col-xs-2"></div>
 
 				<div class="col-xs-8" style="padding: 0px;">
-					<a href="${path }/board/main.mall" class="pull-left" style="margin-top: 5px;"><img
-						id="logo" src="../img/logo.png"></a>
+					<a href="${path }/board/main.mall" class="pull-left" style="margin-top: 5px;">
+					<img class="rotatey" id="logo" src="../img/logo.png"></a>
 
 					<form class="navbar-form pull-left" style="margin-top: 15px;">
 						<!-- 검색창 시작 -->
@@ -334,10 +353,16 @@
 								style="color: white;"></span><b style="color: white">MY 쇼핑</b>
 							<div class="hide">
 								<ol id="mymenu_Form">
-									<li class="mymemu_list" style="margin: 3px;"><a href="${path }/member/mypage.mall">내 정보</a></li>
-									<li class="mymemu_list" style="margin: 3px;"><a href="cartForm.mall">장바구니</a></li>
-									<li class="mymemu_list" style="margin: 3px;"><a href="deleveryForm.mall">배송정보</a></li>
-									<li class="mymemu_list" style="margin: 3px;"><a href="${path }/member/logout.mall">로그아웃</a></li>
+									<c:if test="${LOGIN_MEMBER.id == null }">
+									<li class="mymemu_list" style="margin: 5px;"><a style="text-decoration: none;" class="ml" data-toggle="modal" data-target="#loginFormModal">내 정보</a></li>
+									<li class="mymemu_list" style="margin: 5px;"><a style="text-decoration: none;" class="ml" data-toggle="modal" data-target="#loginFormModal">장바구니</a></li>
+									<li class="mymemu_list" style="margin: 5px;"><a style="text-decoration: none;" class="ml" data-toggle="modal" data-target="#loginFormModal">배송정보</a></li>
+									</c:if>
+									<c:if test="${LOGIN_MEMBER.id != null }">
+									<li class="mymemu_list" style="margin: 5px;"><a style="text-decoration: none;" class="ml" href="${path }/member/mypage.mall">내 정보</a></li>
+									<li class="mymemu_list" style="margin: 5px;"><a style="text-decoration: none;" class="ml" href="cartForm.mall">장바구니</a></li>
+									<li class="mymemu_list" style="margin: 5px;"><a style="text-decoration: none;" class="ml" href="deleveryForm.mall">배송정보</a></li>
+									</c:if>
 								</ol>
 							</div>
 						</div>

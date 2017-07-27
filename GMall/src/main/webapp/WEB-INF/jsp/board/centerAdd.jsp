@@ -6,27 +6,39 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>게시판 등록</title>
+<script>
+ function openpass(check) {
+   if(check.checked == true)
+   {
+	 passfunction.style.display = '';
+   }	  
+   else
+   {
+     passfunction.style.display = 'none';
+   }
+ }
+</script>
 </head>
 <body>
 <form:form modelAttribute="board" action="centerwrite.mall" method="post" enctype="multipart/form-data" name="centerinform">
 	<table cellpadding="0" cellspacing="0">
+	<form:hidden path="id" value="${userid}"/>
 	  <tr align="center" valign="middle">
 	    <td colspan="2">고객센터 글 작성</td>
 	  </tr>
 	  <tr><td>글쓴이</td>
-	      <td><form:input path="id" />
+	      <td>
+	      <h3>${userid}</h3>
 	      </td>
 	  </tr>
 	  <tr><td>제목</td>
 	      <td><form:input path="subject" />
-	      </td>
-	  </tr>
-	  <tr><td>비밀번호</td>
-	      <td><form:password path="pass" />
+	      <font color="red"><form:errors path="subject" /></font>
 	      </td>
 	  </tr>
 	  <tr><td>내용</td>
 	      <td><form:textarea path="content" cols="67" rows="15"/>
+	      <font color="red"><form:errors path="content" /></font>
 	      </td>
 	  </tr>
 	  <tr><td>파일첨부</td>
@@ -39,7 +51,17 @@
 	      <a href="centerList.mall">[게시물 목록]</a>
 	      </td>
 	  </tr>                    
-	</table>  
+	</table>
+	<input type="checkbox" onclick="openpass(this)">비밀글
+    <div id="passfunction" style="display:none">
+       <div>
+          <table>
+          <tr><td>비밀번호</td>
+	          <td><form:password path="pass" /></td>
+	      </tr>
+	      </table>
+	   </div>
+    </div>
 </form:form>
 </body>
 </html>

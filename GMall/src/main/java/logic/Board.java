@@ -7,23 +7,20 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class Board
 {
-	@NotEmpty
-	private int board_no;
+private int board_no;
 	
 	@NotEmpty
 	private String id;
 	private String pass;
 	
-	@NotEmpty
+	@NotEmpty(message="제목을 입력해 주세요.")
 	private String subject;
 	
-	@NotEmpty
+	@NotEmpty(message="내용을 입력해 주세요.")
 	private String content;
 	
-	@NotEmpty
 	private int board_type;
 	
-	@NotEmpty
 	private Date regdate;
 	
 	private int readcnt;
@@ -32,7 +29,6 @@ public class Board
 	private String fileurl2;
 	private String fileurl3;
 	
-	@NotEmpty
 	private int ans_chk;
 	private MultipartFile img1;
 	private MultipartFile img2;

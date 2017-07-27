@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/jsp/jspHeader.jsp" %>         
+<%@ include file="/WEB-INF/jsp/jspHeader.jsp" %>     
+<c:set var="path" value="${pageContext.request.contextPath }" />    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,6 +11,10 @@
 #loc
 {
   text-align : center;
+}
+#loc2
+{
+  text-align : right;
 }
 </style>
 <script>
@@ -45,33 +50,6 @@
 		return false;
  }
 </script>
-<script>
-var paramsList = location.search.substring(1).split("&"); //파라미터가 담긴 배열
-/* var code = paramsFunc("searchType"); */
-
-//파라미터명으로 파라미터값 추출하기. (편하게 호출하기위해 작성)
-function paramsFunc(paramsNm) {
- var nullChk = "";
- for(var i=0; i<paramsList.length; i++) {
-  if(paramsNm == paramsList[i].split("=")[0]) {
-   return paramsList[i].split("=")[1]; 
-  }else {
-   if(i == paramsList.length-1) nullChk = true;
-  }
- }
- if(nullChk) {
-  //alert("파라미터가 존재하지 않습니다.");
-  //return location.href="#";
- }
-}
-
-window.onload = function params()
-{
-	pn = paramsFunc("pageNum");
-	st = paramsFunc("searchType");
-	sc = paramsFunc("searchContent");
-}
-</script>
 </head>
 <body>
 <div style="display:block; width:100%;">
@@ -87,22 +65,33 @@ window.onload = function params()
 	    <tr>
           <td align="center">${clist.board_no}</td>
           <td align="center">
-          <c:if test="${clist.ans_chk == 0}"> 
+          <c:if test="${(clist.ans_chk == 0) && userid != 'admin' && userid == clist.id}"> 
+            <a href="updateForm.mall?num=${clist.board_no}&pageNum=${param.pageNum}">[수정]</a>
+          </c:if>
+          <c:if test="${(clist.ans_chk == 0) && userid != 'admin' && userid != clist.id}"> 
             <font color="red">미답변</font>
+          </c:if>
+          <c:if test="${(clist.ans_chk == 0) && userid == 'admin'}"> 
+            <a href="centerUpdate.mall">[답변]</a>
           </c:if>
           <c:if test="${clist.ans_chk == 1}"> 
              <font color="blue">√</font>
           </c:if> 
           </td>
-	      <td align="center"><a href="javascript:list_disp('listLine${stat.count}')">${clist.subject}</a></td>
+          <c:if test="${not empty clist.pass}">
+          <td align="center"><a href="javascript:list_disp('listLine${stat.count}')">${clist.subject}</a><img src="../img/rock.jpg" width="20" height="20" /></td>
+          </c:if>
+          <c:if test="${empty clist.pass}">
+          <td align="center"><a href="javascript:list_disp('listLine${stat.count}')">${clist.subject}</a></td>
+          </c:if>
 	      <td align="center">${clist.id}</td>
 	      <td align="center"><f:formatDate value="${clist.regdate}" pattern="yyyy-MM-dd"/></td>
 	     </tr>
 	     <tr>
 	       <td colspan="5">
 	        <div id="listLine${stat.count}" style="display:none;">
-	        <c:if test="${not empty clist.pass && empty param.searchType && empty param.searchContent}"> 
-	          <form action="centerList2.mall" method="get" name="onpass" id="loc">
+	        <c:if test="${not empty clist.pass && empty param.searchType && empty param.searchContent && empty param.num && empty param.password}"> 
+	          <form action="centerList.mall" method="get" name="onpass" id="loc">
 	                       비밀번호 : 
 	          	<input type="hidden" name="num" value="${clist.board_no}">
                 <input type="text" name="password">
@@ -110,7 +99,7 @@ window.onload = function params()
               </form>
             </c:if>
             <c:if test="${not empty clist.pass && not empty param.pageNum &&not empty param.searchType && not empty param.searchContent}"> 
-	          <form action="centerList2.mall" method="get" name="onpass2" id="loc">
+	          <form action="centerList.mall" method="get" name="onpass2" id="loc">
 	                       비밀번호 : 	                       
                 <input type="hidden" name="pageNum2" value="${param.pageNum}">
                 <input type="hidden" name="searchType2" value="${param.searchType}">
@@ -119,7 +108,62 @@ window.onload = function params()
                 <input type="text" name="password">
                 <input type="submit" value="확인">
               </form>
-            </c:if> 
+            </c:if>
+	        <%-- <c:if test="${(not empty clist.pass) && (not empty searchType2 && not empty searchContent2) && (num != clist.board_no)}"> 
+	          <form action="centerList.mall" method="post" name="onpass3" id="loc">
+	                       비밀번호 : 
+	            <input type="hidden" name="pageNum2" value="${param.pageNum2}">
+	            <input type="hidden" name="searchType2" value="${param.searchType2}">
+	            <input type="hidden" name="searchContent2" value="${param.searchContent2}">           
+	          	<input type="hidden" name="num" value="${clist.board_no}">
+                <input type="text" name="password">
+                <input type="submit" value="확인">
+              </form>
+            </c:if>   --%>
+            <c:if test="${not empty password && not empty num}"> 
+             <c:if test="${(clist.pass == password) && (clist.board_no == num)}">
+            	<table border="1" cellpadding="0" cellspacing="0" width="100%" height="70%">
+	           <tr>
+	          	 <td align="center">내용 : ${clist.content}</td>
+               </tr> 
+               <tr>  
+                  <td align="center">첨부파일 → 
+                    <c:if test="${empty clist.fileurl || clist.fileurl2 || clist.fileurl3}"> 
+                       <font color="gray">첨부파일 없음</font>
+                    </c:if>
+                    <c:if test="${not empty clist.fileurl}"> 
+                       <a href="filedown.mall?filename=${clist.fileurl}">${clist.fileurl}</a>
+                    </c:if>
+                    <c:if test="${not empty clist.fileurl2}"> 
+                       <a href="filedown.mall?filename=${clist.fileurl2}">${clist.fileurl2}</a>
+                    </c:if>
+                    <c:if test="${not empty clist.fileurl3}"> 
+                       <a href="filedown.mall?filename=${clist.fileurl3}">${clist.fileurl3}</a>
+                    </c:if>
+                 </td>
+               </tr> 
+             </table>
+	         </c:if>
+	         <c:if test="${((clist.pass != password) || (clist.board_no != num)) && empty param.searchType2}">
+	          <form action="centerList.mall" method="get" name="onpass4" id="loc">
+	                       비밀번호 : 
+	          	<input type="hidden" name="num" value="${clist.board_no}">
+                <input type="text" name="password">
+                <input type="submit" value="확인">
+              </form>
+	         </c:if> 
+	         <c:if test="${(clist.pass != password && not empty clist.pass) && (not empty param.pageNum2 && not empty param.searchType2 && not empty param.searchContent2 && not empty param.num && not empty param.password)}">
+	         	<form action="centerList.mall" method="get" name="onpass5" id="loc">
+	                       비밀번호5 : 
+	            <input type="hidden" name="pageNum2" value="${param.pageNum2}">
+	            <input type="hidden" name="searchType2" value="${param.searchType2}">
+	            <input type="hidden" name="searchContent2" value="${param.searchContent2}">           
+	          	<input type="hidden" name="num" value="${clist.board_no}">
+                <input type="text" name="password">
+                <input type="submit" value="확인">
+              </form>
+	         </c:if>
+	        </c:if> 
 	        <c:if test="${empty clist.pass}"> 
 	          <table border="1" cellpadding="0" cellspacing="0" width="100%" height="70%">
 	           <tr>
@@ -185,11 +229,17 @@ window.onload = function params()
   	<input type="text" name="searchContent" value="${param.searchContent}">
   	<input type="submit" value="검색">
   </form>
-</td>  
-</tr>
-<tr><td id="loc"><a href="centerAdd.mall">[글쓰기]</a></td></tr>
-<tr><td id="loc"><a href="centerList.mall">[글목록]</a></td></tr>
+</td></tr>
 </table>
+<div id="loc2">
+<c:if test="${userid != 'admin'}">
+   <tr><td id="loc"><a href="centerAdd.mall">[글쓰기]</a></td></tr>
+   <tr><td id="loc"><a href="centerList.mall">[글목록]</a></td></tr>
+</c:if>
+<c:if test="${userid == 'admin'}">
+   <tr><td id="loc"><a href="centerList.mall">[글목록]</a></td></tr>
+</c:if>
+</div>
 </div>    
 </body>
 </html>

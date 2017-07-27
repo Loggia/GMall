@@ -11,6 +11,10 @@ public interface ShopService {
 	int centerCount(String searchType, String searchContent); //배기수 - 고객센터 검색된 내용 가져옴
 	List<Board> centerList(String searchType, String searchContent, Integer pageNum, int limit); //배기수 - 고객센터 목록 가져옴
 	void centerInsert(Board board, HttpServletRequest request); //배기수 - 고객센터 내용 입력
+	Board passthrough(String num); //배기수 - 글번호에 해당하는 정보를 가져옴
+	Board getBoard(int num); //배기수 - 번호에 해당하는 게시글을 가져옴 
+	String getBoardPassword(int board_no); //배기수 - 번호에 해당하는 패스워드를 가져옴
+	void boardUpdate(Board board, HttpServletRequest request); //배기수 - 글 업데이트 기능
 	
 	boolean insertMember(Member member); // 주한울 - 회원가입
 	boolean cheakMember(String bis_no); // 주한울 - 회원가입시 중복된 사업자 번호를 사용했는지를 판별
