@@ -353,8 +353,8 @@ public class MemberController
 	 * 일반회원관리
 	 */
 	
-	@RequestMapping("member/adminNomal")
-	public ModelAndView adminNomal () {
+	@RequestMapping("member/nomalList")
+	public ModelAndView nomalList () {
 		
 		ModelAndView mav = new ModelAndView() ;
 		List<Member> nomalList = shopService.nomalList();
@@ -366,8 +366,8 @@ public class MemberController
 	 * 구정연 
 	 * 사업자관리
 	 */
-	@RequestMapping("member/adminBusiness")
-	public ModelAndView adminBusiness () {
+	@RequestMapping("member/businessList")
+	public ModelAndView businessList () {
 		
 		ModelAndView mav = new ModelAndView() ;
 		List<Member> businessList = shopService.businessList();
