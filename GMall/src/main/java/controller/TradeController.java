@@ -49,7 +49,8 @@ public class TradeController
 		}
 		else if(login.getType() == 3) // 관리자
  		{
-			
+			List<Trade> tradeList = shopService.tradeList();
+			mav.addObject("tradeList",tradeList);
 		}
 		
 		mav.addObject("member", login);   
