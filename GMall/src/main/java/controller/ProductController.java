@@ -23,9 +23,11 @@ public class ProductController
 
 	//상품추가 폼이동
 	@RequestMapping("product/addProduct")
-	public ModelAndView addProduct()
+	public ModelAndView addProduct(HttpSession session)
 	{
 		ModelAndView mav = new ModelAndView();
+		Member member=(Member)session.getAttribute("LOGIN_MEMBER");
+		mav.addObject("member",member);
 		mav.addObject(new Product());
 		return mav;
 	}
