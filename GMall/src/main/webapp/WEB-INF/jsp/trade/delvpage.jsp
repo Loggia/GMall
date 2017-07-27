@@ -16,6 +16,12 @@ $(document).ready(function(){
 	    $(".list_1st a").mouseout(function(){
 	        $(".list_1st a").css("color", "black");
 	    });
+	    $(".list_2nd a").mouseover(function(){
+	        $(".list_2nd a").css("color", "#12d8fa");
+	    });
+	    $(".list_2nd a").mouseout(function(){
+	        $(".list_2nd a").css("color", "black");
+	    });
 	    $(".list_3th a").mouseover(function(){
 	        $(".list_3th a").css("color", "#12d8fa");
 	    });
@@ -38,7 +44,7 @@ $(document).ready(function(){
 			<div class="my_left">
 				<div class="left_prof">
 					<div style="text-align: center;"><img style="margin-top: 30px;" src="../img/sanaprof.PNG" class="img-circle" width="150px" height="150px"></div>
-					<a href="${path }/member/infoForm.mall"><img style="position: absolute; margin-left: 150px; margin-top: 18px;" src="../img/option.png"></a>
+					<a href="${path }/member/passConfirmForm.mall"><img style="position: absolute; margin-left: 150px; margin-top: 18px;" src="../img/option.png"></a>
 					<br>
 					<div style="text-align: center;">${member.name }</div>
 				</div>

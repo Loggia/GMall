@@ -10,31 +10,28 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	
-	    $(".list_1st a").mouseover(function(){
-	        $(".list_1st a").css("color", "#12d8fa");
-	    });
-	    $(".list_1st a").mouseout(function(){
-	        $(".list_1st a").css("color", "black");
-	    });
-	    $(".list_3th a").mouseover(function(){
-	        $(".list_3th a").css("color", "#12d8fa");
-	    });
-	    $(".list_3th a").mouseout(function(){
-	        $(".list_3th a").css("color", "black");
-	    });
+	$(".list_1st a").mouseover(function(){
+        $(".list_1st a").css("color", "#12d8fa");
+    });
+    $(".list_1st a").mouseout(function(){
+        $(".list_1st a").css("color", "black");
+    });
+    $(".list_2nd a").mouseover(function(){
+        $(".list_2nd a").css("color", "#12d8fa");
+    });
+    $(".list_2nd a").mouseout(function(){
+        $(".list_2nd a").css("color", "black");
+    });
+    $(".list_3th a").mouseover(function(){
+        $(".list_3th a").css("color", "#12d8fa");
+    });
+    $(".list_3th a").mouseout(function(){
+        $(".list_3th a").css("color", "black");
+    });
 	
 	
 });
 </script>
-<style type="text/css">
-.disc_sel ul li{
-	float: left;
-	margin-right: 20px;
-}
-.disc_sel  ul li input{
-
-}
-</style>
 </head>
 <body>
 	<div class="container-fluid"
@@ -76,7 +73,8 @@ $(document).ready(function(){
 					</ul>
 				</div>
 			</div>
-			<div class="right_menu">
+			<div class="my_right">
+				<div class="right_menu">
 					<ul>
 						<c:if test="${member.type == 1 }">
 							<li class="menu_delv"><a href="${path }/trade/delvpage.mall"><img
@@ -99,16 +97,16 @@ $(document).ready(function(){
 									src="../img/talk_color.png"><br>구디 톡톡!</a></li>
 						</c:if>
 						<c:if test="${member.type == 3 }">
-							<li class="menu_delv"><a href="${path }/member/delvpage.mall"><img
+							<li class="menu_delv"><a href="${path }/member/nomalList.mall"><img
 									src="../img/truck2_color.png" width="64px" height="64px"><br>일반회원 관리</a></li>
-							<li class="menu_coup"><a href="${path }/trade/couppage.mall"><img
+							<li class="menu_coup"><a href="${path }/member/businessList.mall"><img
 									src="../img/coupon_color.png"><br>사업자회원 관리</a></li>
 							<li class="menu_money"><a href="${path }/member/moneypage.mall"><img
 									src="../img/money_color.png"><br>보유 금액</a></li>
 							<li class="menu_talk"><a href="${path }/member/talkpage.mall"><img
 									src="../img/talk_color.png"><br>구디 톡톡!</a></li>
 						</c:if>
-						<c:if test="${member.id==sana }"> 
+						<c:if test="${member.id==sana }">
 							<li class="menu_delv"><a href="delvpage.mall"><img
 									src="../img/truck2_color.png" width="64px" height="64px"><br>사나</a></li>
 							<li class="menu_coup"><a href="couppage.mall"><img
@@ -120,74 +118,63 @@ $(document).ready(function(){
 						</c:if>
 					</ul>
 				</div>
-			<div class="my_right">
-				
 				<div class="right_cont">
+					
+					<div class="panel panel-default" style="margin-top: 40px;">
+						<div id="delv_chk">
+							<ul style="margin: 14px; padding: 0;" >
+								<li class="nomal">
+									<img src="../img/delv_pro_ready.png">
+									<span class="delv_chk_font">0</span>
+								</li>
+								<li class="nomal">
+									<img src="../img/delv_trans_ready.png">
+									<span class="delv_chk_font">0</span>
+								</li>
+								<li class="nomal">
+									<img src="../img/delv_trans.png">
+									<span class="delv_chk_font">0</span>
+								</li>
+								<li class="last">
+									<img src="../img/delv_comp.png">
+									<span class="delv_chk_font">0</span>
+								</li>
+							</ul>
+						</div>
+					</div>					
 				
 					<br><br>
-					
-						<h3>
-							<c:if test="${member.type==1 }">
-							<strong>보유 쿠폰</strong>
-							</c:if>
-							<c:if test="${member.type==2 }">
-							<strong>쿠폰 목록</strong>
-							</c:if>
-						</h3>
-					
-					<div class="disc_sel pull-right" style="margin-bottom: 40px;">
-						<ul>
-							<li>
-								<label style="cursor: pointer;">
-									<input style="width: 17px; height: 17px;" type="radio" required="required" onclick="location.href='${path}/trade/bus_couponCheck.mall?discount=5'"><span style="vertical-align: top;" >5%</span>
-								</label>
-							</li>
-							<li>
-								<label style="cursor: pointer;">
-									<input style="width: 17px; height: 17px;" type="radio" required="required" onclick="location.href='${path}/trade/bus_couponCheck.mall?discount=10'">><span style="vertical-align: top;">10%</span>
-								</label>
-							</li>
-							<li>
-								<label style="cursor: pointer;">
-									<input style="width: 17px; height: 17px;" type="radio" required="required" onclick="location.href='${path}/trade/bus_couponCheck.mall?discount=15'">><span style="vertical-align: top;">15%</span>
-								</label>
-							</li>
-						</ul>
-					</div>
 
-					<table class="table table-hover"
+					<c:if test="${member.type == 3 }">
+						<h3>
+							<strong>배송 목록</strong>
+						</h3>
+						<table class="table table-hover"
 							style="border-bottom: 1px solid #e5e5e5;">
 							<thead>
 								<tr>
-									<c:if test="${member.type == 1 }">
-									<th>할인율</th>
-									<th>발급자</th>
-									<th>사용여부</th>
-									</c:if>
-									<c:if test="${member.type == 2 }">
-									<th>할인율</th>
-									<th>쿠폰 보유자</th>
-									<th>사용 여부</th>
-									</c:if>
+									<th>거래코드</th>
+									<th>거래 물품</th>
+									<th>구매 금액</th>
+									<th>상호명</th>
+									<th>일자</th>
+									<th>배송현황</th>
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach items="${bus_coupon}" var="coupon">
+								<c:forEach items="">
 									<tr>
-										<c:if test="${member.type == 1 }">
 										<td>넣</td>
 										<td>으</td>
 										<td>셈</td>
-										</c:if>
-										<c:if test="${member.type == 2 }">
-										<td>${coupon.discount }</td>
-										<td>${coupon.id }</td>
-										<td>${coupon.chk }</td>
-										</c:if>
+										<td>뿌</td>
+										<td>잉</td>
+										<td>잉</td>
 									</tr>
 								</c:forEach>
 							</tbody>
 						</table>
+					</c:if>
 					
 					<br><br>
 				</div>
