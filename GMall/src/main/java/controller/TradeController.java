@@ -33,6 +33,15 @@ public class TradeController
 		if(login.getType() == 1) // 일반회원 (주한울)
 		{
 			trdList = shopService.tradeBuyList(login.getId());
+			
+			if(trdList != null)
+			{
+				mav.addObject("trdList", trdList);
+			}
+			else
+			{
+				mav.addObject("trdList", new Trade());
+			}
 		}
 		else if(login.getType() == 2) // 사업자
 		{

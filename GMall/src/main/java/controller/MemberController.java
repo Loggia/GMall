@@ -121,7 +121,6 @@ public class MemberController
 	{
 		ModelAndView mav = new ModelAndView("board/main");
 		session.invalidate();
-		System.out.println("로그아웃 성공");
 		
 		return mav;
 	}
