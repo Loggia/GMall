@@ -348,14 +348,14 @@ public class ShopServiceImpl implements ShopService{
 
 	@Override
 	public List<Trade> tradeList(String id) {
-		return tradeDao.deliveryList(id);
+		return tradeDao.tradeList(id);
 	}
-
+     //고종환 사업자 쿠폰 관리
 	@Override
 	public List<coupon_history> bus_coupon(String id) {
 		return tradeDao.bus_coupon(id);
 	}
-
+    //고종환 사업자 쿠폰 체크시
 	@Override
 	public List<coupon_history> bus_couponCheck(String id, String discount) {
 		return tradeDao.bus_couponCheck(id,discount);

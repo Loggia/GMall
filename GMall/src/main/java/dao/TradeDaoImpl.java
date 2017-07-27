@@ -41,8 +41,8 @@ public class TradeDaoImpl implements TradeDao{
 		}
 		//고종환 사업자 거래목록
 		@Override
-		public List<Trade> deliveryList(String id) {
-			return sqlSession.getMapper(TradeMapper.class).deliveryList(id);
+		public List<Trade> tradeList(String id) {
+			return sqlSession.getMapper(TradeMapper.class).tradeList(id);
 		}
 
 		@Override

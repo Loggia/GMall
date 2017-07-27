@@ -88,13 +88,11 @@ public class TradeController
 		Member login = (Member)session.getAttribute("LOGIN_MEMBER");
 		
 		if(login.getType() == 1){
-			
+			//한울이 쿠폰
 		}else if(login.getType() == 2){// 고종환 사업자 쿠폰관리
 			    String id=login.getId();
 			    List<coupon_history> bus_coupon=shopService.bus_coupon(id);
 		     	mav.addObject("bus_coupon",bus_coupon);
-		}else if(login.getType() == 3){
-			
 		}
 		
 		
