@@ -137,21 +137,10 @@ $(document).ready(function(){
 					
 					<div class="disc_sel pull-right" style="margin-bottom: 40px;">
 						<ul>
-							<li>
-								<label style="cursor: pointer;">
-									<input style="width: 17px; height: 17px;" type="radio" required="required" onclick="location.href='${path}/trade/bus_couponCheck.mall?discount=5'"><span style="vertical-align: top;" >5%</span>
-								</label>
-							</li>
-							<li>
-								<label style="cursor: pointer;">
-									<input style="width: 17px; height: 17px;" type="radio" required="required" onclick="location.href='${path}/trade/bus_couponCheck.mall?discount=10'">><span style="vertical-align: top;">10%</span>
-								</label>
-							</li>
-							<li>
-								<label style="cursor: pointer;">
-									<input style="width: 17px; height: 17px;" type="radio" required="required" onclick="location.href='${path}/trade/bus_couponCheck.mall?discount=15'">><span style="vertical-align: top;">15%</span>
-								</label>
-							</li>
+					     	<li><input type="button" class="btn btn-default" onclick="location.href='${path}/trade/bus_couponCheck.mall?discount=5'"  value="5%"></li>
+							<li><input type="button" class="btn btn-default" onclick="location.href='${path}/trade/bus_couponCheck.mall?discount=10'" value="10%"></li>
+							<li><input type="button" class="btn btn-default" onclick="location.href='${path}/trade/bus_couponCheck.mall?discount=15'" value="15%"></li>
+							
 						</ul>
 					</div>
 
