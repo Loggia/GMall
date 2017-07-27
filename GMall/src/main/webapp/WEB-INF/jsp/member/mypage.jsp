@@ -308,11 +308,11 @@ body {
 						</thead>
 						<tbody>
 							<c:if test="${member.type == 1 }">
-								<c:forEach items="">
+								<c:forEach var="mark" items="${bookmark }">
 									<tr>
-										<td>일</td>
-										<td>반</td>
-										<td>인</td>
+										<td>${mark.bis_name }</td>
+										<td>${mark.tel }</td>
+										<td>${mark.prim }</td>
 									</tr>
 								</c:forEach>
 							</c:if>
@@ -366,14 +366,14 @@ body {
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach items="">
+								<c:forEach var="feed" items="${newsfeed }">
 									<tr>
-										<td>알</td>
-										<td>아</td>
-										<td>서</td>
-										<td>넣</td>
-										<td>으</td>
-										<td>셈</td>
+										<td>${feed.bis_name }</td>
+										<td>${feed.pro_name }</td>
+										<td>${feed.price }</td>
+										<td>${feed.category }</td>
+										<td>${feed.favorite }</td>
+										<td><f:formatDate value="${feed.date }" pattern="yy-MM-dd"/></td>
 									</tr>
 								</c:forEach>
 							</tbody>
