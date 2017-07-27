@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%@ include file="/WEB-INF/jsp/jspHeader.jsp" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -35,12 +36,12 @@ body {
 	<a href="${path }/board/main.mall">
 		<img style="width: 300px; height: 100px; margin-top: 30px;" class="rotatey" id="logo" src="../img/logo.png">
 	</a>
-		<form>
+		<form action="${path }/member/passConfirm.mall" method="post" name="confirmform">
 		<div class="form-group" align="center" style="margin-top: 50px;">
 			<label for="message-text" class="control-label">비밀번호를 입력하세요</label>
 			<input style="width: 300px; margin-bottom: 60px;" name="pass" type="password" class="form-control" id="message-text" placeholder="비밀번호" required="required">
 		</div>
-		<button class="btn btn-info">확인</button>
+		<button type="submit" class="btn btn-info">확인</button>
 		</form>
 	</div>
 </body>

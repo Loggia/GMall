@@ -217,7 +217,7 @@ body {
 								<input type="hidden" name="id" value="${member.id }">
 						</div>
 						<div class="form-group">
-							<label for="message-text" class="control-label">비밀번호:</label> <input
+							<label for="message-text" class="control-label">변경할 비밀번호:</label> <input
 								name="pass" type="password" class="form-control"
 								id="message-text" placeholder="비밀번호를 입력해주세요">
 						</div>

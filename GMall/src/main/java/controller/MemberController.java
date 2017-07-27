@@ -195,6 +195,44 @@ public class MemberController
 	}
 	
 	/*
+	 * 주한울
+	 * 회원 정보 상세보기 계정 검증폼으로 이동
+	 */
+	@RequestMapping("member/passConfirmForm")
+	public ModelAndView passConfirmForm(HttpSession session)
+	{
+		ModelAndView mav = new ModelAndView("member/passConfirm");
+		
+		return mav;
+	}
+	
+	/*
+	 * 주한울
+	 * 회원 정보 상세보기 (입력 비밀번호와 로그인 비밀번호가 동일하면 infoForm으로 이동)
+	 */
+	@RequestMapping("member/passConfirm")
+	public ModelAndView passConfirm(HttpServletRequest request, HttpSession session)
+	{
+		ModelAndView mav = new ModelAndView("member/mypage");
+		Member login = (Member)session.getAttribute("LOGIN_MEMBER");
+		String pass = request.getParameter("pass");
+		
+		if(login.getPass().equals(pass))
+		{
+			mav.setViewName("member/infoForm");
+		}
+		else
+		{
+			mav.setViewName("alert");
+			mav.addObject("url", "../member/passConfirmForm.mall");
+			mav.addObject("msg", "잘못된 비밀번호입니다.");
+		}
+		
+		mav.addObject("member", login);
+		return mav;
+	}
+	
+	/*
 	 * 사나쨩
 	 * 회원 인포폼
 	 */
@@ -229,15 +267,17 @@ public class MemberController
 		
 		if(login.getId().equals(member.getId()))
 		{
-			if(login.getPass().equals(member.getPass()))
+			if(member.getPass().equals(passfirm))
 			{
-				
+				shopService.updateMember(member);
+				session.invalidate(); // 회원이 수정되면 세션 만료
+				request.getSession().setAttribute("LOGIN_MEMBER", member); // 수정된 정보로 다시 세션 생성
 			}
 			else
 			{
 				mav.setViewName("alert");
 				mav.addObject("url", "member/mypage.mall");
-				mav.addObject("msg", "비밀번");
+				mav.addObject("msg", "입력한 비밀번호가 일치하지 않습니다.");
 			}
 		}
 		else if(login.getId().equals("admin"))
@@ -248,7 +288,7 @@ public class MemberController
 		{
 			mav.setViewName("alert");
 			mav.addObject("url", "member/mypage.mall");
-			mav.addObject("msg", "아이디나 비밀번호를 잘못입력하셨습니다.");
+			mav.addObject("msg", "자신의 아이디만 수정 가능합니다.");
 		}
 		
 		mav.addObject("member", login);
@@ -347,16 +387,5 @@ public class MemberController
 		mav.addObject("tradeList",tradeList);
 			
 		return mav;
-		
 	}
-	
-	@RequestMapping("member/passConfirm")
-	public ModelAndView passConfirm (HttpSession session) {
-		
-		ModelAndView mav = new ModelAndView();
-		Member login = (Member)session.getAttribute("LOGIN_MEMBER");
-		mav.addObject("member", login);
-		return mav;
-	}
-	
 }
