@@ -135,29 +135,36 @@ public class MemberController
 	{
 		ModelAndView mav = new ModelAndView();
 		Member login = (Member)session.getAttribute("LOGIN_MEMBER");
-		List<Member> bookmark = shopService.selectBookmark(login.getId());
-		List<Product> newsfeed = shopService.selectNewsFeed(login.getId());
 		
-		if(!(bookmark == null))
+		if(login.getType() == 1)
 		{
-			mav.addObject("bookmark", bookmark);
+			List<Member> bookmark = shopService.selectBookmark(login.getId());
+			List<Product> newsfeed = shopService.selectNewsFeed(login.getId());
 			
-			if(!(newsfeed == null))
+			if(!(bookmark == null))
 			{
-				mav.addObject("newsfeed", newsfeed);
+				mav.addObject("bookmark", bookmark);
+				
+				if(!(newsfeed == null))
+				{
+					mav.addObject("newsfeed", newsfeed);
+				}
+				else
+				{
+					mav.addObject("newsfeed", new Product());
+				}
 			}
 			else
 			{
-				mav.addObject("newsfeed", new Product());
+				mav.addObject("bookmark", new Member());
 			}
 		}
-		else
+		else if(login.getType() == 2)
 		{
-			mav.addObject("bookmark", new Member());
+			// 사업자
 		}
 		
 		mav.addObject("member", login);
-		
 		return mav;
 	}
 	
