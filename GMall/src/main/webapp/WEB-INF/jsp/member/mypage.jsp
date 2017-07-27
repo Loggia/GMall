@@ -392,7 +392,7 @@ body {
 									<tr>
 										<td>${feed.bis_name }</td>
 										<td>${feed.pro_name }</td>
-										<td>${feed.price }</td>
+										<td>${feed.price }원</td>
 										<td>${feed.category }</td>
 										<td>${feed.favorite }</td>
 										<td><f:formatDate value="${feed.date }" pattern="yy-MM-dd"/></td>
