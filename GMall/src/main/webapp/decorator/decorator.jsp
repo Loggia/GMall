@@ -133,9 +133,21 @@
 #bus_num {
 	display: none;
 }
+
 .on {
 	color: #12d8fa;
 }
+
+.rotatey {
+	transition-property :transform;
+	transition-duration: 1.3s;
+}
+
+.rotatey:hover {
+transform: rotateY(180deg);
+}
+
+
 </style>
 </head>
 <body>
@@ -318,8 +330,8 @@
 				<div class="col-xs-2"></div>
 
 				<div class="col-xs-8" style="padding: 0px;">
-					<a href="${path }/board/main.mall" class="pull-left" style="margin-top: 5px;"><img
-						id="logo" src="../img/logo.png"></a>
+					<a href="${path }/board/main.mall" class="pull-left" style="margin-top: 5px;">
+					<img class="rotatey" id="logo" src="../img/logo.png"></a>
 
 					<form class="navbar-form pull-left" style="margin-top: 15px;">
 						<!-- 검색창 시작 -->
