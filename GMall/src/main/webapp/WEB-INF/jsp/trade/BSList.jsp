@@ -326,7 +326,7 @@ body {
 						<tbody>
 							<c:forEach items="${tradeList}" var="trade">
 							<tr>
-							<td>${trade.pro_name}</td>
+							<td>${trade.pro_name}</td> 
 							<td>
 							<f:formatNumber type="CURRENCY"
 							currencySymbol="" value="${trade.trd_money}" minFractionDigits="0"/>원</td>
