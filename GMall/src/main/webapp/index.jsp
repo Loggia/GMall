@@ -31,5 +31,8 @@
 	<br>
 	<br>
 	<a href="board/centerList.mall">&nbsp;&nbsp;&nbsp;centerList</a>
+		<br>
+	<br>
+	<a href="member/passConfirm.mall">&nbsp;&nbsp;&nbsp;passConfirm</a>
 </body>
 </html>

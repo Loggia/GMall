@@ -6,6 +6,8 @@
   </decorator>
   <!-- layout 설정을 제외 함. -->
   <excludes>
-  	<pattern></pattern>
+  	<pattern>
+  		/member/passConfirm.mall
+  	</pattern>
   </excludes>
 </decorators>
