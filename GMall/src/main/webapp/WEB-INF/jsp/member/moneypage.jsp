@@ -198,27 +198,23 @@ $(document).ready(function(){
 							style="border-bottom: 1px solid #e5e5e5;">
 							<thead>
 								<tr>
-								<th>상호</th>
-								<th>아이디</th>
-								<th>닉네임</th>
-								<th>패스워드</th>
-								<th>이름</th>
-								<th>성별</th>
-								<th>연락처</th>
-								<th>사업자 번호</th>
+								<th>사업자</th>
+								<th>거래상품</th>
+								<th>주문금액</th>
+								<th>수수료</th>
+								<th>일자</th>
 							</tr>
-							<c:forEach items="${businessList}" var="business">
+								<c:forEach items="${tradeList}" var="trade">
 							<tr>
-							<td>${business.bis_name}</td>
-							<td>${business.id}</td>
-							<td>${business.nickname}</td>
-							<td>${business.pass}</td>
-							<td>${business.name}</td>
-							<td>${business.gender}</td>
-							<td>${business.tel}</td>
-							<td>${business.bis_no}</td>
+									<td>${trade.sell_id }</td>
+									<td>${trade.pro_name}</td>
+									<td><f:formatNumber type="CURRENCY" 
+							currencySymbol="" value="${trade.trd_money}" minFractionDigits="0"/>원</td>
+									<td>+<f:formatNumber type="CURRENCY" 
+							currencySymbol="" value="${trade.trd_money * 1.1 - trade.trd_money}" minFractionDigits="0"/>원</td>
+									<td>${trade.trd_date}</td>
 							</tr>
-							</c:forEach>
+								</c:forEach>
 							</tbody>
 						</table>
 					</c:if>
