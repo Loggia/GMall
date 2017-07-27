@@ -297,7 +297,7 @@ body {
 						</table>
 					</c:if>
 					
-					<c:if test="${member.type == 1 }">
+					<c:if test="${member.type == 2 }">
 						<h3>
 							<strong>배송 목록</strong>
 						</h3>
