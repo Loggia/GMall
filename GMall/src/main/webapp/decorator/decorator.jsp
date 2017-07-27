@@ -43,7 +43,7 @@
 		$(".ml").mouseover(function() {
 			$(".ml").css("color", "#12d8fa");
 		});
-		$(".ml").mouseout(function() {
+		$(".ml").mouseout(function() {0
 			$(".ml").css("color", "black");
 		});
 
@@ -194,10 +194,10 @@ transform: rotateY(180deg);
 										</div>
 										
 										<div class="modal-footer">
-											<input type="submit" class="btn btn-info" data-dismiss="modal"
-												value="회원가입" data-toggle="modal" data-target="#joinFormModal">
 											<input type="submit" class="btn btn-success"
 												value="로그인">
+											<input type="submit" class="btn btn-info" data-dismiss="modal"
+												value="회원가입" data-toggle="modal" data-target="#joinFormModal">
 											<input type="button" class="btn btn-default"
 												value="닫기" data-dismiss="modal">
 										</div>
@@ -322,7 +322,7 @@ transform: rotateY(180deg);
 			</div>
 		</div>
 
-		<div class="gap_white col-xs-12"></div>
+		<div class="gap_black col-xs-12"></div>
 
 		<div id="header_bottombar" class="col-xs-12">
 			<div class="row">
@@ -336,10 +336,10 @@ transform: rotateY(180deg);
 					<form class="navbar-form pull-left" style="margin-top: 15px;">
 						<!-- 검색창 시작 -->
 						<div class="input-group">
-							<input type="text" class="form-control" placeholder="검색어를 입력해주세요">
+							<input type="search" class="form-control" placeholder="검색어를 입력해주세요">
 							<div class="input-group-btn">
 								<button class="btn btn-default" type="submit">
-									<i class="glyphicon glyphicon-search"></i>
+									<i style="margin-top: 2px;" class="glyphicon glyphicon-search"></i>
 								</button>
 							</div>
 						</div>

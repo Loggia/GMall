@@ -22,7 +22,7 @@ body {
 
 .fir_line {
 	background-color: rgba(255, 255, 255, 1);
-	height: 500px;
+	height: 240px;
 	margin: 0px 0px 16px 16px;
 }
 
@@ -54,7 +54,8 @@ body {
 	width: 100px;
 	float: left;
 	display: inline;
-	margin: 0px 10px 0px 10px;
+	margin: 0px 10px 0px 0px;
+	font-size: 20px;
 }
 
 .mask {
@@ -71,28 +72,29 @@ body {
 </style>
 </head>
 <body>
-<div class="container-fluid" style="padding: 0px 0px 0px 0px;">
-<div id="category_bar" style="padding: 0px 0px 0px 0px;">
-	<div id="category">
-		<ul style="margin-left: 300px;">
-			<li style="color: skyblue; font-size: 20px;"><em style="border-bottom: 2px solid #4cc370;"><b>육류</b></em></li>
-			<li>해산물</li>
-			<li>채소</li>
-			<li>과일</li>
-			<li>곡류</li>
-			<li><em style="border-bottom: 2px solid #4cc370;">견과류</em></li>
-		</ul>
-	</div>
-</div>
 
-<div class="gap_black col-lg-12"></div>
-
-</div>
 <div class="container-fluid" style="padding: 0px 0px 0px 0px;">
+		<div class="col-xs-2" style="background-color: white; height: 45px;"></div>
+		<div class="col-xs-8" id="category_bar" style="padding: 0px 0px 0px 0px;">
+			<div id="category" style="margin: 0; padding: 0;">
+				<ul style="margin: 0px; padding: 0px;">
+					<li><b>육류</b></li>
+					<li>해산물</li>
+					<li>채소</li>
+					<li>과일</li>
+					<li>곡류</li>
+					<li>견과류</li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-xs-2" style="background-color: white; height: 45px;"></div>
+		
+		<div class="gap_black col-xs-12"></div>
+		
 		<div class="col-xs-2">&nbsp;</div>
-		<div id="content-wrap" style="padding: 16px 0px 0px 0px;">
-			<div class="col-xs-8" style="padding: 0px 0px 0px 0px;">
-				<div style="display: inline; float: left;">
+		<div id="content-wrap" style="">
+			<div class="col-xs-8" style="padding: 0px 0px 0px 0px; margin-top: 16px;">
+				<div style="display: inline;">
 					<div class="col-xs-3 fir_line">
 						<div class="mask"></div>
 					프리미엄 상품
@@ -107,7 +109,7 @@ body {
 					<div class="mask"></div>
 					</div>
 				</div>
-				<div>
+				<div style="display: inline;">
 					<div class="col-xs-3 sec_line">
 					<div class="mask"></div>
 					나의관심 상품
@@ -123,7 +125,7 @@ body {
 					</div>
 				</div>
 
-				<div>
+				<div style="display: inline;">
 					<div class="col-xs-3 thr_line">
 					<div class="mask"></div>
 					최다 검색 상품
@@ -139,7 +141,7 @@ body {
 					</div>
 				</div>
 
-				<div>
+				<div style="display: inline;">
 					<div class="col-xs-3 for_line">
 					<div class="mask"></div>
 					최다 구매 상품
