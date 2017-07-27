@@ -261,21 +261,37 @@ public class MemberController
 	@RequestMapping("member/delete")
 	public ModelAndView delete(Member member, HttpSession session)
 	{
-		ModelAndView mav = new ModelAndView();
+		ModelAndView mav = new ModelAndView("board/main");
 		Member login = (Member)session.getAttribute("LOGIN_MEMBER");
 		
-		if(login.getId().equals(member.getId()) && login.getPass().equals(member.getPass()) ||
-		   login.getId().equals("admin"))
+		if(login == null)
 		{
-			try
+			mav.setViewName("alert");
+			mav.addObject("url", "../board/main.mall");
+			mav.addObject("msg", "회원만 탈퇴 가능합니다.");
+			
+			return mav;
+		}
+		
+		if(login.getId().equals(member.getId()) || login.getId().equals("admin"))
+		{
+			if(login.getPass().equals(member.getPass()))
 			{
 				shopService.deleteMember(member);
 				session.invalidate();
 			}
-			catch (Exception e)
+			else
 			{
-				e.printStackTrace();
+				mav.setViewName("alert");
+				mav.addObject("url", "../member/mypage.mall");
+				mav.addObject("msg", "비밀번호를 확인하세요.");
 			}
+		}
+		else
+		{
+			mav.setViewName("alert");
+			mav.addObject("url", "../board/main.mall");
+			mav.addObject("msg", "본인의 계정만 탈퇴 가능합니다.");
 		}
 		
 		return mav;

@@ -295,14 +295,15 @@ body {
 					<div class="panel-heading">
 						<h3 class="panel-title">회원 탈퇴</h3>
 					</div>
-					<form>
+					<form action="${path }/member/delete.mall" method="post" name="deleteform">
 					<div class="panel-body">
 						<div class="form-group">
+							<input type="hidden" name="id" value="${member.id }">
 							<label for="message-text" class="control-label">비밀번호:</label> <input
 								name="pass" type="password" class="form-control"
 								id="message-text" placeholder="비밀번호를 입력해주세요">
 						</div>
-						<button type="button" class="btn btn-danger">회원 탈퇴</button>
+						<button type="submit" class="btn btn-danger">회원 탈퇴</button>
 					</div>
 					</form>
 				</div>
