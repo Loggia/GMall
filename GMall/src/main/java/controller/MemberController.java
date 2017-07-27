@@ -161,7 +161,8 @@ public class MemberController
 		}
 		else if(login.getType() == 2)
 		{
-			// 사업자
+			List<Product> myBis_list=shopService.getProductList(login.getBis_no());//내아이디만
+			mav.addObject("myBis_list",myBis_list);
 		}
 		
 		mav.addObject("member", login);

@@ -43,7 +43,7 @@ public class TradeController
 			
 		}
 		
-		mav.addObject("member", login);
+		mav.addObject("member", login);   
 		
 		return mav;
 	}

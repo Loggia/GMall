@@ -288,9 +288,10 @@ body {
 									<th>프리미엄 여부</th>
 								</c:if>
 								<c:if test="${member.type == 2 }">
-									<th>상호</th>
-									<th>연락처</th>
-									<th>프리미엄 여부</th>
+									<th>상품 카테고리</th>
+									<th>상품이름</th>
+									<th>가격</th>
+									<th>등록일자</th>
 								</c:if>
 								<c:if test="${member.type == 3 }">
 									<th>상호</th>
@@ -316,11 +317,12 @@ body {
 								</c:forEach>
 							</c:if>
 							<c:if test="${member.type == 2 }">
-								<c:forEach items="">
+							   <c:forEach items="${myBis_list}" var="product">
 									<tr>
-										<td>사</td>
-										<td>업</td>
-										<td>자</td>
+										<td>${product.category }</td>
+										<td>${product.pro_name }</td>
+										<td>${product.price }원</td>
+										<td><f:formatDate value="${product.date }" pattern="yy-MM-dd"/></td>
 									</tr>
 								</c:forEach>
 							</c:if>
