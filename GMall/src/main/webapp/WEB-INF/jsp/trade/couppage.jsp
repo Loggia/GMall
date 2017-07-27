@@ -180,7 +180,7 @@ $(document).ready(function(){
 										<td>셈</td>
 										</c:if>
 										<c:if test="${member.type == 2 }">
-										<td>${coupon.discount }</td>
+										<td>${coupon.discount }%</td>
 										<td>${coupon.id }</td>
 										<td>${coupon.chk }</td>
 										</c:if>
