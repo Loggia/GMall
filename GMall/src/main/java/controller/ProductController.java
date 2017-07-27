@@ -32,7 +32,7 @@ public class ProductController
 	//고종환 상품 업데이트 
 	@RequestMapping("product/productUpdate")
 	public ModelAndView productupdate(Product product,BindingResult bindingResult, HttpServletRequest request,HttpSession session){
-		ModelAndView mav=new ModelAndView("member/mypage");
+		ModelAndView mav=new ModelAndView("member/mypage.mall");
 		int pro_no = shopService.prono()+1;
 		
 		//Member member=(Member)request.getSession().getAttribute("LOGIN_MEMBER");
@@ -44,6 +44,7 @@ public class ProductController
 		shopService.ProductAdd(product,request);
 		
 		mav.addObject("member",login);
+		
 		return mav;
 	}
 
