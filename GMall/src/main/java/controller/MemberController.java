@@ -349,4 +349,14 @@ public class MemberController
 		return mav;
 		
 	}
+	
+	@RequestMapping("member/passConfirm")
+	public ModelAndView passConfirm (HttpSession session) {
+		
+		ModelAndView mav = new ModelAndView();
+		Member login = (Member)session.getAttribute("LOGIN_MEMBER");
+		mav.addObject("member", login);
+		return mav;
+	}
+	
 }
