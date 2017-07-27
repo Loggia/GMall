@@ -139,17 +139,17 @@ $(document).ready(function(){
 						<ul>
 							<li>
 								<label style="cursor: pointer;">
-									<input style="width: 17px; height: 17px;" type="radio" name="type" value="1" required="required"><span style="vertical-align: top;">5%</span>
+									<input style="width: 17px; height: 17px;" type="radio" required="required" onclick="location.href='${path}/trade/bus_couponCheck.mall?discount=5'"><span style="vertical-align: top;" >5%</span>
 								</label>
 							</li>
 							<li>
 								<label style="cursor: pointer;">
-									<input style="width: 17px; height: 17px;" type="radio" name="type" value="2" required="required"><span style="vertical-align: top;">10%</span>
+									<input style="width: 17px; height: 17px;" type="radio" required="required" onclick="location.href='${path}/trade/bus_couponCheck.mall?discount=10'">><span style="vertical-align: top;">10%</span>
 								</label>
 							</li>
 							<li>
 								<label style="cursor: pointer;">
-									<input style="width: 17px; height: 17px;" type="radio" name="type" value="3" required="required"><span style="vertical-align: top;">15%</span>
+									<input style="width: 17px; height: 17px;" type="radio" required="required" onclick="location.href='${path}/trade/bus_couponCheck.mall?discount=15'">><span style="vertical-align: top;">15%</span>
 								</label>
 							</li>
 						</ul>

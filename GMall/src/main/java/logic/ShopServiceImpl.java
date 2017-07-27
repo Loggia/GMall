@@ -355,4 +355,9 @@ public class ShopServiceImpl implements ShopService{
 	public List<coupon_history> bus_coupon(String id) {
 		return tradeDao.bus_coupon(id);
 	}
+
+	@Override
+	public List<coupon_history> bus_couponCheck(String id, String discount) {
+		return tradeDao.bus_couponCheck(id,discount);
+	}
 }

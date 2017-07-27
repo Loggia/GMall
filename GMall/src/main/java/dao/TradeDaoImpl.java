@@ -1,6 +1,8 @@
 package dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,5 +49,17 @@ public class TradeDaoImpl implements TradeDao{
 		public List<coupon_history> bus_coupon(String id) {
 			return sqlSession.getMapper(TradeMapper.class).bus_coupon(id);
 		}
+
+		//고종환 사업자 쿠폰관리 선택시
+		@Override
+		public List<coupon_history> bus_couponCheck(String id, String discount) {
+			Map<String,String> map=new HashMap<String,String>();
+			map.put("id",id);
+			map.put("discount", discount);
+			
+
+			return sqlSession.getMapper(TradeMapper.class).bus_couponCheck(map);
+		}
+		
 	}
 

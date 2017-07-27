@@ -1,6 +1,7 @@
 package dao.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Select;
 
@@ -29,4 +30,8 @@ public interface TradeMapper {
 	//고종환 사업자 쿠폰관리
 	@Select("select c.discount, c.id, c.chk  from member m, coupon_history c where m.bis_no=c.bis_no and m.id=#{id}")
 	List<coupon_history> bus_coupon(String id);
+
+	//고종환 사업자 쿠폰관리 선택시
+	@Select("select c.discount, c.id, c.chk from member m, coupon_history c where m.bis_no=c.bis_no and m.id=#{id} and discount=#{discount}")
+	List<coupon_history> bus_couponCheck(Map<String, String> map);
 }

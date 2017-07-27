@@ -2,6 +2,7 @@ package controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import logic.Member;
+import logic.Product;
 import logic.ShopService;
 import logic.Trade;
 import logic.coupon_history;
@@ -96,10 +98,20 @@ public class TradeController
 		}
 		
 		
-		
-		
 		mav.addObject("member", login);   
 		return mav;
 	}
-	
+	//고종환 사업자 쿠폰관리 카테고리 ${path}/trade/bus_couponCheck.mall?category=10
+	@RequestMapping("trade/bus_couponCheck")
+	public ModelAndView bus_couponCheck(HttpSession session,HttpServletRequest request){
+			String discount=request.getParameter("discount");
+			Member login=(Member)session.getAttribute("LOGIN_MEMBER");
+			String id=login.getId();
+			
+			List<coupon_history> bus_coupon=shopService.bus_couponCheck(id,discount);
+			ModelAndView mav=new ModelAndView("trade/couppage");
+			mav.addObject("bus_coupon",bus_coupon);
+			mav.addObject("member",login);
+			return mav;
+		}
 }
