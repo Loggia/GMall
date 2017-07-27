@@ -42,7 +42,7 @@ public class TradeDaoImpl implements TradeDao{
 		//고종환 사업자 거래목록
 		@Override
 		public List<Trade> tradeList(String id) {
-			return sqlSession.getMapper(TradeMapper.class).tradeList(id);
+			return sqlSession.getMapper(TradeMapper.class).tradeList2(id);
 		}
 
 		@Override

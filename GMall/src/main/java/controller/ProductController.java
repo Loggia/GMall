@@ -21,7 +21,7 @@ public class ProductController
 	@Autowired
 	ShopService shopService;
 
-	//상품추가 폼이동
+	//상품추가 폼이동 
 	@RequestMapping("product/addProduct")
 	public ModelAndView addProduct(HttpSession session)
 	{
