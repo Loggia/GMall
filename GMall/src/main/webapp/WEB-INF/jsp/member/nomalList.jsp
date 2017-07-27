@@ -97,9 +97,9 @@ $(document).ready(function(){
 									src="../img/talk_color.png"><br>구디 톡톡!</a></li>
 						</c:if>
 						<c:if test="${member.type == 3 }">
-							<li class="menu_delv"><a href="${path }/member/delvpage.mall"><img
+							<li class="menu_delv"><a href="${path }/member/nomalList.mall"><img
 									src="../img/truck2_color.png" width="64px" height="64px"><br>일반회원 관리</a></li>
-							<li class="menu_coup"><a href="${path }/trade/couppage.mall"><img
+							<li class="menu_coup"><a href="${path }/member/businessList.mall"><img
 									src="../img/coupon_color.png"><br>사업자회원 관리</a></li>
 							<li class="menu_money"><a href="${path }/member/moneypage.mall"><img
 									src="../img/money_color.png"><br>보유 금액</a></li>
@@ -145,7 +145,7 @@ $(document).ready(function(){
 				
 					<br><br>
 
-					<c:if test="${member.type == 1 }">
+					<c:if test="${member.type == 3 }">
 						<h3>
 							<strong>배송 목록</strong>
 						</h3>
@@ -157,37 +157,6 @@ $(document).ready(function(){
 									<th>거래 물품</th>
 									<th>구매 금액</th>
 									<th>상호명</th>
-									<th>일자</th>
-									<th>배송현황</th>
-								</tr>
-							</thead>
-							<tbody>
-								<c:forEach items="">
-									<tr>
-										<td>넣</td>
-										<td>으</td>
-										<td>셈</td>
-										<td>뿌</td>
-										<td>잉</td>
-										<td>잉</td>
-									</tr>
-								</c:forEach>
-							</tbody>
-						</table>
-					</c:if>
-					
-					<c:if test="${member.type == 2 }">
-						<h3>
-							<strong>배송 목록</strong>
-						</h3>
-						<table class="table table-hover"
-							style="border-bottom: 1px solid #e5e5e5;">
-							<thead>
-								<tr>
-									<th>거래코드</th>
-									<th>거래 물품</th>
-									<th>구매 금액</th>
-									<th>구매자</th>
 									<th>일자</th>
 									<th>배송현황</th>
 								</tr>
