@@ -46,15 +46,7 @@ public class ProductController
 		mav.addObject("member",login);
 		return mav;
 	}
-	//고종환 내 사업장 관리
-	@RequestMapping("member/myBusiness")
-	public ModelAndView myBusinessList(HttpSession session){
-		Member member=(Member)session.getAttribute("LOGIN_MEMBER");
-		List<Product> myBis_list=shopService.getProductList(member.getBis_no());//내아이디만
-		ModelAndView mav=new ModelAndView("member/myBusinessList");
-		mav.addObject("myBis_list",myBis_list);
-		return mav;
-	}
+
 	//고종환 내 사업장 관리에서 카테고리 클릭시
 	@RequestMapping("member/categoryCheck")
 	public ModelAndView categoryCheck(HttpSession session,HttpServletRequest request){
