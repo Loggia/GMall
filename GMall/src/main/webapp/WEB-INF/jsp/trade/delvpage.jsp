@@ -177,6 +177,20 @@ body {
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
+.nomal{
+	display: inline-block;
+	margin-right: 40px;
+	text-align: center;
+}
+
+.last {
+	display: inline-block;
+	margin: 0px;
+}
+.delv_chk_font {
+	margin-left: 20px;
+	font-size: 120px;
+}
 </style>
 </head>
 <body>
@@ -264,6 +278,18 @@ body {
 					</ul>
 				</div>
 				<div class="left_cont">
+					
+					<div class="panel panel-default" style="margin-top: 30px;">
+						<div id="delv_chk">
+							<ul style="margin: 14px; padding: 0;" >
+								<li class="nomal"><img src="../img/delv_pro_ready.png"><span class="delv_chk_font">0</span></li>
+								<li class="nomal"><img src="../img/delv_trans_ready.png"><span class="delv_chk_font">0</span></li>
+								<li class="nomal"><img src="../img/delv_trans.png"><span class="delv_chk_font">0</span></li>
+								<li class="last"><img src="../img/delv_comp.png"><span class="delv_chk_font">0</span></li>
+							</ul>
+						</div>
+					</div>					
+				
 					<br><br>
 
 					<c:if test="${member.type == 1 }">
