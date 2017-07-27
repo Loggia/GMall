@@ -112,7 +112,7 @@ $(document).ready(function(){
 						</c:if>
 					</ul>
 				</div>
-				<div class="left_cont">
+				<div class="right_cont">
 					
 					<div class="panel panel-default" style="margin-top: 40px;">
 						<div id="delv_chk">
