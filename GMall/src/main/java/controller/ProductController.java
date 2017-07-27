@@ -43,7 +43,7 @@ public class ProductController
         product.setBis_name(login.getBis_name());
 		shopService.ProductAdd(product,request);
 		
-		mav.addObject("login",login);
+		mav.addObject("member",login);
 		return mav;
 	}
 	//고종환 내 사업장 관리
