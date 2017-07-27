@@ -224,7 +224,7 @@ body {
 						<c:if test="${member.type == 1 }">
 							<li class="menu_delv"><a href="${path }/trade/delvpage.mall"><img
 									src="../img/truck2_color.png" width="64px" height="64px"><br>배송 정보</a></li>
-							<li class="menu_coup"><a href="${path }/member/couppage.mall"><img
+							<li class="menu_coup"><a href="${path }/trade/couppage.mall"><img
 									src="../img/coupon_color.png"><br>보유 쿠폰</a></li>
 							<li class="menu_money"><a href="${path }/member/moneypage.mall"><img
 									src="../img/money_color.png"><br>보유 금액</a></li>
@@ -234,7 +234,7 @@ body {
 						<c:if test="${member.type == 2 }">
 							<li class="menu_delv"><a href="${path }/trade/delvpage.mall"><img
 									src="../img/truck2_color.png" width="64px" height="64px"><br>배송 관리</a></li>
-							<li class="menu_coup"><a href="${path }/member/couppage.mall"><img
+							<li class="menu_coup"><a href="${path }/trade/couppage.mall"><img
 									src="../img/coupon_color.png"><br>쿠폰 관리</a></li>
 							<li class="menu_money"><a href="${path }/member/moneypage.mall"><img
 									src="../img/money_color.png"><br>보유 금액</a></li>

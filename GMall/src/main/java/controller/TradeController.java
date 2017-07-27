@@ -56,4 +56,12 @@ public class TradeController
 		return mav;
 	}
 	
+	@RequestMapping("trade/couppage.mall")
+	public ModelAndView couppage(Member member, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		Member login = (Member)session.getAttribute("LOGIN_MEMBER");
+		mav.addObject("member", login);   
+		return mav;
+	}
+	
 }
