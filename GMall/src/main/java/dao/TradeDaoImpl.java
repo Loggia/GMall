@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import dao.mapper.TradeMapper;
 import logic.Trade;
+import logic.coupon_history;
 
 @Repository
 public class TradeDaoImpl implements TradeDao{
@@ -40,6 +41,11 @@ public class TradeDaoImpl implements TradeDao{
 		@Override
 		public List<Trade> deliveryList(String id) {
 			return sqlSession.getMapper(TradeMapper.class).deliveryList(id);
+		}
+
+		@Override
+		public List<coupon_history> bus_coupon(String id) {
+			return sqlSession.getMapper(TradeMapper.class).bus_coupon(id);
 		}
 	}
 

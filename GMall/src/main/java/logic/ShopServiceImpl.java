@@ -350,4 +350,9 @@ public class ShopServiceImpl implements ShopService{
 	public List<Trade> tradeList(String id) {
 		return tradeDao.deliveryList(id);
 	}
+
+	@Override
+	public List<coupon_history> bus_coupon(String id) {
+		return tradeDao.bus_coupon(id);
+	}
 }

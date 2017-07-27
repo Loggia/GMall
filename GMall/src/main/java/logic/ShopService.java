@@ -34,5 +34,6 @@ public interface ShopService {
 	List<Product> getProductList(String Bis_no);//고종환 내 사업장 관리
 	List<Product> categoryCheck(String bis_name, String category);//고종환 내사업장 카테고리분류
 	List<Trade> tradeList(String id);//고종환 사업자 거래목록
+	List<coupon_history> bus_coupon(String id);//고종환 사업자 쿠폰관리
 	
 }

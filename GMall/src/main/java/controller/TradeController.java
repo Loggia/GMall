@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import logic.Member;
 import logic.ShopService;
 import logic.Trade;
+import logic.coupon_history;
 
 @Controller
 public class TradeController 
@@ -83,6 +84,20 @@ public class TradeController
 	public ModelAndView couppage(Member member, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		Member login = (Member)session.getAttribute("LOGIN_MEMBER");
+		
+		if(login.getType() == 1){
+			
+		}else if(login.getType() == 2){// 고종환 사업자 쿠폰관리
+			    String id=login.getId();
+			    List<coupon_history> bus_coupon=shopService.bus_coupon(id);
+		     	mav.addObject("bus_coupon",bus_coupon);
+		}else if(login.getType() == 3){
+			
+		}
+		
+		
+		
+		
 		mav.addObject("member", login);   
 		return mav;
 	}
