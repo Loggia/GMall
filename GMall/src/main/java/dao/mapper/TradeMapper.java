@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import logic.Trade;
 import logic.coupon_history;
@@ -48,6 +49,14 @@ public interface TradeMapper {
 	List<Trade> delvpageBuyList(String id);
 
 	//고종환 사업자 배송조회
-	@Select("select p.pro_name, t.buy_id, t.trd_money, t.trd_code, t.trd_date, t.delivery   from trade t, product p  where t.pro_no=p.pro_no and sell_id=#{id}")
+	@Select("select p.pro_name, t.buy_id, t.trd_money, t.trd_code, t.trd_date, t.delivery, t.trd_no   from trade t, product p  where t.pro_no=p.pro_no and sell_id=#{id}")
 	List<Trade> deliveryList(String id);
+	
+	//고종환 사업자 배송현황 변경위한 쿼리
+	@Select("select delivery from trade where trd_no=#{trd_no}")
+	String tradeCheck(String trd_no);
+	
+	//고종환 사업자 배송현황변경
+	@Update("update trade set delivery=#{tradeCheck} where trd_no=#{trd_no}")
+	void deliveryControl(Map<String, String> map);
 }

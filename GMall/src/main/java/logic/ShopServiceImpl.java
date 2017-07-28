@@ -490,4 +490,16 @@ public class ShopServiceImpl implements ShopService{
 	public Member getUserById(String id) {
 		return memberDao.getUserById(id);
 	}
+	
+	//고종환 사업자 배송현황 변경을 위한 쿼리
+	@Override
+	public String tradeCheck(String trd_no) {
+		return tradeDao.tradeCheck(trd_no);
+	}
+	//고종환 사업자 배송현황 변경
+	@Override
+	public void deliveryControl(String trd_no, String tradeCheck) {
+		tradeDao.deliveryControl(trd_no,tradeCheck);
+		
+	}
 }

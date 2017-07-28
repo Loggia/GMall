@@ -21,43 +21,9 @@ $(document).ready(function(){
 	    $(".list_3th a").mouseout(function(){
 	        $(".list_3th a").css("color", "black");
 	    });
-	    
-	  /*   $('img.img').on('click', function(){
-			var no = $('img.img').index($(this)) + 1;	
-			discography(no);
-		}); */
-	    
-	  /*   $('.category').on('click', function(){
-			var category = $(this).val();
-			location.href="mypage.mall?category="+category;
-//			mybis_list(category);
-		}); */
-		
-		/* mybis_list(); */
-});	
-
-/* function mybis_list(category){
-	    	var data = {'category': category};
-	    	
-	    	$.ajax({
-	    		type : "POST",
-	    		url : "bislist.mall",
-	    		data : data,
-	    		success : function(html) {
-					var obj = JSON.parse(html);
-	    			var myBislist = obj.myBislist;
-	    			
-	    			/* $("#myBislist_category").attr("src","${path }/twice/model2/board/file/" + myBislist.image) */
-	    			for(i=0;i<myBislist.length;i++) {
-//	    			   $("#myBislist_content"+i).text(myBislist[0].pro_content)
-						$("#myBislist_category"+i).text(myBislist[i].category)
-					   $("#myBislist_name"+i).text(myBislist[i].pro_name)
-	    			   $("#myBislist_price"+i).text(myBislist[i].price)
-	    			  /*  $("#myBislist_price"+i).text(myBislist[i].date)   */ 			   
-	    			}
-	    		}
-	    	});
-	    } */
+	
+	
+});
 </script>
 <style type="text/css">
 body {
@@ -284,9 +250,9 @@ body {
 						</c:if>
 						<c:if test="${member.type == 3 }">
 							<li class="menu_delv"><a href="${path }/member/nomalList.mall"><img
-									src="../img/nomal_1.png"><br>일반회원</a></li>
+									src="../img/truck2_color.png" width="64px" height="64px"><br>일반회원 관리</a></li>
 							<li class="menu_coup"><a href="${path }/member/businessList.mall"><img
-									src="../img/busi_1.png"><br>사업자회원</a></li>
+									src="../img/coupon_color.png"><br>사업자회원 관리</a></li>
 							<li class="menu_money"><a href="${path }/member/moneypage.mall"><img
 									src="../img/money_color.png"><br>보유 금액</a></li>
 							<li class="menu_talk"><a href="${path }/member/talkpage.mall"><img
@@ -324,13 +290,13 @@ body {
 					<c:if test="${member.type == 2 }">
 						<div class="my_category pull-right" style="margin-bottom: 25px;">
 						<ul>
-							<li><input type="button" class="btn btn-default category" value="육류" ></li>
-							<li><input type="button" class="btn btn-default category" value="해산물"></li>
-							<li><input type="button" class="btn btn-default category" value="과일"></li>
-							<li><input type="button" class="btn btn-default category" value="채소"></li>
-							<li><input type="button" class="btn btn-default category" value="곡류"></li>
-							<li><input type="button" class="btn btn-default category" value="견과류"></li>
-							<li><input type="button" class="btn btn-default category" value="조미료"></li>
+							<li><input type="button" class="btn btn-default" onclick="location.href='${path}/member/categoryCheck.mall?category=육류'" value="육류"></li>
+							<li><input type="button" class="btn btn-default" onclick="location.href='${path}/member/categoryCheck.mall?category=해산물'" value="해산물"></li>
+							<li><input type="button" class="btn btn-default" onclick="location.href='${path}/member/categoryCheck.mall?category=과일'" value="과일"></li>
+							<li><input type="button" class="btn btn-default" onclick="location.href='${path}/member/categoryCheck.mall?category=채소'" value="채소"></li>
+							<li><input type="button" class="btn btn-default" onclick="location.href='${path}/member/categoryCheck.mall?category=곡류'" value="곡류"></li>
+							<li><input type="button" class="btn btn-default" onclick="location.href='${path}/member/categoryCheck.mall?category=견과류'" value="견과류"></li>
+							<li><input type="button" class="btn btn-default" onclick="location.href='${path}/member/categoryCheck.mall?category=조미료'" value="조미료"></li>
 						</ul>
 						</div>
 					</c:if>
@@ -348,7 +314,6 @@ body {
 									<th>상품이름</th>
 									<th>가격</th>
 									<th>등록일자</th>
-									
 								</c:if>
 								<c:if test="${member.type == 3 }">
 									<th>상호</th>
@@ -374,12 +339,12 @@ body {
 								</c:forEach>
 							</c:if>
 							<c:if test="${member.type == 2 }">
-							   <c:forEach items="${myBis_list}" var="product" varStatus="stat">
+							   <c:forEach items="${myBis_list}" var="product">
 									<tr>
-										<td id="myBislist_category${stat.index }">${product.category}</td>
-										<td id="myBislist_name${stat.index }">${product.pro_name}</td>
-										<td id="myBislist_price${stat.index }">${product.price}</td>
-										<td id="myBislist_date${stat.index }">${product.date}</td>
+										<td>${product.category }</td>
+										<td>${product.pro_name }</td>
+										<td>${product.price }원</td>
+										<td><f:formatDate value="${product.date }" pattern="yy-MM-dd"/></td>
 									</tr>
 								</c:forEach>
 							</c:if>

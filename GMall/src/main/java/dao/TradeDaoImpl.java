@@ -133,5 +133,21 @@ public class TradeDaoImpl implements TradeDao{
 			
 			return sqlSession.selectList("dao.mapper.TradeMapper.moneyChangeList", map);
 		}
+		//고종환 사업자 배송현황 변경위한 쿼리
+		@Override
+		public String tradeCheck(String trd_no) {
+			return sqlSession.getMapper(TradeMapper.class).tradeCheck(trd_no);
+		}
+
+		//고종환 사업자 배송현황 변경
+		@Override
+		public void deliveryControl(String trd_no, String tradeCheck) {
+			Map<String,String> map=new HashMap<String,String>();
+			map.put("trd_no",trd_no);
+			map.put("tradeCheck", tradeCheck);
+			
+			sqlSession.getMapper(TradeMapper.class).deliveryControl(map);
+			
+		}
 }
 

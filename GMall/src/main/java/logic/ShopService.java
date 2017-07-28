@@ -46,4 +46,8 @@ public interface ShopService {
 	List<coupon_history> memberDiscountCheck(String id, String discount); // 주한울 일반회원 쿠폰 관리 선택시
 	List<coupon_history> bisDiscountCheck(String id, String discount);//고종환 사업자 쿠폰관리 선택시
 	List<Trade> moneyChangeList(Member member); // 주한울 일반회원, 사업자 보유금액(금액 변동) 
+	
+	
+	String tradeCheck(String trd_no);//고종환 사업자 배송현황 변경위한 쿼리
+	void deliveryControl(String trd_no, String tradeCheck);//고종환 사업자 배송현황 변경
 }

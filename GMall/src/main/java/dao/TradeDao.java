@@ -22,4 +22,6 @@ public interface TradeDao {
 	List<Trade> moneyChangeList(Member member); // 주한울 일반회원, 사업자 보유금액(금액 변동) 
 
 	List<Trade> deliveryList(String id);//고종환 사업자 배송조회
+	String tradeCheck(String trd_no);//고종환 배송현황 변경위한 쿼리
+	void deliveryControl(String trd_no, String tradeCheck); //고종환 사업자 배송현황 변경
 }
