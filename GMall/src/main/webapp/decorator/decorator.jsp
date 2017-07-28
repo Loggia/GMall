@@ -56,7 +56,7 @@
 }
 
 .header_topbar {
-	height: 35px;
+	height: 40px;
 	background: linear-gradient(to left, #1fa2ff, #12d8fa, #a6ffcb);
 }
 
@@ -155,8 +155,8 @@ transform: rotateY(180deg);
 	<!-- 헤더 영역 -->
 	<header class="container-fluid" style="padding: 0px;">
 
-		<div id="header_topbar" class="col-xs-12 header_topbar">
-			<div class="row">
+		<div id="header_topbar" class="col-xs-12 header_topbar" style="padding: 0px;">
+			<div class="row" style="height: 40px;">
 				<div class="col-xs-2"></div>
 				<div class="col-xs-8" style="padding: 0px;">
 
@@ -164,12 +164,12 @@ transform: rotateY(180deg);
 					<c:if test="${LOGIN_MEMBER.id == null}">
 						<button type="button" data-toggle="modal"
 							data-target="#loginFormModal" class="btn btn-success pull-right"
-							style="margin-top: 1px;">로그인</button>
+							style="margin-top: 3px;">로그인</button>
 					</c:if>
 					<c:if test="${LOGIN_MEMBER.id != null}">
 						<button type="submit" onclick="location.href='${path }/member/logout.mall'"
 							class="btn btn-success pull-right"
-							style="margin-top: 1px;">${LOGIN_MEMBER.id }</button>
+							style="margin-top: 3px;">${LOGIN_MEMBER.id }</button>
 					</c:if>
 					
 					<!-- 모달 로그인폼 바디-->
