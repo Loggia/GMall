@@ -173,5 +173,26 @@ public class MemberDaoImpl implements MemberDao
 		
 		return sqlSession.selectList(NS + "list" , paramMap);
 	}
+
+	/*
+	 * 구정연 
+	 * 프리미엄 리스트
+	 */
+	@Override
+	public List<Member> primList() {
+		
+		return sqlSession.getMapper(MemberMapper.class).primList();
+	}
+
+	/*
+	 * 구정연
+	 * 프리미엄 업데이트
+	 */
+	@Override
+	public void primupdate() {
+		
+		sqlSession.getMapper(MemberMapper.class).primdelete();
+		sqlSession.getMapper(MemberMapper.class).primupdate();
+	}
 	
 }

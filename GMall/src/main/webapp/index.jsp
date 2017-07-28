@@ -34,5 +34,8 @@
 		<br>
 	<br>
 	<a href="member/passConfirm.mall">&nbsp;&nbsp;&nbsp;passConfirm</a>
+		<br>
+	<br>
+	<a href="member/primlist.mall">&nbsp;&nbsp;&nbsp;프리미엄</a>
 </body>
 </html>

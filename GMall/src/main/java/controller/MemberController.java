@@ -404,5 +404,37 @@ public class MemberController
 		return mav;
 	}
 	
+	/*
+	 * 구정연
+	 * 프리미엄
+	 */
+	@RequestMapping("member/primlist")
+	public ModelAndView prim() {
+		ModelAndView mav = new ModelAndView();
+		List<Member> primList = shopService.primList();
+		mav.addObject("primList" , primList);
+		return mav;
+	}
+	
+	/*
+	 * 구정연 
+	 * 프리미엄 업데이트
+	 * 구매 판매 리뷰시에 업데이트해주기
+	 */
+	@RequestMapping("member/primup")
+	public ModelAndView primup() {
+		ModelAndView mav = new ModelAndView();
+		return mav;
+	}
+	@RequestMapping("member/primupdate")
+	public ModelAndView primupdate() {
+		ModelAndView mav = new ModelAndView();
+		shopService.primupdate();
+		List<Member> primList = shopService.primList();
+		mav.addObject("primList" , primList);
+		return mav;
+		
+	}
+	
 	
 }

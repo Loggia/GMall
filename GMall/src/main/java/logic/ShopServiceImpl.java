@@ -345,6 +345,27 @@ public class ShopServiceImpl implements ShopService{
 		
 		return memberDao.businessList();
 	}
+	
+	/*
+	 * 구정연
+	 * 프리미엄 리스트
+	 */
+	@Override
+	public List<Member> primList() {
+		
+		return memberDao.primList();
+	}
+	/*
+	 * 구정연
+	 * 프리미엄 업데이트
+	 */
+	@Override
+	public void primupdate() {
+		
+		memberDao.primupdate();
+	}
+	
+	
 	/*
 	 * 고종환 
 	 * 사업자 물품등록

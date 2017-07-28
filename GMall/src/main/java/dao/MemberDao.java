@@ -16,4 +16,6 @@ public interface MemberDao
 	
 	List<Member> nomalList(); //구정연 - 일반회원목록 
 	List<Member> businessList(); //구정연 -사업자목록
+	List<Member> primList();// 구정연 - 프리미엄 리스트
+	void primupdate(); // 구정연 - 프리미엄 업데이트
 }

@@ -35,4 +35,14 @@ public interface MemberMapper
 	
 	@Select("select id, bis_no from member where bis_no=#{bis_no}")
 	Member cheakMember(String bis_no);
+	
+	@Select("select * from member where prim=1 ")
+	List<Member> primList();
+
+	@Update("update member m set m.prim = true where type = 2 and m.money > 500000 and "
+			+ " (select m.score/count(*) from trade t where t.sell_id=m.id and t.rv_chk=2) > 7.5 order by money DESC limit 5")
+	void primupdate();
+
+	@Update("update member set prim = false")
+	void primdelete();
 }
