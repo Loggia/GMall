@@ -378,7 +378,7 @@ body {
 										<td id="myBislist_category${stat.index }"></td>
 										<td id="myBislist_name${stat.index }"></td>
 										<td id="myBislist_price${stat.index }"></td>
-										<td id="myBislist_date${stat.index }"><f:formatDate value="" pattern="yy-MM-dd"/></td>
+										<td id="myBislist_date${stat.index }"></td>
 									</tr>
 								</c:forEach>
 							</c:if>

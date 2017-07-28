@@ -78,6 +78,7 @@ public class ProductController
 		System.out.println(category);
 		Member member=(Member)session.getAttribute("LOGIN_MEMBER");
 		String bis_name=member.getBis_name();
+		List<Product> myBis_list=shopService.getProductList(member.getBis_no());//내아이디만
 		List<Product> myBislist=shopService.categoryCheck(bis_name,category);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("myBislist", myBislist);
