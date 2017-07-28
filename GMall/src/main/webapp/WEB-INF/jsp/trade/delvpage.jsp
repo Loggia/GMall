@@ -193,7 +193,7 @@ $(document).ready(function(){
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach items="${deliveryList}" var="list">
+								<c:forEach items="${delivery}" var="list">
 									<tr>
 										<td>${list.pro_name }</td>
 										<td>${list.buy_id }</td>

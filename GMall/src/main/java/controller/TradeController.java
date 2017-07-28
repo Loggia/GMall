@@ -121,14 +121,14 @@ public class TradeController
 		}
 		else if(login.getType() == 2) // 사업자 (조옹환이)
 		{
-			List<Trade> deliveryList=shopService.deliveryList(login.getId());
-			if(deliveryList != null)
+			delivery=shopService.deliveryList(login.getId());
+			if(delivery != null)
 			{
-				mav.addObject("deliveryList", deliveryList);
+				mav.addObject("delivery", delivery);
 			}
 			else
 			{
-				mav.addObject("deliveryList", new Trade());
+				mav.addObject("delivery", new Trade());
 			}
 		}
 		
