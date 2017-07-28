@@ -27,16 +27,16 @@ $(document).ready(function(){
 			discography(no);
 		}); */
 	    
-	    $('.category').on('click', function(){
+	  /*   $('.category').on('click', function(){
 			var category = $(this).val();
 			location.href="mypage.mall?category="+category;
 //			mybis_list(category);
-		});
+		}); */
 		
-		mybis_list();
+		/* mybis_list(); */
 });	
 
-function mybis_list(category){
+/* function mybis_list(category){
 	    	var data = {'category': category};
 	    	
 	    	$.ajax({
@@ -57,7 +57,7 @@ function mybis_list(category){
 	    			}
 	    		}
 	    	});
-	    }
+	    } */
 </script>
 <style type="text/css">
 body {

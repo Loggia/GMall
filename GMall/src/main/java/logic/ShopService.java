@@ -45,5 +45,4 @@ public interface ShopService {
 	List<coupon_history> bisCoupon(String id);//고종환 사업자 쿠폰목록
 	List<coupon_history> memberDiscountCheck(String id, String discount); // 주한울 일반회원 쿠폰 관리 선택시
 	List<coupon_history> bisDiscountCheck(String id, String discount);//고종환 사업자 쿠폰관리 선택시
-	List<Product> getProductList(String bis_no, String category);
 }
