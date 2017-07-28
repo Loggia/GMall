@@ -21,9 +21,31 @@ $(document).ready(function(){
 	    $(".list_3th a").mouseout(function(){
 	        $(".list_3th a").css("color", "black");
 	    });
-	
-	
-});
+	    
+	    $('img.img').on('click', function(){
+			var no = $('img.img').index($(this)) + 1;	
+			discography(no);
+		});
+		
+		mybis_list(1);
+});	
+
+function mybis_list(no){
+	    	var data = {'no': no};
+	    	
+	    	$.ajax({
+	    		type : "GET",
+	    		url : "data1.bo",
+	    		data : jsonObject,
+	    		success : function(html) {
+	    			var obj = JSON.parse(html);
+	    			var myBislist = obj.myBislist;
+	    			
+	    			$("#myBislist_category").attr("src","${path }/twice/model2/board/file/" + myBislist.image)
+	    			$("#myBislist_price").html(myBislist.price)
+	    		}
+	    	});
+	    }
 </script>
 <style type="text/css">
 body {
