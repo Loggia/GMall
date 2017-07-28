@@ -132,25 +132,23 @@ $(document).ready(function(){
 							style="border-bottom: 1px solid #e5e5e5;">
 							<thead>
 								<tr>
-								<th>상호</th>
-								<th>아이디</th>
 								<th>닉네임</th>
-								<th>패스워드</th>
 								<th>이름</th>
 								<th>성별</th>
 								<th>연락처</th>
+								<th>상호</th>
 								<th>사업자 번호</th>
+								<th>총수익</th>
 							</tr>
 							<c:forEach items="${businessList}" var="business">
 							<tr>
-							<td>${business.bis_name}</td>
-							<td>${business.id}</td>
-							<td>${business.nickname}</td>
-							<td>${business.pass}</td>
+							<td><a href="infoForm.mall?id=${business.id}">${business.nickname}</a></td>
 							<td>${business.name}</td>
 							<td>${business.gender}</td>
 							<td>${business.tel}</td>
+							<td>${business.bis_name}</td>
 							<td>${business.bis_no}</td>
+							<td>총수익</td>
 							</tr>
 							</c:forEach>
 							</tbody>

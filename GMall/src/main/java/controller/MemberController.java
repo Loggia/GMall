@@ -293,6 +293,7 @@ public class MemberController
 				mav.addObject("msg", "입력한 비밀번호가 일치하지 않습니다.");
 			}
 		}
+		//구정연 - 일반회원목록 수정
 		else if(login.getId().equals("admin"))
 		{
 			if(member.getPass().equals(passfirm))
