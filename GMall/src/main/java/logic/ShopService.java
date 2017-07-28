@@ -37,5 +37,6 @@ public interface ShopService {
 	List<Trade> tradeList(String id);//고종환 사업자 거래목록
 	List<coupon_history> bus_coupon(String id);//고종환 사업자 쿠폰관리
 	List<coupon_history> bus_couponCheck(String id, String discount);//고종환 사업자 쿠폰관리 선택시
+	List<Trade> deliveryList(String id);//고종환 사업자 배송 조회
 	
 }

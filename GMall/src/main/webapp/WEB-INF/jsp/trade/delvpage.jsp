@@ -188,16 +188,18 @@ $(document).ready(function(){
 									<th>구입자</th>
 									<th>결제금액</th>
 									<th>거래코드</th>
+									<th>거래일자</th>
 									<th>배송현황</th>
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach items="${tradeList}" var="list">
+								<c:forEach items="${deliveryList}" var="list">
 									<tr>
 										<td>${list.pro_name }</td>
-										<td>${list.bis_name }</td>
+										<td>${list.buy_id }</td>
 										<td>${list.trd_money }</td>
 										<td>${list.trd_code }</td>
+										<td><f:formatDate value="${del.trd_date }" pattern="yy-MM-dd"/></td>
 										<td>${list.delivery }</td>
 									</tr>
 								</c:forEach>

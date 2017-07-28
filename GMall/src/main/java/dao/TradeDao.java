@@ -18,4 +18,6 @@ public interface TradeDao {
 
 	List<coupon_history> bus_couponCheck(String id, String discount);//고종환 사업자 쿠폰관리 선택시
 
+	List<Trade> deliveryList(String id);//고종환 사업자 배송조회
+
 }

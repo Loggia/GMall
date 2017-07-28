@@ -84,9 +84,14 @@ public class TradeDaoImpl implements TradeDao{
 			Map<String,String> map=new HashMap<String,String>();
 			map.put("id",id);
 			map.put("discount", discount);
-			
 
 			return sqlSession.getMapper(TradeMapper.class).bus_couponCheck(map);
+		}
+
+		//고종환 사업자 배송조회
+		@Override
+		public List<Trade> deliveryList(String id) {
+			return sqlSession.getMapper(TradeMapper.class).deliveryList(id);
 		}
 		
 	}

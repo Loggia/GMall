@@ -355,7 +355,6 @@ public class ShopServiceImpl implements ShopService{
 		return productDao.categoryCheck(bis_name,category);
 	}
 	//고종환 사업자 거래목록
-
 	@Override
 	public List<Trade> tradeList(String id) {
 		return tradeDao.tradeList(id);
@@ -369,5 +368,10 @@ public class ShopServiceImpl implements ShopService{
 	@Override
 	public List<coupon_history> bus_couponCheck(String id, String discount) {
 		return tradeDao.bus_couponCheck(id,discount);
+	}
+	//고종환 사업자 배송조회
+	@Override
+	public List<Trade> deliveryList(String id) {
+		return tradeDao.deliveryList(id);
 	}
 }

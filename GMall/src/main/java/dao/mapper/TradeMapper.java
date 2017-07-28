@@ -38,4 +38,8 @@ public interface TradeMapper {
 	// 주한울 일반 회원 배송 조회
 	@Select("select t.trd_code,p.pro_name,t.trd_money,p.bis_name,t.trd_date,t.delivery from trade t,product p where t.buy_id=#{id} and t.pro_no=p.pro_no order by trd_no")
 	List<Trade> delvpageBuyList(String id);
+
+	//고종환 사업자 배송조회
+	@Select("select p.pro_name, t.buy_id, t.trd_money, t.trd_code, t.trd_date, t.delivery   from trade t, product p  where t.pro_no=p.pro_no and sell_id=#{id}")
+	List<Trade> deliveryList(String id);
 }

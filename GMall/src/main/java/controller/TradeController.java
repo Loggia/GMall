@@ -116,12 +116,20 @@ public class TradeController
 			}
 			else
 			{
-				mav.addObject("delvpage", new Trade());
+				mav.addObject("delivery", new Trade());
 			}
 		}
 		else if(login.getType() == 2) // 사업자 (조옹환이)
 		{
-			
+			List<Trade> deliveryList=shopService.deliveryList(login.getId());
+			if(deliveryList != null)
+			{
+				mav.addObject("deliveryList", deliveryList);
+			}
+			else
+			{
+				mav.addObject("deliveryList", new Trade());
+			}
 		}
 		
 		/*
