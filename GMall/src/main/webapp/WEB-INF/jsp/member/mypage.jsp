@@ -22,32 +22,38 @@ $(document).ready(function(){
 	        $(".list_3th a").css("color", "black");
 	    });
 	    
-	    $('img.img').on('click', function(){
+	  /*   $('img.img').on('click', function(){
 			var no = $('img.img').index($(this)) + 1;	
 			discography(no);
-		});
+		}); */
 	    
 	    $('.category').on('click', function(){
-			var category = $('.category').index($(this));	
+			var category = $(this).val();	
 			mybis_list(category);
 		});
 		
-		/* mybis_list(1); */
+		mybis_list();
 });	
 
 function mybis_list(category){
 	    	var data = {'category': category};
 	    	
 	    	$.ajax({
-	    		type : "GET",
+	    		type : "POST",
 	    		url : "bislist.mall",
 	    		data : data,
 	    		success : function(html) {
-	    			var obj = JSON.parse(html);
+					var obj = JSON.parse(html);
 	    			var myBislist = obj.myBislist;
 	    			
 	    			/* $("#myBislist_category").attr("src","${path }/twice/model2/board/file/" + myBislist.image) */
-	    			$("#myBislist_price").html(myBislist.price)
+	    			for(i=0;i<myBislist.length;i++) {
+//	    			   $("#myBislist_content"+i).text(myBislist[0].pro_content)
+						$("#myBislist_category"+i).text(myBislist[i].category)
+					   $("#myBislist_name"+i).text(myBislist[i].pro_name)
+	    			   $("#myBislist_price"+i).text(myBislist[i].price)
+	    			  /*  $("#myBislist_price"+i).text(myBislist[i].date)   */ 			   
+	    			}
 	    		}
 	    	});
 	    }
@@ -317,13 +323,13 @@ body {
 					<c:if test="${member.type == 2 }">
 						<div class="my_category pull-right" style="margin-bottom: 25px;">
 						<ul>
-							<li><input type="button" class="btn btn-default category" onclick="location.href='${path}/member/categoryCheck.mall?category=육류'" value="육류"></li>
-							<li><input type="button" class="btn btn-default category" onclick="location.href='${path}/member/categoryCheck.mall?category=해산물'" value="해산물"></li>
-							<li><input type="button" class="btn btn-default category" onclick="location.href='${path}/member/categoryCheck.mall?category=과일'" value="과일"></li>
-							<li><input type="button" class="btn btn-default category" onclick="location.href='${path}/member/categoryCheck.mall?category=채소'" value="채소"></li>
-							<li><input type="button" class="btn btn-default category" onclick="location.href='${path}/member/categoryCheck.mall?category=곡류'" value="곡류"></li>
-							<li><input type="button" class="btn btn-default category" onclick="location.href='${path}/member/categoryCheck.mall?category=견과류'" value="견과류"></li>
-							<li><input type="button" class="btn btn-default category" onclick="location.href='${path}/member/categoryCheck.mall?category=조미료'" value="조미료"></li>
+							<li><input type="button" class="btn btn-default category" value="육류" ></li>
+							<li><input type="button" class="btn btn-default category" value="해산물"></li>
+							<li><input type="button" class="btn btn-default category" value="과일"></li>
+							<li><input type="button" class="btn btn-default category" value="채소"></li>
+							<li><input type="button" class="btn btn-default category" value="곡류"></li>
+							<li><input type="button" class="btn btn-default category" value="견과류"></li>
+							<li><input type="button" class="btn btn-default category" value="조미료"></li>
 						</ul>
 						</div>
 					</c:if>
@@ -341,6 +347,7 @@ body {
 									<th>상품이름</th>
 									<th>가격</th>
 									<th>등록일자</th>
+									
 								</c:if>
 								<c:if test="${member.type == 3 }">
 									<th>상호</th>
@@ -366,12 +373,12 @@ body {
 								</c:forEach>
 							</c:if>
 							<c:if test="${member.type == 2 }">
-							   <c:forEach items="${myBis_list}" var="product">
+							   <c:forEach items="${myBis_list}" var="product" varStatus="stat">
 									<tr>
-										<td>${product.category }</td>
-										<td>${product.pro_name }</td>
-										<td id="myBislist_price">${product.price }원</td>
-										<td><f:formatDate value="${product.date }" pattern="yy-MM-dd"/></td>
+										<td id="myBislist_category${stat.index }"></td>
+										<td id="myBislist_name${stat.index }"></td>
+										<td id="myBislist_price${stat.index }"></td>
+										<td id="myBislist_date${stat.index }"><f:formatDate value="" pattern="yy-MM-dd"/></td>
 									</tr>
 								</c:forEach>
 							</c:if>

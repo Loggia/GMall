@@ -6,8 +6,6 @@
   </decorator>
   <!-- layout 설정을 제외 함. -->
   <excludes>
-  	<pattern>
-  		
-  	</pattern>
+  	<pattern>/member/bislist.mall*</pattern>
   </excludes>
 </decorators>

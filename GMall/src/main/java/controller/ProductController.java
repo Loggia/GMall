@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -71,21 +72,23 @@ public class ProductController
 		return mav;
 	}
 	
-	@RequestMapping("member/bislist")
-	public @ResponseBody JSONObject bislist(HttpSession session, HttpServletRequest request) {
-		String category=request.getParameter("category");
+	@RequestMapping(value="member/bislist", produces="text/plain; charset=UTF8")
+	public @ResponseBody String bislist(HttpSession session, HttpServletRequest request) throws UnsupportedEncodingException {
+		String category = request.getParameter("category");
+		System.out.println(category);
 		Member member=(Member)session.getAttribute("LOGIN_MEMBER");
 		String bis_name=member.getBis_name();
-		
 		List<Product> myBislist=shopService.categoryCheck(bis_name,category);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("myBislist", myBislist);
-		
+		//System.out.println(myBislist);
 		
 		JSONObject jsonObject = new JSONObject();
 		jsonObject = JSONObject.fromObject(JSONSerializer.toJSON(map));
+		System.out.println(jsonObject);
+		request.setAttribute("data", jsonObject);
 		//request.setAttribute("data", jsonObject);
-		return jsonObject;
+		return jsonObject.toString();
 	}
 	
 	
