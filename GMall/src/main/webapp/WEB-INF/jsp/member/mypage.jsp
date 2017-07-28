@@ -8,22 +8,83 @@
 <title></title>
 <script type="text/javascript">
 $(document).ready(function(){
-	
-	    $(".list_2nd a").mouseover(function(){
-	        $(".list_2nd a").css("color", "#12d8fa");
-	    });
-	    $(".list_2nd a").mouseout(function(){
-	        $(".list_2nd a").css("color", "black");
-	    });
-	    $(".list_3th a").mouseover(function(){
-	        $(".list_3th a").css("color", "#12d8fa");
-	    });
-	    $(".list_3th a").mouseout(function(){
-	        $(".list_3th a").css("color", "black");
-	    });
-	
-	
-});
+   
+       $(".list_2nd a").mouseover(function(){
+           $(".list_2nd a").css("color", "#12d8fa");
+       });
+       $(".list_2nd a").mouseout(function(){
+           $(".list_2nd a").css("color", "black");
+       });
+       $(".list_3th a").mouseover(function(){
+           $(".list_3th a").css("color", "#12d8fa");
+       });
+       $(".list_3th a").mouseout(function(){
+           $(".list_3th a").css("color", "black");
+       });
+       
+        $('img.img').on('click', function(){
+         var no = $('img.img').index($(this)) + 1;   
+         discography(no);
+      }); 
+       
+        $('.category').on('click', function(){
+         var category = $(this).val();
+         mybis_list(category);
+      }); 
+      
+      /* mybis_list(); */
+});   
+
+  function mybis_list(category){
+          var data = {'category': category};
+          var type = ${member.type};
+          $.ajax({
+             type : "POST",
+             url : "bislist.mall",
+             data : data,
+             success : function(html) {
+               var obj = JSON.parse(html);
+                var myBislist = obj.myBislist;
+                console.log(myBislist);
+                /* $("#myBislist_category").attr("src","${path }/twice/model2/board/file/" + myBislist.image) */
+                var html = "<thead>";
+                    html += "<tr>";
+                  if(type == 1){
+                     html += "<th>상호</th>";
+                     html += "<th>연락처</th>";
+                     html += "<th>프리미엄 여부</th>";
+                  }else if(type == 2){
+                     html += "<th>상품 카테고리</th>";
+                     html += "<th>상품이름</th>";
+                     html += "<th>가격</th>";
+                     html += "<th>등록일자</th>";
+                  }
+                  html += "</tr>";
+                  html += "</thead>";
+                for(i=0;i<myBislist.length;i++) {
+//                    $("#myBislist_content"+i).text(myBislist[0].pro_content)
+//                   $("#myBislist_category"+i).text(myBislist[i].category)
+//                   $("#myBislist_name"+i).text(myBislist[i].pro_name)
+//                    $("#myBislist_price"+i).text(myBislist[i].price)
+//                   /*  $("#myBislist_price"+i).text(myBislist[i].date)  */
+                  html += "<tr>";
+                  if(type == 1){
+                     html += "<td></td>";
+                     html += "<td></td>";
+                     html += "<td></td>";
+                  }else if(type == 2){
+                     html += "<td>" + myBislist[i].category + "</td>";
+                     html += "<td>" + myBislist[i].pro_name + "</td>";
+                     html += "<td>" + myBislist[i].price + "</td>";
+                     html += "<td>" + myBislist[i].date2 + "</td>";
+                  }
+                  html += "</tr>";
+                }
+                $('#hd').empty().html(html);
+               
+             }
+          });
+       }  
 </script>
 <style type="text/css">
 body {
