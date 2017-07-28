@@ -58,14 +58,23 @@ public class TradeController
 		else if(login.getType() == 2) // 사업자
 		{
 			String id=login.getId();
+			
 			List<Trade> tradeList=shopService.tradeList(id);
 			mav.addObject("tradeList",tradeList);
 			
 		}
-		else if(login.getType() == 3) // 관리자
+		else if(login.getType() == 3) // 관리자 (구정연)
  		{
 			List<Trade> tradeList = shopService.tradeList();
-			mav.addObject("tradeList",tradeList);
+			
+			if(tradeList !=null)
+			{
+				mav.addObject("tradeList",tradeList);
+			}
+			else
+			{
+				mav.addObject("tradeList", new Trade());
+			}
 		}
 		
 		mav.addObject("member", login);   
