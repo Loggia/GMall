@@ -45,4 +45,7 @@ public interface MemberMapper
 
 	@Update("update member set prim = false")
 	void primdelete();
+
+	@Select("select * from member where id = #{id}")
+	Member getUserById(String id);
 }

@@ -18,4 +18,5 @@ public interface MemberDao
 	List<Member> businessList(); //구정연 -사업자목록
 	List<Member> primList();// 구정연 - 프리미엄 리스트
 	void primupdate(); // 구정연 - 프리미엄 업데이트
+	Member getUserById(String id); //구정연 - 일반회원목록 아이디로 가져오기
 }

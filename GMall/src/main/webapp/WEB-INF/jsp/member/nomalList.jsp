@@ -142,7 +142,7 @@ $(document).ready(function(){
 							<tbody>
 								<c:forEach items="${nomalList}" var="nomal">
 								<tr>
-								<td>${nomal.id}</td>
+								<td><a href="infoForm.mall?id=${nomal.id}">${nomal.id}</a></td>
 								<td>${nomal.nickname}</td>
 								<td>${nomal.pass}</td>
 								<td>${nomal.name}</td>

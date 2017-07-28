@@ -32,6 +32,8 @@ public interface ShopService {
 	List<Member> businessList();//구정연 - 사업자관리
 	List<Member> primList(); //구정연 - 프리미엄 리스트출력
 	void primupdate(); //구정연 - 프리미엄 업데이트
+	Member getUserById(String id); //구정연 - 일반회원목록 아이디로 가져오기
+
 	void ProductAdd(Product product, HttpServletRequest request);//고종환 사업자 물품등록
 	int prono();//고종환 -물품번호
 	List<Product> getProductList(String Bis_no);//고종환 내 사업장 관리

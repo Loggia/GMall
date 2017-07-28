@@ -475,4 +475,10 @@ public class ShopServiceImpl implements ShopService{
 	{
 		return tradeDao.bisDiscountCheck(id,discount);
 	}
+
+	@Override
+	public Member getUserById(String id) {
+		
+		return memberDao.getUserById(id);
+	}
 }
