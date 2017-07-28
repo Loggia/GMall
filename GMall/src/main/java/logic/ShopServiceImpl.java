@@ -477,13 +477,7 @@ public class ShopServiceImpl implements ShopService{
 	}
 
 	@Override
-<<<<<<< HEAD
-	public List<Product> getProductList(String bis_no, String category) {
-		return productDao.findAll(bis_no,category);
-=======
 	public Member getUserById(String id) {
-		
 		return memberDao.getUserById(id);
->>>>>>> branch 'master' of https://github.com/Loggia/GMall.git
 	}
 }
