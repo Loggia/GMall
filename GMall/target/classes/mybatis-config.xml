@@ -8,9 +8,9 @@
     <typeAlias type="logic.Product" alias="Product" />
   </typeAliases>
   <mappers>
-    <mapper resource="dao/mapper/Board.xml"/>
-    <mapper resource="dao/mapper/Member.xml" />
-    <mapper resource="dao/mapper/Trade.xml" />
-    <mapper resource="dao/mapper/Product.xml" />
+    <mapper resource="dao/mapper/BoardMapper.xml"/>
+    <mapper resource="dao/mapper/MemberMapper.xml" />
+    <mapper resource="dao/mapper/TradeMapper.xml" />
+    <mapper resource="dao/mapper/ProductMapper.xml" />
   </mappers>    
 </configuration>  

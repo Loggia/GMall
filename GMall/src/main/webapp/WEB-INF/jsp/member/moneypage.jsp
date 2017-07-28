@@ -119,38 +119,29 @@ $(document).ready(function(){
 					</ul>
 				</div>
 				<div class="right_cont">
-					
-							
-				
 					<br><br>
 					
 					<c:if test="${member.type == 1 }">
 						<h3>
-							<strong>배송 목록</strong>
+							<strong>금액 변동 목록</strong>
 						</h3>
 						<table class="table table-hover"
 							style="border-bottom: 1px solid #e5e5e5;">
 							<thead>
 								<tr>
-								<th>상호</th>
-								<th>아이디</th>
-								<th>닉네임</th>
-								<th>패스워드</th>
-								<th>이름</th>
-								<th>성별</th>
-								<th>연락처</th>
-								<th>사업자 번호</th>
+								<th>거래구분</th>
+								<th>거래상품</th>
+								<th>주문금액</th>
+								<th>금액변동</th>
+								<th>일자</th>
 							</tr>
-							<c:forEach items="${businessList}" var="business">
+							<c:forEach items="${tradeList }" var="trd">
 							<tr>
-							<td>${business.bis_name}</td>
-							<td>${business.id}</td>
-							<td>${business.nickname}</td>
-							<td>${business.pass}</td>
-							<td>${business.name}</td>
-							<td>${business.gender}</td>
-							<td>${business.tel}</td>
-							<td>${business.bis_no}</td>
+							<td style="color: blue;">구매</td>
+							<td>${trd.pro_name}</td>
+							<td>${trd.trd_money}</td>
+							<td style="color: red;">-${trd.trd_money}</td>
+							<td><f:formatDate value="${trd.trd_date}" pattern="yy-MM-dd"/></td>
 							</tr>
 							</c:forEach>
 							</tbody>
@@ -159,31 +150,25 @@ $(document).ready(function(){
 					
 					<c:if test="${member.type == 2 }">
 						<h3>
-							<strong>배송 목록</strong>
+							<strong>금액 변동 목록</strong>
 						</h3>
 						<table class="table table-hover"
 							style="border-bottom: 1px solid #e5e5e5;">
 							<thead>
 								<tr>
-								<th>상호</th>
-								<th>아이디</th>
-								<th>닉네임</th>
-								<th>패스워드</th>
-								<th>이름</th>
-								<th>성별</th>
-								<th>연락처</th>
-								<th>사업자 번호</th>
+								<th>거래구분</th>
+								<th>거래상품</th>
+								<th>주문금액</th>
+								<th>금액변동</th>
+								<th>일자</th>
 							</tr>
-							<c:forEach items="${businessList}" var="business">
+							<c:forEach items="${tradeList }" var="trd">
 							<tr>
-							<td>${business.bis_name}</td>
-							<td>${business.id}</td>
-							<td>${business.nickname}</td>
-							<td>${business.pass}</td>
-							<td>${business.name}</td>
-							<td>${business.gender}</td>
-							<td>${business.tel}</td>
-							<td>${business.bis_no}</td>
+							<td style="color: blue;">판매</td>
+							<td>${trd.pro_name}</td>
+							<td>${trd.trd_money}</td>
+							<td style="color: blue;">+${trd.trd_money - trd.trd_fee}</td>
+							<td><f:formatDate value="${trd.trd_date}" pattern="yy-MM-dd"/></td>
 							</tr>
 							</c:forEach>
 							</tbody>

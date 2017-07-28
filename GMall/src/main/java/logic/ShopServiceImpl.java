@@ -475,6 +475,16 @@ public class ShopServiceImpl implements ShopService{
 	{
 		return tradeDao.bisDiscountCheck(id,discount);
 	}
+	
+	/*
+	 * 주한울
+	 * 주한울 일반회원, 사업자 보유금액(금액 변동) 
+	 */
+	@Override
+	public List<Trade> moneyChangeList(Member member) 
+	{
+		return tradeDao.moneyChangeList(member);
+	}
 
 	@Override
 	public Member getUserById(String id) {

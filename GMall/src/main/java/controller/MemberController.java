@@ -408,18 +408,29 @@ public class MemberController
 		return mav; 
 		
 	}
+	
 	/*
 	 * 구정연
-	 * 수익금관리
+	 * 보유금액 & 수익금관리
 	 */
 	@RequestMapping("member/moneypage")
-	public ModelAndView moneypage(HttpSession session) {
-		Member login = (Member)session.getAttribute("LOGIN_MEMBER");
+	public ModelAndView moneypage(HttpSession session) 
+	{
 		ModelAndView mav = new ModelAndView();
-		List<Trade> tradeList = shopService.tradeList();
+		Member login = (Member)session.getAttribute("LOGIN_MEMBER");
+		List<Trade> tradeList = null; // shopService.tradeList();
+		
+		if(login.getType() == 3)
+		{
+			tradeList = shopService.tradeList();
+		}
+		else
+		{
+			tradeList = shopService.moneyChangeList(login);
+		}
+		
 		mav.addObject("tradeList",tradeList);
 		mav.addObject("member", login);
-			
 		return mav;
 	}
 	
@@ -454,6 +465,4 @@ public class MemberController
 		return mav;
 		
 	}
-	
-	
 }

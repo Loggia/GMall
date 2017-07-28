@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import dao.mapper.TradeMapper;
+import logic.Member;
 import logic.Trade;
 import logic.coupon_history;
 
@@ -123,5 +124,14 @@ public class TradeDaoImpl implements TradeDao{
 			return sqlSession.getMapper(TradeMapper.class).deliveryList(id);
 		}
 		
-	}
+		@Override
+		public List<Trade> moneyChangeList(Member member) 
+		{
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("id", member.getId());
+			map.put("type", member.getType());
+			
+			return sqlSession.selectList("dao.mapper.TradeMapper.moneyChangeList", map);
+		}
+}
 
