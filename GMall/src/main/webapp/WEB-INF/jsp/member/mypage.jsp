@@ -22,17 +22,12 @@ $(document).ready(function(){
            $(".list_3th a").css("color", "black");
        });
        
-        $('img.img').on('click', function(){
-         var no = $('img.img').index($(this)) + 1;   
-         discography(no);
-      }); 
        
         $('.category').on('click', function(){
          var category = $(this).val();
          mybis_list(category);
       }); 
       
-      /* mybis_list(); */
 });   
 
   function mybis_list(category){
@@ -46,7 +41,6 @@ $(document).ready(function(){
                var obj = JSON.parse(html);
                 var myBislist = obj.myBislist;
                 console.log(myBislist);
-                /* $("#myBislist_category").attr("src","${path }/twice/model2/board/file/" + myBislist.image) */
                 var html = "<thead>";
                     html += "<tr>";
                   if(type == 1){
@@ -62,11 +56,6 @@ $(document).ready(function(){
                   html += "</tr>";
                   html += "</thead>";
                 for(i=0;i<myBislist.length;i++) {
-//                    $("#myBislist_content"+i).text(myBislist[0].pro_content)
-//                   $("#myBislist_category"+i).text(myBislist[i].category)
-//                   $("#myBislist_name"+i).text(myBislist[i].pro_name)
-//                    $("#myBislist_price"+i).text(myBislist[i].price)
-//                   /*  $("#myBislist_price"+i).text(myBislist[i].date)  */
                   html += "<tr>";
                   if(type == 1){
                      html += "<td></td>";
@@ -351,18 +340,18 @@ body {
 					<c:if test="${member.type == 2 }">
 						<div class="my_category pull-right" style="margin-bottom: 25px;">
 						<ul>
-							<li><input type="button" class="btn btn-default" value="육류"></li>
-							<li><input type="button" class="btn btn-default" value="해산물"></li>
-							<li><input type="button" class="btn btn-default" value="과일"></li>
-							<li><input type="button" class="btn btn-default" value="채소"></li>
-							<li><input type="button" class="btn btn-default" value="곡류"></li>
-							<li><input type="button" class="btn btn-default" value="견과류"></li>
-							<li><input type="button" class="btn btn-default" value="조미료"></li>
+							<li><input type="button" class="btn btn-default category" value="육류"></li>
+							<li><input type="button" class="btn btn-default category" value="해산물"></li>
+							<li><input type="button" class="btn btn-default category" value="과일"></li>
+							<li><input type="button" class="btn btn-default category" value="채소"></li>
+							<li><input type="button" class="btn btn-default category" value="곡류"></li>
+							<li><input type="button" class="btn btn-default category" value="견과류"></li>
+							<li><input type="button" class="btn btn-default category" value="조미료"></li>
 						</ul>
 						</div>
 					</c:if>
 					
-					<table class="table table-hover" style="border-bottom: 1px solid #e5e5e5;">
+					<table class="table table-hover" style="border-bottom: 1px solid #e5e5e5;" id="hd">
 						<thead>
 							<tr>
 								<c:if test="${member.type == 1 }">
