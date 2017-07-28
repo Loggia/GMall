@@ -42,6 +42,9 @@ public class Product
 	private MultipartFile sub_img2;
 	private MultipartFile sub_img3;
 	
+	@NotEmpty
+	private String date2;
+	
 
 	
 	
@@ -216,13 +219,22 @@ public class Product
 		this.sub_img3 = sub_img3;
 	}
 
+	public String getDate2() {
+		return date2;
+	}
+
+	public void setDate2(String date2) {
+		this.date2 = date2;
+	}
+
 	@Override
 	public String toString() {
-		return "Product [pro_no=" + pro_no + ", bis_no=" + bis_no + ", bis_name=" + bis_name + ", date=" + date + ", pro_name="
-				+ pro_name + ", price=" + price + ", cnt=" + cnt + ", category=" + category + ", favorite=" + favorite
-				+ ", pro_content=" + pro_content + ", main_img=" + main_img + ", sub_img1=" + sub_img1 + ", sub_img2="
-				+ sub_img2 + ", sub_img3=" + sub_img3 + ", fileurl=" + fileurl + ", fileurl1=" + fileurl1
-				+ ", fileurl2=" + fileurl2 + ", fileurl3=" + fileurl3 + "]";
+		return "Product [pro_no=" + pro_no + ", bis_no=" + bis_no + ", bis_name=" + bis_name + ", date=" + date
+				+ ", pro_name=" + pro_name + ", price=" + price + ", cnt=" + cnt + ", category=" + category
+				+ ", favorite=" + favorite + ", pro_content=" + pro_content + ", fileurl=" + fileurl + ", fileurl1="
+				+ fileurl1 + ", fileurl2=" + fileurl2 + ", fileurl3=" + fileurl3 + ", main_img=" + main_img
+				+ ", sub_img1=" + sub_img1 + ", sub_img2=" + sub_img2 + ", sub_img3=" + sub_img3 + ", date2=" + date2
+				+ "]";
 	}
 	
 }

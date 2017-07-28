@@ -156,7 +156,7 @@ transform: rotateY(180deg);
 	<header class="container-fluid" style="padding: 0px;">
 
 		<div id="header_topbar" class="col-xs-12 header_topbar" style="padding: 0px;">
-			<div class="row" style="height: 40px;">
+			<div class="row" style="height: 40px; margin: 0px;">
 				<div class="col-xs-2"></div>
 				<div class="col-xs-8" style="padding: 0px;">
 
@@ -373,10 +373,9 @@ transform: rotateY(180deg);
 				</div>
 
 				<div class="col-xs-2"></div>
-
+<div class="gap_black col-xs-12" style="padding: 0px; margin: 0px;"></div>
 			</div>
 		</div>
-		<div class="gap_black col-lg-12"></div>
 
 	</header>
 	<!-- 헤더 영역 끝 -->
