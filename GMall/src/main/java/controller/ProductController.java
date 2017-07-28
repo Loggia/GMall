@@ -73,11 +73,14 @@ public class ProductController
 	
 	@RequestMapping("member/bislist")
 	public @ResponseBody JSONObject bislist(HttpSession session, HttpServletRequest request) {
-		String no = request.getParameter("no");
-		Member login = (Member)session.getAttribute("LOGIN_MEMBER");
-		List<Product> myBislist=shopService.getProductList(login.getBis_no());
+		String category=request.getParameter("category");
+		Member member=(Member)session.getAttribute("LOGIN_MEMBER");
+		String bis_name=member.getBis_name();
+		
+		List<Product> myBislist=shopService.categoryCheck(bis_name,category);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("myBislist", myBislist);
+		
 		
 		JSONObject jsonObject = new JSONObject();
 		jsonObject = JSONObject.fromObject(JSONSerializer.toJSON(map));

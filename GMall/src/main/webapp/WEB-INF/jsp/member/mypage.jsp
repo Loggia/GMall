@@ -26,22 +26,27 @@ $(document).ready(function(){
 			var no = $('img.img').index($(this)) + 1;	
 			discography(no);
 		});
+	    
+	    $('.category').on('click', function(){
+			var category = $('.category').index($(this));	
+			mybis_list(category);
+		});
 		
-		mybis_list(1);
+		/* mybis_list(1); */
 });	
 
-function mybis_list(no){
-	    	var data = {'no': no};
+function mybis_list(category){
+	    	var data = {'category': category};
 	    	
 	    	$.ajax({
 	    		type : "GET",
-	    		url : "data1.bo",
-	    		data : jsonObject,
+	    		url : "bislist.mall",
+	    		data : data,
 	    		success : function(html) {
 	    			var obj = JSON.parse(html);
 	    			var myBislist = obj.myBislist;
 	    			
-	    			$("#myBislist_category").attr("src","${path }/twice/model2/board/file/" + myBislist.image)
+	    			/* $("#myBislist_category").attr("src","${path }/twice/model2/board/file/" + myBislist.image) */
 	    			$("#myBislist_price").html(myBislist.price)
 	    		}
 	    	});
@@ -312,13 +317,13 @@ body {
 					<c:if test="${member.type == 2 }">
 						<div class="my_category pull-right" style="margin-bottom: 25px;">
 						<ul>
-							<li><input type="button" class="btn btn-default" onclick="location.href='${path}/member/categoryCheck.mall?category=육류'" value="육류"></li>
-							<li><input type="button" class="btn btn-default" onclick="location.href='${path}/member/categoryCheck.mall?category=해산물'" value="해산물"></li>
-							<li><input type="button" class="btn btn-default" onclick="location.href='${path}/member/categoryCheck.mall?category=과일'" value="과일"></li>
-							<li><input type="button" class="btn btn-default" onclick="location.href='${path}/member/categoryCheck.mall?category=채소'" value="채소"></li>
-							<li><input type="button" class="btn btn-default" onclick="location.href='${path}/member/categoryCheck.mall?category=곡류'" value="곡류"></li>
-							<li><input type="button" class="btn btn-default" onclick="location.href='${path}/member/categoryCheck.mall?category=견과류'" value="견과류"></li>
-							<li><input type="button" class="btn btn-default" onclick="location.href='${path}/member/categoryCheck.mall?category=조미료'" value="조미료"></li>
+							<li><input type="button" class="btn btn-default category" onclick="location.href='${path}/member/categoryCheck.mall?category=육류'" value="육류"></li>
+							<li><input type="button" class="btn btn-default category" onclick="location.href='${path}/member/categoryCheck.mall?category=해산물'" value="해산물"></li>
+							<li><input type="button" class="btn btn-default category" onclick="location.href='${path}/member/categoryCheck.mall?category=과일'" value="과일"></li>
+							<li><input type="button" class="btn btn-default category" onclick="location.href='${path}/member/categoryCheck.mall?category=채소'" value="채소"></li>
+							<li><input type="button" class="btn btn-default category" onclick="location.href='${path}/member/categoryCheck.mall?category=곡류'" value="곡류"></li>
+							<li><input type="button" class="btn btn-default category" onclick="location.href='${path}/member/categoryCheck.mall?category=견과류'" value="견과류"></li>
+							<li><input type="button" class="btn btn-default category" onclick="location.href='${path}/member/categoryCheck.mall?category=조미료'" value="조미료"></li>
 						</ul>
 						</div>
 					</c:if>
@@ -365,7 +370,7 @@ body {
 									<tr>
 										<td>${product.category }</td>
 										<td>${product.pro_name }</td>
-										<td>${product.price }원</td>
+										<td id="myBislist_price">${product.price }원</td>
 										<td><f:formatDate value="${product.date }" pattern="yy-MM-dd"/></td>
 									</tr>
 								</c:forEach>
