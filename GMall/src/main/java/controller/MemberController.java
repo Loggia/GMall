@@ -237,7 +237,7 @@ public class MemberController
 	 * 회원 인포폼
 	 */
 	@RequestMapping("member/infoForm")
-	public ModelAndView infoForm(Member member, HttpSession session) {
+	public ModelAndView infoForm(Member member, HttpSession session, String id) {
 		ModelAndView mav = new ModelAndView();
 		Member login = (Member)session.getAttribute("LOGIN_MEMBER");
 		
@@ -249,8 +249,16 @@ public class MemberController
 			
 			return mav;
 		}
-		
+		// 구정연 관리자에서 회원수정
 		mav.addObject("member", login);
+		
+		if(login.getId().equals("admin")){
+			
+			Member user = shopService.getUserById(id);
+			mav.addObject("member" , user);
+			
+		}
+		
 		return mav;
 	} 
 	
@@ -285,9 +293,25 @@ public class MemberController
 				mav.addObject("msg", "입력한 비밀번호가 일치하지 않습니다.");
 			}
 		}
+		//구정연 - 일반회원목록 수정
 		else if(login.getId().equals("admin"))
 		{
-			
+			if(member.getPass().equals(passfirm))
+			{
+				if(member.getPass().equals(""))
+				{
+					member.setPass(login.getPass());
+				}
+				
+				shopService.updateMember(member, request);
+			}
+			else
+			{
+				mav.setViewName("alert");
+				mav.addObject("url", "../trade/BSList.mall");
+				mav.addObject("msg", "입력한 비밀번호가 일치하지 않습니다.");
+			}
+			 mav.setViewName("redirect:/trade/BSList.mall");
 		}
 		else
 		{

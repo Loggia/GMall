@@ -194,5 +194,18 @@ public class MemberDaoImpl implements MemberDao
 		sqlSession.getMapper(MemberMapper.class).primdelete();
 		sqlSession.getMapper(MemberMapper.class).primupdate();
 	}
+
+	/*
+	 * 구정연
+	 * 일반회원목록 아이디로 가져오기
+	 */
+	@Override
+	public Member getUserById(String id) {
+		
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("id", id);
+		
+		return sqlSession.getMapper(MemberMapper.class).getUserById(id);
+	}
 	
 }

@@ -131,23 +131,21 @@ $(document).ready(function(){
 							style="border-bottom: 1px solid #e5e5e5;">
 							<thead>
 								<tr>
-								<th>아이디</th>
 								<th>닉네임</th>
-								<th>패스워드</th>
 								<th>이름</th>
 								<th>성별</th>
 								<th>연락처</th>
+								<th>주소</th>
 							</tr>
 							</thead>
 							<tbody>
 								<c:forEach items="${nomalList}" var="nomal">
 								<tr>
-								<td>${nomal.id}</td>
-								<td>${nomal.nickname}</td>
-								<td>${nomal.pass}</td>
+								<td><a href="infoForm.mall?id=${nomal.id}">${nomal.nickname}</a></td>
 								<td>${nomal.name}</td>
 								<td>${nomal.gender}</td>
 								<td>${nomal.tel}</td>
+								<td>${nomal.address}</td>
 								</tr>
 								</c:forEach>
 							</tbody>
