@@ -1,0 +1,2 @@
+﻿## src/messages.txt => src/messages.properties 변경
+error.board.password=비밀번호가 틀립니다
