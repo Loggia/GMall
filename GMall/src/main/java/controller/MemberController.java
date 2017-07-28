@@ -274,14 +274,14 @@ public class MemberController
 					member.setPass(login.getPass());
 				}
 				
-				shopService.updateMember(member);
+				shopService.updateMember(member, request);
 				session.invalidate(); // 회원이 수정되면 세션 만료
 				request.getSession().setAttribute("LOGIN_MEMBER", member); // 수정된 정보로 다시 세션 생성
 			}
 			else
 			{
 				mav.setViewName("alert");
-				mav.addObject("url", "member/mypage.mall");
+				mav.addObject("url", "../member/mypage.mall");
 				mav.addObject("msg", "입력한 비밀번호가 일치하지 않습니다.");
 			}
 		}
@@ -292,7 +292,7 @@ public class MemberController
 		else
 		{
 			mav.setViewName("alert");
-			mav.addObject("url", "member/mypage.mall");
+			mav.addObject("url", "../member/mypage.mall");
 			mav.addObject("msg", "자신의 아이디만 수정 가능합니다.");
 		}
 		

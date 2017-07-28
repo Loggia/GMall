@@ -19,7 +19,7 @@ public interface ShopService {
 	boolean insertMember(Member member); // 주한울 - 회원가입
 	boolean cheakMember(String bis_no); // 주한울 - 회원가입시 중복된 사업자 번호를 사용했는지를 판별
 	Member getUserByIdAndPw(String id, String pass); // 주한울 - 로그인을 위한 메서드
-	void updateMember(Member member); // 주한울 - 회원 수정
+	void updateMember(Member member, HttpServletRequest request); // 주한울 - 회원 수정
 	void deleteMember(Member member); // 주한울 - 회원 탈퇴
 	List<String> selectBis_no(); // 주한울 - 사업자 번호 확인
 	List<Member> selectBookmark(String id); // 주한울 - 관심 사업자 조회

@@ -197,9 +197,64 @@ public class ShopServiceImpl implements ShopService{
 	 * 회원 수정
 	 */
 	@Override
-	public void updateMember(Member member) 
+	public void updateMember(Member member, HttpServletRequest request) 
 	{
+		if(member.getPictureFile() != null)
+		{
+			member.setPicture(pictureInsert(member.getId(), member.getPictureFile(), request));
+		}
+		else
+		{
+			member.setPicture("");
+		}
+		
 		memberDao.update(member);
+	}
+	
+	/*
+	 * 주한울 
+	 * 프로필 사진 추가 
+	 */
+	private String pictureInsert(String id, MultipartFile pictureFile, HttpServletRequest request) 
+	{
+		String uploadPath = request.getServletContext().getRealPath("/") + "/prof/";
+		String url = uploadPath + id + "PictureImg";
+		FileOutputStream fos = null;
+		
+		try
+		{
+			fos = new FileOutputStream(url);
+			InputStream in = pictureFile.getInputStream();
+			
+			int data;
+			byte[] buf = new byte[in.available()];
+			
+			while((data = in.read(buf)) != -1)
+			{
+				fos.write(buf,0,data);
+			}
+		}
+		catch(IOException e) 
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			try
+			{
+				if(fos != null)
+				{
+					fos.flush();
+					fos.close();
+				}
+			}
+			catch(IOException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		
+		return id + "PictureImg";
 	}
 	
 	/*

@@ -220,7 +220,7 @@ body {
 							<h3 class="panel-title">회원 정보 수정</h3>
 						</div>
 					<div class="panel-body">
-					<form action="${path }/member/update.mall" method="post" name="infoform">
+					<form action="${path }/member/update.mall" method="post" name="infoform" enctype="multipart/form-data">
 						<div class="form-group">
 							<label class="control-label">아이디:</label> <input disabled
 								type="text" class="form-control"
@@ -229,12 +229,12 @@ body {
 						</div>
 						<div class="profimg">
 							<c:if test="${member.picture==null }">
-								<img class="img-circle updateimg" src="../img/prof_1.png">
+								<img class="img-circle updateimg" src="../prof/prof_1.png">
 							</c:if>
 							<c:if test="${member.picture!=null }">
-								<img class="img-circle updateimg" src="../img/${member.picture }">
+								<img class="img-circle updateimg" src="../prof/${member.picture }">
 							</c:if>
-							<div style="margin-top: 20px;"><input type="file"></div>
+							<div style="margin-top: 20px;"><input type="file" name="pictureFile"></div>
 						</div>
 						<div class="form-group">
 							<label for="message-text" class="control-label">변경할 비밀번호:</label> <input

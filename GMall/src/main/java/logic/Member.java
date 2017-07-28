@@ -1,6 +1,7 @@
 package logic;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.web.multipart.MultipartFile;
 
 public class Member 
 {
@@ -25,6 +26,7 @@ public class Member
 	@NotEmpty
 	private String address;
 	private String picture;
+	private MultipartFile pictureFile;
 	
 	@NotEmpty
 	private int type;
@@ -114,6 +116,16 @@ public class Member
 		this.picture = picture;
 	}
 	
+	public MultipartFile getPictureFile() 
+	{
+		return pictureFile;
+	}
+
+	public void setPictureFile(MultipartFile pictureFile) 
+	{
+		this.pictureFile = pictureFile;
+	}
+
 	public int getType()
 	{
 		return type;
