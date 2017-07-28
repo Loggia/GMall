@@ -74,18 +74,8 @@ public class TradeDaoImpl implements TradeDao{
 		}
 
 		/*
-		 * 고종환
-		 * 사업자 쿠폰 관리
-		 */
-		@Override
-		public List<coupon_history> bisCoupon(String id) 
-		{
-			return sqlSession.getMapper(TradeMapper.class).bisCoupon(id);
-		}
-		
-		/*
 		 * 주한울
-		 * 일반회원 쿠폰 관리
+		 * 일반회원 쿠폰목록
 		 */
 		@Override
 		public List<coupon_history> memberCoupon(String id) 
@@ -93,14 +83,38 @@ public class TradeDaoImpl implements TradeDao{
 			return sqlSession.getMapper(TradeMapper.class).memberCoupon(id);
 		}
 		
-		//고종환 사업자 쿠폰관리 선택시
+		
+		/*
+		 * 고종환
+		 * 사업자 쿠폰목록
+		 */
 		@Override
-		public List<coupon_history> bus_couponCheck(String id, String discount) {
+		public List<coupon_history> bisCoupon(String id) {
+			return sqlSession.getMapper(TradeMapper.class).bisCoupon(id);
+		}
+		
+		/*
+		 * 주한울
+		 * 일반회원 쿠폰목록 카테고리 선택시
+		 */
+		@Override
+		public List<coupon_history> memberDiscountCheck(String id, String discount) 
+		{
 			Map<String,String> map=new HashMap<String,String>();
 			map.put("id",id);
 			map.put("discount", discount);
 
-			return sqlSession.getMapper(TradeMapper.class).bus_couponCheck(map);
+			return sqlSession.getMapper(TradeMapper.class).memberDiscountCheck(map);
+		}
+
+		//고종환 사업자 쿠폰목록 카테고리 선택시
+		@Override
+		public List<coupon_history> bisDiscountCheck(String id, String discount) {
+			Map<String,String> map=new HashMap<String,String>();
+			map.put("id",id);
+			map.put("discount", discount);
+
+			return sqlSession.getMapper(TradeMapper.class).bisDiscountCheck(map);
 		}
 
 		//고종환 사업자 배송조회

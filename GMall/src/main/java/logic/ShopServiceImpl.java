@@ -436,27 +436,43 @@ public class ShopServiceImpl implements ShopService{
 		return tradeDao.tradeList(id);
 	}
     
-    //고종환 사업자 쿠폰 체크시
-	@Override
-	public List<coupon_history> bus_couponCheck(String id, String discount) {
-		return tradeDao.bus_couponCheck(id,discount);
-	}
 	//고종환 사업자 배송조회
 	@Override
 	public List<Trade> deliveryList(String id) {
 		return tradeDao.deliveryList(id);
 	}
 	
-	//고종환 사업자 쿠폰 관리
+	/*
+	 * 주한울
+	 * 일반회원 쿠폰목록
+	 */
+	@Override
+	public List<coupon_history> memberCoupon(String id) 
+	{
+		return tradeDao.memberCoupon(id);
+	}
+	
+	//고종환 사업자 쿠폰목록
 	@Override
 	public List<coupon_history> bisCoupon(String id) 
 	{
 		return tradeDao.bisCoupon(id);
 	}
-
+		
+	/*
+	 * 주한울
+	 * 일반회원 쿠폰목록 카테고리 선택시
+	 */
 	@Override
-	public List<coupon_history> memberCoupon(String id) 
+	public List<coupon_history> memberDiscountCheck(String id, String discount) 
 	{
-		return tradeDao.memberCoupon(id);
+		return tradeDao.memberDiscountCheck(id,discount);
+	}	
+	
+	//고종환 사업자 쿠폰목록 카테고리 선택시
+	@Override
+	public List<coupon_history> bisDiscountCheck(String id, String discount) 
+	{
+		return tradeDao.bisDiscountCheck(id,discount);
 	}
 }

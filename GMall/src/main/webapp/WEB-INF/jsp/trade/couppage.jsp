@@ -137,9 +137,9 @@ $(document).ready(function(){
 					
 					<div class="disc_sel pull-right" style="margin-bottom: 40px;">
 						<ul>
-					     	<li><input type="button" class="btn btn-default" onclick="location.href='${path}/trade/bus_couponCheck.mall?discount=5'"  value="5%"></li>
-							<li><input type="button" class="btn btn-default" onclick="location.href='${path}/trade/bus_couponCheck.mall?discount=10'" value="10%"></li>
-							<li><input type="button" class="btn btn-default" onclick="location.href='${path}/trade/bus_couponCheck.mall?discount=15'" value="15%"></li>
+					     	<li><input type="button" class="btn btn-default" onclick="location.href='${path}/trade/couponDiscountCheck.mall?discount=5'"  value="5%"></li>
+							<li><input type="button" class="btn btn-default" onclick="location.href='${path}/trade/couponDiscountCheck.mall?discount=10'" value="10%"></li>
+							<li><input type="button" class="btn btn-default" onclick="location.href='${path}/trade/couponDiscountCheck.mall?discount=15'" value="15%"></li>
 							
 						</ul>
 					</div>

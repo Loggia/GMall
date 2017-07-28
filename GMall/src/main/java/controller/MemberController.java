@@ -1,8 +1,6 @@
 package controller;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -10,15 +8,12 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import logic.Member;
 import logic.Product;
 import logic.ShopService;
 import logic.Trade;
-import net.sf.json.JSONObject;
-import net.sf.json.JSONSerializer;
 
 @Controller
 public class MemberController 
@@ -345,16 +340,6 @@ public class MemberController
 			mav.addObject("msg", "본인의 계정만 탈퇴 가능합니다.");
 		}
 		
-		return mav;
-	}
-	
-	@RequestMapping("member/adminForm")
-	public ModelAndView admin()
-	{
-		ModelAndView mav = new ModelAndView();
-		List<Trade> tradeList = shopService.tradeList();
-		mav.addObject("tradeList",tradeList);
-			
 		return mav;
 	}
 	

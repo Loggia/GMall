@@ -27,17 +27,21 @@ public interface TradeMapper {
 	@Select("select t.trd_code, p.pro_name, (t.trd_money - t.trd_fee) trd_money, t.buy_id, t.trd_date from product p, trade t where p.pro_no = t.pro_no and sell_id=#{id}")
 	List<Trade> tradeList2(String id);
 
-	//고종환 사업자 쿠폰관리
-	@Select("select c.discount, (select nickname from member where c.id = id) nickname, c.chk  from member m, coupon_history c where m.id=#{id} and m.bis_no=c.bis_no")
-	List<coupon_history> bisCoupon(String id);
-		
-	// 주한울 일반회원 쿠폰관리
+	// 주한울 일반회원 쿠폰목록
 	@Select("select c.discount,m.bis_name,c.chk from coupon_history c,member m where c.id=#{id} and c.bis_no=m.bis_no")
 	List<coupon_history> memberCoupon(String id);
+			
+	//고종환 사업자 쿠폰목록
+	@Select("select c.discount, (select nickname from member where c.id = id) nickname, c.chk  from member m, coupon_history c where m.id=#{id} and m.bis_no=c.bis_no")
+	List<coupon_history> bisCoupon(String id);
 
-	//고종환 사업자 쿠폰관리 선택시
-	@Select("select c.discount, c.id, c.chk from member m, coupon_history c where m.bis_no=c.bis_no and m.id=#{id} and discount=#{discount}")
-	List<coupon_history> bus_couponCheck(Map<String, String> map);
+	// 주한울 일반회원 쿠폰목록 카테고리 선택시
+	@Select("select c.discount,m.bis_name,c.chk from member m,coupon_history c where c.id=#{id} and m.bis_no=c.bis_no and discount=#{discount}")
+	List<coupon_history> memberDiscountCheck(Map<String, String> map);
+		
+	//고종환 사업자 쿠폰목록 카테고리 선택시
+	@Select("select c.discount, (select nickname from member where c.id = id) nickname, c.chk from member m, coupon_history c where m.bis_no=c.bis_no and m.id=#{id} and discount=#{discount}")
+	List<coupon_history> bisDiscountCheck(Map<String, String> map);
 
 	// 주한울 일반 회원 배송 조회
 	@Select("select t.trd_code,p.pro_name,t.trd_money,p.bis_name,t.trd_date,t.delivery from trade t,product p where t.buy_id=#{id} and t.pro_no=p.pro_no order by trd_no")

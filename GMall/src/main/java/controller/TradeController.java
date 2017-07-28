@@ -180,17 +180,26 @@ public class TradeController
 		return mav;
 	}
 	
-	//고종환 사업자 쿠폰관리 카테고리 ${path}/trade/bus_couponCheck.mall?category=10
-	@RequestMapping("trade/bus_couponCheck")
-	public ModelAndView bus_couponCheck(HttpSession session,HttpServletRequest request){
-			String discount=request.getParameter("discount");
-			Member login=(Member)session.getAttribute("LOGIN_MEMBER");
-			String id=login.getId();
-			
-			List<coupon_history> bus_coupon=shopService.bus_couponCheck(id,discount);
-			ModelAndView mav=new ModelAndView("trade/couppage");
-			mav.addObject("bus_coupon",bus_coupon);
-			mav.addObject("member",login);
-			return mav;
+	// 고종환 사업자 쿠폰목록 카테고리 선택시 ${path}/trade/bus_couponCheck.mall?category=10
+	@RequestMapping("trade/couponDiscountCheck")
+	public ModelAndView couponDiscountCheck(HttpSession session,HttpServletRequest request)
+	{
+		ModelAndView mav=new ModelAndView("trade/couppage");
+		Member login = (Member)session.getAttribute("LOGIN_MEMBER");
+		String discount = request.getParameter("discount");
+		List<coupon_history> couponList = null;
+				
+		if(login.getType() == 1)
+		{
+			couponList = shopService.memberDiscountCheck(login.getId(), discount);
 		}
+		else if(login.getType() == 2)
+		{
+			couponList = shopService.bisDiscountCheck(login.getId(), discount);
+		}
+				
+		mav.addObject("couponList", couponList);
+		mav.addObject("member",login);
+		return mav;
+	}
 }
