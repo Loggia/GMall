@@ -270,6 +270,12 @@ public class MemberController
 			if(member.getPass().equals(passfirm))
 			{
 				shopService.updateMember(member);
+				
+				if(member.getPass().equals(""))
+				{
+					member.setPass(login.getPass());
+				}
+				
 				session.invalidate(); // 회원이 수정되면 세션 만료
 				request.getSession().setAttribute("LOGIN_MEMBER", member); // 수정된 정보로 다시 세션 생성
 			}
