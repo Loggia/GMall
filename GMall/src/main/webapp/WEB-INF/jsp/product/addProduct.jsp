@@ -316,8 +316,8 @@ body {
          <tr> 
          <td>
          <div class="form-group">
-         <label for="message-text" class="control-label">상품 이름:</label>
-         <form:select class="form-control" id="Step1" name='Step1' onchange='changes(value)' path="category">
+         <label for="message-text" class="control-label" style="float: left; vertical-align: bottom;">상품 타입:</label>
+         <form:select class="form-control" id="Step1" name='Step1' onchange='changes(value)' path="category" style="margin-left: 15px; margin-right: 5px; width: 90px; float:left; display:inline-block;">
          <option value="육류">육류</option>
          <option value="해산물">해산물</option>
          <option value="과일">과일</option>
@@ -325,7 +325,7 @@ body {
          <option value="곡류">곡류</option>
          <option value="견과류">견과류</option>
          <option value="조미료">조미료</option></form:select>
-         <form:select class="form-control" id="Step2" name='Step2' path="favorite">
+         <form:select class="form-control" id="Step2" name='Step2' path="favorite" style="width:135px;">
          <option>----</option>
          </form:select></div></td></tr>
    
@@ -343,46 +343,52 @@ body {
                <td>
                 <div class="form-group">
                   <label for="message-text" class="control-label">수량:</label>
-                  <form:input path="cnt" class="form-control" style=""/>
+                  <form:input type="number" path="cnt" class="form-control" style="width:100px;"/>
                 </div>
                </td>
           </tr>  
           
           <tr> 
-               <td>상품가격</td>
                <td>
-                  <form:input path="price" />
+               	<div class="form-group">
+                  <label for="message-text" class="control-label">가격:</label>
+                  <form:input path="price"  class="form-control" style="width:120px;"/>
+                  </div>
                </td>
           </tr>       
           
           
       
            <tr> 
-               <td>상품설명</td>
                <td>
-                <form:textarea path="pro_content" cols="50" rows="15" />
+               	<label for="message-text" class="control-label">상품 정보:</label>
+                <form:textarea path="pro_content" class="form-control" cols="50" rows="15" />
                </td>
           </tr>
           
           
            <tr> 
-               <td>메인사진</td>
-               <td><form:input type="file"  path="main_img"/><br></td>
+           		<td>
+           		<label for="message-text" class="control-label">상품 메인 이미지:</label>
+               	<form:input type="file" path="main_img"/><br>
+               </td>
            </tr>
            
            <tr>
-              <td>서브사진</td>
-              <td><form:input type="file"  path="sub_img1"/><br>
+              <td>
+              <label for="message-text" class="control-label">상품 서브 이미지:</label>
+              <form:input type="file"  path="sub_img1"/><br>
               <form:input type="file"  path="sub_img2"/><br>
-              <form:input type="file"  path="sub_img3"/><br></td>
+              <form:input type="file"  path="sub_img3"/><br>
+              </td>
              
            </tr>
      
           <tr>
                <td colspan="2" align="center">
-               <input type="button" onclick="javascript:document.productForm.submit()" value="등록 하기">
+               <input type="button" class="btn btn-success" onclick="javascript:document.productForm.submit()" value="등록 하기">
               
-               <input type="button" onclick="javascript:history.go(-1);" value="뒤로 가기">
+               <input type="button"  class="btn btn-default" onclick="javascript:history.go(-1);" value="뒤로 가기">
              </td>
           </tr>
          </table>
