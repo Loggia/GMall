@@ -28,8 +28,12 @@ public interface TradeMapper {
 	List<Trade> tradeList2(String id);
 
 	//고종환 사업자 쿠폰관리
-	@Select("select c.discount, c.id, c.chk  from member m, coupon_history c where m.bis_no=c.bis_no and m.id=#{id}")
-	List<coupon_history> bus_coupon(String id);
+	@Select("select c.discount, (select nickname from member where c.id = id) nickname, c.chk  from member m, coupon_history c where m.id=#{id} and m.bis_no=c.bis_no")
+	List<coupon_history> bisCoupon(String id);
+		
+	// 주한울 일반회원 쿠폰관리
+	@Select("select c.discount,m.bis_name,c.chk from coupon_history c,member m where c.id=#{id} and c.bis_no=m.bis_no")
+	List<coupon_history> memberCoupon(String id);
 
 	//고종환 사업자 쿠폰관리 선택시
 	@Select("select c.discount, c.id, c.chk from member m, coupon_history c where m.bis_no=c.bis_no and m.id=#{id} and discount=#{discount}")

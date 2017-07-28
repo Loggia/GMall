@@ -226,6 +226,7 @@ body {
 								type="text" class="form-control"
 								value="${member.id }">
 								<input type="hidden" name="id" value="${member.id }">
+								<input type="hidden" name="type" value="${member.type }">
 						</div>
 						<div class="profimg">
 							<c:if test="${member.picture==null }">

@@ -26,10 +26,10 @@ public class TradeController
 	/*
 	 * 거래 목록
 	 */
-	@RequestMapping("trade/BSList.mall")
+	@RequestMapping("trade/BSList")
 	public ModelAndView BSList(Member member, HttpSession session) 
 	{
-		ModelAndView mav = new ModelAndView();
+		ModelAndView mav = new ModelAndView("trade/BSList");
 		Member login = (Member)session.getAttribute("LOGIN_MEMBER");
 		List<Trade> trdList = null;
 		
@@ -45,40 +45,26 @@ public class TradeController
 		if(login.getType() == 1) // 일반회원 (주한울)
 		{
 			trdList = shopService.tradeBuyList(login.getId());
-			
-			if(trdList != null)
-			{
-				mav.addObject("trdList", trdList);
-			}
-			else
-			{
-				mav.addObject("trdList", new Trade());
-			}
 		}
 		else if(login.getType() == 2) // 사업자
 		{
-			String id=login.getId();
-			
-			List<Trade> tradeList=shopService.tradeList(id);
-			mav.addObject("tradeList",tradeList);
-			
+			trdList=shopService.tradeList(login.getId());
 		}
-		else if(login.getType() == 3) // 관리자 (구정연)
+		else //if(login.getType() == 3) // 관리자 (구정연)
  		{
-			List<Trade> tradeList = shopService.tradeList();
-			
-			if(tradeList !=null)
-			{
-				mav.addObject("tradeList",tradeList);
-			}
-			else
-			{
-				mav.addObject("tradeList", new Trade());
-			}
+			trdList = shopService.tradeList();
 		}
 		
-		mav.addObject("member", login);   
+		if(trdList != null)
+		{
+			mav.addObject("trdList", trdList);
+		}
+		else
+		{
+			mav.addObject("trdList", new Trade());
+		}
 		
+		mav.addObject("member", login);
 		return mav;
 	}
 	
@@ -165,22 +151,35 @@ public class TradeController
 	}
 	
 	@RequestMapping("trade/couppage.mall")
-	public ModelAndView couppage(Member member, HttpSession session) {
+	public ModelAndView couppage(Member member, HttpSession session) 
+	{
 		ModelAndView mav = new ModelAndView();
 		Member login = (Member)session.getAttribute("LOGIN_MEMBER");
+		List<coupon_history> couponList = null;
 		
-		if(login.getType() == 1){
-			//한울이 쿠폰
-		}else if(login.getType() == 2){// 고종환 사업자 쿠폰관리
-			    String id=login.getId();
-			    List<coupon_history> bus_coupon=shopService.bus_coupon(id);
-		     	mav.addObject("bus_coupon",bus_coupon);
+		if(login == null)
+		{
+			mav.setViewName("alert");
+			mav.addObject("url", "../board/main.mall");
+			mav.addObject("msg", "로그인하고 시도하시기 바랍니다.");
+			
+			return mav;
 		}
 		
+		if(login.getType() == 1) //한울이 쿠폰
+		{
+			couponList = shopService.memberCoupon(login.getId());
+		}
+		else if(login.getType() == 2) // 고종환 사업자 쿠폰관리 
+		{
+			couponList=shopService.bisCoupon(login.getId());
+		}
 		
+		mav.addObject("couponList", couponList);
 		mav.addObject("member", login);   
 		return mav;
 	}
+	
 	//고종환 사업자 쿠폰관리 카테고리 ${path}/trade/bus_couponCheck.mall?category=10
 	@RequestMapping("trade/bus_couponCheck")
 	public ModelAndView bus_couponCheck(HttpSession session,HttpServletRequest request){

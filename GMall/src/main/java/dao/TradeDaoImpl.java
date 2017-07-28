@@ -73,11 +73,26 @@ public class TradeDaoImpl implements TradeDao{
 			return sqlSession.getMapper(TradeMapper.class).tradeList2(id);
 		}
 
+		/*
+		 * 고종환
+		 * 사업자 쿠폰 관리
+		 */
 		@Override
-		public List<coupon_history> bus_coupon(String id) {
-			return sqlSession.getMapper(TradeMapper.class).bus_coupon(id);
+		public List<coupon_history> bisCoupon(String id) 
+		{
+			return sqlSession.getMapper(TradeMapper.class).bisCoupon(id);
 		}
-
+		
+		/*
+		 * 주한울
+		 * 일반회원 쿠폰 관리
+		 */
+		@Override
+		public List<coupon_history> memberCoupon(String id) 
+		{
+			return sqlSession.getMapper(TradeMapper.class).memberCoupon(id);
+		}
+		
 		//고종환 사업자 쿠폰관리 선택시
 		@Override
 		public List<coupon_history> bus_couponCheck(String id, String discount) {

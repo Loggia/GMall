@@ -161,17 +161,31 @@ $(document).ready(function(){
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach items="${bus_coupon}" var="coupon">
+								<c:forEach items="${couponList}" var="coupon">
 									<tr>
 										<c:if test="${member.type == 1 }">
-										<td>넣</td>
-										<td>으</td>
-										<td>셈</td>
+										<td>${coupon.discount }%</td>
+										<td>${coupon.bis_name }</td>
+										<c:choose>
+											<c:when test="${coupon.chk == 1}">
+												<td>X</td>
+											</c:when>
+											<c:when test="${coupon.chk == 2}">
+												<td>V</td>
+											</c:when>
+										</c:choose>
 										</c:if>
 										<c:if test="${member.type == 2 }">
 										<td>${coupon.discount }%</td>
-										<td>${coupon.id }</td>
-										<td>${coupon.chk }</td>
+										<td>${coupon.nickname }</td>
+										<c:choose>
+											<c:when test="${coupon.chk == 1}">
+												<td>X</td>
+											</c:when>
+											<c:when test="${coupon.chk == 2}">
+												<td>V</td>
+											</c:when>
+										</c:choose>
 										</c:if>
 									</tr>
 								</c:forEach>

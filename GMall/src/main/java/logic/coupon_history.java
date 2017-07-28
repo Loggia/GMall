@@ -22,6 +22,8 @@ public class coupon_history {
 	
 	@NotEmpty
 	private int chk;
+	private String nickname;
+	private String bis_name;
 
 	public int getHis_no() {
 		return his_no;
@@ -70,10 +72,24 @@ public class coupon_history {
 	public void setChk(int chk) {
 		this.chk = chk;
 	}
-	
-	
-	
-	
 
+	public String getNickname() 
+	{
+		return nickname;
+	}
 
+	public void setNickname(String nickname) 
+	{
+		this.nickname = nickname;
+	}
+
+	public String getBis_name() 
+	{
+		return bis_name;
+	}
+
+	public void setBis_name(String bis_name) 
+	{
+		this.bis_name = bis_name;
+	}
 }

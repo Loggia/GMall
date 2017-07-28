@@ -300,13 +300,13 @@ body {
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach items="${tradeList}" var="tradeList1">
+							<c:forEach items="${trdList}" var="trd">
 							<tr>
-								<td>${tradeList1.trd_code }</td>
-								<td>${tradeList1.pro_name }</td>
-								<td>${tradeList1.trd_money }원</td>
-								<td>${tradeList1.buy_id }</td>
-								<td><f:formatDate value="${tradeList1.trd_date }" pattern="yy-MM-dd"/></td>
+								<td>${trd.trd_code }</td>
+								<td>${trd.pro_name }</td>
+								<td>${trd.trd_money }원</td>
+								<td>${trd.buy_id }</td>
+								<td><f:formatDate value="${trd.trd_date }" pattern="yy-MM-dd"/></td>
 							</tr>
 							</c:forEach>
 						</tbody>
@@ -324,15 +324,15 @@ body {
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach items="${tradeList}" var="trade">
+							<c:forEach items="${trdList}" var="trd">
 							<tr>
-							<td>${trade.pro_name}</td> 
+							<td>${trd.pro_name}</td> 
 							<td>
 							<f:formatNumber type="CURRENCY"
-							currencySymbol="" value="${trade.trd_money}" minFractionDigits="0"/>원</td>
-							<td>${trade.sell_id}</td>
-							<td>${trade.buy_id}</td>
-							<td>${trade.delivery}</td>
+							currencySymbol="" value="${trd.trd_money}" minFractionDigits="0"/>원</td>
+							<td>${trd.sell_id}</td>
+							<td>${trd.buy_id}</td>
+							<td>${trd.delivery}</td>
 							</tr>
 							</c:forEach>
 						</tbody>

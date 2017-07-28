@@ -414,11 +414,7 @@ public class ShopServiceImpl implements ShopService{
 	public List<Trade> tradeList(String id) {
 		return tradeDao.tradeList(id);
 	}
-     //고종환 사업자 쿠폰 관리
-	@Override
-	public List<coupon_history> bus_coupon(String id) {
-		return tradeDao.bus_coupon(id);
-	}
+    
     //고종환 사업자 쿠폰 체크시
 	@Override
 	public List<coupon_history> bus_couponCheck(String id, String discount) {
@@ -428,5 +424,18 @@ public class ShopServiceImpl implements ShopService{
 	@Override
 	public List<Trade> deliveryList(String id) {
 		return tradeDao.deliveryList(id);
+	}
+	
+	//고종환 사업자 쿠폰 관리
+	@Override
+	public List<coupon_history> bisCoupon(String id) 
+	{
+		return tradeDao.bisCoupon(id);
+	}
+
+	@Override
+	public List<coupon_history> memberCoupon(String id) 
+	{
+		return tradeDao.memberCoupon(id);
 	}
 }

@@ -301,7 +301,7 @@ public class MemberController
 			mav.addObject("msg", "자신의 아이디만 수정 가능합니다.");
 		}
 		
-		mav.addObject("member", login);
+		mav.addObject("member", member);
 		return mav;
 	}
 	
