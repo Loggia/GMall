@@ -329,10 +329,11 @@ public class MemberController
 	 * 회원 탈퇴
 	 */
 	@RequestMapping("member/delete")
-	public ModelAndView delete(Member member, HttpSession session)
+	public ModelAndView delete(Member member, HttpSession session , String id)
 	{
 		ModelAndView mav = new ModelAndView("board/main");
 		Member login = (Member)session.getAttribute("LOGIN_MEMBER");
+		Member user = shopService.getUserById(id);
 		
 		if(login == null)
 		{
@@ -342,19 +343,28 @@ public class MemberController
 			
 			return mav;
 		}
-		
 		if(login.getId().equals(member.getId()) || login.getId().equals("admin"))
 		{
-			if(login.getPass().equals(member.getPass()))
+			if(login.getId().equals(member.getId()))
 			{
-				shopService.deleteMember(member);
-				session.invalidate();
+				if(login.getPass().equals(member.getPass()))
+				{
+	
+					shopService.deleteMember(member);
+					session.invalidate();
+					
+				}
+				else
+				{
+					mav.setViewName("alert");
+					mav.addObject("url", "../member/mypage.mall");
+					mav.addObject("msg", "비밀번호를 확인하세요.");
+				}
+				
 			}
-			else
+			else 
 			{
-				mav.setViewName("alert");
-				mav.addObject("url", "../member/mypage.mall");
-				mav.addObject("msg", "비밀번호를 확인하세요.");
+				shopService.deleteMember(user);
 			}
 		}
 		else
