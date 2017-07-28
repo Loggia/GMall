@@ -162,6 +162,17 @@ body {
 .form-control {
 	width: 300px;
 }
+.profimg {
+	position: absolute;
+	display: inline-block;
+	margin-left: 100px;
+	width: 150px;
+	height: 150px;
+}
+.updateimg {
+	width: 150px;
+	height: 150px;
+}
 </style>
 </head>
 <body>
@@ -215,6 +226,11 @@ body {
 								type="text" class="form-control"
 								value="${member.id }">
 								<input type="hidden" name="id" value="${member.id }">
+						</div>
+						<div class="profimg">
+							<c:if test="${member.picture==null }">
+							<img class="img-circle updateimg" src="../img/prof_1.png">
+							</c:if>
 						</div>
 						<div class="form-group">
 							<label for="message-text" class="control-label">변경할 비밀번호:</label> <input
