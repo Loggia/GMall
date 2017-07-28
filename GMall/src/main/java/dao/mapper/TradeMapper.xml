@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.mapper.TradeMapper">
+<select id="moneyChangeList" parameterType="hashmap" resultType="trade">
+		select p.pro_name, t.trd_money, t.trd_date, t.trd_fee
+		  from trade t, product p
+		 <choose>
+		 	<when test="type == 1">
+		  		where t.buy_id = #{id}
+		  	</when>
+		  	
+		  	<when test="type == 2">
+				where t.sell_id = #{id}	
+			</when>
+		 </choose>
+		 and t.pro_no = p.pro_no
+	   order by trd_no; 
+	</select>
+</mapper>

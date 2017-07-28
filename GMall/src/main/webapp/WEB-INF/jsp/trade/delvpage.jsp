@@ -200,7 +200,14 @@ $(document).ready(function(){
 										<td>${list.trd_money }</td>
 										<td>${list.trd_code }</td>
 										<td><f:formatDate value="${del.trd_date }" pattern="yy-MM-dd"/></td>
-										<td>${list.delivery }</td>
+										<c:choose>
+											<c:when test="${list.delivery eq '배송완료'}">
+												<td>${list.delivery}</td>
+											</c:when>
+											<c:otherwise>
+												<td><a href="${path}/trade/deliveryControl.mall?trd_no=${list.trd_no}">${list.delivery }</a></td>
+											</c:otherwise>
+										</c:choose>
 									</tr>
 								</c:forEach>
 							</tbody>
