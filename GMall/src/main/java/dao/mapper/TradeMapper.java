@@ -35,5 +35,7 @@ public interface TradeMapper {
 	@Select("select c.discount, c.id, c.chk from member m, coupon_history c where m.bis_no=c.bis_no and m.id=#{id} and discount=#{discount}")
 	List<coupon_history> bus_couponCheck(Map<String, String> map);
 
-
+	// 주한울 일반 회원 배송 조회
+	@Select("select t.trd_code,p.pro_name,t.trd_money,p.bis_name,t.trd_date,t.delivery from trade t,product p where t.buy_id=#{id} and t.pro_no=p.pro_no order by trd_no")
+	List<Trade> delvpageBuyList(String id);
 }

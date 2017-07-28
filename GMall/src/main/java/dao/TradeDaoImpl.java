@@ -36,9 +36,37 @@ public class TradeDaoImpl implements TradeDao{
 		@Override
 		public List<Trade> tradeBuyList(String id) 
 		{
-			
-			return sqlSession.getMapper(TradeMapper.class).tradeBuyList(id);
+			try
+			{
+				return sqlSession.getMapper(TradeMapper.class).tradeBuyList(id);
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+				
+				return null;
+			}
 		}
+		
+		/*
+		 * 주한울
+		 * 일반 회원 배송 조회
+		 */
+		@Override
+		public List<Trade> delvpageBuyList(String id) 
+		{
+			try
+			{
+				return sqlSession.getMapper(TradeMapper.class).delvpageBuyList(id);
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+				
+				return null;
+			}
+		}
+		
 		//고종환 사업자 거래목록
 		@Override
 		public List<Trade> tradeList(String id) {

@@ -83,10 +83,76 @@ public class TradeController
 	}
 	
 	@RequestMapping("trade/delvpage.mall")
-	public ModelAndView delvpage(Member member, HttpSession session) {
+	public ModelAndView delvpage(Member member, HttpSession session) 
+	{
 		ModelAndView mav = new ModelAndView();
 		Member login = (Member)session.getAttribute("LOGIN_MEMBER");
+		List<Trade> delivery = null;
+		
+		/*
+		 * 변수명 공모전 합니다 ㅋㅋㅋ
+		 */
+		int pro_ready = 0; // 상품 준비중
+		int del_ready = 0; // 배송 준비중
+		int deliverying = 0; // 배송 중
+		int del_complete = 0; // 배송 완료
+		
+		if(login == null)
+		{
+			mav.setViewName("alert");
+			mav.addObject("url", "../board/main.mall");
+			mav.addObject("msg", "로그인하고 시도하시기 바랍니다.");
+			
+			return mav;
+		}
+		
+		if(login.getType() == 1) // 일반회원 배송조회
+		{
+			delivery = shopService.delvpageBuyList(login.getId());
+			
+			if(delivery != null)
+			{
+				mav.addObject("delivery", delivery);
+			}
+			else
+			{
+				mav.addObject("delvpage", new Trade());
+			}
+		}
+		else if(login.getType() == 2) // 사업자 (조옹환이)
+		{
+			
+		}
+		
+		/*
+		 * 배송 상태 카운팅
+		 */
+		for(Trade t : delivery)
+		{
+			if(t.getDelivery().equals("상품준비중"))
+			{
+				pro_ready++;
+			}
+			else if(t.getDelivery().equals("배송준비중"))
+			{
+				del_ready++;
+			}
+			else if(t.getDelivery().equals("배송중"))
+			{
+				deliverying++;
+			}
+			else if(t.getDelivery().equals("배송완료"))
+			{
+				del_complete++;
+			}
+		}
+			
+		mav.addObject("pro_ready", pro_ready);
+		mav.addObject("del_ready", del_ready);
+		mav.addObject("deliverying", deliverying);
+		mav.addObject("del_complete", del_complete);
 		mav.addObject("member", login);   
+		
 		return mav;
 	}
 	

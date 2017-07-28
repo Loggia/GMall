@@ -125,19 +125,19 @@ $(document).ready(function(){
 							<ul style="margin: 14px; padding: 0;" >
 								<li class="nomal">
 									<img src="../img/delv_pro_ready.png">
-									<span class="delv_chk_font">0</span>
+									<span class="delv_chk_font">${pro_ready }</span>
 								</li>
 								<li class="nomal">
 									<img src="../img/delv_trans_ready.png">
-									<span class="delv_chk_font">0</span>
+									<span class="delv_chk_font">${del_ready }</span>
 								</li>
 								<li class="nomal">
 									<img src="../img/delv_trans.png">
-									<span class="delv_chk_font">0</span>
+									<span class="delv_chk_font">${deliverying }</span>
 								</li>
 								<li class="last">
 									<img src="../img/delv_comp.png">
-									<span class="delv_chk_font">0</span>
+									<span class="delv_chk_font">${del_complete }</span>
 								</li>
 							</ul>
 						</div>
@@ -162,14 +162,14 @@ $(document).ready(function(){
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach items="">
+								<c:forEach var="del" items="${delivery }">
 									<tr>
-										<td>넣</td>
-										<td>으</td>
-										<td>셈</td>
-										<td>뿌</td>
-										<td>잉</td>
-										<td>잉</td>
+										<td>${del.trd_code }</td>
+										<td>${del.pro_name }</td>
+										<td>${del.trd_money }</td>
+										<td>${del.bis_name }</td>
+										<td><f:formatDate value="${del.trd_date }" pattern="yy-MM-dd"/></td>
+										<td>${del.delivery }</td>
 									</tr>
 								</c:forEach>
 							</tbody>

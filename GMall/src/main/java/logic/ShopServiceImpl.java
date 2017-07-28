@@ -253,6 +253,16 @@ public class ShopServiceImpl implements ShopService{
 	}
 	
 	/*
+	 * 주한울
+	 * 일반 회원 배송 조회
+	 */
+	@Override
+	public List<Trade> delvpageBuyList(String id) 
+	{
+		return tradeDao.delvpageBuyList(id);
+	}
+	
+	/*
 	 * 구정연 
 	 * 회원관리목록
 	 */

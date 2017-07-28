@@ -25,6 +25,7 @@ public interface ShopService {
 	List<Member> selectBookmark(String id); // 주한울 - 관심 사업자 조회
 	List<Product> selectNewsFeed(String id); // 주한울 - 관심 사업자 최근 등록 목록 조회
 	List<Trade> tradeBuyList(String id); // 주한울 - 일반 회원 구매 목록 확인
+	List<Trade> delvpageBuyList(String id); // 주한울 - 일반 회원 배송 조회
 	
 	List<Trade> tradeList(); //구정연 - 회원거래목록
 	List<Member> nomalList(); //구정연 - 일반회원관리
