@@ -64,4 +64,12 @@ public class ProductDaoImpl implements ProductDao{
 			return null;
 		}
 	}
+
+	@Override
+	public List<Product> findAll(String bis_no, String category) {
+		Map map = new HashMap();
+		map.put("bis_no", bis_no);
+		map.put("category", category);
+		return sqlSession.getMapper(ProductMapper.class).categoryCheck(map);
+	}
 }

@@ -475,4 +475,9 @@ public class ShopServiceImpl implements ShopService{
 	{
 		return tradeDao.bisDiscountCheck(id,discount);
 	}
+
+	@Override
+	public List<Product> getProductList(String bis_no, String category) {
+		return productDao.findAll(bis_no,category);
+	}
 }

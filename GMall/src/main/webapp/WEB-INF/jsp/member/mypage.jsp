@@ -28,8 +28,9 @@ $(document).ready(function(){
 		}); */
 	    
 	    $('.category').on('click', function(){
-			var category = $(this).val();	
-			mybis_list(category);
+			var category = $(this).val();
+			location.href="mypage.mall?category="+category;
+//			mybis_list(category);
 		});
 		
 		mybis_list();
@@ -375,10 +376,10 @@ body {
 							<c:if test="${member.type == 2 }">
 							   <c:forEach items="${myBis_list}" var="product" varStatus="stat">
 									<tr>
-										<td id="myBislist_category${stat.index }"></td>
-										<td id="myBislist_name${stat.index }"></td>
-										<td id="myBislist_price${stat.index }"></td>
-										<td id="myBislist_date${stat.index }"></td>
+										<td id="myBislist_category${stat.index }">${product.category}</td>
+										<td id="myBislist_name${stat.index }">${product.pro_name}</td>
+										<td id="myBislist_price${stat.index }">${product.price}</td>
+										<td id="myBislist_date${stat.index }">${product.date}</td>
 									</tr>
 								</c:forEach>
 							</c:if>

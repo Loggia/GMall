@@ -29,5 +29,6 @@ public interface ProductMapper {
 	 * 회원이 등록한 관심사업자의 최근 등록 상품을 확인하기위한 쿼리
 	 */
 	@Select("select p.bis_name,p.pro_name,p.price,p.category,p.favorite,p.date from product p,bookmark b where p.bis_no=b.bis_no and b.id=#{id} and p.pro_no=(select max(p2.pro_no) from product p2 where p2.bis_no=p.bis_no) order by p.bis_no")
-	List<Product> newsFeed(String id);	
+	List<Product> newsFeed(String id);
+
 }
