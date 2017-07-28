@@ -156,7 +156,7 @@ body {
 	padding-left: 110px;
 }
 .panel {
-	width: 450px;
+	width: 570px;
 }
 
 .form-control {
@@ -165,7 +165,7 @@ body {
 .profimg {
 	position: absolute;
 	display: inline-block;
-	margin-left: 100px;
+	margin-left: 350px;
 	width: 150px;
 	height: 150px;
 }
@@ -229,8 +229,12 @@ body {
 						</div>
 						<div class="profimg">
 							<c:if test="${member.picture==null }">
-							<img class="img-circle updateimg" src="../img/prof_1.png">
+								<img class="img-circle updateimg" src="../img/prof_1.png">
 							</c:if>
+							<c:if test="${member.picture!=null }">
+								<img class="img-circle updateimg" src="../img/${member.picture }">
+							</c:if>
+							<div style="margin-top: 20px;"><input type="file"></div>
 						</div>
 						<div class="form-group">
 							<label for="message-text" class="control-label">변경할 비밀번호:</label> <input
