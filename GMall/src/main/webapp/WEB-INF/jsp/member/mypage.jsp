@@ -340,6 +340,7 @@ body {
 					<c:if test="${member.type == 2 }">
 						<div class="my_category pull-right" style="margin-bottom: 25px;">
 						<ul>
+							<li><input type="button" class="btn btn-default" onclick="location.href='${path }/member/mypage.mall'" value="전체"></li>
 							<li><input type="button" class="btn btn-default category" value="육류"></li>
 							<li><input type="button" class="btn btn-default category" value="해산물"></li>
 							<li><input type="button" class="btn btn-default category" value="과일"></li>
