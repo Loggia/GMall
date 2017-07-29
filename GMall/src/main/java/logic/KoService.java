@@ -4,7 +4,9 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-public interface KoService {
+public interface KoService { 
+	
+	//종환이꺼
 
 	void ProductAdd(Product product, HttpServletRequest request);//고종환 사업자 물품등록
 	int prono();//고종환 -물품번호

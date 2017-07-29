@@ -15,7 +15,7 @@ import dao.MemberDao;
 import dao.ProductDao;
 import dao.TradeDao;
 
-public class KoServiceImp implements KoService{
+public class KoServiceImp implements KoService{ 
 	@Autowired
 	BoardDao boardDao;
 	@Autowired
