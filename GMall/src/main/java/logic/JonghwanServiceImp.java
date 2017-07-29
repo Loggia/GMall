@@ -7,9 +7,23 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.multipart.MultipartFile;
 
+import dao.BoardDao;
+import dao.MemberDao;
+import dao.ProductDao;
+import dao.TradeDao;
+
 public class JonghwanServiceImp implements JonghwanService{
+	@Autowired
+	BoardDao boardDao;
+	@Autowired
+	MemberDao memberDao;
+	@Autowired
+	TradeDao tradeDao;
+	@Autowired
+	ProductDao productDao;
 	
 	/*
 	 * 고종환 
