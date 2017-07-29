@@ -81,13 +81,11 @@ public class ProductController
 		List<Product> myBislist=shopService.categoryCheck(bis_name,category);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("myBislist", myBislist);
-		//System.out.println(myBislist);
 		
 		JSONObject jsonObject = new JSONObject();
 		jsonObject = JSONObject.fromObject(JSONSerializer.toJSON(map));
 		System.out.println(jsonObject);
 		request.setAttribute("data", jsonObject);
-		//request.setAttribute("data", jsonObject);
 		return jsonObject.toString();
 	}
 	

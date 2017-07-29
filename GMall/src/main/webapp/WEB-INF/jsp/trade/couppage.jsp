@@ -76,7 +76,7 @@ $(document).ready(function(){
 					</ul>
 				</div>
 			</div>
-			<div class="right_menu">
+			<div class="right_menu pull-right" style="width: 1157.4px; background-color: #f7f8f8; z-index: 30px;" >
 					<ul>
 						<c:if test="${member.type == 1 }">
 							<li class="menu_delv"><a href="${path }/trade/delvpage.mall"><img
@@ -120,12 +120,10 @@ $(document).ready(function(){
 						</c:if>
 					</ul>
 				</div>
-			<div class="my_right">
+			<div class="my_right" style="padding-top: 40px; z-index: 20px;">
 				
 				<div class="right_cont">
-				
-					<br><br>
-					
+					<div class="cop_con" style="margin-top: 40px; padding-top: 40px; position: relative;">
 						<h3>
 							<c:if test="${member.type==1 }">
 							<strong>보유 쿠폰</strong>
@@ -192,7 +190,7 @@ $(document).ready(function(){
 							</tbody>
 						</table>
 					
-					<br><br>
+					</div>
 				</div>
 			</div>
 		</div>
