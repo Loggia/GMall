@@ -212,4 +212,10 @@ public class JooServiceImp implements JooService
 	{
 		return tradeDao.moneyChangeList(member);
 	}
+	
+	@Override
+	public Member getUserById(String id) 
+	{
+		return memberDao.getUserById(id);
+	}
 }

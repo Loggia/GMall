@@ -12,19 +12,21 @@ import org.springframework.web.servlet.ModelAndView;
 
 import logic.JooService;
 import logic.KoService;
+import logic.KuService;
 import logic.Member;
 import logic.Product;
-import logic.ShopService;
 import logic.Trade;
-import logic.coupon_history;
+import logic.Coupon_history;
 
 @Controller
 public class TradeController 
 {
 	@Autowired 
-	public JooService jooService;
+	public JooService jooService; // 주한울
 	@Autowired
-	public KoService koService;
+	public KoService koService; // 종환이꺼
+	@Autowired 
+	public KuService kuService; // 정연이껑
 	
 	/*
 	 * 거래 목록
@@ -55,7 +57,7 @@ public class TradeController
 		}
 		else //if(login.getType() == 3) // 관리자 (구정연)
  		{
-			trdList = shopService.tradeList();
+			trdList = kuService.tradeList();
 		}
 		
 		if(trdList != null)
@@ -158,7 +160,7 @@ public class TradeController
 	{
 		ModelAndView mav = new ModelAndView();
 		Member login = (Member)session.getAttribute("LOGIN_MEMBER");
-		List<coupon_history> couponList = null;
+		List<Coupon_history> couponList = null;
 		
 		if(login == null)
 		{
@@ -190,7 +192,7 @@ public class TradeController
 		ModelAndView mav=new ModelAndView("trade/couppage");
 		Member login = (Member)session.getAttribute("LOGIN_MEMBER");
 		String discount = request.getParameter("discount");
-		List<coupon_history> couponList = null;
+		List<Coupon_history> couponList = null;
 				
 		if(login.getType() == 1)
 		{

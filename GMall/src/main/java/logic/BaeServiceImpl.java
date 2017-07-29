@@ -8,11 +8,13 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import dao.BoardDao;
 import dao.MemberDao;
 
+@Service
 public class BaeServiceImpl implements BaeService{
 	@Autowired
 	BoardDao boardDao;

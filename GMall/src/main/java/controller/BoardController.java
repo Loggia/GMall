@@ -21,15 +21,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import logic.BaeService;
 import logic.Board;
 import logic.Member;
-import logic.ShopService;
 
 @Controller
 public class BoardController 
 {
 	@Autowired
-	public ShopService shopService;
+	public BaeService baeService;
 	
 	@RequestMapping("board/main")
 	public ModelAndView main() {
@@ -44,7 +44,7 @@ public class BoardController
 	@RequestMapping(value="board/infiniteScrollDown", method=RequestMethod.POST)
 	public @ResponseBody List<Board> infiniteScrollDownPOST(@RequestBody Board board) {
 		int numToStart = board.getBoard_no()-1;
-		return shopService.infiniteScrollDown(numToStart);		
+		return baeService.infiniteScrollDown(numToStart);		
 	}
 	
 	/*
@@ -53,7 +53,7 @@ public class BoardController
 	@RequestMapping(value="board/infiniteScrollUp", method=RequestMethod.POST)
 	public @ResponseBody List<Board> infiniteScrollUpPOST(@RequestBody Board board) {
 		int numToEnd = board.getBoard_no()+1;
-		return shopService.infiniteScrollUp(numToEnd);	 	
+		return baeService.infiniteScrollUp(numToEnd);	 	
 	}	
 	
 	/*
@@ -62,7 +62,7 @@ public class BoardController
 	@RequestMapping(value="board/proList", method = RequestMethod.GET)
 	public ModelAndView proList() {
 		ModelAndView mav = new ModelAndView();
-		List<Board> prolist = shopService.proList();
+		List<Board> prolist = baeService.proList();
 		SimpleDateFormat sdate = new SimpleDateFormat("yyyy-MM-dd");
 		String today = sdate.format(new Date());
 		mav.addObject("today", today);
@@ -108,8 +108,8 @@ public class BoardController
 		int limit = 20;
 		if(pageNum3 == null || searchType2 == null || searchContent2 == null)
 		{
-			int listcount = shopService.centerCount(searchType, searchContent);
-			List<Board> centerlist = shopService.centerList(searchType, searchContent, pageNum, limit);
+			int listcount = baeService.centerCount(searchType, searchContent);
+			List<Board> centerlist = baeService.centerList(searchType, searchContent, pageNum, limit);
 			int maxpage = (int)((double)listcount/limit + 0.95);
 			int startpage = (((int)((double)pageNum/10 + 0.9)) -1) * 10 + 1;
 			int endpage = startpage + 9;
@@ -130,7 +130,7 @@ public class BoardController
 			mav.addObject("password", password);
 			mav.addObject("userid", userid);
 			
-			Board board1 =  shopService.passthrough(num);
+			Board board1 =  baeService.passthrough(num);
 			if(board1 != null && !board1.getPass().equals(password))
 			{
 				mav.setViewName("alert");
@@ -141,8 +141,8 @@ public class BoardController
 		}
 		else if(pageNum3 != null || searchType2 != null && searchContent != null)
 		{
-			int listcount = shopService.centerCount(searchType2, searchContent2);
-			List<Board> centerlist = shopService.centerList(searchType2, searchContent2, pageNum3, limit);
+			int listcount = baeService.centerCount(searchType2, searchContent2);
+			List<Board> centerlist = baeService.centerList(searchType2, searchContent2, pageNum3, limit);
 			int maxpage = (int)((double)listcount/limit + 0.95);
 			int startpage = (((int)((double)pageNum/10 + 0.9)) -1) * 10 + 1;
 			int endpage = startpage + 9;
@@ -165,7 +165,7 @@ public class BoardController
 			mav.addObject("password", password);
 			mav.addObject("userid", userid);
 			
-			Board board1 =  shopService.passthrough(num);
+			Board board1 =  baeService.passthrough(num);
 			if(board1 != null && !board1.getPass().equals(password))
 			{
 				mav.setViewName("alert");
@@ -210,7 +210,7 @@ public class BoardController
 			mav.getModel().putAll(bindingResult.getModel());
 			return mav;
 		}
-		shopService.centerInsert(board, request);
+		baeService.centerInsert(board, request);
 		mav.setViewName("redirect:/board/main.mall");
 		return mav;
 	}
@@ -267,7 +267,7 @@ public class BoardController
 	@RequestMapping("board/updateForm")
 	public ModelAndView updateForm(int num, Integer pageNum) {
 		ModelAndView mav = new ModelAndView();
-		Board board = shopService.getBoard(num);
+		Board board = baeService.getBoard(num);
 		mav.addObject("board", board);
 		mav.addObject("pageNum", pageNum);	
 		return mav;
@@ -279,7 +279,7 @@ public class BoardController
 	@RequestMapping("board/update")
 	public ModelAndView update(@Valid Board board, BindingResult bindingResult, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
-		String pass = shopService.getBoardPassword(board.getBoard_no());
+		String pass = baeService.getBoardPassword(board.getBoard_no());
 		System.out.println("pass:"+pass);
 		if(!pass.equals(board.getPass()))
 		{
@@ -314,7 +314,7 @@ public class BoardController
 		{
 			board.setFileurl3(board.getImg3().getOriginalFilename());
 		}
-		shopService.boardUpdate(board, request);
+		baeService.boardUpdate(board, request);
 		mav.addObject("board", board);
 		mav.setViewName("redirect:/board/centerList.mall?pageNum=" + request.getParameter("pageNum"));
 		return mav;

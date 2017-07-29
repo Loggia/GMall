@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import logic.JooService;
+import logic.KoService;
+import logic.KuService;
 import logic.Member;
 import logic.Product;
-import logic.ShopService;
 import net.sf.json.JSONObject;
 import net.sf.json.JSONSerializer;
 
@@ -25,7 +27,7 @@ import net.sf.json.JSONSerializer;
 public class ProductController 
 {
 	@Autowired
-	ShopService shopService;
+	public KoService koService; // 종환이꺼
 
 	//상품추가 폼이동 
 	@RequestMapping("product/addProduct")
@@ -41,7 +43,7 @@ public class ProductController
 	@RequestMapping("product/productUpdate")
 	public ModelAndView productupdate(Product product,BindingResult bindingResult, HttpServletRequest request,HttpSession session){
 		ModelAndView mav=new ModelAndView("member/mypage");
-		int pro_no = shopService.prono()+1;
+		int pro_no = koService.prono()+1;
 		
 		//Member member=(Member)request.getSession().getAttribute("LOGIN_MEMBER");
 		Member login=(Member)session.getAttribute("LOGIN_MEMBER");
@@ -49,8 +51,8 @@ public class ProductController
         product.setPro_no(pro_no);	
         product.setBis_no(login.getBis_no());
         product.setBis_name(login.getBis_name());
-		shopService.ProductAdd(product,request);
-		List<Product> myBis_list=shopService.getProductList(login.getBis_no());//내아이디만
+        koService.ProductAdd(product,request);
+		List<Product> myBis_list=koService.getProductList(login.getBis_no());//내아이디만
 		mav.addObject("myBis_list",myBis_list);
 		mav.addObject("member",login);
 		
@@ -64,7 +66,7 @@ public class ProductController
 		Member member=(Member)session.getAttribute("LOGIN_MEMBER");
 		String bis_name=member.getBis_name();
 		
-		List<Product> myBis_list=shopService.categoryCheck(bis_name,category);
+		List<Product> myBis_list=koService.categoryCheck(bis_name,category);
 		ModelAndView mav=new ModelAndView("member/mypage");
 		mav.addObject("myBis_list",myBis_list);
 		//System.out.println(myBis_list.get(1));
@@ -78,7 +80,7 @@ public class ProductController
 		System.out.println(category);
 		Member member=(Member)session.getAttribute("LOGIN_MEMBER");
 		String bis_name=member.getBis_name();
-		List<Product> myBislist=shopService.categoryCheck(bis_name,category);
+		List<Product> myBislist=koService.categoryCheck(bis_name,category);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("myBislist", myBislist);
 		

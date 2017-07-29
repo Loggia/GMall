@@ -8,6 +8,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import dao.BoardDao;
@@ -15,6 +16,7 @@ import dao.MemberDao;
 import dao.ProductDao;
 import dao.TradeDao;
 
+@Service
 public class KoServiceImp implements KoService{ 
 	@Autowired
 	BoardDao boardDao;

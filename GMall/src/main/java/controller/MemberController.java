@@ -12,9 +12,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import logic.JooService;
 import logic.KoService;
+import logic.KuService;
 import logic.Member;
 import logic.Product;
-import logic.ShopService;
 import logic.Trade;
 
 @Controller
@@ -23,7 +23,9 @@ public class MemberController
 	@Autowired 
 	public JooService jooService; // 주한울 서비스
 	@Autowired
-	public KoService koService;
+	public KoService koService; // 종환이꺼
+	@Autowired 
+	public KuService kuService; // 정연이껑
 	
 	/*
 	 * 주한울
@@ -258,7 +260,7 @@ public class MemberController
 		
 		if(login.getId().equals("admin")){
 			
-			Member user = shopService.getUserById(id);
+			Member user = kuService.getUserById(id);
 			mav.addObject("member" , user);
 			
 		}
@@ -337,7 +339,7 @@ public class MemberController
 	{
 		ModelAndView mav = new ModelAndView("board/main");
 		Member login = (Member)session.getAttribute("LOGIN_MEMBER");
-		Member user = shopService.getUserById(id);
+		Member user = jooService.getUserById(id);
 		
 		if(login == null)
 		{
@@ -392,7 +394,7 @@ public class MemberController
 		
 		Member login = (Member)session.getAttribute("LOGIN_MEMBER");
 		ModelAndView mav = new ModelAndView() ;
-		List<Member> nomalList = shopService.nomalList();
+		List<Member> nomalList = kuService.nomalList();
 		mav.addObject ("nomalList" , nomalList) ;
 		mav.addObject("member", login);
 		return mav; 
@@ -407,7 +409,7 @@ public class MemberController
 		
 		Member login = (Member)session.getAttribute("LOGIN_MEMBER");
 		ModelAndView mav = new ModelAndView() ;
-		List<Member> businessList = shopService.businessList();
+		List<Member> businessList = kuService.businessList();
 		mav.addObject ("businessList" , businessList) ;
 		mav.addObject("member", login);
 		return mav; 
@@ -427,11 +429,11 @@ public class MemberController
 		
 		if(login.getType() == 3)
 		{
-			tradeList = shopService.tradeList();
+			tradeList = kuService.tradeList();
 		}
 		else
 		{
-			tradeList = shopService.moneyChangeList(login);
+			tradeList = jooService.moneyChangeList(login);
 		}
 		
 		mav.addObject("tradeList",tradeList);
@@ -446,7 +448,7 @@ public class MemberController
 	@RequestMapping("member/primlist")
 	public ModelAndView prim() {
 		ModelAndView mav = new ModelAndView();
-		List<Member> primList = shopService.primList();
+		List<Member> primList = kuService.primList();
 		mav.addObject("primList" , primList);
 		return mav;
 	}
@@ -464,8 +466,8 @@ public class MemberController
 	@RequestMapping("member/primupdate")
 	public ModelAndView primupdate() {
 		ModelAndView mav = new ModelAndView();
-		shopService.primupdate();
-		List<Member> primList = shopService.primList();
+		kuService.primupdate();
+		List<Member> primList = kuService.primList();
 		mav.addObject("primList" , primList);
 		return mav;
 		
