@@ -5,7 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 // 한울이꺼!
-public interface HanwoolService 
+public interface JooService 
 {
 	boolean insertMember(Member member); // 주한울 - 회원가입
 	boolean cheakMember(String bis_no); // 주한울 - 회원가입시 중복된 사업자 번호를 사용했는지를 판별

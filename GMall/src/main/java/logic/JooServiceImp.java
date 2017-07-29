@@ -17,7 +17,7 @@ import dao.ProductDao;
 import dao.TradeDao;
 
 @Service
-public class HanwoolServiceImp 
+public class JooServiceImp implements JooService
 {
 	@Autowired
 	BoardDao boardDao;
