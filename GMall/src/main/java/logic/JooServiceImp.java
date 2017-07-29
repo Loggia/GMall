@@ -188,7 +188,7 @@ public class JooServiceImp implements JooService
 	 * 일반회원 쿠폰목록
 	 */
 	@Override
-	public List<coupon_history> memberCoupon(String id) 
+	public List<Coupon_history> memberCoupon(String id) 
 	{
 		return tradeDao.memberCoupon(id);
 	}
@@ -198,7 +198,7 @@ public class JooServiceImp implements JooService
 	 * 일반회원 쿠폰목록 카테고리 선택시
 	 */
 	@Override
-	public List<coupon_history> memberDiscountCheck(String id, String discount) 
+	public List<Coupon_history> memberDiscountCheck(String id, String discount) 
 	{
 		return tradeDao.memberDiscountCheck(id,discount);
 	}

@@ -347,6 +347,7 @@ public class MemberController
 			
 			return mav;
 		}
+		
 		if(login.getId().equals(member.getId()) || login.getId().equals("admin"))
 		{
 			if(login.getId().equals(member.getId()))

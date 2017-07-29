@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import dao.mapper.TradeMapper;
 import logic.Member;
 import logic.Trade;
-import logic.coupon_history;
+import logic.Coupon_history;
 
 @Repository
 public class TradeDaoImpl implements TradeDao{
@@ -79,7 +79,7 @@ public class TradeDaoImpl implements TradeDao{
 		 * 일반회원 쿠폰목록
 		 */
 		@Override
-		public List<coupon_history> memberCoupon(String id) 
+		public List<Coupon_history> memberCoupon(String id) 
 		{
 			return sqlSession.getMapper(TradeMapper.class).memberCoupon(id);
 		}
@@ -90,7 +90,7 @@ public class TradeDaoImpl implements TradeDao{
 		 * 사업자 쿠폰목록
 		 */
 		@Override
-		public List<coupon_history> bisCoupon(String id) {
+		public List<Coupon_history> bisCoupon(String id) {
 			return sqlSession.getMapper(TradeMapper.class).bisCoupon(id);
 		}
 		
@@ -99,7 +99,7 @@ public class TradeDaoImpl implements TradeDao{
 		 * 일반회원 쿠폰목록 카테고리 선택시
 		 */
 		@Override
-		public List<coupon_history> memberDiscountCheck(String id, String discount) 
+		public List<Coupon_history> memberDiscountCheck(String id, String discount) 
 		{
 			Map<String,String> map=new HashMap<String,String>();
 			map.put("id",id);
@@ -110,7 +110,7 @@ public class TradeDaoImpl implements TradeDao{
 
 		//고종환 사업자 쿠폰목록 카테고리 선택시
 		@Override
-		public List<coupon_history> bisDiscountCheck(String id, String discount) {
+		public List<Coupon_history> bisDiscountCheck(String id, String discount) {
 			Map<String,String> map=new HashMap<String,String>();
 			map.put("id",id);
 			map.put("discount", discount);

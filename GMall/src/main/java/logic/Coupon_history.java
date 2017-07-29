@@ -2,7 +2,7 @@ package logic;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-public class coupon_history {
+public class Coupon_history {
 	
 	
 	@NotEmpty

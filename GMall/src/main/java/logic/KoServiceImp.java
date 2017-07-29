@@ -103,14 +103,14 @@ public class KoServiceImp implements KoService{
 	
 	//고종환 사업자 쿠폰목록
 	@Override
-	public List<coupon_history> bisCoupon(String id) 
+	public List<Coupon_history> bisCoupon(String id) 
 	{
 		return tradeDao.bisCoupon(id);
 	}
 
 	//고종환 사업자 쿠폰목록 카테고리 선택시
 	@Override
-	public List<coupon_history> bisDiscountCheck(String id, String discount) 
+	public List<Coupon_history> bisDiscountCheck(String id, String discount) 
 	{
 		return tradeDao.bisDiscountCheck(id,discount);
 	}

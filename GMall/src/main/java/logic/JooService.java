@@ -17,7 +17,7 @@ public interface JooService
 	List<Product> selectNewsFeed(String id); // 주한울 - 관심 사업자 최근 등록 목록 조회
 	List<Trade> tradeBuyList(String id); // 주한울 - 일반 회원 구매 목록 확인
 	List<Trade> delvpageBuyList(String id); // 주한울 - 일반 회원 배송 조회
-	List<coupon_history> memberCoupon(String id); // 주한울 일반회원 쿠폰목록
-	List<coupon_history> memberDiscountCheck(String id, String discount); // 주한울 일반회원 쿠폰 관리 선택시
+	List<Coupon_history> memberCoupon(String id); // 주한울 일반회원 쿠폰목록
+	List<Coupon_history> memberDiscountCheck(String id, String discount); // 주한울 일반회원 쿠폰 관리 선택시
 	List<Trade> moneyChangeList(Member member); // 주한울 일반회원, 사업자 보유금액(금액 변동) 
 }
