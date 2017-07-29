@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import logic.JooService;
+import logic.KoService;
 import logic.Member;
 import logic.Product;
 import logic.ShopService;
@@ -18,8 +20,10 @@ import logic.Trade;
 @Controller
 public class MemberController 
 {
+	@Autowired 
+	public JooService jooService; // 주한울 서비스
 	@Autowired
-	public ShopService shopService;
+	public KoService koService;
 	
 	/*
 	 * 주한울
@@ -36,13 +40,13 @@ public class MemberController
 			member.setBis_no("");
 			member.setBis_name("");
 			
-			shopService.insertMember(member);
+			jooService.insertMember(member);
 		}
 		else if(member.getType() == 2)
 		{
-			if(shopService.cheakMember(member.getBis_no()))
+			if(jooService.cheakMember(member.getBis_no()))
 			{
-				List<String> bis_no = shopService.selectBis_no(); // 임의로 추가한 사업자 번호를 쿼리
+				List<String> bis_no = jooService.selectBis_no(); // 임의로 추가한 사업자 번호를 쿼리
 				boolean flag = false;
 				
 				for(String no : bis_no) // 입력한 사업자 번호가 추가되어 있는 사업자 번호와 일치하는지 비교
@@ -59,7 +63,7 @@ public class MemberController
 					mav.addObject("msg", "중복되는 아이디나 사업자 번호입니다.");
 				}
 				
-				shopService.insertMember(member);
+				jooService.insertMember(member);
 			}
 			else
 			{
@@ -87,7 +91,7 @@ public class MemberController
 		
 		try
 		{
-			Member login = shopService.getUserByIdAndPw(member.getId(), member.getPass());
+			Member login = jooService.getUserByIdAndPw(member.getId(), member.getPass());
 			
 			
 			if(login == null || !login.getId().equals(member.getId()) || !login.getPass().equals(member.getPass()))
@@ -147,8 +151,8 @@ public class MemberController
 		
 		if(login.getType() == 1) 
 		{
-			List<Member> bookmark = shopService.selectBookmark(login.getId());
-			List<Product> newsfeed = shopService.selectNewsFeed(login.getId());
+			List<Member> bookmark = jooService.selectBookmark(login.getId());
+			List<Product> newsfeed = jooService.selectNewsFeed(login.getId());
 			
 			if(bookmark != null)
 			{
@@ -170,7 +174,7 @@ public class MemberController
 		}
 		else if(login.getType() == 2)
 		{
-			List<Product> myBis_list=shopService.getProductList(login.getBis_no());//내아이디만
+			List<Product> myBis_list = koService.getProductList(login.getBis_no());//내아이디만
 			mav.addObject("myBis_list",myBis_list);
 		}
 		/*else if(login.getType() == 3)
@@ -282,7 +286,7 @@ public class MemberController
 					member.setPass(login.getPass());
 				}
 				
-				shopService.updateMember(member, request);
+				jooService.updateMember(member, request);
 				session.invalidate(); // 회원이 수정되면 세션 만료
 				request.getSession().setAttribute("LOGIN_MEMBER", member); // 수정된 정보로 다시 세션 생성
 			}
@@ -303,7 +307,7 @@ public class MemberController
 					member.setPass(login.getPass());
 				}
 				
-				shopService.updateMember(member, request);
+				jooService.updateMember(member, request);
 			}
 			else
 			{
@@ -350,7 +354,7 @@ public class MemberController
 				if(login.getPass().equals(member.getPass()))
 				{
 	
-					shopService.deleteMember(member);
+					jooService.deleteMember(member);
 					session.invalidate();
 					
 				}
@@ -364,7 +368,7 @@ public class MemberController
 			}
 			else 
 			{
-				shopService.deleteMember(user);
+				jooService.deleteMember(user);
 			}
 		}
 		else

@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import logic.JooService;
+import logic.KoService;
 import logic.Member;
 import logic.Product;
 import logic.ShopService;
@@ -19,9 +21,10 @@ import logic.coupon_history;
 @Controller
 public class TradeController 
 {
-	
+	@Autowired 
+	public JooService jooService;
 	@Autowired
-	public ShopService shopService;
+	public KoService koService;
 	
 	/*
 	 * 거래 목록
@@ -44,11 +47,11 @@ public class TradeController
 		
 		if(login.getType() == 1) // 일반회원 (주한울)
 		{
-			trdList = shopService.tradeBuyList(login.getId());
+			trdList = jooService.tradeBuyList(login.getId());
 		}
 		else if(login.getType() == 2) // 사업자
 		{
-			trdList=shopService.tradeList(login.getId());
+			trdList=koService.tradeList(login.getId());
 		}
 		else //if(login.getType() == 3) // 관리자 (구정연)
  		{
@@ -94,7 +97,7 @@ public class TradeController
 		
 		if(login.getType() == 1) // 일반회원 배송조회
 		{
-			delivery = shopService.delvpageBuyList(login.getId());
+			delivery = jooService.delvpageBuyList(login.getId());
 			
 			if(delivery != null)
 			{
@@ -107,7 +110,7 @@ public class TradeController
 		}
 		else if(login.getType() == 2) // 사업자 (조옹환이)
 		{
-			delivery=shopService.deliveryList(login.getId());
+			delivery=koService.deliveryList(login.getId());
 			if(delivery != null)
 			{
 				mav.addObject("delivery", delivery);
@@ -168,11 +171,11 @@ public class TradeController
 		
 		if(login.getType() == 1) //한울이 쿠폰
 		{
-			couponList = shopService.memberCoupon(login.getId());
+			couponList = jooService.memberCoupon(login.getId());
 		}
 		else if(login.getType() == 2) // 고종환 사업자 쿠폰관리 
 		{
-			couponList=shopService.bisCoupon(login.getId());
+			couponList=koService.bisCoupon(login.getId());
 		}
 		
 		mav.addObject("couponList", couponList);
@@ -191,11 +194,11 @@ public class TradeController
 				
 		if(login.getType() == 1)
 		{
-			couponList = shopService.memberDiscountCheck(login.getId(), discount);
+			couponList = jooService.memberDiscountCheck(login.getId(), discount);
 		}
 		else if(login.getType() == 2)
 		{
-			couponList = shopService.bisDiscountCheck(login.getId(), discount);
+			couponList = koService.bisDiscountCheck(login.getId(), discount);
 		}
 				
 		mav.addObject("couponList", couponList);
@@ -209,7 +212,7 @@ public class TradeController
 		ModelAndView mav=new ModelAndView("trade/delvpage");
 		Member login=(Member) session.getAttribute("LOGIN_MEMBER");
 		String trd_no=request.getParameter("trd_no");
-		String tradeCheck= shopService.tradeCheck(trd_no);
+		String tradeCheck= koService.tradeCheck(trd_no);
 		System.out.println(tradeCheck);
 		if(tradeCheck.equals("상품준비중")){
 			tradeCheck="배송준비중";
@@ -219,7 +222,7 @@ public class TradeController
 			tradeCheck="배송완료";
 		}
 		
-		shopService.deliveryControl(trd_no,tradeCheck);
+		koService.deliveryControl(trd_no,tradeCheck);
 		mav.addObject("member",login);
 		//member 값 채워주기
 		int pro_ready = 0; // 상품 준비중
@@ -236,7 +239,7 @@ public class TradeController
 			return mav;
 		}
 		
-		List<Trade> delivery=shopService.deliveryList(login.getId());
+		List<Trade> delivery=koService.deliveryList(login.getId());
 		if(delivery != null)
 		{
 			mav.addObject("delivery", delivery);
