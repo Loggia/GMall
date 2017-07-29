@@ -156,37 +156,20 @@ public class MemberController
 			List<Member> bookmark = jooService.selectBookmark(login.getId());
 			List<Product> newsfeed = jooService.selectNewsFeed(login.getId());
 			
-			if(bookmark != null)
-			{
-				mav.addObject("bookmark", bookmark);
-				
-				if(newsfeed != null)
-				{
-					mav.addObject("newsfeed", newsfeed);
-				}
-				else
-				{
-					mav.addObject("newsfeed", new Product());
-				}
-			}
-			else
-			{
-				mav.addObject("bookmark", new Member());
-			}
+			mav.addObject("bookmark", bookmark);
+			mav.addObject("newsfeed", newsfeed);
 		}
 		else if(login.getType() == 2)
 		{
 			List<Product> myBis_list = koService.getProductList(login.getBis_no());//내아이디만
 			mav.addObject("myBis_list",myBis_list);
 		}
-		/*else if(login.getType() == 3)
-		{
-			
-		}*/
 		
 		mav.addObject("member", login);
 		return mav;
 	}
+	
+	
 	
 	/*
 	 * 우동
@@ -255,16 +238,15 @@ public class MemberController
 			
 			return mav;
 		}
-		// 구정연 관리자에서 회원수정
-		mav.addObject("member", login);
 		
-		if(login.getId().equals("admin")){
-			
+		// 구정연 관리자에서 회원수정
+		if(login.getId().equals("admin"))
+		{
 			Member user = kuService.getUserById(id);
 			mav.addObject("member" , user);
-			
 		}
 		
+		mav.addObject("member", login);
 		return mav;
 	} 
 	
@@ -291,6 +273,24 @@ public class MemberController
 				jooService.updateMember(member, request);
 				session.invalidate(); // 회원이 수정되면 세션 만료
 				request.getSession().setAttribute("LOGIN_MEMBER", member); // 수정된 정보로 다시 세션 생성
+				
+				/*
+				 * 주한울
+				 * 회원이 수정된 후 mypage에서 관심사업장, 사업장관리에 값이 뿌려지지 않는 문제가 있어 추가한 코드
+				 */
+				if(login.getType() == 1) 
+				{
+					List<Member> bookmark = jooService.selectBookmark(member.getId());
+					List<Product> newsfeed = jooService.selectNewsFeed(member.getId());
+					
+					mav.addObject("bookmark", bookmark);
+					mav.addObject("newsfeed", newsfeed);
+				}
+				else if(login.getType() == 2)
+				{
+					List<Product> myBis_list = koService.getProductList(login.getBis_no());//내아이디만
+					mav.addObject("myBis_list",myBis_list);
+				}
 			}
 			else
 			{
