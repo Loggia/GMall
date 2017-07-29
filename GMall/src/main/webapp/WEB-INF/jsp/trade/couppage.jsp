@@ -76,26 +76,26 @@ $(document).ready(function(){
 					</ul>
 				</div>
 			</div>
-			<div class="right_menu pull-right" style="width: 1157.4px; background-color: #f7f8f8; z-index: 30px;" >
-					<ul>
+			<div class="right_menu pull-right" style="width: calc(100% - 250px); background-color: #f7f8f8; z-index: 20px;" >
+					<ul style="width: 100%; display: block; padding: 0;">
 						<c:if test="${member.type == 1 }">
 							<li class="menu_delv"><a href="${path }/trade/delvpage.mall"><img
 									src="../img/truck2_color.png" width="64px" height="64px"><br>배송 정보</a></li>
-							<li class="menu_coup"><a href="${path }/trade/couppage.mall"><img
+							<li class="menu_delv"><a href="${path }/trade/couppage.mall"><img
 									src="../img/coupon_color.png"><br>보유 쿠폰</a></li>
-							<li class="menu_money"><a href="${path }/member/moneypage.mall"><img
+							<li class="menu_delv"><a href="${path }/member/moneypage.mall"><img
 									src="../img/money_color.png"><br>보유 금액</a></li>
-							<li class="menu_talk"><a href="${path }/member/talkpage.mall"><img
+							<li class="menu_delv"><a href="${path }/member/talkpage.mall"><img
 									src="../img/talk_color.png"><br>구디 톡톡!</a></li>
 						</c:if>
 						<c:if test="${member.type == 2 }">
 							<li class="menu_delv"><a href="${path }/trade/delvpage.mall"><img
 									src="../img/truck2_color.png" width="64px" height="64px"><br>배송 관리</a></li>
-							<li class="menu_coup"><a href="${path }/trade/couppage.mall"><img
+							<li class="menu_delv"><a href="${path }/trade/couppage.mall"><img
 									src="../img/coupon_color.png"><br>쿠폰관리</a></li>
-							<li class="menu_money"><a href="${path }/member/moneypage.mall"><img
+							<li class="menu_delv"><a href="${path }/member/moneypage.mall"><img
 									src="../img/money_color.png"><br>보유 금액</a></li>
-							<li class="menu_talk"><a href="${path }/member/talkpage.mall"><img
+							<li class="menu_delv"><a href="${path }/member/talkpage.mall"><img
 									src="../img/talk_color.png"><br>구디 톡톡!</a></li>
 						</c:if>
 						<c:if test="${member.type == 3 }">
@@ -120,10 +120,10 @@ $(document).ready(function(){
 						</c:if>
 					</ul>
 				</div>
-			<div class="my_right" style="padding-top: 40px; z-index: 20px;">
+			<div class="my_right">
 				
 				<div class="right_cont">
-					<div class="cop_con" style="margin-top: 40px; padding-top: 40px; position: relative;">
+					<div class="cop_con" style="padding-top: 10px;">
 						<h3>
 							<c:if test="${member.type==1 }">
 							<strong>보유 쿠폰</strong>
@@ -133,7 +133,7 @@ $(document).ready(function(){
 							</c:if>
 						</h3>
 					
-					<div class="disc_sel pull-right" style="margin-bottom: 40px;">
+					<div class="disc_sel pull-right" style="margin-bottom: 40px; z-index: 5px;">
 						<ul>
 					     	<li><input type="button" class="btn btn-default" onclick="location.href='${path}/trade/couponDiscountCheck.mall?discount=5'"  value="5%"></li>
 							<li><input type="button" class="btn btn-default" onclick="location.href='${path}/trade/couponDiscountCheck.mall?discount=10'" value="10%"></li>
@@ -143,7 +143,7 @@ $(document).ready(function(){
 					</div>
 
 					<table class="table table-hover"
-							style="border-bottom: 1px solid #e5e5e5;">
+							style="border-bottom: 1px solid #e5e5e5; z-index: 6px;">
 							<thead>
 								<tr>
 									<c:if test="${member.type == 1 }">

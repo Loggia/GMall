@@ -27,8 +27,9 @@ body {
 .my_right {
 	position: relative;
 	width: 1157.61px;
-	padding: 40px 40px 120px 40px;
+	padding: 0 40px 120px 40px;
 	height: 1500px;
+	margin-top: 240px;
 	margin-left: 250px;
 	border-left: 1px solid #e5e5e5;
 }
@@ -98,12 +99,21 @@ body {
 
 .menu_delv {
 	text-align: center;
+	display: inline-block;
+	width: calc(100% / 4);
 	float: left;
 	border-right: 1px solid #e5e5e5;
 	padding-top: 40px;
 	padding-bottom: 45px;
-	padding-left: 50px;
-	padding-right: 100px;
+}
+.menu_delv:last-child {
+	text-align: center;
+	display: inline-block;
+	width: calc(100% / 4);
+	float: left;
+	border-right: 0;
+	padding-top: 40px;
+	padding-bottom: 45px;
 }
 
 .menu_coup {
