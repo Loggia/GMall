@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-public interface JonghwanService {
+public interface KoService {
 
 	void ProductAdd(Product product, HttpServletRequest request);//고종환 사업자 물품등록
 	int prono();//고종환 -물품번호
@@ -12,10 +12,8 @@ public interface JonghwanService {
 	List<Product> categoryCheck(String bis_name, String category);//고종환 내사업장 카테고리분류
 	List<Trade> tradeList(String id);//고종환 사업자 거래목록
 	List<Trade> deliveryList(String id);//고종환 사업자 배송 조회
-	
 	List<coupon_history> bisCoupon(String id);//고종환 사업자 쿠폰목록
 	List<coupon_history> bisDiscountCheck(String id, String discount);//고종환 사업자 쿠폰관리 선택시
-	
 	String tradeCheck(String trd_no);//고종환 사업자 배송현황 변경위한 쿼리
 	void deliveryControl(String trd_no, String tradeCheck);//고종환 사업자 배송현황 변경
 
