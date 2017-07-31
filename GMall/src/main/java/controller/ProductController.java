@@ -74,6 +74,9 @@ public class ProductController
 		return mav;
 	}
 	
+	/*
+	 * 우희동 내 사업장 카테고리 ajax
+	 */
 	@RequestMapping(value="member/bislist", produces="text/plain; charset=UTF8")
 	public @ResponseBody String bislist(HttpSession session, HttpServletRequest request) throws UnsupportedEncodingException {
 		String category = request.getParameter("category");
