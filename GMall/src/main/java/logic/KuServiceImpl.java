@@ -11,7 +11,7 @@ import dao.ProductDao;
 import dao.TradeDao;
 
 @Service
-public class KuServiceImp implements KuService
+public class KuServiceImpl implements KuService
 {
 	@Autowired
 	BoardDao boardDao;
