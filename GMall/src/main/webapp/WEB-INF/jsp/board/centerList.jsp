@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/jsp/jspHeader.jsp" %>     
-<c:set var="path" value="${pageContext.request.contextPath }" />    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -51,13 +50,12 @@
  }
 </script>
 </head>
-<body>
+<body> 
 <div style="display:block; width:100%;">
 <table border="1" cellpadding="0" cellspacing="0" width="100%">
 <c:if test="${listcount > 0}">
 	<tr width="100%">
 	  <td colspan="5" align="center"><h1>고객센터</h1></td></tr>
-	  <td colspan="5" align="right"><h3>글 개수:${listcount}</h3></td>  
 	  <tr><td width="20%" align="center">글번호</td><td width="20%" align="center">답변상태</td>
 	      <td width="20%" align="center">제목</td><td width="20%" align="center">작성자</td>
 	      <td width="20%" align="center">날짜</td></tr>
@@ -65,14 +63,20 @@
 	    <tr>
           <td align="center">${clist.board_no}</td>
           <td align="center">
-          <c:if test="${(clist.ans_chk == 0) && userid != 'admin' && userid == clist.id}"> 
-            <a href="updateForm.mall?num=${clist.board_no}&pageNum=${param.pageNum}">[수정]</a>
+          <c:if test="${(clist.ans_chk == 0) && userid != 'admin' && userid == clist.id && empty param.pageNum}"> 
+            <a href="centerupdateForm.mall?num=${clist.board_no}&pageNum=1">[수정]</a>
+          </c:if>
+          <c:if test="${(clist.ans_chk == 0) && userid != 'admin' && userid == clist.id && not empty param.pageNum}"> 
+            <a href="centerupdateForm.mall?num=${clist.board_no}&pageNum=${param.pageNum}">[수정]</a>
           </c:if>
           <c:if test="${(clist.ans_chk == 0) && userid != 'admin' && userid != clist.id}"> 
             <font color="red">미답변</font>
           </c:if>
-          <c:if test="${(clist.ans_chk == 0) && userid == 'admin'}"> 
-            <a href="centerUpdate.mall">[답변]</a>
+          <c:if test="${(clist.ans_chk == 0) && userid == 'admin'&& empty param.pageNum}"> 
+            <a href="centeranswerForm.mall?num=${clist.board_no}&pageNum=1">[답변]</a>
+          </c:if>
+          <c:if test="${(clist.ans_chk == 0) && userid == 'admin'&& not empty param.pageNum}"> 
+            <a href="centeranswerForm.mall?num=${clist.board_no}&pageNum=${param.pageNum}">[답변]</a>
           </c:if>
           <c:if test="${clist.ans_chk == 1}"> 
              <font color="blue">√</font>
@@ -93,17 +97,18 @@
 	        <c:if test="${not empty clist.pass && empty param.searchType && empty param.searchContent && empty param.num && empty param.password}"> 
 	          <form action="centerList.mall" method="get" name="onpass" id="loc">
 	                       비밀번호 : 
+	          	<input type="hidden" name="pageNum" value="${param.pageNum}">
 	          	<input type="hidden" name="num" value="${clist.board_no}">
                 <input type="text" name="password">
                 <input type="submit" value="확인">
               </form>
             </c:if>
-            <c:if test="${not empty clist.pass && not empty param.pageNum &&not empty param.searchType && not empty param.searchContent}"> 
+            <c:if test="${not empty clist.pass && not empty param.pageNum &&not empty param.searchType && not empty param.searchContent && empty password}"> 
 	          <form action="centerList.mall" method="get" name="onpass2" id="loc">
-	                       비밀번호 : 	                       
-                <input type="hidden" name="pageNum2" value="${param.pageNum}">
-                <input type="hidden" name="searchType2" value="${param.searchType}">
-	            <input type="hidden" name="searchContent2" value="${param.searchContent}">
+	                       비밀번호 : 	     
+	            <input type="hidden" name="pageNum" value="${param.pageNum}">  
+	            <input type="hidden" name="searchType" value="${param.searchType}">  
+	            <input type="hidden" name="searchContent" value="${param.searchContent}">  	                          
 	          	<input type="hidden" name="num" value="${clist.board_no}">
                 <input type="text" name="password">
                 <input type="submit" value="확인">
@@ -144,20 +149,21 @@
                </tr> 
              </table>
 	         </c:if>
-	         <c:if test="${((clist.pass != password) || (clist.board_no != num)) && empty param.searchType2}">
+	         <c:if test="${((clist.pass != password) || (clist.board_no != num)) && empty param.searchType}">
 	          <form action="centerList.mall" method="get" name="onpass4" id="loc">
 	                       비밀번호 : 
+	            <input type="hidden" name="pageNum" value="${param.pageNum}">
 	          	<input type="hidden" name="num" value="${clist.board_no}">
                 <input type="text" name="password">
                 <input type="submit" value="확인">
               </form>
 	         </c:if> 
-	         <c:if test="${(clist.pass != password && not empty clist.pass) && (not empty param.pageNum2 && not empty param.searchType2 && not empty param.searchContent2 && not empty param.num && not empty param.password)}">
+	         <c:if test="${(clist.pass != password && not empty clist.pass) && (not empty param.pageNum && not empty param.searchType && not empty param.searchContent && not empty param.num && not empty param.password)}">
 	         	<form action="centerList.mall" method="get" name="onpass5" id="loc">
-	                       비밀번호5 : 
-	            <input type="hidden" name="pageNum2" value="${param.pageNum2}">
-	            <input type="hidden" name="searchType2" value="${param.searchType2}">
-	            <input type="hidden" name="searchContent2" value="${param.searchContent2}">           
+	                       비밀번호 : 
+	            <input type="hidden" name="pageNum" value="${param.pageNum}">  
+	            <input type="hidden" name="searchType" value="${param.searchType}">  
+	            <input type="hidden" name="searchContent" value="${param.searchContent}">           
 	          	<input type="hidden" name="num" value="${clist.board_no}">
                 <input type="text" name="password">
                 <input type="submit" value="확인">
@@ -232,11 +238,11 @@
 </td></tr>
 </table>
 <div id="loc2">
-<c:if test="${userid != 'admin'}">
+<c:if test="${userid != 'admin' && userid != 'guest'}">
    <tr><td id="loc"><a href="centerAdd.mall">[글쓰기]</a></td></tr>
    <tr><td id="loc"><a href="centerList.mall">[글목록]</a></td></tr>
 </c:if>
-<c:if test="${userid == 'admin'}">
+<c:if test="${userid == 'admin' || userid == 'guest'}">
    <tr><td id="loc"><a href="centerList.mall">[글목록]</a></td></tr>
 </c:if>
 </div>

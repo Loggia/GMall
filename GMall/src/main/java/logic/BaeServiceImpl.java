@@ -18,25 +18,69 @@ import dao.MemberDao;
 public class BaeServiceImpl implements BaeService{
 	@Autowired
 	BoardDao boardDao;
-	@Autowired
-	MemberDao memberDao;
 	
 	/*
 	   배기수 
 	*/
 	@Override
-	public List<Board> infiniteScrollDown(int numToStart) {
-		return boardDao.infiniteScrollDown(numToStart);
+	public List<Product> infiniteScrollDown(int numToStart, String category) {
+		return boardDao.infiniteScrollDown(numToStart, category);
 	}
 
 	@Override
-	public List<Board> infiniteScrollUp(int numToEnd) {
-		return boardDao.infiniteScrollUp(numToEnd);
+	public List<Product> infiniteScrollUp(int numToEnd, String category) {
+		return boardDao.infiniteScrollUp(numToEnd, category);
+	}
+	
+	@Override
+	public List<Product> priminfiniteScrollDown(int numToStart, String category) {
+		return boardDao.priminfiniteScrollDown(numToStart, category);
 	}
 
 	@Override
-	public List<Board> proList() {
-		return boardDao.proList();
+	public List<Product> priminfiniteScrollUp(int numToEnd, String category) {
+		return boardDao.priminfiniteScrollUp(numToEnd, category);
+	}
+	
+	@Override
+	public List<Product> highinfiniteScrollDown(int priceStart, String category) {
+		return boardDao.highinfiniteScrollDown(priceStart, category);
+	}
+
+	@Override
+	public List<Product> highinfiniteScrollUp(int priceEnd, String category) {
+		return boardDao.highinfiniteScrollUp(priceEnd, category);
+	}
+
+	@Override
+	public List<Product> lowinfiniteScrollDown(int priceStart, String category) {
+		return boardDao.lowinfiniteScrollDown(priceStart, category);
+	}
+
+	@Override
+	public List<Product> lowinfiniteScrollUp(int priceEnd, String category) {
+		return boardDao.lowinfiniteScrollUp(priceEnd, category);
+	}
+
+
+	@Override
+	public List<Product> proList(String category) {
+		return boardDao.proList(category);
+	}
+	
+	@Override
+	public List<Product> premiumList(String category) {
+		return boardDao.premiumList(category);
+	}
+	
+	@Override
+	public List<Product> highPriceList(String category) {
+		return boardDao.highPriceList(category);
+	}
+	
+	@Override
+	public List<Product> lowPriceList(String category) {
+		return boardDao.lowPriceList(category);
 	}
 	
 	@Override
@@ -137,19 +181,36 @@ public class BaeServiceImpl implements BaeService{
 	*/
 	@Override
 	public void boardUpdate(Board board, HttpServletRequest request) {
-		if(!board.getImg1().isEmpty())
+		if(board.getImg1() != null)
 		{
 			uploadFileCreate(board.getImg1(), request);
 		}
-		if(!board.getImg2().isEmpty())
+		if(board.getImg2() != null)
 		{
 			uploadFileCreate(board.getImg2(), request);
 		}
-		if(!board.getImg3().isEmpty())
+		if(board.getImg3() != null)
 		{
 			uploadFileCreate(board.getImg3(), request);
 		}
 		boardDao.boardUpdate(board);	
+	}
+	
+	/*
+	  배기수 - 글 삭제 기능
+	*/
+	@Override
+	public void boardDelete(int num) {	
+		boardDao.boardDelete(num);
+	}
+	
+	/*
+	  배기수 - 답변기능  
+	*/
+	@Override
+	public void boardAnswer(Board board, HttpServletRequest request) {
+		board.setAns_chk(1);
+		boardDao.boardAnswer(board);	
 	}
 
 	

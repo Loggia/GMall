@@ -5,6 +5,10 @@ import java.util.Date;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import DateJsonSerializer.DateJsonSerializer;
+
 public class Product 
 {
 	@NotEmpty
@@ -27,6 +31,9 @@ public class Product
 	
 	@NotEmpty
 	private int cnt;
+	
+	@NotEmpty
+	private int prim;
 	
 	@NotEmpty
 	private String category;
@@ -78,6 +85,7 @@ public class Product
 		this.bis_name = bis_name;
 	}
 	
+	@JsonSerialize(using = DateJsonSerializer.class)
 	public Date getDate() 
 	{
 		return date;
@@ -118,6 +126,14 @@ public class Product
 		this.cnt = cnt;
 	}
 	
+	public int getPrim() {
+		return prim;
+	}
+
+	public void setPrim(int prim) {
+		this.prim = prim;
+	}
+
 	public String getCategory()
 	{
 		return category;
@@ -230,11 +246,12 @@ public class Product
 	@Override
 	public String toString() {
 		return "Product [pro_no=" + pro_no + ", bis_no=" + bis_no + ", bis_name=" + bis_name + ", date=" + date
-				+ ", pro_name=" + pro_name + ", price=" + price + ", cnt=" + cnt + ", category=" + category
-				+ ", favorite=" + favorite + ", pro_content=" + pro_content + ", fileurl=" + fileurl + ", fileurl1="
-				+ fileurl1 + ", fileurl2=" + fileurl2 + ", fileurl3=" + fileurl3 + ", main_img=" + main_img
-				+ ", sub_img1=" + sub_img1 + ", sub_img2=" + sub_img2 + ", sub_img3=" + sub_img3 + ", date2=" + date2
-				+ "]";
+				+ ", pro_name=" + pro_name + ", price=" + price + ", cnt=" + cnt + ", prim=" + prim + ", category="
+				+ category + ", favorite=" + favorite + ", pro_content=" + pro_content + ", fileurl=" + fileurl
+				+ ", fileurl1=" + fileurl1 + ", fileurl2=" + fileurl2 + ", fileurl3=" + fileurl3 + ", main_img="
+				+ main_img + ", sub_img1=" + sub_img1 + ", sub_img2=" + sub_img2 + ", sub_img3=" + sub_img3 + ", date2="
+				+ date2 + "]";
 	}
+
 	
 }

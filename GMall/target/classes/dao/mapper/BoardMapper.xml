@@ -1,37 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.mapper.BoardMapper">
-  <select id="proList" resultType="board">
-    select * from ( select *  from product order by num desc, regdate desc ) where rownum &gt;= 1 and rownum &lt;= 50
+  <select id="proList" resultType="Product" parameterType="hashmap">
+    select p.pro_no, p.pro_name, p.price, p.category, p.main_img fileurl, p.date, p.bis_name, m.prim from product p, member m where p.bis_no = m.bis_no and p.category = '${category}' order by p.pro_no desc, p.date desc limit 0, 30       
   </select>
   
-  <select id="infiniteScrollDown" resultType="board" parameterType="int">
-    select * from product where pro_no &lt;= ${value} and pro_no &gt;= ${value}-50 order by num desc, regdate desc
+  <select id="premiumList" resultType="Product" parameterType="hashmap">
+    select p.pro_no, p.pro_name, p.price, p.category, p.main_img fileurl, p.date, p.bis_name, m.prim from product p, member m where p.bis_no = m.bis_no and p.category = '${category}' and m.prim = 1 order by m.prim desc, p.date desc limit 0, 30       
   </select>
   
-  <select id="infiniteScrollUp" resultType="board" parameterType="int">
-    select * from product where pro_no &lt;= ${value}+50 and pro_no &gt;= ${value} order by num desc, regdate desc
+  <select id="highPriceList" resultType="Product" parameterType="hashmap">
+    select p.pro_no, p.pro_name, p.price, p.category, p.main_img fileurl, p.date, p.bis_name, m.prim from product p, member m where p.bis_no = m.bis_no and p.category = '${category}' order by p.price desc limit 0, 30       
+  </select>
+  
+  <select id="lowPriceList" resultType="Product" parameterType="hashmap">
+    select p.pro_no, p.pro_name, p.price, p.category, p.main_img fileurl, p.date, p.bis_name, m.prim from product p, member m where p.bis_no = m.bis_no and p.category = '${category}' order by p.price asc limit 0, 30       
+  </select>
+  
+  <select id="infiniteScrollDown" resultType="Product" parameterType="hashmap">   	
+    select p.pro_no, p.pro_name, p.price, p.category, p.main_img fileurl, p.date, p.bis_name, m.prim from product p, member m
+     where p.bis_no = m.bis_no and p.category = '${category}' and pro_no &lt; ${numToStart} order by p.pro_no desc, p.date desc
+  </select>
+  
+  <select id="infiniteScrollUp" resultType="Product" parameterType="hashmap">         
+    select p.pro_no, p.pro_name, p.price, p.category, p.main_img fileurl, p.date, p.bis_name, m.prim from product p, member m
+     where p.bis_no = m.bis_no and p.category = '${category}' and pro_no &gt; ${numToEnd} order by p.pro_no desc, p.date desc
+  </select>
+  
+  <select id="priminfiniteScrollDown" resultType="Product" parameterType="hashmap">   	
+    select p.pro_no, p.pro_name, p.price, p.category, p.main_img fileurl, p.date, p.bis_name, m.prim from product p, member m
+     where p.bis_no = m.bis_no and p.category = '${category}' and m.prim = 1 and pro_no &lt; ${numToStart} order by m.prim desc, p.date desc
+  </select>
+  
+  <select id="priminfiniteScrollUp" resultType="Product" parameterType="hashmap">         
+    select p.pro_no, p.pro_name, p.price, p.category, p.main_img fileurl, p.date, p.bis_name, m.prim from product p, member m
+     where p.bis_no = m.bis_no and p.category = '${category}' and m.prim = 1 and pro_no &gt; ${numToEnd} order by m.prim desc, p.date desc
+  </select>
+  
+  <select id="highinfiniteScrollDown" resultType="Product" parameterType="hashmap">   	
+    select p.pro_no, p.pro_name, p.price, p.category, p.main_img fileurl, p.date, p.bis_name, m.prim from product p, member m
+     where p.bis_no = m.bis_no and p.category = '${category}' and p.price &lt; ${priceStart} order by p.price desc
+  </select>
+  
+  <select id="highinfiniteScrollUp" resultType="Product" parameterType="hashmap">         
+    select p.pro_no, p.pro_name, p.price, p.category, p.main_img fileurl, p.date, p.bis_name, m.prim from product p, member m
+     where p.bis_no = m.bis_no and p.category = '${category}' and p.price &gt; ${priceEnd} order by p.price desc
+  </select>
+  
+  <select id="lowinfiniteScrollDown" resultType="Product" parameterType="hashmap">   	
+    select p.pro_no, p.pro_name, p.price, p.category, p.main_img fileurl, p.date, p.bis_name, m.prim from product p, member m
+     where p.bis_no = m.bis_no and p.category = '${category}' and p.price &gt; ${priceStart} order by p.price asc
+  </select>
+  
+  <select id="lowinfiniteScrollUp" resultType="Product" parameterType="hashmap">         
+    select p.pro_no, p.pro_name, p.price, p.category, p.main_img fileurl, p.date, p.bis_name, m.prim from product p, member m
+     where p.bis_no = m.bis_no and p.category = '${category}' and p.price &lt; ${priceEnd} order by p.price asc
   </select>
   
   <select id="centerCount" resultType="int" parameterType="map">
     select count(*) from board
     <if test="searchType != null and searchContent != null">
-      where ${searchType} like '%${searchContent}%'
+      where ${searchType} like '%${searchContent}%' and board_type = 1
     </if>
+    where board_type = 1
   </select>
   
-   <select id="centerList" resultType="board" parameterType="map">
+   <select id="centerList" resultType="Board" parameterType="map">
     select board_no, id, pass, subject, content, board_type, regdate, readcnt, ans_chk, img1 fileurl, 
     img2 fileurl2, img3 fileurl3 from board 
     <if test="searchType != null and searchContent != null">
-      where ${searchType} like '%${searchContent}%'
+      where ${searchType} like '%${searchContent}%' and board_type = 1 limit ${startrow}, ${endrow} 
     </if>
-    order by board_no desc limit ${startrow}, ${endrow}
-    
+    <if test="searchType == null and searchContent == null">
+      where board_type = 1 order by board_no desc limit ${startrow}, ${endrow}
+    </if>
    <!-- 	select * from ( select rownum rnum, num, id, pass, subject, content, regdate, readcnt, ref, reflevel, 
    	refstep, img1, img2, img3 from ( select * from board
     order by ref desc, refstep asc )) where rnum &gt;= #{startrow} and rnum &lt;= #{endrow} -->
   </select>
-  
   
 </mapper>

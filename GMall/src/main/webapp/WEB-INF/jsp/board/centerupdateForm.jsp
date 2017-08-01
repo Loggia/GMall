@@ -22,7 +22,7 @@
 </script>
 </head>
 <body>
-<form:form modelAttribute="board" action="update.mall?pageNum=${pageNum}" enctype="multipart/form-data" name="updateform">
+<form:form modelAttribute="board" action="centerupdate.mall?pageNum=${pageNum}" enctype="multipart/form-data" name="updateform">
 	<input type="hidden" name="filep" value="${board.fileurl}">
 	<input type="hidden" name="filep2" value="${board.fileurl2}">
 	<input type="hidden" name="filep3" value="${board.fileurl3}">
@@ -41,25 +41,31 @@
       <tr><td>첨부파일</td><td>&nbsp;
       	 <c:if test="${!empty board.fileurl}">
       	   <div id="file_desc">
-      	     <a href="./fileupload/${board.fileurl}">${board.fileurl}</a>&nbsp;
+      	     <a href="../fileupload/${board.fileurl}">${board.fileurl}</a>&nbsp;
              <a href="javascript:file_delete()">[첨부파일1 삭제]</a>
       	   </div>
       	 </c:if>
       	 <c:if test="${!empty board.fileurl2}">
       	   <div id="file_desc2">
-      	     <a href="./fileupload/${board.fileurl2}">${board.fileurl2}</a>&nbsp;
+      	     <a href="../fileupload/${board.fileurl2}">${board.fileurl2}</a>&nbsp;
              <a href="javascript:file_delete2()">[첨부파일2 삭제]</a>
       	   </div>
       	 </c:if>
       	 <c:if test="${!empty board.fileurl3}">
       	   <div id="file_desc3">
-      	     <a href="./fileupload/${board.fileurl3}">${board.fileurl3}</a>&nbsp;
+      	     <a href="../fileupload/${board.fileurl3}">${board.fileurl3}</a>&nbsp;
              <a href="javascript:file_delete3()">[첨부파일3 삭제]</a>
       	   </div>
       	 </c:if>
+      	 <c:if test="${empty board.fileurl}">
       	 <div>첨부파일 1 : <input type="file" name="img1"></div>
+      	 </c:if>
+      	 <c:if test="${empty board.fileurl2}">
       	 <div>첨부파일 2 : <input type="file" name="img2"></div>
-      	 <div>첨부파일 3 : <input type="file" name="img3"></div>     
+      	 </c:if>
+      	 <c:if test="${empty board.fileurl3}">
+      	 <div>첨부파일 3 : <input type="file" name="img3"></div>    
+      	 </c:if> 
       	 </td> 	  
       </tr>
       <tr><td>비밀번호</td>
@@ -68,6 +74,7 @@
       </tr>
       <tr><td colspan="2" align="center">
         <a href="javascript:document.updateform.submit()">[수정]</a>&nbsp;
+        <a href="centerdeleteForm.mall?num=${board.board_no}&pageNum=${param.pageNum}">[삭제]</a>
         <a href="centerList.mall?pageNum=${param.pageNum}">[목록]</a></td>
       </tr>                  	 
 	</table>  

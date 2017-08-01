@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import dao.BoardDao;
 import dao.mapper.BoardMapper;
 import logic.Board;
+import logic.Product;
 
 @Repository
 public class BoardDaoImpl implements BoardDao{
@@ -19,18 +20,99 @@ public class BoardDaoImpl implements BoardDao{
 	private final String NS = "dao.mapper.BoardMapper."; 
 	
 	@Override
-	public List<Board> infiniteScrollDown(int numToStart) {
-		return sqlSession.selectList(NS+"infiniteScrollDown");
+	public List<Product> infiniteScrollDown(int numToStart, String category) {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+    	paramMap.put("numToStart", numToStart);
+    	paramMap.put("category", category);
+		return sqlSession.selectList(NS+"infiniteScrollDown", paramMap);
 	}
 
 	@Override
-	public List<Board> infiniteScrollUp(int numToEnd) {
-		return sqlSession.selectList(NS+"infiniteScrollUp");
+	public List<Product> infiniteScrollUp(int numToEnd, String category) {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+    	paramMap.put("numToEnd", numToEnd);
+    	paramMap.put("category", category);
+		return sqlSession.selectList(NS+"infiniteScrollUp", paramMap);
 	}
 	
 	@Override
-	public List<Board> proList() {
-    	return sqlSession.selectList(NS+"proList");
+	public List<Product> priminfiniteScrollDown(int numToStart, String category) {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+    	paramMap.put("numToStart", numToStart);
+    	paramMap.put("category", category);
+		return sqlSession.selectList(NS+"priminfiniteScrollDown", paramMap);
+	}
+
+	@Override
+	public List<Product> priminfiniteScrollUp(int numToEnd, String category) {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+    	paramMap.put("numToEnd", numToEnd);
+    	paramMap.put("category", category);
+		return sqlSession.selectList(NS+"priminfiniteScrollUp", paramMap);
+	}
+	
+	@Override
+	public List<Product> highinfiniteScrollDown(int priceStart, String category) {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+    	paramMap.put("priceStart", priceStart);
+    	paramMap.put("category", category);
+		return sqlSession.selectList(NS+"highinfiniteScrollDown", paramMap);
+	}
+
+	@Override
+	public List<Product> highinfiniteScrollUp(int priceEnd, String category) {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+    	paramMap.put("priceEnd", priceEnd);
+    	paramMap.put("category", category);
+		return sqlSession.selectList(NS+"highinfiniteScrollUp", paramMap);
+	}
+	
+	@Override
+	public List<Product> lowinfiniteScrollDown(int priceStart, String category) {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+    	paramMap.put("priceStart", priceStart);
+    	paramMap.put("category", category);
+		return sqlSession.selectList(NS+"lowinfiniteScrollDown", paramMap);
+	}
+
+	@Override
+	public List<Product> lowinfiniteScrollUp(int priceEnd, String category) {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+    	paramMap.put("priceEnd", priceEnd);
+    	paramMap.put("category", category);
+		return sqlSession.selectList(NS+"lowinfiniteScrollUp", paramMap);
+	}
+	
+	@Override
+	public List<Product> proList(String category) {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		System.out.println("category : " + category);
+    	paramMap.put("category", category);
+    	return sqlSession.selectList(NS+"proList", paramMap);
+	}
+	
+	@Override
+	public List<Product> premiumList(String category) {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		System.out.println("category : " + category);
+    	paramMap.put("category", category);
+    	return sqlSession.selectList(NS+"premiumList", paramMap);
+	}
+	
+	@Override
+	public List<Product> highPriceList(String category) {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		System.out.println("category : " + category);
+    	paramMap.put("category", category);
+    	return sqlSession.selectList(NS+"highPriceList", paramMap);
+	}
+	
+	@Override
+	public List<Product> lowPriceList(String category) {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		System.out.println("category : " + category);
+    	paramMap.put("category", category);
+    	return sqlSession.selectList(NS+"lowPriceList", paramMap);
 	}
 	
 	@Override
@@ -40,8 +122,8 @@ public class BoardDaoImpl implements BoardDao{
 	
 	@Override
 	public List<Board> centerList(String searchType, String searchContent, Integer pageNum, int limit) {
-		int startrow = (pageNum - 1) * (limit + 1);
-    	int endrow = startrow + limit - 1;  	
+		int startrow = (pageNum - 1) * limit;
+    	int endrow = startrow + limit;  	
     	Map<String, Object> paramMap = new HashMap<String, Object>();
     	paramMap.put("startrow", startrow);
     	paramMap.put("endrow", endrow);
@@ -81,6 +163,17 @@ public class BoardDaoImpl implements BoardDao{
 	public void boardUpdate(Board board) {
 		sqlSession.getMapper(BoardMapper.class).boardUpdate(board);
 	}
+
+	@Override
+	public void boardDelete(int num) {
+		sqlSession.getMapper(BoardMapper.class).boardDelete(num);
+	}
+
+	@Override
+	public void boardAnswer(Board board) {
+		sqlSession.getMapper(BoardMapper.class).boardAnswer(board);
+	}
+
 	
 	
 	
