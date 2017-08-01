@@ -241,6 +241,13 @@ public class BoardController
 			mav.addObject("msg", "비밀번호를 잘못입력하셨습니다.");
 			return mav;
 		}
+	    else if(pageNum!=null && searchType == null && searchContent == null && board1 != null && !board1.getPass().equals(password))
+		{
+			mav.setViewName("alert");
+			mav.addObject("url", "../board/centerList.mall?pageNum=" + pageNum);
+			mav.addObject("msg", "비밀번호를 잘못입력하셨습니다.");
+			return mav;
+		}
 	    else if(searchType == null && searchContent == null && board1 != null && !board1.getPass().equals(password))
 		{
 			mav.setViewName("alert");
