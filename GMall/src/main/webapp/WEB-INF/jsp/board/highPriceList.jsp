@@ -210,7 +210,7 @@ var result = '${msg}';
                 <tr>
                   <td><a href="premiumList.mall?category=${param.category}">프리미엄순</a></td>
                   <td><a href="highPriceList.mall?category=${param.category}">높은 가격순</a></td>
-                  <td><a href="proList.mall?category=${param.category}">낮은 가격순</a></td>                
+                  <td><a href="lowPriceList.mall?category=${param.category}">낮은 가격순</a></td>                
                 </tr>
                 <tr class="scrollLocation">
                   <th>상품이미지</th>
