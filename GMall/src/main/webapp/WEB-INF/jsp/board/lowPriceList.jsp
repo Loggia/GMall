@@ -43,7 +43,7 @@ var result = '${msg}';
             //45번 라인의 if문에 보면 $(window).height()-1 부분에서 -1이 있는 이유는 각 브라우저마다 결과창을 띄워줄때 위치가 각자 다르므로
             //console.log()로 위치값을 확인해서 비교해 가면서 위치를 맞춰주어야 한다. 크롬에서는 최소한 -1은 해주어야 
             //$(window).scrollTop()보다 작은 값을 가질 수 있어서 -1을 추가해준 것이다.
-            if ($(window).scrollTop() >= ($(document).height() - $(window).height()-1) ){ //② 현재스크롤의 위치가 화면의 보이는 위치보다 크다면
+            if ($(window).scrollTop() >= ($(document).height() - $(window).height()-5) ){ //② 현재스크롤의 위치가 화면의 보이는 위치보다 크다면
                  
                 // 3. class가 scrolling인 것의 요소 중 마지막인 요소를 선택한 다음 그것의 data-num속성 값을 받아온다.
                 //      즉, 현재 뿌려진 게시글의 마지막 bno값을 읽어오는 것이다.( 이 다음의 게시글들을 가져오기 위해 필요한 데이터이다.)
@@ -75,7 +75,7 @@ var result = '${msg}';
                                 function(){
                                     console.log(this);     
                                     str +=  "<tr class=" + "'listToChange'" + ">"
-                                        +       "<td class=" +  "'scrolling'" + " data-num='" + this.pro_no + "' data-cate='" + this.category + "'>" + "<a href='productDetail.mall?pro_no=" + this.pro_no + "&category=" + this.category + "'>" + "<img src='../picture/" + this.fileurl + "' width='70' height='70' />" + "</a>" + "</td>"
+                                        +       "<td class=" +  "'scrolling'" + " data-price='" + this.price + "' data-cate='" + this.category + "'>" + "<a href='productDetail.mall?pro_no=" + this.pro_no + "&category=" + this.category + "'>" + "<img src='../picture/" + this.fileurl + "' width='70' height='70' />" + "</a>" + "</td>"
                                         +       "<td>" + "<a href='productDetail.mall?pro_no=" + this.pro_no + "&category=" + this.category + "'>" + this.pro_name + "</a>" +"</td>"      
                                         +       "<td>" + this.price + "</td>"
                                         +       "<td>" + this.date + "</td>"
@@ -156,8 +156,8 @@ var result = '${msg}';
                                 function(){
                                     console.log(this);     
                                     str +=  "<tr class=" + "'listToChange'" + ">"
-                                        +       "<td class=" +  "'scrolling'" + " data-num='" + this.pro_no + "' data-cate='" + this.category + "'>" + "<a href='productDetail.mall?pro_no=" + this.pro_no + "&category=" + param.category + "'>" + "<img src='../picture/" + this.fileurl + "' width='70' height='70' />" + "</a>" + "</td>"
-                                        +       "<td>" + "<a href='productDetail.mall?pro_no=" + this.pro_no + "&category=" + param.category + "'>" + this.pro_name + "</a>" +"</td>"            
+                                        +       "<td class=" +  "'scrolling'" + " data-price='" + this.price + "' data-cate='" + this.category + "'>" + "<a href='productDetail.mall?pro_no=" + this.pro_no + "&category=" + this.category + "'>" + "<img src='../picture/" + this.fileurl + "' width='70' height='70' />" + "</a>" + "</td>"
+                                        +       "<td>" + "<a href='productDetail.mall?pro_no=" + this.pro_no + "&category=" + this.category + "'>" + this.pro_name + "</a>" +"</td>"            
                                         +       "<td>" + this.price + "</td>"
                                         +       "<td>" + this.date + "</td>"
                                         +       "<td>" + this.bis_name + "</td>"
@@ -225,9 +225,9 @@ var result = '${msg}';
                 <c:forEach items="${productlist}" var="product">
                     <tr class="listToChange">
                         <td class="scrolling" data-price="${product.price}" data-cate="${product.category}">
-                        <a href="productDetail.mall?pro_no=${product.pro_no}&category=${param.category}"><img src='../picture/${product.fileurl}' width='70' height='70' /></a>
+                        <a href="productDetail.mall?pro_no=${product.pro_no}&category=${product.category}"><img src='../picture/${product.fileurl}' width='70' height='70' /></a>
                         </td>
-                        <td><a href="productDetail.mall?pro_no=${product.pro_no}&category=${param.category}">${product.pro_name}</a></td>
+                        <td><a href="productDetail.mall?pro_no=${product.pro_no}&category=${product.category}">${product.pro_name}</a></td>
                         <td>${product.price}</td>
                         <td><fmt:formatDate value="${product.date}" pattern="yyyy-MM-dd"/></td>                        
                         <td>${product.bis_name}</td> 

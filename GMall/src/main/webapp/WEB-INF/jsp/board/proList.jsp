@@ -43,7 +43,7 @@ var result = '${msg}';
             //45번 라인의 if문에 보면 $(window).height()-1 부분에서 -1이 있는 이유는 각 브라우저마다 결과창을 띄워줄때 위치가 각자 다르므로
             //console.log()로 위치값을 확인해서 비교해 가면서 위치를 맞춰주어야 한다. 크롬에서는 최소한 -1은 해주어야 
             //$(window).scrollTop()보다 작은 값을 가질 수 있어서 -1을 추가해준 것이다.
-            if ($(window).scrollTop() >= ($(document).height() - $(window).height()-1) ){ //② 현재스크롤의 위치가 화면의 보이는 위치보다 크다면
+            if ($(window).scrollTop() >= ($(document).height() - $(window).height()-5) ){ //② 현재스크롤의 위치가 화면의 보이는 위치보다 크다면
                  
                 // 3. class가 scrolling인 것의 요소 중 마지막인 요소를 선택한 다음 그것의 data-num속성 값을 받아온다.
                 //      즉, 현재 뿌려진 게시글의 마지막 bno값을 읽어오는 것이다.( 이 다음의 게시글들을 가져오기 위해 필요한 데이터이다.)
@@ -99,7 +99,7 @@ var result = '${msg}';
                         }// else
          
                     }// success  
-                });// ajax
+                });// ajax  
                  
                 // 여기서 class가 listToChange인 것중 가장 처음인 것을 찾아서 그 위치로 이동하자.
                 var position = $(".listToChange:first").offset();// 위치 값
