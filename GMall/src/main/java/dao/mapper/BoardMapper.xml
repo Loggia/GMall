@@ -6,7 +6,7 @@
   </select>
   
   <select id="premiumList" resultType="Product" parameterType="hashmap">
-    select p.pro_no, p.pro_name, p.price, p.category, p.main_img fileurl, p.date, p.bis_name, m.prim from product p, member m where p.bis_no = m.bis_no and p.category = '${category}' and m.prim = 1 order by p.pro_no desc limit 0, 40       
+    select p.pro_no, p.pro_name, p.price, p.category, p.main_img fileurl, p.date, p.bis_name, m.prim from product p, member m where p.bis_no = m.bis_no and p.category = '${category}' and m.prim = 1 order by p.pro_no desc limit 0, 30       
   </select>
   
   <select id="highPriceList" resultType="Product" parameterType="hashmap">
