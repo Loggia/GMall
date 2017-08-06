@@ -25,6 +25,7 @@ import logic.BaeService;
 import logic.Board;
 import logic.Member;
 import logic.Product;
+import logic.Trade;
 
 @Controller
 public class BoardController 
@@ -402,6 +403,39 @@ public class BoardController
 	}
 	
 	/*
+	  삭제 폼 
+	*/
+	@RequestMapping("board/centerdeleteForm")
+	public String centerdeleteForm() {
+		return "board/centerdeleteForm";
+	}
+	
+	/*
+	  글 삭제 기능 
+	*/
+	@RequestMapping("board/centerdelete")
+	public ModelAndView centerdelete(int num, int pageNum, String pass) {
+		ModelAndView mav = new ModelAndView();
+		String dbpass = baeService.getBoardPassword(num);
+		if(pass == null && dbpass == null)
+		{
+			baeService.boardDelete(num);
+			mav.setViewName("redirect:/board/centerList.mall?pageNum=" + pageNum);
+			return mav;
+		}
+		if(!pass.equals(dbpass))
+		{
+			mav.setViewName("alert");
+			mav.addObject("url", "../board/centerList.mall?pageNum=" + pageNum);
+			mav.addObject("msg", "비밀번호를 잘못입력하셨습니다.");
+			return mav;
+		}
+		baeService.boardDelete(num);
+		mav.setViewName("redirect:/board/centerList.mall?pageNum=" + pageNum);
+		return mav;
+	}
+	
+	/*
 	  답변 업데이트 폼
 	*/
 	@RequestMapping("board/centeranswerForm")	                     
@@ -442,46 +476,13 @@ public class BoardController
 		baeService.boardDelete(num);
 		mav.setViewName("redirect:/board/centerList.mall?pageNum=" + pageNum);
 		return mav;
-	}
+	}	
 	
 	/*
-	  삭제 폼 
+	 상품 상세페이지 
 	*/
-	@RequestMapping("board/centerdeleteForm")
-	public String centerdeleteForm() {
-		return "board/centerdeleteForm";
-	}
-	
-	/*
-	  글 삭제 기능 
-	*/
-	@RequestMapping("board/centerdelete")
-	public ModelAndView centerdelete(int num, int pageNum, String pass) {
-		ModelAndView mav = new ModelAndView();
-		String dbpass = baeService.getBoardPassword(num);
-		if(pass == null && dbpass == null)
-		{
-			baeService.boardDelete(num);
-			mav.setViewName("redirect:/board/centerList.mall?pageNum=" + pageNum);
-			return mav;
-		}
-		if(!pass.equals(dbpass))
-		{
-			mav.setViewName("alert");
-			mav.addObject("url", "../board/centerList.mall?pageNum=" + pageNum);
-			mav.addObject("msg", "비밀번호를 잘못입력하셨습니다.");
-			return mav;
-		}
-		baeService.boardDelete(num);
-		mav.setViewName("redirect:/board/centerList.mall?pageNum=" + pageNum);
-		return mav;
-	}
-	
-	/*
-	 Q&A 목록 기능 
-	*/
-	/*@RequestMapping("board/qnaList")
-	public ModelAndView qnaList(Board board, Integer pageNum, String searchType, String searchContent, HttpServletRequest request, HttpSession session) {
+	@RequestMapping("board/productDetail")
+	public ModelAndView productDetail(Board board, Integer pageNum, String searchType, String searchContent, HttpServletRequest request, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		Member member = null;
 		if(request.getSession().getAttribute("LOGIN_MEMBER") == null)
@@ -502,94 +503,331 @@ public class BoardController
 			userid = member.getId();
 		}
 		String password = request.getParameter("password");
-		String num = request.getParameter("num");	
-		String pageNum2 = request.getParameter("pageNum2");
-		String searchType2 = request.getParameter("searchType2");
-		String searchContent2 = request.getParameter("searchContent2");
-		
+		String num = request.getParameter("num");
+		String pro_no = request.getParameter("pro_no");
+		String category = request.getParameter("category");
+		Trade trade = new Trade();
 		if(pageNum == null || pageNum.toString().equals(""))
 		{
 			pageNum = 1;
 		}
-		Integer pageNum3 = null;
-		if(pageNum2 == null)
-		{
-			pageNum2 = "";
-		}
-		else if(pageNum2 != null)
-		{
-			pageNum3 = Integer.parseInt(pageNum2);
-		}
 		int limit = 20;
-		if(pageNum3 == null || searchType2 == null || searchContent2 == null)
+		int listcount = baeService.qnaCount(searchType, searchContent, pro_no);
+		int relistcount = baeService.reCount(pro_no);
+		Product proinfo = baeService.proInfo(pro_no);
+		List<Board> qnalist = baeService.qnaList(searchType, searchContent, pageNum, limit, pro_no);
+		List<Board> reviewlist = baeService.reList(pageNum, limit, pro_no);
+		Trade userinfo = baeService.checkUser(userid, pro_no);
+		System.out.println(userinfo);
+		int maxpage = (int)((double)listcount/limit + 0.95);
+		int startpage = (((int)((double)pageNum/10 + 0.9)) -1) * 10 + 1;
+		int endpage = startpage + 9;
+		if(endpage > maxpage)
 		{
-			int listcount = baeService.qnaCount(searchType, searchContent);
-			List<Board> centerlist = baeService.centerList(searchType, searchContent, pageNum, limit);
-			int maxpage = (int)((double)listcount/limit + 0.95);
-			int startpage = (((int)((double)pageNum/10 + 0.9)) -1) * 10 + 1;
-			int endpage = startpage + 9;
-			if(endpage > maxpage)
-			{
-				endpage = maxpage;
-			}
-			mav.addObject("maxpage", maxpage);
-			mav.addObject("startpage", startpage);
-			mav.addObject("endpage", endpage);
-			mav.addObject("listcount", listcount);
-			mav.addObject("centerlist", centerlist);
-			SimpleDateFormat sdate = new SimpleDateFormat("yyyy-MM-dd");
-			String today = sdate.format(new Date());
-			mav.addObject("today", today);
-			mav.addObject("pageNum", pageNum);
-			mav.addObject("num", num);
-			mav.addObject("password", password);
-			mav.addObject("userid", userid);
-			
-			Board board1 =  baeService.passthrough(num);
-			if(board1 != null && !board1.getPass().equals(password))
-			{
-				mav.setViewName("alert");
-				mav.addObject("url", "../board/centerList.mall");
-				mav.addObject("msg", "비밀번호를 잘못입력하셨습니다.");
-				return mav;
-			}
+			endpage = maxpage;
 		}
-		else if(pageNum3 != null || searchType2 != null && searchContent != null)
+		int maxpage2 = (int)((double)relistcount/limit + 0.95);
+		int startpage2 = (((int)((double)pageNum/10 + 0.9)) -1) * 10 + 1;
+		int endpage2 = startpage2 + 9;
+		if(endpage2 > maxpage2)
 		{
-			int listcount = baeService.centerCount(searchType2, searchContent2);
-			List<Board> centerlist = baeService.centerList(searchType2, searchContent2, pageNum3, limit);
-			int maxpage = (int)((double)listcount/limit + 0.95);
-			int startpage = (((int)((double)pageNum/10 + 0.9)) -1) * 10 + 1;
-			int endpage = startpage + 9;
-			if(endpage > maxpage)
-			{
-				endpage = maxpage;
-			}
-			mav.addObject("maxpage", maxpage);
-			mav.addObject("startpage", startpage);
-			mav.addObject("endpage", endpage);
-			mav.addObject("listcount", listcount);
-			mav.addObject("centerlist", centerlist);
-			mav.addObject("searchType2", searchType2);
-			mav.addObject("searchContent2", searchContent2);
-			SimpleDateFormat sdate = new SimpleDateFormat("yyyy-MM-dd");
-			String today = sdate.format(new Date());
-			mav.addObject("today", today);
-			mav.addObject("pageNum", pageNum);
-			mav.addObject("num", num);
-			mav.addObject("password", password);
-			mav.addObject("userid", userid);
-			
-			Board board1 =  baeService.passthrough(num);
-			if(board1 != null && !board1.getPass().equals(password))
-			{
-				mav.setViewName("alert");
-				mav.addObject("url", "../board/centerList.mall?pageNum=" + pageNum2 + "&searchType=" + searchType2 + "&searchContent=" + searchContent2);
-				mav.addObject("msg", "비밀번호를 잘못입력하셨습니다.");
-				return mav;
-			}
+			endpage2 = maxpage2;
 		}
-		return mav;
-	}*/
+		mav.addObject("maxpage", maxpage);
+		mav.addObject("startpage", startpage);
+		mav.addObject("endpage", endpage);
+		mav.addObject("maxpage2", maxpage2);
+		mav.addObject("startpage2", startpage2);
+		mav.addObject("endpage2", endpage2);
+		mav.addObject("listcount", listcount);
+		mav.addObject("relistcount", relistcount);
+		mav.addObject("qnalist", qnalist);
+		mav.addObject("reviewlist", reviewlist);
+		mav.addObject("pageNum", pageNum);
+		mav.addObject("num", num);
+		mav.addObject("password", password);
+		mav.addObject("userid", userid);
+		mav.addObject("pro_no", pro_no);
+		mav.addObject("userinfo", userinfo);
+		mav.addObject("proinfo", proinfo);
+		mav.addObject("category", category);
+		mav.addObject(trade);
+		
+		Board board1 =  baeService.qnapassthrough(num);
+	    if(searchType != null && searchContent != null && board1 != null && !board1.getPass().equals(password))
+		{
+			mav.setViewName("alert");
+			mav.addObject("url", "../board/productDetail.mall?pro_no=" + pro_no + "&pageNum=" + pageNum + "&searchType=" + searchType + "&searchContent=" + searchContent);
+			mav.addObject("msg", "비밀번호를 잘못입력하셨습니다.");
+			return mav;
+		}
+	    else if(pageNum!=null && searchType == null && searchContent == null && board1 != null && !board1.getPass().equals(password))
+		{
+			mav.setViewName("alert");
+			mav.addObject("url", "../board/productDetail.mall?pro_no=" + pro_no + "&pageNum=" + pageNum);
+			mav.addObject("msg", "비밀번호를 잘못입력하셨습니다.");
+			return mav;
+		}
+	    else if(searchType == null && searchContent == null && board1 != null && !board1.getPass().equals(password))
+		{
+			mav.setViewName("alert");
+			mav.addObject("url", "../board/productDetail.mall?pro_no=" + pro_no);
+			mav.addObject("msg", "비밀번호를 잘못입력하셨습니다.");
+			return mav;
+		}
+		return mav;	
+	}
 	
+	/*
+	  qna 글 추가 기능
+	*/
+	@RequestMapping("board/qnaAdd")
+	public ModelAndView qnaAdd(HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView();
+		Member member = (Member)request.getSession().getAttribute("LOGIN_MEMBER");
+		String pro_no = request.getParameter("pro_no");
+		String userid = member.getId();
+		mav.addObject(new Board());
+		mav.addObject("userid", userid);
+		mav.addObject("pro_no", pro_no);
+		return mav;
+	}
+	
+	/*
+	 qna 글 작성 기능
+	*/
+	@RequestMapping("board/qnawrite")
+	public ModelAndView qnawrite(@Valid Board board, BindingResult bindingResult, HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView("board/qnaAdd");
+		if(bindingResult.hasErrors())
+		{
+			bindingResult.reject("error.input.user");
+			mav.getModel().putAll(bindingResult.getModel());
+			return mav;
+		}
+		baeService.qnaInsert(board, request);
+		mav.setViewName("redirect:/board/productDetail.mall?pro_no=" + board.getPro_no());
+		return mav;
+	}
+	
+	/*
+	 qna 업데이트폼
+	*/
+	@RequestMapping("board/qnaupdateForm")
+	public ModelAndView qnaupdateForm(int num, Integer pageNum, int pro_no) {
+		ModelAndView mav = new ModelAndView();
+		Board board = baeService.getBoard(num);
+		mav.addObject("board", board);
+		mav.addObject("pageNum", pageNum);	
+		mav.addObject("pro_no", pro_no);			
+		return mav;
+	}
+	
+	/*
+	 qna 업데이트 기능 
+	*/
+	@RequestMapping("board/qnaupdate")
+	public ModelAndView qnaupdate(@Valid Board board, BindingResult bindingResult, HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView();
+		System.out.println("board : " + board);
+		String pass = baeService.getBoardPassword(board.getBoard_no());
+		System.out.println("pass:"+pass);
+		if(!pass.equals(board.getPass()))
+		{
+			mav.setViewName("board/qnaupdateForm");
+			if(!board.getPass().equals(""))
+			{
+				bindingResult.rejectValue("pass", "error.board.password");
+			}
+			return mav;
+		}
+		if(board.getImg1() == null)
+		{
+			board.setFileurl(request.getParameter("filep"));
+		}
+		else 
+		{
+			board.setFileurl(board.getImg1().getOriginalFilename());
+		}
+		if(board.getImg2() == null)
+		{
+			board.setFileurl2(request.getParameter("filep2"));
+		}
+		else 
+		{
+			board.setFileurl2(board.getImg2().getOriginalFilename());
+		}
+		if(board.getImg3() == null)
+		{
+			board.setFileurl3(request.getParameter("filep3"));
+		}
+		else 
+		{
+			board.setFileurl3(board.getImg3().getOriginalFilename());
+		}
+		baeService.qnaUpdate(board, request);
+		mav.addObject("board", board);
+		mav.setViewName("redirect:/board/productDetail.mall?pro_no="+ request.getParameter("pro_no") + "&pageNum=" + request.getParameter("pageNum"));
+		return mav;
+	}
+
+	/*
+	 qna 삭제 폼 
+	*/
+	@RequestMapping("board/qnadeleteForm")
+	public String qnadeleteForm() {
+		return "board/qnadeleteForm";
+	}
+	
+	/*
+	  qna 글 삭제 기능 
+	*/
+	@RequestMapping("board/qnadelete")
+	public ModelAndView qnadelete(int num, int pageNum, int pro_no, String pass) {
+		ModelAndView mav = new ModelAndView();
+		String dbpass = baeService.getBoardPassword(num);
+		if(pass == null && dbpass == null)
+		{
+			baeService.boardDelete(num);
+			mav.setViewName("redirect:/board/productDetail.mall?pro_no=" + pro_no + "&pageNum=" + pageNum);
+			return mav;
+		}
+		if(!pass.equals(dbpass))
+		{
+			mav.setViewName("alert");
+			mav.addObject("url", "../board/productDetail.mall?pro_no=" + pro_no + "&pageNum=" + pageNum);
+			mav.addObject("msg", "비밀번호를 잘못입력하셨습니다.");
+			return mav;
+		}
+		baeService.boardDelete(num);
+		mav.setViewName("redirect:/board/productDetail.mall?pro_no=" + pro_no + "&pageNum=" + pageNum);
+		return mav;
+	}
+	
+	/*
+	 qna 답변 업데이트 폼
+	*/
+	@RequestMapping("board/qnaanswerForm")	                     
+	public ModelAndView qnaanswerForm(int num, Integer pageNum, int pro_no) {
+		ModelAndView mav = new ModelAndView();
+		Board board = baeService.getBoard(num);
+		mav.addObject("board", board);
+		mav.addObject("num", num);	
+		mav.addObject("pro_no", pro_no);	
+		mav.addObject("pageNum", pageNum);	
+		return mav;
+	}
+	
+	/*
+	 qna 답변 기능 
+	*/
+	@RequestMapping("board/qnaanswer")
+	public ModelAndView qnaanswer(Board board, HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView();
+		baeService.boardAnswer(board, request);
+		mav.addObject("board", board);
+		mav.setViewName("redirect:/board/productDetail.mall?pro_no=" + request.getParameter("pro_no") + "&pageNum=" + request.getParameter("pageNum"));
+		return mav;
+	}
+	
+	/*
+	 qna 관리자 글 삭제 폼 
+	*/
+	@RequestMapping("board/qnaaddeForm")
+	public String qnaaddeForm() {
+		return "board/qnaaddeForm";
+	}
+	
+	/*
+	 qna 관리자 글 삭제
+	*/
+	@RequestMapping("board/qnaadde")
+	public ModelAndView qnaadde(int num, int pageNum, int pro_no) {
+		ModelAndView mav = new ModelAndView();
+		baeService.boardDelete(num);
+		mav.setViewName("redirect:/board/productDetail.mall?pro_no=" + pro_no + "&pageNum=" + pageNum);
+		return mav;
+	}
+	
+	/*
+	  리뷰 글 추가 기능
+	*/
+	@RequestMapping("board/reviewAdd")
+	public ModelAndView reviewAdd(HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView();
+		Member member = (Member)request.getSession().getAttribute("LOGIN_MEMBER");
+		String pro_no = request.getParameter("pro_no");
+		String userid = member.getId();
+		mav.addObject(new Board());
+		mav.addObject("userid", userid);
+		mav.addObject("pro_no", pro_no);
+		return mav;
+	}
+	
+	/*
+	 리뷰 글 작성 기능
+	*/
+	@RequestMapping("board/reviewwrite")
+	public ModelAndView reviewwrite(@Valid Board board, BindingResult bindingResult, HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView("board/reviewAdd");
+		if(bindingResult.hasErrors())
+		{
+			bindingResult.reject("error.input.user");
+			mav.getModel().putAll(bindingResult.getModel());
+			return mav;
+		}
+		baeService.reviewInsert(board, request);
+		mav.setViewName("redirect:/board/productDetail.mall?pro_no=" + board.getPro_no());
+		return mav;
+	}
+	
+	/*
+	 리뷰 업데이트폼
+	*/
+	@RequestMapping("board/reviewupdateForm")
+	public ModelAndView reviewupdateForm(int num, Integer pageNum, int pro_no) {
+		ModelAndView mav = new ModelAndView();
+		Board board = baeService.getBoard(num);
+		mav.addObject("board", board);
+		mav.addObject("pageNum", pageNum);	
+		mav.addObject("pro_no", pro_no);			
+		return mav;
+	}
+	
+	/*
+	 리뷰 업데이트 기능 
+	*/
+	@RequestMapping("board/reviewupdate")
+	public ModelAndView reviewupdate(@Valid Board board, BindingResult bindingResult, HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView();
+		System.out.println("board : " + board);
+		baeService.reviewUpdate(board, request);
+		mav.addObject("board", board);
+		mav.setViewName("redirect:/board/productDetail.mall?pro_no="+ request.getParameter("pro_no") + "&pageNum=" + request.getParameter("pageNum"));
+		return mav;
+	}
+	
+	/*
+	 리뷰 삭제 폼 
+	*/
+	@RequestMapping("board/reviewdeleteForm")
+	public String reviewdeleteForm() {
+		return "board/reviewdeleteForm";
+	}
+	
+	/*
+	  리뷰글 삭제 기능 
+	*/
+	@RequestMapping("board/reviewdelete")
+	public ModelAndView reviewdelete(int num, int pageNum, int pro_no) {
+		ModelAndView mav = new ModelAndView();
+		baeService.boardDelete(num);
+		mav.setViewName("redirect:/board/productDetail.mall?pro_no=" + pro_no + "&pageNum=" + pageNum);
+		return mav;
+	}
+	
+	
+	
+	
+		
 }

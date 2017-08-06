@@ -12,6 +12,7 @@ import dao.BoardDao;
 import dao.mapper.BoardMapper;
 import logic.Board;
 import logic.Product;
+import logic.Trade;
 
 @Repository
 public class BoardDaoImpl implements BoardDao{
@@ -117,7 +118,10 @@ public class BoardDaoImpl implements BoardDao{
 	
 	@Override
 	public int centerCount(String searchType, String searchContent) {
-		return sqlSession.selectOne(NS+"centerCount");
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("searchType", searchType);
+		paramMap.put("searchContent", searchContent);
+		return sqlSession.selectOne(NS+"centerCount", paramMap);
 	}
 	
 	@Override
@@ -133,8 +137,8 @@ public class BoardDaoImpl implements BoardDao{
 	}
 
 	@Override
-	public int getMaxNum(int typenum) {
-		return sqlSession.getMapper(BoardMapper.class).getMaxNum(typenum);
+	public int getMaxNum() {
+		return sqlSession.getMapper(BoardMapper.class).getMaxNum();
 	}
 
 	@Override
@@ -174,6 +178,89 @@ public class BoardDaoImpl implements BoardDao{
 		sqlSession.getMapper(BoardMapper.class).boardAnswer(board);
 	}
 
+	@Override
+	public int qnaCount(String searchType, String searchContent, String pro_no) {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		System.out.println("pro_no1 : " + pro_no);
+		paramMap.put("searchType", searchType);
+		paramMap.put("searchContent", searchContent);
+		paramMap.put("pro_no", pro_no);
+		return sqlSession.selectOne(NS+"qnaCount", paramMap);
+	}
+
+	@Override
+	public List<Board> qnaList(String searchType, String searchContent, Integer pageNum, int limit, String pro_no) {
+		int startrow = (pageNum - 1) * limit;
+    	int endrow = startrow + limit;  	
+    	Map<String, Object> paramMap = new HashMap<String, Object>();
+    	System.out.println("pro_no2 : " + pro_no);
+    	paramMap.put("startrow", startrow);
+    	paramMap.put("endrow", endrow);
+    	paramMap.put("searchType", searchType);
+    	paramMap.put("searchContent", searchContent);
+    	paramMap.put("pro_no", pro_no);    	
+    	return sqlSession.selectList(NS+"qnaList", paramMap);
+	}
+
+	@Override
+	public Board qnapassthrough(String num) {
+		return sqlSession.getMapper(BoardMapper.class).qnapassthrough(num);
+	}
+
+	@Override
+	public void qnaInsert(Board board) {
+		sqlSession.getMapper(BoardMapper.class).qnaInsert(board);	
+	}
+
+	@Override
+	public void qnaUpdate(Board board) {
+		sqlSession.getMapper(BoardMapper.class).qnaUpdate(board);
+	}
+
+	@Override
+	public int reCount(String pro_no) {
+		System.out.println("pro_no!! : " + pro_no);
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+    	paramMap.put("pro_no", pro_no);
+		return sqlSession.selectOne(NS+"reCount", paramMap);
+	}
+
+	@Override
+	public List<Board> reList(Integer pageNum, int limit, String pro_no) {
+		int startrow = (pageNum - 1) * limit;
+    	int endrow = startrow + limit;  	
+    	Map<String, Object> paramMap = new HashMap<String, Object>();
+    	paramMap.put("startrow", startrow);
+    	paramMap.put("endrow", endrow);
+    	paramMap.put("pro_no", pro_no);    	
+    	return sqlSession.selectList(NS+"reList", paramMap);
+	}
+
+	@Override
+	public void reviewInsert(Board board) {
+		sqlSession.getMapper(BoardMapper.class).reviewInsert(board);
+	}
+
+	@Override
+	public Trade checkUser(String userid, String pro_no) {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("userid", userid);
+		paramMap.put("pro_no", pro_no);
+		return sqlSession.selectOne(NS+"checkUser", paramMap);
+	}
+
+	@Override
+	public void reviewUpdate(Board board) {
+		sqlSession.getMapper(BoardMapper.class).reviewUpdate(board);
+	}
+
+	@Override
+	public Product proInfo(String pro_no) {
+		return sqlSession.getMapper(BoardMapper.class).proInfo(pro_no);
+	}
+	
+	
+	
 	
 	
 	

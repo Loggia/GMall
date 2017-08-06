@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.mapper.BoardMapper">
-  <select id="proList" resultType="Product" parameterType="hashmap">
+<select id="proList" resultType="Product" parameterType="hashmap">
     select p.pro_no, p.pro_name, p.price, p.category, p.main_img fileurl, p.date, p.bis_name, m.prim from product p, member m where p.bis_no = m.bis_no and p.category = '${category}' order by p.pro_no desc, p.date desc limit 0, 30       
   </select>
   
   <select id="premiumList" resultType="Product" parameterType="hashmap">
-    select p.pro_no, p.pro_name, p.price, p.category, p.main_img fileurl, p.date, p.bis_name, m.prim from product p, member m where p.bis_no = m.bis_no and p.category = '${category}' and m.prim = 1 order by m.prim desc, p.date desc limit 0, 30       
+    select p.pro_no, p.pro_name, p.price, p.category, p.main_img fileurl, p.date, p.bis_name, m.prim from product p, member m where p.bis_no = m.bis_no and p.category = '${category}' and m.prim = 1 order by p.pro_no desc limit 0, 30       
   </select>
   
   <select id="highPriceList" resultType="Product" parameterType="hashmap">
@@ -29,12 +29,12 @@
   
   <select id="priminfiniteScrollDown" resultType="Product" parameterType="hashmap">   	
     select p.pro_no, p.pro_name, p.price, p.category, p.main_img fileurl, p.date, p.bis_name, m.prim from product p, member m
-     where p.bis_no = m.bis_no and p.category = '${category}' and m.prim = 1 and pro_no &lt; ${numToStart} order by m.prim desc, p.date desc
+     where p.bis_no = m.bis_no and p.category = '${category}' and m.prim = 1 and pro_no &lt; ${numToStart} order by p.pro_no desc
   </select>
   
   <select id="priminfiniteScrollUp" resultType="Product" parameterType="hashmap">         
     select p.pro_no, p.pro_name, p.price, p.category, p.main_img fileurl, p.date, p.bis_name, m.prim from product p, member m
-     where p.bis_no = m.bis_no and p.category = '${category}' and m.prim = 1 and pro_no &gt; ${numToEnd} order by m.prim desc, p.date desc
+     where p.bis_no = m.bis_no and p.category = '${category}' and m.prim = 1 and pro_no &gt; ${numToEnd} order by p.pro_no desc
   </select>
   
   <select id="highinfiniteScrollDown" resultType="Product" parameterType="hashmap">   	
@@ -62,7 +62,9 @@
     <if test="searchType != null and searchContent != null">
       where ${searchType} like '%${searchContent}%' and board_type = 1
     </if>
-    where board_type = 1
+    <if test="searchType == null and searchContent == null">
+      where board_type = 1
+    </if>
   </select>
   
    <select id="centerList" resultType="Board" parameterType="map">
@@ -79,4 +81,51 @@
     order by ref desc, refstep asc )) where rnum &gt;= #{startrow} and rnum &lt;= #{endrow} -->
   </select>
   
+  <select id="qnaCount" resultType="int" parameterType="map">
+    select count(*) from board
+    <if test="searchType != null and searchContent != null">
+      where ${searchType} like '%${searchContent}%' and board_type = 2 and pro_no = ${pro_no}
+    </if>
+    <if test="searchType == null and searchContent == null">
+      where board_type = 2 and pro_no = ${pro_no}
+    </if>
+  </select>
+  
+  <select id="qnaList" resultType="Board" parameterType="map">
+    select board_no, id, pass, subject, content, board_type, regdate, readcnt, ans_chk, img1 fileurl, 
+    img2 fileurl2, img3 fileurl3 from board 
+    <if test="searchType != null and searchContent != null">
+      where ${searchType} like '%${searchContent}%' and board_type = 2 and pro_no = '${pro_no}' limit ${startrow}, ${endrow} 
+    </if>
+    <if test="searchType == null and searchContent == null">
+      where board_type = 2 and pro_no = '${pro_no}' order by board_no desc limit ${startrow}, ${endrow}
+    </if> 
+  </select>
+  
+  <select id="reCount" resultType="int" parameterType="map">
+    select count(*) from board
+    <if test="pro_no != null">
+      where board_type = 3 and pro_no = ${pro_no}
+    </if>
+    <if test="pro_no == null">
+      where board_type = 3
+    </if>
+  </select>
+  
+  <select id="reList" resultType="Board" parameterType="map">
+    select board_no, id, pass, subject, content, board_type, regdate, readcnt, ans_chk, img1 fileurl from board 
+    <if test="pro_no != null">
+      where board_type = 3 and pro_no = '${pro_no}' order by board_no desc limit ${startrow}, ${endrow} 
+    </if>
+    <if test="pro_no == null">
+      where board_type = 3 and order by board_no desc limit ${startrow}, ${endrow}
+    </if> 
+  </select>
+  
+  <select id="checkUser" resultType="Trade" parameterType="map">
+    select buy_id from trade where buy_id = '${userid}' and pro_no=${pro_no} 
+  </select>
+  
+  
+   
 </mapper>

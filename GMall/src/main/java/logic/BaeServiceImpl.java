@@ -62,7 +62,6 @@ public class BaeServiceImpl implements BaeService{
 		return boardDao.lowinfiniteScrollUp(priceEnd, category);
 	}
 
-
 	@Override
 	public List<Product> proList(String category) {
 		return boardDao.proList(category);
@@ -83,16 +82,25 @@ public class BaeServiceImpl implements BaeService{
 		return boardDao.lowPriceList(category);
 	}
 	
+	/*
+	 고객센터에서 검색된 내용을 가져옴 
+	*/
 	@Override
 	public int centerCount(String searchType, String searchContent) {
 		return boardDao.centerCount(searchType, searchContent);
 	}
 	
+	/*
+	 고객센터 글 목록 가져옴 
+	*/
 	@Override
 	public List<Board> centerList(String searchType, String searchContent, Integer pageNum, int limit) {
 		return boardDao.centerList(searchType, searchContent, pageNum, limit);
 	}
 
+	/*
+	 고객센터 글 작성
+	*/
 	@Override
 	public void centerInsert(Board board, HttpServletRequest request) {
 		board.setFileurl(board.getImg1().getOriginalFilename());
@@ -112,11 +120,14 @@ public class BaeServiceImpl implements BaeService{
 		}
 		board.setBoard_type(1); 
 		board.setAns_chk(0);
-		int num = boardDao.getMaxNum(board.getBoard_type());
+		int num = boardDao.getMaxNum();
 		board.setBoard_no(++num);
 		boardDao.centerInsert(board);	
 	}	
 	
+	/*
+	 파일 업로드 
+	*/
 	private void uploadFileCreate(MultipartFile img, HttpServletRequest request) {
 		String uploadPath = request.getServletContext().getRealPath("/") + "/fileupload/";
 		FileOutputStream fos = null;
@@ -153,7 +164,7 @@ public class BaeServiceImpl implements BaeService{
 	}
 	
 	/*
-	  배기수 - 글번호에 해당하는 정보를 가져옴 
+	  글번호에 해당하는 정보를 가져옴 
 	*/
 	@Override
 	public Board passthrough(String num) {
@@ -161,7 +172,7 @@ public class BaeServiceImpl implements BaeService{
 	}
 	
 	/*
-	 배기수 - 글번호에 해당하는 글을 가져옴
+	 글번호에 해당하는 글을 가져옴
 	*/
 	@Override
 	public Board getBoard(int num) {
@@ -169,7 +180,7 @@ public class BaeServiceImpl implements BaeService{
 	}
 	
 	/*
-	  배기수 - 글번호에 해당하는 비밀번호를 가져옴 
+	  글번호에 해당하는 비밀번호를 가져옴 
 	*/
 	@Override
 	public String getBoardPassword(int board_no) {
@@ -177,7 +188,7 @@ public class BaeServiceImpl implements BaeService{
 	}
 	
 	/*
-	  배기수 - 글 업데이트 기능
+	  글 업데이트 기능
 	*/
 	@Override
 	public void boardUpdate(Board board, HttpServletRequest request) {
@@ -197,7 +208,7 @@ public class BaeServiceImpl implements BaeService{
 	}
 	
 	/*
-	  배기수 - 글 삭제 기능
+	  글 삭제 기능
 	*/
 	@Override
 	public void boardDelete(int num) {	
@@ -205,12 +216,104 @@ public class BaeServiceImpl implements BaeService{
 	}
 	
 	/*
-	  배기수 - 답변기능  
+	  답변기능  
 	*/
 	@Override
 	public void boardAnswer(Board board, HttpServletRequest request) {
 		board.setAns_chk(1);
 		boardDao.boardAnswer(board);	
+	}
+
+	/*
+	 qna에서 검색된 내용 가져옴 
+	*/
+	@Override
+	public int qnaCount(String searchType, String searchContent, String pro_no) {
+		return boardDao.qnaCount(searchType, searchContent, pro_no);
+	}
+
+	@Override
+	public List<Board> qnaList(String searchType, String searchContent, Integer pageNum, int limit, String pro_no) {
+		return boardDao.qnaList(searchType, searchContent, pageNum, limit, pro_no);
+	}
+
+	@Override
+	public Board qnapassthrough(String num) {
+		return boardDao.qnapassthrough(num);
+	}
+
+	@Override
+	public void qnaInsert(Board board, HttpServletRequest request) {
+		board.setFileurl(board.getImg1().getOriginalFilename());
+		board.setFileurl2(board.getImg2().getOriginalFilename());
+		board.setFileurl3(board.getImg3().getOriginalFilename());
+		if(board.getImg1() != null && !board.getImg1().isEmpty())
+		{
+			uploadFileCreate(board.getImg1(), request);
+		}
+		if(board.getImg2() != null && !board.getImg2().isEmpty())
+		{
+			uploadFileCreate(board.getImg2(), request);
+		}
+		if(board.getImg3() != null && !board.getImg3().isEmpty())
+		{
+			uploadFileCreate(board.getImg3(), request);
+		}
+		board.setBoard_type(2); 
+		board.setAns_chk(0);
+		int num = boardDao.getMaxNum();
+		board.setBoard_no(++num);
+		boardDao.qnaInsert(board);
+	}
+
+	@Override
+	public void qnaUpdate(Board board, HttpServletRequest request) {
+		if(board.getImg1() != null)
+		{
+			uploadFileCreate(board.getImg1(), request);
+		}
+		if(board.getImg2() != null)
+		{
+			uploadFileCreate(board.getImg2(), request);
+		}
+		if(board.getImg3() != null)
+		{
+			uploadFileCreate(board.getImg3(), request);
+		}
+		boardDao.qnaUpdate(board);
+	}
+
+	@Override
+	public int reCount(String pro_no) {
+		return boardDao.reCount(pro_no);
+	}
+
+	@Override
+	public List<Board> reList(Integer pageNum, int limit, String pro_no) {
+		return boardDao.reList(pageNum, limit, pro_no);
+	}
+
+	@Override
+	public void reviewInsert(Board board, HttpServletRequest request) {
+		board.setBoard_type(3); 
+		int num = boardDao.getMaxNum();
+		board.setBoard_no(++num);
+		boardDao.reviewInsert(board);
+	}
+
+	@Override
+	public Trade checkUser(String userid, String pro_no) {
+		return boardDao.checkUser(userid, pro_no);
+	}
+
+	@Override
+	public void reviewUpdate(Board board, HttpServletRequest request) {
+		boardDao.reviewUpdate(board);
+	}
+
+	@Override
+	public Product proInfo(String pro_no) {
+		return boardDao.proInfo(pro_no);
 	}
 
 	

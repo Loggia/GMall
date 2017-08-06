@@ -114,7 +114,7 @@ public class MemberController
 		
 			
 		// 팝업창이 생기면 로그인이 안됬을 때 팝업창이 뜨게 설정
-		
+		mav.setViewName("redirect:/board/main.mall");
 		return mav;
 	}
 	 
@@ -129,6 +129,7 @@ public class MemberController
 		session.invalidate();
 		System.out.println("로그아웃 성공");
 		
+		mav.setViewName("redirect:/board/main.mall");
 		return mav;
 	}
 	

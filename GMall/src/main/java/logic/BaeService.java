@@ -28,7 +28,23 @@ public interface BaeService {
 	void boardUpdate(Board board, HttpServletRequest request); //배기수 - 글 업데이트 기능
 	void boardDelete(int num);//배기수 - 글 삭제 기능
 	void boardAnswer(Board board, HttpServletRequest request); //배기수 - 답변 기능
-	//int qnaCount(String searchType, String searchContent); //배기수 - qna 검색된 내용 가져옴
+	
+	int qnaCount(String searchType, String searchContent, String pro_no); //배기수 - qna에서 검색된 내용 가져옴
+	List<Board> qnaList(String searchType, String searchContent, Integer pageNum, int limit, String pro_no); //배기수 - qna 목록 가져옴
+	Board qnapassthrough(String num); //배기수 - 글번호에 해당하는 정보를 가져옴
+	void qnaInsert(Board board, HttpServletRequest request); //배기수 - qna 글 작성 기능
+	void qnaUpdate(Board board, HttpServletRequest request); //배기수 - qna 글 수정 기능
+	
+	int reCount(String pro_no); //배기수 - 해당번호의 리뷰 갯수를 가져옴
+	List<Board> reList(Integer pageNum, int limit, String pro_no); //배기수 - 리뷰 목록을 가져옴
+	void reviewInsert(Board board, HttpServletRequest request); //배기수 - 리뷰글 작성 기능
+	Trade checkUser(String userid, String pro_no); //배기수 - 해당 상품 구매자인 경우만 리뷰가 작성 가능하게 하기 위해 상품 구매자인지를 확인
+	void reviewUpdate(Board board, HttpServletRequest request); //배기수 - 리뷰글 수정 기능
+	Product proInfo(String pro_no); //배기수 - 해당 상품번호의 상품정보를 가져옴
+	
+	
+	
+	
 	
 	
 }

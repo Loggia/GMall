@@ -75,8 +75,8 @@ var result = '${msg}';
                                 function(){
                                     console.log(this);     
                                     str +=  "<tr class=" + "'listToChange'" + ">"
-                                        +       "<td class=" +  "'scrolling'" + " data-num='" + this.pro_no + "' data-cate='" + this.category + "'>" + "<img src='../picture/" + this.fileurl + "' width='70' height='70' />" + "</td>"
-                                        +       "<td>" + this.pro_name + "</td>"      
+                                        +       "<td class=" +  "'scrolling'" + " data-num='" + this.pro_no + "' data-cate='" + this.category + "'>" + "<a href='productDetail.mall?pro_no=" + this.pro_no + "&category=" + param.category + "'>" + "<img src='../picture/" + this.fileurl + "' width='70' height='70' />" + "</a>" + "</td>"
+                                        +       "<td>" + "<a href='productDetail.mall?pro_no=" + this.pro_no + "&category=" + param.category + "'>" + this.pro_name + "</a>" +"</td>"      
                                         +       "<td>" + this.price + "</td>"
                                         +       "<td>" + this.date + "</td>"
                                         +       "<td>" + this.bis_name + "</td>"
@@ -156,8 +156,8 @@ var result = '${msg}';
                                 function(){
                                     console.log(this);     
                                     str +=  "<tr class=" + "'listToChange'" + ">"
-                                        +       "<td class=" +  "'scrolling'" + " data-num='" + this.pro_no + "' data-cate='" + this.category + "'>" + "<img src='../picture/" + this.fileurl + "' width='70' height='70' />" + "</td>"
-                                        +       "<td>" + this.pro_name + "</td>"      
+                                        +       "<td class=" +  "'scrolling'" + " data-num='" + this.pro_no + "' data-cate='" + this.category + "'>" + "<a href='productDetail.mall?pro_no=" + this.pro_no + "&category=" + param.category + "'>" + "<img src='../picture/" + this.fileurl + "' width='70' height='70' />" + "</a>" + "</td>"
+                                        +       "<td>" + "<a href='productDetail.mall?pro_no=" + this.pro_no + "&category=" + param.category + "'>" + this.pro_name + "</a>" +"</td>"            
                                         +       "<td>" + this.price + "</td>"
                                         +       "<td>" + this.date + "</td>"
                                         +       "<td>" + this.bis_name + "</td>"
@@ -183,7 +183,7 @@ var result = '${msg}';
                 });// ajax
                  
                 // 스크롤 다운이벤트 때  ajax통신이 발생하지 않을때 까지의 좌표까지 스크롤을 내려가주기.
-                var position =($(document).height() - $(window).height()) -10;
+                var position =($(document).height() - $(window).height()) + 1700;  
                  
                 // 이동  위로 부터 position.top px 위치로 스크롤 하는 것이다. 그걸 500ms 동안 애니메이션이 이루어짐.
                 $('html,body').stop().animate({ scrollTop : position }, 600, easeEffect);
@@ -225,9 +225,9 @@ var result = '${msg}';
                 <c:forEach items="${productlist}" var="product">
                     <tr class="listToChange">
                         <td class="scrolling" data-num="${product.pro_no}" data-cate="${product.category}">
-                        <img src='../picture/${product.fileurl}' width='70' height='70' />
+                        <a href="productDetail.mall?pro_no=${product.pro_no}&category=${param.category}"><img src='../picture/${product.fileurl}' width='70' height='70' /></a>
                         </td>
-                        <td>${product.pro_name}</td>
+                        <td><a href="productDetail.mall?pro_no=${product.pro_no}&category=${param.category}">${product.pro_name}</a></td>
                         <td>${product.price}</td>
                         <td><fmt:formatDate value="${product.date}" pattern="yyyy-MM-dd"/></td>                        
                         <td>${product.bis_name}</td> 

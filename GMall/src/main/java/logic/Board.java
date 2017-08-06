@@ -30,6 +30,7 @@ private int board_no;
 	private String fileurl3;
 	
 	private int ans_chk;
+	private int pro_no;
 	private MultipartFile img1;
 	private MultipartFile img2;
 	private MultipartFile img3;
@@ -149,6 +150,14 @@ private int board_no;
 	public void setAns_chk(int ans_chk)
 	{
 		this.ans_chk = ans_chk;
+	}
+	
+	public int getPro_no() {
+		return pro_no;
+	}
+
+	public void setPro_no(int pro_no) {
+		this.pro_no = pro_no;
 	}
 
 	public MultipartFile getImg1() {

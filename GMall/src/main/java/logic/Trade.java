@@ -208,4 +208,13 @@ public class Trade
 	{
 		this.nickname = nickname;
 	}
+	
+	@Override
+	public String toString() {
+		return "Trade [trd_no=" + trd_no + ", trd_code=" + trd_code + ", trd_cnt=" + trd_cnt + ", trd_money="
+				+ trd_money + ", trd_fee=" + trd_fee + ", trd_date=" + trd_date + ", pro_no=" + pro_no + ", buy_id="
+				+ buy_id + ", sell_id=" + sell_id + ", cop_no=" + cop_no + ", address=" + address + ", delivery="
+				+ delivery + ", rv_chk=" + rv_chk + ", pro_name=" + pro_name + ", bis_name=" + bis_name + ", nickname="
+				+ nickname + "]";
+	}
 }
