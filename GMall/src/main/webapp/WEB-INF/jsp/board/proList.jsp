@@ -75,8 +75,8 @@ var result = '${msg}';
                                 function(){
                                     console.log(this);     
                                     str +=  "<tr class=" + "'listToChange'" + ">"
-                                        +       "<td class=" +  "'scrolling'" + " data-num='" + this.pro_no + "' data-cate='" + this.category + "'>" + "<a href='productDetail.mall?pro_no=" + this.pro_no + "&category=" + param.category + "'>" + "<img src='../picture/" + this.fileurl + "' width='70' height='70' />" + "</a>" + "</td>"
-                                        +       "<td>" + "<a href='productDetail.mall?pro_no=" + this.pro_no + "&category=" + param.category + "'>" + this.pro_name + "</a>" +"</td>"      
+                                        +       "<td class=" +  "'scrolling'" + " data-num='" + this.pro_no + "' data-cate='" + this.category + "'>" + "<a href='productDetail.mall?pro_no=" + this.pro_no + "&category=" + this.category + "'>" + "<img src='../picture/" + this.fileurl + "' width='70' height='70' />" + "</a>" + "</td>"
+                                        +       "<td>" + "<a href='productDetail.mall?pro_no=" + this.pro_no + "&category=" + this.category + "'>" + this.pro_name + "</a>" +"</td>"      
                                         +       "<td>" + this.price + "</td>"
                                         +       "<td>" + this.date + "</td>"
                                         +       "<td>" + this.bis_name + "</td>"
@@ -156,8 +156,8 @@ var result = '${msg}';
                                 function(){
                                     console.log(this);     
                                     str +=  "<tr class=" + "'listToChange'" + ">"
-                                        +       "<td class=" +  "'scrolling'" + " data-num='" + this.pro_no + "' data-cate='" + this.category + "'>" + "<a href='productDetail.mall?pro_no=" + this.pro_no + "&category=" + param.category + "'>" + "<img src='../picture/" + this.fileurl + "' width='70' height='70' />" + "</a>" + "</td>"
-                                        +       "<td>" + "<a href='productDetail.mall?pro_no=" + this.pro_no + "&category=" + param.category + "'>" + this.pro_name + "</a>" +"</td>"      
+                                        +       "<td class=" +  "'scrolling'" + " data-num='" + this.pro_no + "' data-cate='" + this.category + "'>" + "<a href='productDetail.mall?pro_no=" + this.pro_no + "&category=" + this.category + "'>" + "<img src='../picture/" + this.fileurl + "' width='70' height='70' />" + "</a>" + "</td>"
+                                        +       "<td>" + "<a href='productDetail.mall?pro_no=" + this.pro_no + "&category=" + this.category + "'>" + this.pro_name + "</a>" +"</td>"      
                                         +       "<td>" + this.price + "</td>"
                                         +       "<td>" + this.date + "</td>"
                                         +       "<td>" + this.bis_name + "</td>"
@@ -225,9 +225,9 @@ var result = '${msg}';
                 <c:forEach items="${productlist}" var="product">
                     <tr class="listToChange">
                         <td class="scrolling" data-num="${product.pro_no}" data-cate="${product.category}">
-                        <a href="productDetail.mall?pro_no=${product.pro_no}&category=${param.category}"><img src='../picture/${product.fileurl}' width='70' height='70' /></a>
+                        <a href="productDetail.mall?pro_no=${product.pro_no}&category=${product.category}"><img src='../picture/${product.fileurl}' width='70' height='70' /></a>
                         </td>
-                        <td><a href="productDetail.mall?pro_no=${product.pro_no}&category=${param.category}">${product.pro_name}</a></td>
+                        <td><a href="productDetail.mall?pro_no=${product.pro_no}&category=${product.category}">${product.pro_name}</a></td>
                         <td>${product.price}</td>
                         <td><fmt:formatDate value="${product.date}" pattern="yyyy-MM-dd"/></td>                        
                         <td>${product.bis_name}</td> 
