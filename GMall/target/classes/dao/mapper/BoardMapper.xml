@@ -2,19 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.mapper.BoardMapper">
 <select id="proList" resultType="Product" parameterType="hashmap">
-    select p.pro_no, p.pro_name, p.price, p.category, p.main_img fileurl, p.date, p.bis_name, m.prim from product p, member m where p.bis_no = m.bis_no and p.category = '${category}' order by p.pro_no desc, p.date desc limit 0, 30       
+    select p.pro_no, p.pro_name, p.price, p.category, p.main_img fileurl, p.date, p.bis_name, m.prim from product p, member m where p.bis_no = m.bis_no and p.category = '${category}' order by p.pro_no desc, p.date desc limit 0, 40       
   </select>
   
   <select id="premiumList" resultType="Product" parameterType="hashmap">
-    select p.pro_no, p.pro_name, p.price, p.category, p.main_img fileurl, p.date, p.bis_name, m.prim from product p, member m where p.bis_no = m.bis_no and p.category = '${category}' and m.prim = 1 order by p.pro_no desc limit 0, 30       
+    select p.pro_no, p.pro_name, p.price, p.category, p.main_img fileurl, p.date, p.bis_name, m.prim from product p, member m where p.bis_no = m.bis_no and p.category = '${category}' and m.prim = 1 order by p.pro_no desc limit 0, 40       
   </select>
   
   <select id="highPriceList" resultType="Product" parameterType="hashmap">
-    select p.pro_no, p.pro_name, p.price, p.category, p.main_img fileurl, p.date, p.bis_name, m.prim from product p, member m where p.bis_no = m.bis_no and p.category = '${category}' order by p.price desc limit 0, 30       
+    select p.pro_no, p.pro_name, p.price, p.category, p.main_img fileurl, p.date, p.bis_name, m.prim from product p, member m where p.bis_no = m.bis_no and p.category = '${category}' order by p.price desc limit 0, 40       
   </select>
   
   <select id="lowPriceList" resultType="Product" parameterType="hashmap">
-    select p.pro_no, p.pro_name, p.price, p.category, p.main_img fileurl, p.date, p.bis_name, m.prim from product p, member m where p.bis_no = m.bis_no and p.category = '${category}' order by p.price asc limit 0, 30       
+    select p.pro_no, p.pro_name, p.price, p.category, p.main_img fileurl, p.date, p.bis_name, m.prim from product p, member m where p.bis_no = m.bis_no and p.category = '${category}' order by p.price asc limit 0, 40       
   </select>
   
   <select id="infiniteScrollDown" resultType="Product" parameterType="hashmap">   	
