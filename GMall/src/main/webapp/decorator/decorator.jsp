@@ -169,7 +169,7 @@ transform: rotateY(180deg);
 					<c:if test="${LOGIN_MEMBER.id != null}">
 						<button type="submit" onclick="location.href='${path }/member/logout.mall'"
 							class="btn btn-success pull-right"
-							style="margin-top: 3px;">${LOGIN_MEMBER.id }</button>
+							style="margin-top: 3px;">${LOGIN_MEMBER.nickname }</button>
 					</c:if>
 					
 					<!-- 모달 로그인폼 바디-->
