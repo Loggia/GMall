@@ -32,6 +32,9 @@ body {
 </style>
 </head>
 <body>
+<div class="container-fluid">
+<div class="col-xs-2"></div>
+<div class="col-xs-8">
 <div class="mask" style="margin: 0 auto; margin-top: 350px; background-color: white; width: 500px; height: 400px; text-align: center">
 	<a href="${path }/board/main.mall">
 		<img style="width: 300px; height: 100px; margin-top: 30px;" class="rotatey" id="logo" src="../img/logo.png">
@@ -44,5 +47,8 @@ body {
 		<button type="submit" class="btn btn-info">확인</button>
 		</form>
 	</div>
+</div>
+<div class="col-xs-2"></div>
+</div>
 </body>
 </html>

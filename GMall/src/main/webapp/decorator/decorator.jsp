@@ -176,11 +176,11 @@
 	position: relative;
 }
 
-.page_header.sticky {
+/* .page_header.sticky {
 	position: fixed;
 	top: 0;
 	z-index: 99px;
-}
+} */
 
 </style>
 </head>
