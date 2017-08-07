@@ -38,7 +38,7 @@
 		
 		<tr>
 		<td colspan="6" align="right">
-		<a href="../board/proList.shop">상품목록보기</a>
+		<a href="../board/proList.mall">상품목록보기</a>
 		<a href="../checkout/checkout.shop">계산하기</a>
 		</td>
 		</tr>
