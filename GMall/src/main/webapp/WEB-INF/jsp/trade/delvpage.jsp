@@ -200,7 +200,7 @@ $(document).ready(function(){
 										<td>${list.nickname }</td>
 										<td>${list.trd_money }</td>
 										<td>${list.trd_code }</td>
-										<td><f:formatDate value="${del.trd_date }" pattern="yy-MM-dd"/></td>
+										<td><f:formatDate value="${list.trd_date }" pattern="yy-MM-dd"/></td>
 										<c:choose>
 											<c:when test="${list.delivery eq '배송완료'}">
 												<td>${list.delivery}</td>
