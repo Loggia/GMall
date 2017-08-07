@@ -22,7 +22,20 @@ $(document).ready(function(){
 	    $(".list_3th a").mouseout(function(){
 	        $(".list_3th a").css("color", "black");
 	    });
-	
+	    
+	    $('.coupgive').on("click", function() {
+			if ($(this).attr('data-click-state') == 1) {
+				$(this).attr('data-click-state', 0);
+				$(this).attr('src', './img/mymenu_noclick.png');
+			} else {
+				$(this).attr('data-click-state', 1);
+				$(this).attr('src', './img/mymenu_click.png');
+			}
+		}).popover({
+			placement : 'bottom',
+			html : true,
+			content : $('#coupgive_Form').html()
+		});
 	
 });
 </script>
@@ -174,16 +187,16 @@ $(document).ready(function(){
 										</c:choose>
 										</c:if>
 										<c:if test="${member.type == 2 }">
-										<td>${coupon.discount }%</td>
-										<td>${coupon.nickname }</td>
-										<c:choose>
-											<c:when test="${coupon.chk == 1}">
-												<td>X</td>
-											</c:when>
-											<c:when test="${coupon.chk == 2}">
-												<td>V</td>
-											</c:when>
-										</c:choose>
+											<td>${coupon.discount }%</td>
+											<td class="coupgive" data-toggle="popover" data-container="body">${coupon.nickname }</td>
+											<c:choose>
+												<c:when test="${coupon.chk == 1}">
+													<td>X</td>
+												</c:when>
+												<c:when test="${coupon.chk == 2}">
+													<td>V</td>
+												</c:when>
+											</c:choose>
 										</c:if>
 									</tr>
 								</c:forEach>
@@ -196,6 +209,13 @@ $(document).ready(function(){
 		</div>
 
 		<div class="col-xs-2"></div>
+	</div>
+		<div class="hide">
+		<ol id="coupgive_Form">
+				<li class="mymemu_list" style="margin: 5px;"><a style="text-decoration: none;" class="ml">5% 쿠폰 발급</a></li>
+				<li class="mymemu_list" style="margin: 5px;"><a style="text-decoration: none;" class="ml">10% 쿠폰 발급</a></li>
+				<li class="mymemu_list" style="margin: 5px;"><a style="text-decoration: none;" class="ml">15% 쿠폰 발급</a></li>
+		</ol>
 	</div>
 </body>
 </html>
