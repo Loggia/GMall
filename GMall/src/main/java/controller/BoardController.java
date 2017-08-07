@@ -23,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import logic.BaeService;
 import logic.Board;
+import logic.HDService;
 import logic.Member;
 import logic.Product;
 import logic.Trade;
@@ -32,11 +33,16 @@ public class BoardController
 {
 	@Autowired
 	public BaeService baeService;
+	@Autowired
+	public HDService hdService;
 	
 	@RequestMapping("board/main")
 	public ModelAndView main() {
 		ModelAndView mav = new ModelAndView();
-		
+		List<Product> primList = hdService.primList();
+		List<Product> newList = hdService.newList();
+		List<Product> popuList = hdService.popuList();
+		List<Product> interList = hdService.interList();
 		mav.addObject(new Member());
 		return mav;
 	}
