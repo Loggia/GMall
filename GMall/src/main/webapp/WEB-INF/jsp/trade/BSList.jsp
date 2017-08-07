@@ -212,7 +212,7 @@ $(document).ready(function(){
 		<ol id="coupgive_Form">
 				<li class="mymemu_list" style="margin: 5px;"><a style="text-decoration: none;" class="ml">5% 쿠폰 발급</a></li>
 				<li class="mymemu_list" style="margin: 5px;"><a style="text-decoration: none;" class="ml">10% 쿠폰 발급</a></li>
-				<li class="mymemu_list" style="margin: 5px;"><a style="text-decoration: none;" class="ml">15% 쿠폰 발급</a></li>
+				<li class="mymemu_list" style="margin: 5px;"><a href="" style="text-decoration: none;" class="ml">15% 쿠폰 발급</a></li>
 		</ol>
 	</div>
 </body>

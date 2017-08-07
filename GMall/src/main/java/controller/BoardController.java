@@ -36,6 +36,7 @@ public class BoardController
 	@RequestMapping("board/main")
 	public ModelAndView main() {
 		ModelAndView mav = new ModelAndView();
+		
 		mav.addObject(new Member());
 		return mav;
 	}

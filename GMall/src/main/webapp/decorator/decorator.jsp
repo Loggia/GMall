@@ -190,13 +190,44 @@
 }
 
 .page_header {
-	position: absolute;
+	position: relative;
 	width: 100%;
 }
 
 .page_header.sticky {
 	position: fixed;
 	top: 0;
+	z-index: 3;
+}
+
+#category ul {
+	overflow: hidden;
+	list-style: none;
+	padding-top: 5px;
+}
+
+#category_bar {
+	height: 45px;
+	background-color: rgba(255, 255, 255, 1);
+}
+
+#category ul li{
+	float: left;
+	display: inline;
+	font-size: 25px;
+	font-family: 'Roboto', sans-serif;
+	text-align: left;
+	cursor: pointer;
+	margin-right: 50px;
+}
+
+#category ul li a {
+	color: rgba(0,0,0,0.75);
+}
+
+#category ul li a:hover {
+	color: #12d8fa;
+	text-decoration: underline;
 }
 
 </style>
@@ -426,6 +457,21 @@
 			</div>
 		</div>
 		<div class="gap_black col-xs-12" style="padding: 0px; margin: 0px;"></div>
+		<div class="col-xs-2" style="padding: 0px 0px 0px 0px; background-color: white; height: 45px;"></div>
+		<div class="col-xs-8" id="category_bar" style="padding: 0px 0px 0px 0px;">
+			<div id="category" style="margin: 0; padding: 0; background-color: white;">
+				<ul style="margin: 0px; padding: 0px;">
+					<li><a href="proList.mall?category=육류"><b>육류</b></a></li>
+					<li><a href="proList.mall?category=해산물"><b>해산물</b></a></li>
+					<li><a href="proList.mall?category=채소"><b>야채</b></a></li>
+					<li><a href="proList.mall?category=과일"><b>과일</b></a></li>
+					<li><a href="proList.mall?category=곡류"><b>곡류</b></a></li>
+					<li><a href="proList.mall?category=조미료"><b>조미료</b></a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-xs-2" style="padding: 0px 0px 0px 0px; background-color: white; height: 45px;"></div>
+		<div class="gap_black col-xs-12"></div>
 
 	</header>
 	<!-- 헤더 영역 끝 -->
