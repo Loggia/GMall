@@ -72,4 +72,13 @@ public class ProductDaoImpl implements ProductDao{
 		map.put("category", category);
 		return sqlSession.getMapper(ProductMapper.class).categoryCheck(map);
 	}
+	/*
+	 * 구정연 
+	 * 장바구니
+	 */
+	@Override
+	public Product getproductByNo(Integer pro_no) {
+		
+		return sqlSession.getMapper(ProductMapper.class).getproductByNo(pro_no);
+	}
 }

@@ -75,4 +75,19 @@ public class KuServiceImpl implements KuService
 	{
 		return memberDao.getUserById(id);
 	}
+
+	@Override
+	public Product getproductByNo(Integer pro_no) {
+		
+		return productDao.getproductByNo(pro_no);
+	}
+
+	/*
+	 * 구정연 장바구니
+	 */
+	@Override
+	public Cart getCart() {
+		
+		return new Cart();
+	}
 }

@@ -31,4 +31,8 @@ public interface ProductMapper {
 	@Select("select p.bis_name,p.pro_name,p.price,p.category,p.favorite,p.date from product p,bookmark b where p.bis_no=b.bis_no and b.id=#{id} and p.pro_no=(select max(p2.pro_no) from product p2 where p2.bis_no=p.bis_no) order by p.bis_no")
 	List<Product> newsFeed(String id);
 
+	@Select("select * from product where pro_no = #{pro_no}")
+	Product getproductByNo(Integer pro_no); // 구정연 상품리스트전부 출력(장바구니)
+
+
 }

@@ -17,4 +17,6 @@ public interface ProductDao {
 	List<Product> selectNewsFeed(String id); // 주한울 - 관심 사업자 최근 등록 목록 조회
 
 	List<Product> findAll(String bis_no, String category);
+
+	Product getproductByNo(Integer pro_no); // 구정연 상품리스트 출력 (장바구니)
 }

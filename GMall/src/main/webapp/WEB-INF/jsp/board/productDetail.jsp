@@ -140,8 +140,8 @@ function list(pageNum)
         <td width="160">${product.pro_content}</td>
     </tr>
     <tr><td colspan="2" align="center">
-      <form:form modelAttribute="trade" action="" name="tradeForm">
-        <input type="hidden" name="bis_name" value="${product.bis_name}">
+      <form:form modelAttribute="trade" action="cartAdd.mall" name="tradeForm">
+        <input type="hidden" name="pro_no" value="${product.pro_no}">
           <table align="left">
           <tr>
             <td>
