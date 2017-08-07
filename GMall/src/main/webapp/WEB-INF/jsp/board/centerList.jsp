@@ -518,7 +518,7 @@ body {
 								
 								<script>
 									if('${param.searchType}' != '')
-									{
+									{ 
 										document.getElementById("searchType").value = '${param.searchType}';  
 									}
 								</script>
