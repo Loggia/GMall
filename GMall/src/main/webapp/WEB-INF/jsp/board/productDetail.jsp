@@ -145,7 +145,12 @@ function list(pageNum)
           <table align="left">
           <tr>
             <td>
-                         갯수<form:input id="loc4" type="number" name="quantity" path="trd_cnt" class="form-control" style="width:50px;" />
+                         갯수
+     			 <select name="quantity">
+				<c:forEach begin="1" end="10" var="idx">
+					<option>${idx}</option>
+				</c:forEach>
+			</select>
             </td>
           </tr>
           <tr>
