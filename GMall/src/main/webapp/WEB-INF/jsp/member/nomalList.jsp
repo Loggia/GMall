@@ -97,9 +97,9 @@ $(document).ready(function(){
 						</c:if>
 						<c:if test="${member.type == 3 }">
 							<li class="menu_delv"><a href="${path }/member/nomalList.mall"><img
-									src="../img/truck2_color.png" width="64px" height="64px"><br>일반회원 관리</a></li>
+									src="../img/nomal_1.png" width="64px" height="64px"><br>일반회원 관리</a></li>
 							<li class="menu_delv"><a href="${path }/member/businessList.mall"><img
-									src="../img/coupon_color.png"><br>사업자회원 관리</a></li>
+									src="../img/busi_1.png"><br>사업자회원 관리</a></li>
 							<li class="menu_delv"><a href="${path }/member/moneypage.mall"><img
 									src="../img/money_color.png"><br>보유 금액</a></li>
 							<li class="menu_delv"><a href="${path }/member/talkpage.mall"><img
