@@ -183,7 +183,7 @@ var result = '${msg}';
                 });// ajax
                  
                 // 스크롤 다운이벤트 때  ajax통신이 발생하지 않을때 까지의 좌표까지 스크롤을 내려가주기.
-                var position =($(document).height() - $(window).height()) + 1700;  
+                var position =($(document).height() - $(window).height()) + 500;  
                  
                 // 이동  위로 부터 position.top px 위치로 스크롤 하는 것이다. 그걸 500ms 동안 애니메이션이 이루어짐.
                 $('html,body').stop().animate({ scrollTop : position }, 600, easeEffect);
