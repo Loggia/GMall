@@ -1,6 +1,8 @@
 package dao.mapper;
 
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
@@ -60,6 +62,9 @@ public interface BoardMapper {
 	@Select("select pro_no, bis_no, bis_name, date, pro_name, price, cnt, category, favorite, pro_content, main_img fileurl, "
 			+ " sub_img1 fileurl1, sub_img2 fileurl2, sub_img3 fileurl3 from product where pro_no = #{pro_no}")
 	Product proInfo(String pro_no);
+	
+	@Select("select main_img fileurl from product where category=#{inter } ORDER by date LIMIT 4;")
+	List<Product> interList(String inter);
 	
 	
 	

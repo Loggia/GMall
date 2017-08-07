@@ -44,6 +44,10 @@ public interface BoardDao {
 	Trade checkUser(String userid, String pro_no);
 	void reviewUpdate(Board board);
 	Product proInfo(String pro_no);
+	List<Product> interList(String inter);
+	void popuList();
+	void newList();
+	void primList();
 
 
 	

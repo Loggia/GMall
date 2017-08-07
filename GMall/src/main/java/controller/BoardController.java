@@ -37,13 +37,15 @@ public class BoardController
 	public HDService hdService;
 	
 	@RequestMapping("board/main")
-	public ModelAndView main() {
+	public ModelAndView main(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
+		Member login = (Member)session.getAttribute("LOGIN_MEMBER");
+		String inter = login.getInterest();
 		List<Product> primList = hdService.primList();
 		List<Product> newList = hdService.newList();
 		List<Product> popuList = hdService.popuList();
-		List<Product> interList = hdService.interList();
-		mav.addObject(new Member());
+		List<Product> interList = hdService.interList(inter);
+		mav.addObject("interList",interList);
 		return mav;
 	}
 	

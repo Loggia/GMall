@@ -258,6 +258,26 @@ public class BoardDaoImpl implements BoardDao{
 	public Product proInfo(String pro_no) {
 		return sqlSession.getMapper(BoardMapper.class).proInfo(pro_no);
 	}
+
+	@Override
+	public List<Product> interList(String inter) {
+		return sqlSession.getMapper(BoardMapper.class).interList(inter);
+	}
+
+	@Override
+	public void popuList() {
+		
+	}
+
+	@Override
+	public void newList() {
+		
+	}
+
+	@Override
+	public void primList() {
+		
+	}
 	
 	
 	

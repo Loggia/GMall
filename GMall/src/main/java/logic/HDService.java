@@ -10,6 +10,6 @@ public interface HDService {
 
 	List<Product> popuList();
 
-	List<Product> interList();
+	List<Product> interList(String inter);
 
 }

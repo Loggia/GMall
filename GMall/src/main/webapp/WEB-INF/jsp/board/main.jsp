@@ -81,9 +81,10 @@ body {
 			</div>
 
 			<div style="display: inline;">
-				<c:forEach begin="1" end="4">
+				<c:forEach items="${interList }" var="inter">
 					<div class="col-xs-3">
-					<div class="4th-line mask" style="background-color: white; margin-left: 15px; margin-bottom: 15px;">
+						<div class="4th-line mask" style="background-color: white; margin-left: 15px; margin-bottom: 15px;">
+							<img src="../img/${inter.fileurl }">
 						</div>
 					</div>
 				</c:forEach>
