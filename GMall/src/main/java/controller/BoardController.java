@@ -232,7 +232,7 @@ public class BoardController
 			pageNum = 1;
 		}
 		
-		int limit = 20;
+		int limit = 10;
 		int listcount = baeService.centerCount(searchType, searchContent);
 		List<Board> centerlist = baeService.centerList(searchType, searchContent, pageNum, limit);
 		int maxpage = (int)((double)listcount/limit + 0.95);
