@@ -17,12 +17,21 @@
 } 
 #loc3 ul li
 {
-  text-align: center;
-  display: inline-block;  
-}  
-#arrange 
+  text-align : center;
+  display : inline-block;  
+} 
+#loc4
 {  
-  width        : 350px;     
+  position:absolute; top:42%; left:59%; overflow:hidden; margin-top:-200px; margin-left:-100px;
+} 
+#loc5
+{  
+  width : 150px;
+  float : left;
+} 
+#arrange      
+{         
+  width        : 350px;           
   text-overflow: ellipsis;  
   white-space  : nowrap;    
   overflow     : hidden;    
@@ -116,16 +125,16 @@ function list(pageNum)
 <div>
 <div>
 <c:set var="product" value="${proinfo}" />
-<table>
-  <tr>
+<table align="center" width="30%">
+  <tr>  
   <td><img src="../picture/${product.fileurl}" width="250" height="250"></td>
   <td align="center">
     <table>
-    <tr><td width="80">상품명</td>
+    <tr><td width="80">상품명</td>  
         <td width="160">${product.pro_name}</td>
     </tr>  
     <tr><td width="80">가격</td>
-        <td width="160">${product.price}</td>
+        <td width="160">${product.price}원</td>
     </tr>
     <tr><td width="80">상품내용</td>
         <td width="160">${product.pro_content}</td>
@@ -133,15 +142,20 @@ function list(pageNum)
     <tr><td colspan="2" align="center">
       <form:form modelAttribute="trade" action="" name="tradeForm">
         <input type="hidden" name="bis_name" value="${product.bis_name}">
-          <table><tr><td>
-            <form:input type="number" path="trd_cnt" class="form-control" style="width:50px;" />
-          </td>
-          <td>
-            <input type="submit" value="카트에 넣기">
-            <input type="button" value="목록보기" onclick="location.href='proList.mall?category=${category}'">
-          </td>
+          <table align="left">
+          <tr>
+            <td>
+                         갯수<form:input id="loc4" type="number" path="trd_cnt" class="form-control" style="width:50px;" />
+            </td>
           </tr>
-          </table>
+          <tr>
+            <td>
+              <br><br><br> 
+              &nbsp;&nbsp;&nbsp;<input id="loc5" type="submit" class="form-control" value="카트에 넣기">
+              <input id="loc5" type="button" class="form-control" value="목록보기" onclick="location.href='proList.mall?category=${category}'">
+            </td>
+          </tr>
+          </table>  
       </form:form>
          </td>
      </tr>
@@ -150,6 +164,7 @@ function list(pageNum)
   </tr>
 </table>        
 </div>
+<br><br>
 <div id="loc3" align="center">      
 <ul>
 <li><button class="btn btn-default" onclick="return explain_disp()">상품소개</button></li>
@@ -157,7 +172,7 @@ function list(pageNum)
 <li><button class="btn btn-default" onclick="return qna_disp()">QnA</button></li>
 </ul>
 </div>
-<div id="explain" style="display:none; width:100%;">
+<div id="explain" style="display:none; width:100%;" align="center">
 	<c:set var="product" value="${proinfo}" />
 	<h3>${product.pro_name}</h3>
 	<img src="../picture/${product.fileurl1}" /><br>
