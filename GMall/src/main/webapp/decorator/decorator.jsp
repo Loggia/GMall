@@ -49,6 +49,30 @@
 		});
 
 	});
+	
+	 $(function() {
+		/*
+		 * 고정헤더
+		 */
+		 $('.page_header').each(function() {
+			 var $window = $(window),
+			 	 $header = $(this),
+			 	 headerOffsetTop = $header.offset().top;
+			 
+			 $window.on('scroll', function() {
+				 if($window.scrollTop() > headerOffsetTop) {
+					 $header.addClass('sticky');
+				 } else {
+					 $header.removeClass('sticky');
+				 }
+				 
+			 });
+			 
+			 $window.trigger('scroll');
+			 
+		 });
+		
+	});
 </script>
 <style type="text/css">
 * {
@@ -145,15 +169,24 @@
 }
 
 .rotatey:hover {
-transform: rotateY(180deg);
+	transform: rotateY(180deg);
 }
 
+.page_header {
+	position: relative;
+}
+
+.page_header.sticky {
+	position: fixed;
+	top: 0;
+	z-index: 30px;
+}
 
 </style>
 </head>
 <body>
 	<!-- 헤더 영역 -->
-	<header class="container-fluid" style="padding: 0px;">
+	<header class="container-fluid page_header" style="padding: 0px;">
 
 		<div id="header_topbar" class="col-xs-12 header_topbar" style="padding: 0px;">
 			<div class="row" style="height: 40px; margin: 0px;">
