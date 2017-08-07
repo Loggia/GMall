@@ -47,13 +47,8 @@
 		$(".ml").mouseout(function() {0
 			$(".ml").css("color", "black");
 		});
-
-	});
-	
-	 $(function() {
-		/*
-		 * 고정헤더
-		 */
+		
+		
 		 $('.page_header').each(function() {
 			 var $window = $(window),
 			 	 $header = $(this),
@@ -71,8 +66,30 @@
 			 $window.trigger('scroll');
 			 
 		 });
-		
+
 	});
+	
+	 /* $(function() {
+		
+		 $('.page_header').each(function() {
+			 var $window = $(window),
+			 	 $header = $(this),
+			 	 headerOffsetTop = $header.offset().top;
+			 
+			 $window.on('scroll', function() {
+				 if($window.scrollTop() > headerOffsetTop) {
+					 $header.addClass('sticky');
+				 } else {
+					 $header.removeClass('sticky');
+				 }
+				 
+			 });
+			 
+			 $window.trigger('scroll');
+			 
+		 });
+		 
+	}); */
 </script>
 <style type="text/css">
 * {
@@ -173,14 +190,14 @@
 }
 
 .page_header {
-	position: relative;
+	position: absolute;
+	width: 100%;
 }
 
-/* .page_header.sticky {
+.page_header.sticky {
 	position: fixed;
 	top: 0;
-	z-index: 99px;
-} */
+}
 
 </style>
 </head>
