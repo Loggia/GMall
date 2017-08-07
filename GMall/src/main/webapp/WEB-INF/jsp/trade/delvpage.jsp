@@ -197,7 +197,7 @@ $(document).ready(function(){
 								<c:forEach items="${delivery}" var="list">
 									<tr>
 										<td>${list.pro_name }</td>
-										<td>${list.buy_id }</td>
+										<td>${list.nickname }</td>
 										<td>${list.trd_money }</td>
 										<td>${list.trd_code }</td>
 										<td><f:formatDate value="${del.trd_date }" pattern="yy-MM-dd"/></td>

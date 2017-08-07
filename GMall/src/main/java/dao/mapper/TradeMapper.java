@@ -25,7 +25,7 @@ public interface TradeMapper {
 	List<Trade> tradeBuyList(String id);
 
 	//고종환 사업자 거래목록
-	@Select("select t.trd_code, p.pro_name, (t.trd_money - t.trd_fee) trd_money, t.buy_id, t.trd_date from product p, trade t where p.pro_no = t.pro_no and sell_id=#{id}")
+	@Select("select t.trd_code, p.pro_name, (t.trd_money - t.trd_fee) trd_money, m.nickname, t.trd_date from product p, trade t, member m where p.pro_no = t.pro_no  and m.id=t.buy_id and sell_id=#{id}")
 	List<Trade> tradeList2(String id);
 
 	// 주한울 일반회원 쿠폰목록
@@ -49,7 +49,7 @@ public interface TradeMapper {
 	List<Trade> delvpageBuyList(String id);
 
 	//고종환 사업자 배송조회
-	@Select("select p.pro_name, t.buy_id, t.trd_money, t.trd_code, t.trd_date, t.delivery, t.trd_no   from trade t, product p  where t.pro_no=p.pro_no and sell_id=#{id}")
+	@Select("select p.pro_name, m.nickname, t.trd_money, t.trd_code, t.trd_date, t.delivery, t.trd_no  from trade t, product p,member m  where t.pro_no=p.pro_no and m.id=t.buy_id and sell_id=#{id}")
 	List<Trade> deliveryList(String id);
 	
 	//고종환 사업자 배송현황 변경위한 쿼리

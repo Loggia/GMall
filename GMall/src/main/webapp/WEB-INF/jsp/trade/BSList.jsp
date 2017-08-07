@@ -167,7 +167,7 @@ $(document).ready(function(){
 								<td>${trd.trd_code }</td>
 								<td>${trd.pro_name }</td>
 								<td>${trd.trd_money }원</td>
-								<td class="coupgive" data-toggle="popover" data-container="body">${trd.buy_id }</td>
+								<td class="coupgive" data-toggle="popover" data-container="body">${trd.nickname }</td>
 								<td><f:formatDate value="${trd.trd_date }" pattern="yy-MM-dd"/></td>
 							</tr>
 							</c:forEach>
