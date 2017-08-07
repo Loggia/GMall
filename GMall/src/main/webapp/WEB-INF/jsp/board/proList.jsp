@@ -8,6 +8,11 @@
 <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> -->
 <script type="text/javascript" src="../js/jquery-ui.min.js"></script> 
 <title>상품 리스트</title>
+<!-- <style type="text/css">
+body {
+color: white;
+}
+</style> -->
 <script>
 $(document).ready(function () { 
 var result = '${msg}';
@@ -200,8 +205,9 @@ var result = '${msg}';
 </head>
 
 <body>
-<div class="row">
-        <div class="col-xs-12">
+<div class="container-fluid" style="padding: 15px 0px 0px 0px;">
+<div class="col-xs-2"></div>
+        <div class="col-xs-8">
           <div class="box">
             <!-- /.box-header -->
             <div class="box-body table-responsive no-padding">
@@ -247,6 +253,7 @@ var result = '${msg}';
           </div>
           <!-- /.box -->
         </div>
+        <div class="col-xs-2"></div>
 </div>
 </body>
 </html>
