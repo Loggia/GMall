@@ -325,8 +325,8 @@ transform: rotateY(180deg);
 		</div>
 
 
-		<div id="header_bottombar" class="col-xs-12">
-			<div class="row">
+		<div id="header_bottombar" class="col-xs-12" style="padding: 0px;">
+			<div class="">
 
 				<div class="col-xs-2"></div>
 
@@ -374,8 +374,8 @@ transform: rotateY(180deg);
 
 				<div class="col-xs-2"></div>
 			</div>
-			<div class="gap_black col-xs-12" style="padding: 0px; margin: 0px;"></div>
 		</div>
+		<div class="gap_black col-xs-12" style="padding: 0px; margin: 0px;"></div>
 
 	</header>
 	<!-- 헤더 영역 끝 -->
