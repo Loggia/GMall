@@ -24,4 +24,9 @@ public class Cart implements Serializable{
 		}
 		productList.add(productSet);
 	}
+	public String remove(int index){
+		String name = productList.get(index).getProduct().getPro_name();
+		productList.remove(index);
+		return name;
+	}
 }
