@@ -253,6 +253,7 @@ public class BoardController
 		mav.addObject("num", num);
 		mav.addObject("password", password);
 		mav.addObject("userid", userid);
+		mav.addObject("member", login);
 			
 		Board board1 =  baeService.passthrough(num);
 		
