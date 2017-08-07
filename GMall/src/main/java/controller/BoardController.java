@@ -278,8 +278,7 @@ public class BoardController
 			mav.addObject("msg", "비밀번호를 잘못입력하셨습니다.");
 			return mav;
 		}
-	    
-	    mav.addObject("member", login);
+	  
 		return mav;
 	}
 	
