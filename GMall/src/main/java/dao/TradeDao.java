@@ -10,7 +10,7 @@ public interface TradeDao {
 
 	List<Trade> tradeList(); //구정연 - 회원거래목록
 
-	List<Trade> tradeBuyList(String id); // 주한울 - 일반 회원 구매 목록
+	List<Trade> tradeList(String id, Integer type, Integer pageNum, Integer limit); // 주한울 - 일반 회원 구매 목록
 	List<Trade> delvpageBuyList(String id); // 주한울 - 일반 회원 배송 조회
 
 	List<Trade> tradeList(String id);//고종환 사업자 거래목록
@@ -24,4 +24,6 @@ public interface TradeDao {
 	List<Trade> deliveryList(String id);//고종환 사업자 배송조회
 	String tradeCheck(String trd_no);//고종환 배송현황 변경위한 쿼리
 	void deliveryControl(String trd_no, String tradeCheck); //고종환 사업자 배송현황 변경
+	
+	int tradeCount(String id, int type); // 주한울 - 총 거래수 확인 메서드
 }

@@ -181,9 +181,9 @@ public class JooServiceImpl implements JooService
 	 * 일반 회원 구매 목록 확인
 	 */
 	@Override
-	public List<Trade> tradeBuyList(String id) 
+	public List<Trade> tradeList(String id, Integer type, Integer pageNum, Integer limit) 
 	{
-		return tradeDao.tradeBuyList(id);
+		return tradeDao.tradeList(id, type, pageNum, limit);
 	}
 	
 	/*
@@ -230,5 +230,11 @@ public class JooServiceImpl implements JooService
 	public Member getUserById(String id) 
 	{
 		return memberDao.getUserById(id);
+	}
+
+	@Override
+	public int tradeCount(String id, int type) 
+	{
+		return tradeDao.tradeCount(id, type);
 	}
 }

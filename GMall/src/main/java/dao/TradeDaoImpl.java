@@ -27,7 +27,8 @@ public class TradeDaoImpl implements TradeDao{
 		@Override
 		public List<Trade> tradeList() {
 			
-			return sqlSession.getMapper(TradeMapper.class).tradeList();
+			// return sqlSession.getMapper(TradeMapper.class).tradeList();
+			return null;
 		}
 
 		/*
@@ -35,11 +36,21 @@ public class TradeDaoImpl implements TradeDao{
 		 * 일반 회원 구매 목록
 		 */
 		@Override
-		public List<Trade> tradeBuyList(String id) 
+		public List<Trade> tradeList(String id, Integer type, Integer pageNum, Integer limit) 
 		{
 			try
 			{
-				return sqlSession.getMapper(TradeMapper.class).tradeBuyList(id);
+				int startrow = (pageNum - 1) * limit;
+		    	int endrow = startrow + limit;  	
+		    	
+		    	Map<String, Object> map = new HashMap<String, Object>();
+		    	
+		    	map.put("id", id);
+		    	map.put("type", type);
+		    	map.put("startrow", startrow);
+		    	map.put("endrow", endrow);
+		    	
+		    	return sqlSession.selectList(NS+"tradeList", map);
 			}
 			catch (Exception e)
 			{
@@ -148,6 +159,16 @@ public class TradeDaoImpl implements TradeDao{
 			
 			sqlSession.getMapper(TradeMapper.class).deliveryControl(map);
 			
+		}
+		
+		@Override
+		public int tradeCount(String id, int type) 
+		{
+			Map<String, Object> map = new HashMap<String, Object>();
+	    	map.put("id", id);
+	    	map.put("type", type);
+	    	
+			return sqlSession.selectOne(NS+"tradeCount", map);
 		}
 }
 

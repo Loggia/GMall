@@ -32,7 +32,7 @@ public class TradeController
 	 * 거래 목록
 	 */
 	@RequestMapping("trade/BSList")
-	public ModelAndView BSList(Member member, HttpSession session) 
+	public ModelAndView BSList(Member member, Integer pageNum, HttpSession session) 
 	{
 		ModelAndView mav = new ModelAndView("trade/BSList");
 		Member login = (Member)session.getAttribute("LOGIN_MEMBER");
@@ -47,29 +47,44 @@ public class TradeController
 			return mav;
 		}
 		
+		if(pageNum == null || pageNum.toString().equals(""))
+		{
+			pageNum = 1;
+		}
+		
+		int limit = 10;
+		int listcount = jooService.tradeCount(login.getId(), login.getType());
+		
 		if(login.getType() == 1) // 일반회원 (주한울)
 		{
-			trdList = jooService.tradeBuyList(login.getId());
+			trdList = jooService.tradeList(login.getId(), login.getType(), pageNum, limit);
 		}
 		else if(login.getType() == 2) // 사업자
 		{
-			trdList=koService.tradeList(login.getId());
+			trdList = jooService.tradeList(login.getId(), login.getType(), pageNum, limit);
 		}
 		else //if(login.getType() == 3) // 관리자 (구정연)
  		{
-			trdList = kuService.tradeList();
+			trdList = jooService.tradeList(login.getId(), login.getType(), pageNum, limit);
 		}
 		
-		if(trdList != null)
+		int maxpage = (int)((double)listcount/limit + 0.95);
+		int startpage = (((int)((double)pageNum/10 + 0.9)) -1) * 10 + 1;
+		int endpage = startpage + 9;
+		
+		if(endpage > maxpage)
 		{
-			mav.addObject("trdList", trdList);
-		}
-		else
-		{
-			mav.addObject("trdList", new Trade());
+			endpage = maxpage;
 		}
 		
+		mav.addObject("maxpage", maxpage);
+		mav.addObject("startpage", startpage);
+		mav.addObject("endpage", endpage);
+		mav.addObject("listcount", listcount);
+		mav.addObject("trdList", trdList);
+		mav.addObject("pageNum", pageNum);
 		mav.addObject("member", login);
+		
 		return mav;
 	}
 	

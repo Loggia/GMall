@@ -39,6 +39,13 @@ $(document).ready(function(){
 	
 });
 </script>
+
+<script type="text/javascript">
+	function list(pageNum) 
+	{	
+		location.href = "BSList.mall?pageNum=" + pageNum;
+	}	
+</script>
 </head>
 <body>
 	<div class="container-fluid"
@@ -167,7 +174,7 @@ $(document).ready(function(){
 								<td>${trd.trd_code }</td>
 								<td>${trd.pro_name }</td>
 								<td>${trd.trd_money }원</td>
-								<td class="coupgive" data-toggle="popover" data-container="body">${trd.nickname }</td>
+								<td class="coupgive" data-toggle="popover" data-container="body">${trd.buy_id }</td>
 								<td><f:formatDate value="${trd.trd_date }" pattern="yy-MM-dd"/></td>
 							</tr>
 							</c:forEach>
@@ -200,20 +207,24 @@ $(document).ready(function(){
 						</tbody>
 					</table>
 					</c:if>
-					
-					<br><br>
+					<div align="center">
+						<c:if test="${pageNum > 1}">
+							<a href="javascript:list(${pageNum - 1})">
+						</c:if>[이전]&nbsp;
+						<c:if test="${pageNum > 1}"></a></c:if>
+						<c:forEach var="a" begin="${startpage}" end="${endpage}">
+							<c:if test="${pageNum == a}">[${a}]</c:if>
+							<c:if test="${pageNum != a}"><a href="javascript:list(${a})">[${a}]</a></c:if>&nbsp;
+						</c:forEach>
+						<c:if test="${pageNum < maxpage}">
+							<a href="javascript:list(${pageNum + 1})">
+						</c:if>[다음]&nbsp;
+						<c:if test="${pageNum < maxpage}"></a></c:if>
+					</div><br><br><br>
 				</div>
 			</div>
 		</div>
-
 		<div class="col-xs-2"></div>
-	</div>
-	<div class="hide">
-		<ol id="coupgive_Form">
-				<li class="mymemu_list" style="margin: 5px;"><a style="text-decoration: none;" class="ml">5% 쿠폰 발급</a></li>
-				<li class="mymemu_list" style="margin: 5px;"><a style="text-decoration: none;" class="ml">10% 쿠폰 발급</a></li>
-				<li class="mymemu_list" style="margin: 5px;"><a href="" style="text-decoration: none;" class="ml">15% 쿠폰 발급</a></li>
-		</ol>
 	</div>
 </body>
 </html>
