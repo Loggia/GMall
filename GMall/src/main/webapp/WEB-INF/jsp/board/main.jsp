@@ -18,27 +18,22 @@ body {
 }
  .col-xs-3 {
 	padding: 0px 0px 0px 0px;
-	height: 240px;
-	background-color: white;
+	height: 300px;
 }
 
-.fir_line {
-	background-color: rgba(255, 255, 255, 1);
+.1st-line {
 	height: 240px;
 }
 
-.sec_line {
-	background-color: rgba(255, 255, 255, 1);
+.2nd-line {
 	height: 240px;
 }
 
-.thr_line {
-	background-color: rgba(255, 255, 255, 1);
+.3th-line {
 	height: 240px;
 }
 
-.for_line { 
-	background-color: rgba(255, 255, 255, 1);
+.4th-line { 
 	height: 240px;
 }
 
@@ -57,73 +52,43 @@ body {
 </head>
 <body>
 
-<div class="container-fluid" style="padding: 0px 0px 0px 0px;">				
-		<div class="col-xs-2">&nbsp;</div>
-			<div class="col-xs-8" style="padding: 0px 0px 0px 0px; margin-top: 16px;">
-				<div style="display: inline;">
+<div class="container-fluid" style="padding: 0px 0px 0px 0px; margin-top: 16px; margin-bottom: 16px;">
+		<div class="main_cont" style="padding: 0px 0px 0px 0px; margin: 0 auto; width: 1268px;">
+			<div style="display: inline;">
+				<c:forEach begin="1" end="4">
 					<div class="col-xs-3">
-						<div class="mask"></div>
-					프리미엄 상품
+					<div class="1st-line mask" style="background-color: white; margin-left: 15px; margin-bottom: 15px;">
+						</div>
 					</div>
-					<div class="col-xs-3">
-					<div class="mask"></div>
-					</div>
-					<div class="col-xs-3">
-					<div class="mask"></div>
-					</div>
-					<div class="col-xs-3">
-					<div class="mask"></div>
-					</div>
-				</div>
-				<div style="display: inline;">
-					<div class="col-xs-3">
-					<div class="mask"></div>
-					나의관심 상품
-					</div>
-					<div class="col-xs-3 ">
-					<div class="mask"></div>
-					</div>
-					<div class="col-xs-3">
-					<div class="mask"></div>
-					</div>
-					<div class="col-xs-3">
-					<div class="mask"></div>
-					</div>
-				</div>
-
-				<div style="display: inline;">
-					<div class="col-xs-3">
-					<div class="mask"></div>
-					최다 검색 상품
-					</div>
-					<div class="col-xs-3">
-					<div class="mask"></div>
-					</div>
-					<div class="col-xs-3">
-					<div class="mask"></div>
-					</div>
-					<div class="col-xs-3">
-					<div class="mask"></div>
-					</div>
-				</div>
-
-				<div style="display: inline;">
-					<div class="col-xs-3">
-					<div class="mask"></div>
-					최다 구매 상품
-					</div>
-					<div class="col-xs-3">
-					<div class="mask"></div>
-					</div>
-					<div class="col-xs-3">
-					<div class="mask"></div>
-					</div>
-					<div class="col-xs-3">
-					<div class="mask"></div>
-					</div>
-				</div>
+				</c:forEach>
 			</div>
-		<div class="col-xs-2"></div>
+			<div style="display: inline;">
+				<c:forEach begin="1" end="4">
+					<div class="col-xs-3">
+						<div class="2nd-line mask" style="background-color: white; margin-left: 15px; margin-bottom: 15px;">
+						</div>
+					</div>
+				</c:forEach>
+			</div>
+
+			<div style="display: inline;">
+				<c:forEach begin="1" end="4">
+					<div class="col-xs-3">
+					<div class="3th-line mask" style="background-color: white; margin-left: 15px; margin-bottom: 15px;">
+						</div>
+					</div>
+				</c:forEach>
+			</div>
+
+			<div style="display: inline;">
+				<c:forEach begin="1" end="4">
+					<div class="col-xs-3">
+					<div class="4th-line mask" style="background-color: white; margin-left: 15px; margin-bottom: 15px;">
+						</div>
+					</div>
+				</c:forEach>
+			</div>
+		</div>
 	</div>
 </body>
 </html>
