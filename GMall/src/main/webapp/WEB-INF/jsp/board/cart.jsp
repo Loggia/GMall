@@ -28,7 +28,7 @@
 			<td>${productSet.product.price}</td>
 			<td>${productSet.quantity}</td>
 			<td>${productSet.quantity * productSet.product.price} 원</td>
-			<td><a href="cartDelete.shop?index=${stat.index}">ⓧ</a></td>
+			<td><a href="cartDelete.mall?index=${stat.index}">ⓧ</a></td>
 		<c:set var="tot" value="${tot+(productSet.quantity * productSet.product.price)}"/>
 		</tr>
 		</c:forEach>

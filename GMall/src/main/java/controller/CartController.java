@@ -33,4 +33,13 @@ public class CartController
 		mav.addObject("cart" , cart);
 		return mav;
 	}
+	@RequestMapping("board/cartDelete")
+	public ModelAndView cartDel(int index, HttpSession session){
+		Cart cart = (Cart)session.getAttribute("CART_KEY");
+		String name = cart.remove(index);
+		ModelAndView mav = new ModelAndView("board/cart");
+		mav.addObject("cart" , cart);
+		return mav;
+		
+	}
 }
