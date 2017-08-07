@@ -21,13 +21,13 @@
   display : inline-block;  
 } 
 #loc4
-{
-  position:absolute; top:42%; left:58%; overflow:hidden; margin-top:-200px; margin-left:-100px;
+{  
+  position:absolute; top:42%; left:59%; overflow:hidden; margin-top:-200px; margin-left:-100px;
 } 
 #loc5
-{
-  text-align : center;
-  display : inline-block; 
+{  
+  width : 150px;
+  float : left;
 } 
 #arrange      
 {         
@@ -125,18 +125,18 @@ function list(pageNum)
 <div>
 <div>
 <c:set var="product" value="${proinfo}" />
-<table align="center" width="50%">
-  <tr>
+<table align="center" width="30%">
+  <tr>  
   <td><img src="../picture/${product.fileurl}" width="250" height="250"></td>
   <td align="center">
     <table>
-    <tr><td width="80">&nbsp;&nbsp;&nbsp;상품명</td>  
+    <tr><td width="80">상품명</td>  
         <td width="160">${product.pro_name}</td>
     </tr>  
-    <tr><td width="80">&nbsp;&nbsp;&nbsp;가격</td>
+    <tr><td width="80">가격</td>
         <td width="160">${product.price}원</td>
     </tr>
-    <tr><td width="80">&nbsp;&nbsp;&nbsp;상품내용</td>
+    <tr><td width="80">상품내용</td>
         <td width="160">${product.pro_content}</td>
     </tr>
     <tr><td colspan="2" align="center">
@@ -145,14 +145,14 @@ function list(pageNum)
           <table align="left">
           <tr>
             <td>
-              &nbsp;&nbsp;&nbsp;갯수<form:input id="loc4" type="number" path="trd_cnt" class="form-control" style="width:50px;" />
+                         갯수<form:input id="loc4" type="number" path="trd_cnt" class="form-control" style="width:50px;" />
             </td>
           </tr>
           <tr>
             <td>
               <br><br><br> 
-              &nbsp;&nbsp;&nbsp;<input id="loc5" type="submit" width="30" class="form-control" value="카트에 넣기">
-              <input id="loc5" type="button" width="30" class="form-control" value="목록보기" onclick="location.href='proList.mall?category=${category}'">
+              &nbsp;&nbsp;&nbsp;<input id="loc5" type="submit" class="form-control" value="카트에 넣기">
+              <input id="loc5" type="button" class="form-control" value="목록보기" onclick="location.href='proList.mall?category=${category}'">
             </td>
           </tr>
           </table>  
