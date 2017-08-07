@@ -160,6 +160,7 @@ $(document).ready(function(){
 								<th>거래구분</th>
 								<th>거래상품</th>
 								<th>주문금액</th>
+								<th>수수료</th>
 								<th>금액변동</th>
 								<th>일자</th>
 							</tr>
@@ -168,6 +169,7 @@ $(document).ready(function(){
 							<td style="color: blue;">판매</td>
 							<td>${trd.pro_name}</td>
 							<td>${trd.trd_money}</td>
+							<td style="color: red;">-${trd.trd_fee }</td>
 							<td style="color: blue;">+${trd.trd_money - trd.trd_fee}</td>
 							<td><f:formatDate value="${trd.trd_date}" pattern="yy-MM-dd"/></td>
 							</tr>
