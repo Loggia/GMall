@@ -170,20 +170,6 @@ public class MemberController
 		return mav;
 	}
 	
-	
-	
-	/*
-	 * 우동
-	 * 고객센터폼
-	 */
-	@RequestMapping("member/cs")
-	public ModelAndView cs(Member member, HttpSession session) {
-		ModelAndView mav = new ModelAndView();
-		Member login = (Member)session.getAttribute("LOGIN_MEMBER");
-		mav.addObject("member", login);
-		return mav;
-	}
-	
 	/*
 	 * 주한울
 	 * 회원 정보 상세보기 계정 검증폼으로 이동

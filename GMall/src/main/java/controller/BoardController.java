@@ -190,40 +190,60 @@ public class BoardController
 	@RequestMapping("board/centerList")
 	public ModelAndView centerList(Board board, Integer pageNum, String searchType, String searchContent, HttpServletRequest request, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
+		Member login = (Member)session.getAttribute("LOGIN_MEMBER");
 		Member member = null;
+		
+		if(login == null)
+		{
+			mav.setViewName("alert");
+			mav.addObject("url", "../board/main.mall");
+			mav.addObject("msg", "로그인하고 시도하시기 바랍니다.");
+			
+			return mav;
+		}
+		
 		if(request.getSession().getAttribute("LOGIN_MEMBER") == null)
 		{
 			member = new Member();
 		}
+		
 		if(request.getSession().getAttribute("LOGIN_MEMBER") != null)
 		{
 			member = (Member)request.getSession().getAttribute("LOGIN_MEMBER");
 		}
+		
 		String userid = "";
+		
 		if(member.getId() == null)
 		{
 			userid = "guest";
 		}
+		
 		if(member.getId() != null)
 		{
 			userid = member.getId();
 		}
+		
 		String password = request.getParameter("password");
 		String num = request.getParameter("num");	
+		
 		if(pageNum == null || pageNum.toString().equals(""))
 		{
 			pageNum = 1;
 		}
-		int limit = 10;
+		
+		int limit = 20;
 		int listcount = baeService.centerCount(searchType, searchContent);
 		List<Board> centerlist = baeService.centerList(searchType, searchContent, pageNum, limit);
 		int maxpage = (int)((double)listcount/limit + 0.95);
 		int startpage = (((int)((double)pageNum/10 + 0.9)) -1) * 10 + 1;
 		int endpage = startpage + 9;
+		
 		if(endpage > maxpage)
 		{
 			endpage = maxpage;
 		}
+		
 		mav.addObject("maxpage", maxpage);
 		mav.addObject("startpage", startpage);
 		mav.addObject("endpage", endpage);
@@ -235,6 +255,7 @@ public class BoardController
 		mav.addObject("userid", userid);
 			
 		Board board1 =  baeService.passthrough(num);
+		
 	    if(searchType != null && searchContent != null && board1 != null && !board1.getPass().equals(password))
 		{
 			mav.setViewName("alert");
@@ -256,6 +277,8 @@ public class BoardController
 			mav.addObject("msg", "비밀번호를 잘못입력하셨습니다.");
 			return mav;
 		}
+	    
+	    mav.addObject("member", login);
 		return mav;
 	}
 	

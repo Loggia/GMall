@@ -53,17 +53,17 @@ $(document).ready(function(){
 						<c:if test="${member.type == 1 }">
 						<li class="list_1st"><a href="${path }/member/mypage.mall">관심 사업장</a></li>
 						<li class="list_2nd"><a href="${path }/trade/BSList.mall">구매 목록</a></li>
-						<li class="list_3th"><a href="${path }/member/cs.mall">고객 센터</a></li>
+						<li class="list_3th"><a href="${path }/board/centerList.mall">고객 센터</a></li>
 						</c:if>
 						<c:if test="${member.type == 2 }">
 						<li class="list_1st"><a href="${path }/member/mypage.mall">내사업장</a></li>
 						<li class="list_2nd"><a href="${path }/trade/BSList.mall">판매 목록</a></li>
-						<li class="list_3th"><a href="${path }/member/cs.mall">고객 센터</a></li>
+						<li class="list_3th"><a href="${path }/board/centerList.mall">고객 센터</a></li>
 						</c:if>
 						<c:if test="${member.type == 3 }">
 						<li class="list_1st"><a href="${path }/member/mypage.mall">사이트 관리</a></li>
 						<li class="list_2nd"><a href="${path }/trade/BSList.mall">회원 거래 목록</a></li>
-						<li class="list_3th"><a href="${path }/member/cs.mall">고객 센터</a></li>
+						<li class="list_3th"><a href="${path }/board/centerList.mall">고객 센터</a></li>
 						</c:if>
 						<c:if test="${member.id == sana }">
 						<li class="list_1st"><a href="mypage.mall">찌릿찌릿</a></li>
