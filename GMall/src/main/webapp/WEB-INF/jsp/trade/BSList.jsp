@@ -22,7 +22,20 @@ $(document).ready(function(){
 	    $(".list_3th a").mouseout(function(){
 	        $(".list_3th a").css("color", "black");
 	    });
-	
+	    
+	    $('.coupgive').on("click", function() {
+			if ($(this).attr('data-click-state') == 1) {
+				$(this).attr('data-click-state', 0);
+				$(this).attr('src', './img/mymenu_noclick.png');
+			} else {
+				$(this).attr('data-click-state', 1);
+				$(this).attr('src', './img/mymenu_click.png');
+			}
+		}).popover({
+			placement : 'bottom',
+			html : true,
+			content : $('#coupgive_Form').html()
+		});
 	
 });
 </script>
@@ -333,7 +346,7 @@ body {
 							<f:formatNumber type="CURRENCY"
 							currencySymbol="" value="${trd.trd_money}" minFractionDigits="0"/>원</td>
 							<td>${trd.sell_id}</td>
-							<td>${trd.buy_id}</td>
+							<td class="coupgive" data-toggle="popover" data-container="body">${trd.buy_id}</td>
 							<td>${trd.delivery}</td>
 							</tr>
 							</c:forEach>
@@ -347,6 +360,13 @@ body {
 		</div>
 
 		<div class="col-xs-2"></div>
+	</div>
+	<div class="hide">
+		<ol id="coupgive_Form">
+				<li class="mymemu_list" style="margin: 5px;"><a style="text-decoration: none;" class="ml">5% 쿠폰 발급</a></li>
+				<li class="mymemu_list" style="margin: 5px;"><a style="text-decoration: none;" class="ml">10% 쿠폰 발급</a></li>
+				<li class="mymemu_list" style="margin: 5px;"><a style="text-decoration: none;" class="ml">15% 쿠폰 발급</a></li>
+		</ol>
 	</div>
 </body>
 </html>
