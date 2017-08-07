@@ -198,9 +198,9 @@ $(document).ready(function(){
 									<td>${trade.pro_name}</td>
 									<td><f:formatNumber type="CURRENCY" 
 							currencySymbol="" value="${trade.trd_money}" minFractionDigits="0"/>원</td>
-									<td>+<f:formatNumber type="CURRENCY" 
+									<td style="color: blue;">+<f:formatNumber type="CURRENCY" 
 							currencySymbol="" value="${trade.trd_money * 1.1 - trade.trd_money}" minFractionDigits="0"/>원</td>
-									<td>${trade.trd_date}</td>
+									<td><f:formatDate value="${trade.trd_date}" pattern="yy-MM-dd"/></td>
 							</tr>
 								</c:forEach>
 							</tbody>
