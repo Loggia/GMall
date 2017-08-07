@@ -22,16 +22,16 @@ body {
 	position: absolute;
 	width: 250px;
 	height: 1500px;
+	border-right: 1px solid #e5e5e5;
 }
 
 .my_right {
 	position: relative;
 	width: 1157.61px;
 	padding: 0 40px 120px 40px;
-	height: 1500px;
+	height: calc(100%-240px);
 	margin-top: 240px;
 	margin-left: 250px;
-	border-left: 1px solid #e5e5e5;
 }
 
 .left_prof {
