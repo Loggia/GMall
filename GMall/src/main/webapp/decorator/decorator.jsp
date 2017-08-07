@@ -179,7 +179,7 @@
 .page_header.sticky {
 	position: fixed;
 	top: 0;
-	z-index: 30px;
+	z-index: 99px;
 }
 
 </style>
