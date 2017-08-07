@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title></title>
+<link rel="stylesheet" type="text/css" href="${path }/css/delvpage.css">
 <script type="text/javascript">
 $(document).ready(function(){
 	
@@ -25,7 +26,7 @@ $(document).ready(function(){
 	
 });
 </script>
-<style type="text/css">
+<!-- <style type="text/css">
 body {
 	background-color: #f4f4f4;
 }
@@ -177,7 +178,7 @@ body {
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
-</style>
+</style> -->
 </head>
 <body>
 	<div class="container-fluid"
@@ -218,40 +219,39 @@ body {
 					</ul>
 				</div>
 			</div>
-			<div class="my_right">
-				<div class="right_menu">
-					<ul>
+			<div class="right_menu pull-right" style="width: calc(100% - 250px); background-color: #f7f8f8; z-index: 20px;" >
+					<ul style="width: 100%; display: block; padding: 0;">
 						<c:if test="${member.type == 1 }">
 							<li class="menu_delv"><a href="${path }/trade/delvpage.mall"><img
 									src="../img/truck2_color.png" width="64px" height="64px"><br>배송 정보</a></li>
-							<li class="menu_coup"><a href="${path }/trade/couppage.mall"><img
+							<li class="menu_delv"><a href="${path }/trade/couppage.mall"><img
 									src="../img/coupon_color.png"><br>보유 쿠폰</a></li>
-							<li class="menu_money"><a href="${path }/member/moneypage.mall"><img
+							<li class="menu_delv"><a href="${path }/member/moneypage.mall"><img
 									src="../img/money_color.png"><br>보유 금액</a></li>
-							<li class="menu_talk"><a href="${path }/member/talkpage.mall"><img
+							<li class="menu_delv"><a href="${path }/member/talkpage.mall"><img
 									src="../img/talk_color.png"><br>구디 톡톡!</a></li>
 						</c:if>
 						<c:if test="${member.type == 2 }">
 							<li class="menu_delv"><a href="${path }/trade/delvpage.mall"><img
 									src="../img/truck2_color.png" width="64px" height="64px"><br>배송 관리</a></li>
-							<li class="menu_coup"><a href="${path }/trade/couppage.mall"><img
+							<li class="menu_delv"><a href="${path }/trade/couppage.mall"><img
 									src="../img/coupon_color.png"><br>쿠폰관리</a></li>
-							<li class="menu_money"><a href="${path }/member/moneypage.mall"><img
+							<li class="menu_delv"><a href="${path }/member/moneypage.mall"><img
 									src="../img/money_color.png"><br>보유 금액</a></li>
-							<li class="menu_talk"><a href="${path }/member/talkpage.mall"><img
+							<li class="menu_delv"><a href="${path }/member/talkpage.mall"><img
 									src="../img/talk_color.png"><br>구디 톡톡!</a></li>
 						</c:if>
 						<c:if test="${member.type == 3 }">
 							<li class="menu_delv"><a href="${path }/member/delvpage.mall"><img
 									src="../img/truck2_color.png" width="64px" height="64px"><br>일반회원 관리</a></li>
-							<li class="menu_coup"><a href="${path }/member/couppage.mall"><img
+							<li class="menu_coup"><a href="${path }/trade/couppage.mall"><img
 									src="../img/coupon_color.png"><br>사업자회원 관리</a></li>
 							<li class="menu_money"><a href="${path }/member/moneypage.mall"><img
 									src="../img/money_color.png"><br>보유 금액</a></li>
 							<li class="menu_talk"><a href="${path }/member/talkpage.mall"><img
 									src="../img/talk_color.png"><br>구디 톡톡!</a></li>
 						</c:if>
-						<c:if test="${member.id==sana }">
+						<c:if test="${member.id==sana }"> 
 							<li class="menu_delv"><a href="delvpage.mall"><img
 									src="../img/truck2_color.png" width="64px" height="64px"><br>사나</a></li>
 							<li class="menu_coup"><a href="couppage.mall"><img
@@ -263,7 +263,9 @@ body {
 						</c:if>
 					</ul>
 				</div>
-				<div class="left_cont">
+			<div class="my_right" style="width: calc(100% - 250px);">
+				
+				<div class="right_cont">
 					<br><br>
 					<c:if test="${member.type==1 }">
 					<h3>

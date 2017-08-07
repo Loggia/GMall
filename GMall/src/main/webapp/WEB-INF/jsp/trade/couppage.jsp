@@ -120,7 +120,7 @@ $(document).ready(function(){
 						</c:if>
 					</ul>
 				</div>
-			<div class="my_right">
+			<div class="my_right" style="width: calc(100% - 250px);">
 				
 				<div class="right_cont">
 					<div class="cop_con" style="padding-top: 10px;">
