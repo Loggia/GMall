@@ -8,12 +8,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table>
+	<table align="center">
 		<tr><td colspan="4">
 		<font color="red">장바구니 상품은 다음과 같습니다</font>
 		</td></tr>
 		<tr>
 		<td>상품명</td>
+		<td>상품이미지</td>
 		<td>가격</td>
 		<td>수량</td>
 		<td>총액</td>
@@ -22,6 +23,7 @@
 		<c:forEach items="${cart.productList}" var="productSet" varStatus="stat">
 			<tr>
 			<td>${productSet.product.pro_name}</td>
+			<td>${productSet.product.main_img}</td>
 			<td>${productSet.product.price}</td>
 			<td>${productSet.quantity}</td>
 			<td>${productSet.quantity * productSet.product.price} 원
