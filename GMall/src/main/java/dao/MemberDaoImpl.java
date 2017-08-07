@@ -23,17 +23,15 @@ public class MemberDaoImpl implements MemberDao
 	 * 회원 가입
 	 */
 	@Override
-	public boolean insert(Member member) 
+	public void insert(Member member) 
 	{
 		try
 		{
 			sqlSession.getMapper(MemberMapper.class).insert(member);
-			
-			return true;
 		}
 		catch (Exception e) 
 		{
-			return false;
+			return;
 		}
 	}
 	

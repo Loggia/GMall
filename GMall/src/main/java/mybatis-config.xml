@@ -6,11 +6,13 @@
     <typeAlias type="logic.Member" alias="Member" />
     <typeAlias type="logic.Trade" alias="Trade" />
     <typeAlias type="logic.Product" alias="Product" />
+    <typeAlias type="logic.Coupon" alias="Coupon" />
   </typeAliases>
   <mappers>
     <mapper resource="dao/mapper/BoardMapper.xml"/>
     <mapper resource="dao/mapper/MemberMapper.xml" />
     <mapper resource="dao/mapper/TradeMapper.xml" />
     <mapper resource="dao/mapper/ProductMapper.xml" />
+    <mapper resource="dao/mapper/CouponMapper.xml" />
   </mappers>    
 </configuration>  

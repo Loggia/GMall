@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import dao.BoardDao;
+import dao.CouponDao;
 import dao.MemberDao;
 import dao.ProductDao;
 import dao.TradeDao;
@@ -27,15 +28,27 @@ public class JooServiceImpl implements JooService
 	TradeDao tradeDao;
 	@Autowired
 	ProductDao productDao;
+	@Autowired
+	CouponDao couponDao;
 	
 	/*
 	 * 주한울
 	 * 회원가입
 	 */
 	@Override
-	public boolean insertMember(Member member) 
+	public void insertMember(Member member) 
 	{
-		return memberDao.insert(member);
+		memberDao.insert(member);
+	}
+	
+	/*
+	 * 주한울
+	 * 사업자 회원가입 시 쿠폰 자동 생성
+	 */
+	@Override
+	public void insertCoupon(String bis_no, String id)
+	{
+		couponDao.insert(bis_no, id);
 	}
 	
 	/*

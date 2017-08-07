@@ -163,7 +163,7 @@ $(document).ready(function(){
 						</thead>
 						<tbody>
 							<c:forEach items="${trdList}" var="trd">
-							<tr>
+							<tr> 
 								<td>${trd.trd_code }</td>
 								<td>${trd.pro_name }</td>
 								<td>${trd.trd_money }원</td>

@@ -66,6 +66,7 @@ public class MemberController
 				}
 				
 				jooService.insertMember(member);
+				jooService.insertCoupon(member.getBis_no(), member.getId());
 			}
 			else
 			{

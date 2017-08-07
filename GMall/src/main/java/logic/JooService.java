@@ -7,7 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 // 한울이꺼!
 public interface JooService 
 {
-	boolean insertMember(Member member); // 주한울 - 회원가입
+	void insertMember(Member member); // 주한울 - 회원가입
+	void insertCoupon(String bis_no, String id); // 주한울 - 사업자 회원가입시 쿠폰 자동생성
 	boolean cheakMember(String bis_no); // 주한울 - 회원가입시 중복된 사업자 번호를 사용했는지를 판별
 	Member getUserByIdAndPw(String id, String pass); // 주한울 - 로그인을 위한 메서드
 	void updateMember(Member member, HttpServletRequest request); // 주한울 - 회원 수정
