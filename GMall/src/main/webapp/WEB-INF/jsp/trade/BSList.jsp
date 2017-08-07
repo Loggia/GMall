@@ -158,7 +158,7 @@ $(document).ready(function(){
 					<table class="table table-hover" style="border-bottom: 1px solid #e5e5e5;">
 						<thead>
 							<tr>
-								<th>거래코드</th><th>상품이름</th><th>구매 금액</th><th>구매자</th><th>일자</th>
+								<th>거래코드</th><th>상품이름</th><th>판매 금액</th><th>구매자</th><th>일자</th>
 							</tr>
 						</thead>
 						<tbody>
