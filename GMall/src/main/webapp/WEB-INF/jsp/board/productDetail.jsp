@@ -342,7 +342,7 @@ function list(pageNum)
                </tr> 
              </table>
 	         </c:if>
-	         <c:if test="${((qalist.pass != password) || (qalist.board_no != num)) && empty param.searchType}">
+	         <c:if test="${((qalist.pass != password) || (qalist.board_no != num)) && empty param.searchType && not empty qalist.pass}">
 	          <form action="productDetail.mall" method="get" name="onpass4" id="loc">
 	                       비밀번호3 : 
 	            <input type="hidden" name="pro_no" value="${param.pro_no}">
