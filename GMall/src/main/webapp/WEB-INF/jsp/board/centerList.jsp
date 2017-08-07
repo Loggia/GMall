@@ -193,13 +193,14 @@ body {
  function list_disp(id)
   {
 	  var disp = document.getElementById(id);
-	  if(disp.style.display == 'block')
+
+	  if(disp.className == 'hide')
       {
-		  disp.style.display = 'none';
+		  disp.className = "";
       }
 	  else
       {
-		  disp.style.display = 'block';
+		  disp.className = "hide";
       }
 	  
   }
@@ -217,6 +218,7 @@ body {
 		{
 			document.searchform.pageNum.value = pageNum;
 			document.searchform.submit();
+			
 			return true;
 		}
 		return false;
@@ -353,9 +355,9 @@ body {
 								      <td align="left">${clist.id}</td>
 								      <td align="left"><f:formatDate value="${clist.regdate}" pattern="yyyy-MM-dd"/></td>
 									</tr>
-									<tr>
+									<tr id="listLine${stat.count}" class="hide">
 								      <td colspan="5">
-								       <div id="listLine${stat.count}" style="display:none;">
+								       <div>
 								       <c:if test="${not empty clist.pass && empty param.searchType && empty param.searchContent && empty param.num && empty param.password}"> 
 								         <form action="centerList.mall" method="get" name="onpass" id="loc">
 								                      비밀번호 : 
@@ -491,7 +493,13 @@ body {
 						</tbody>
 					</table>
 					<br><br>
-					<button type="button" class="btn btn-info">글쓰기</button>
+					<c:if test="${userid != 'admin' && userid != 'guest'}">
+					   <tr><td id="loc"><button type="button" class="btn btn-info" onclick="location.href='centerAdd.mall'">글쓰기</button></td></tr>
+					   <tr><td id="loc"><button type="button" class="btn btn-info" onclick="location.href='centerList.mall'">글목록</button></td></tr>
+					</c:if>
+					<c:if test="${userid == 'admin' || userid == 'guest'}">
+					   <tr><td id="loc"><button type="button" class="btn btn-info" onclick="location.href='centerList.mall'">글목록</button></td></tr>
+					</c:if>
 				</div>
 			</div>
 		</div>
