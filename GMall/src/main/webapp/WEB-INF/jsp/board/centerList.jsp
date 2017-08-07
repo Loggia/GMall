@@ -323,8 +323,8 @@ body {
 							<c:if test="${listcount > 0}">
 								<c:forEach items="${centerlist}" var="clist" varStatus="stat">
 									<tr>
-									  <td align="center">${clist.board_no}</td>
-							          <td align="center">
+									  <td align="left">${clist.board_no}</td>
+							          <td align="left">
 							          <c:if test="${(clist.ans_chk == 0) && userid != 'admin' && userid == clist.id && empty param.pageNum}"> 
 							            <a href="centerupdateForm.mall?num=${clist.board_no}&pageNum=1">[수정]</a>
 							          </c:if>
@@ -345,13 +345,13 @@ body {
 							          </c:if> 
 							          </td>
 							          <c:if test="${not empty clist.pass}">
-							          <td align="center"><a href="javascript:list_disp('listLine${stat.count}')">${clist.subject}</a><img src="../img/rock.jpg" width="20" height="20" /></td>
+							          <td align="left"><a href="javascript:list_disp('listLine${stat.count}')">${clist.subject}</a><img src="../img/rock.jpg" width="20" height="20" /></td>
 							          </c:if>
 							          <c:if test="${empty clist.pass}">
-							          <td align="center"><a href="javascript:list_disp('listLine${stat.count}')">${clist.subject}</a></td>
+							          <td align="left"><a href="javascript:list_disp('listLine${stat.count}')">${clist.subject}</a></td>
 							          </c:if>
-								      <td align="center">${clist.id}</td>
-								      <td align="center"><f:formatDate value="${clist.regdate}" pattern="yyyy-MM-dd"/></td>
+								      <td align="left">${clist.id}</td>
+								      <td align="left"><f:formatDate value="${clist.regdate}" pattern="yyyy-MM-dd"/></td>
 									</tr>
 									<tr>
 								      <td colspan="5">
