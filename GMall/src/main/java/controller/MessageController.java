@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -10,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import logic.HDService;
 import logic.Member;
+import logic.Message;
 
 @Controller
 public class MessageController {
@@ -22,7 +25,8 @@ public class MessageController {
 		ModelAndView mav = new ModelAndView();
 		Member loginUser = (Member)session.getAttribute("LOGIN_MEMBER");
 		String loginUserId = loginUser.getId();
-		//List<> sendList =  hdService.sendList(loginUserId);
+		List<Message> sendList =  hdService.sendList(loginUserId);
+		mav.addObject("sendList", sendList);
 		return mav;
 	}
 	
@@ -31,7 +35,8 @@ public class MessageController {
 		ModelAndView mav = new ModelAndView();
 		Member loginUser = (Member)session.getAttribute("LOGIN_MEMBER");
 		String loginUserId = loginUser.getId();
-		//hdService.reciveList(loginUserId);
+		List<Message> reciveList = hdService.reciveList(loginUserId);
+		mav.addObject("reciveList", reciveList);
 		return mav;
 	}
 	
