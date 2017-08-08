@@ -1,60 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.mapper.BoardMapper">
-<select id="proList" resultType="Product" parameterType="hashmap">
-    select p.pro_no, p.pro_name, p.price, p.category, p.main_img fileurl, p.date, p.bis_name, m.prim from product p, member m where p.bis_no = m.bis_no and p.category = '${category}' order by p.pro_no desc, p.date desc limit 0, 40       
+  <select id="proList" resultType="Product" parameterType="hashmap"> 
+  	select p.pro_no, p.pro_name, p.price, p.category, p.main_img fileurl, p.date, p.bis_name, m.prim 
+            from  product p ,member m 
+            where p.bis_no = m.bis_no 
+            and p.category = '${category}' 
+			    <choose>
+			    	<when test="searchType != null and searchContent != null and group == null">
+			    		and ${searchType} like '%${searchContent}%' order by p.date desc limit ${startrow}, ${endrow} 
+			    	</when>
+			    	<when test="searchType != null and searchContent != null and group == 'premium'">
+			    		and ${searchType} like '%${searchContent}%' order by m.prim desc, p.date desc limit ${startrow}, ${endrow}                                
+			    	</when>
+			    	<when test="searchType != null and searchContent != null and group == 'high'">
+			    		and ${searchType} like '%${searchContent}%' order by p.price desc, p.date desc limit ${startrow}, ${endrow}  
+			    	</when>
+			    	<when test="searchType != null and searchContent != null and group == 'low'">
+			    		and ${searchType} like '%${searchContent}%' order by p.price asc, p.date desc limit ${startrow}, ${endrow}  
+			    	</when>
+			    	<when test="group == null or group == ''">
+			    		 order by p.date desc limit ${startrow}, 20
+			    	</when>
+			    	<when test="group == 'premium'">
+			    		 order by m.prim desc, p.date desc limit ${startrow}, 20                              
+			    	</when>
+			    	<when test="group == 'high'">
+			    		 order by p.price desc, p.date desc limit ${startrow}, 20
+			    	</when>
+			    	<when test="group == 'low'">
+			    		 order by p.price asc, p.date desc limit ${startrow}, 20
+			    	</when>
+			    </choose> 
   </select>
   
-  <select id="premiumList" resultType="Product" parameterType="hashmap">
-    select p.pro_no, p.pro_name, p.price, p.category, p.main_img fileurl, p.date, p.bis_name, m.prim from product p, member m where p.bis_no = m.bis_no and p.category = '${category}' and m.prim = 1 order by p.pro_no desc limit 0, 30       
+  <select id="totalList" resultType="Product" parameterType="hashmap"> 
+  	select p.pro_no, p.pro_name, p.price, p.category, p.main_img fileurl, p.date, p.bis_name, m.prim 
+            from  product p ,member m 
+            where p.bis_no = m.bis_no 
+    <if test="searchType != null and searchContent != null">
+      and ${searchType} like '%${searchContent}%' order by p.date desc limit ${startrow}, 20 
+    </if>       
+  </select>            
+  
+  <select id="proCount" resultType="int" parameterType="map">
+    select count(*) from product where category = '${category}'
+    <if test="searchType != null and searchContent != null">
+      and ${searchType} like '%${searchContent}%' 
+    </if>
   </select>
   
-  <select id="highPriceList" resultType="Product" parameterType="hashmap">
-    select p.pro_no, p.pro_name, p.price, p.category, p.main_img fileurl, p.date, p.bis_name, m.prim from product p, member m where p.bis_no = m.bis_no and p.category = '${category}' order by p.price desc limit 0, 40       
-  </select>
-  
-  <select id="lowPriceList" resultType="Product" parameterType="hashmap">
-    select p.pro_no, p.pro_name, p.price, p.category, p.main_img fileurl, p.date, p.bis_name, m.prim from product p, member m where p.bis_no = m.bis_no and p.category = '${category}' order by p.price asc limit 0, 40       
-  </select>
-  
-  <select id="infiniteScrollDown" resultType="Product" parameterType="hashmap">   	
-    select p.pro_no, p.pro_name, p.price, p.category, p.main_img fileurl, p.date, p.bis_name, m.prim from product p, member m
-     where p.bis_no = m.bis_no and p.category = '${category}' and pro_no &lt; ${numToStart} order by p.pro_no desc, p.date desc
-  </select>
-  
-  <select id="infiniteScrollUp" resultType="Product" parameterType="hashmap">         
-    select p.pro_no, p.pro_name, p.price, p.category, p.main_img fileurl, p.date, p.bis_name, m.prim from product p, member m
-     where p.bis_no = m.bis_no and p.category = '${category}' and pro_no &gt; ${numToEnd} order by p.pro_no desc, p.date desc
-  </select>
-  
-  <select id="priminfiniteScrollDown" resultType="Product" parameterType="hashmap">   	
-    select p.pro_no, p.pro_name, p.price, p.category, p.main_img fileurl, p.date, p.bis_name, m.prim from product p, member m
-     where p.bis_no = m.bis_no and p.category = '${category}' and m.prim = 1 and pro_no &lt; ${numToStart} order by p.pro_no desc
-  </select>
-  
-  <select id="priminfiniteScrollUp" resultType="Product" parameterType="hashmap">         
-    select p.pro_no, p.pro_name, p.price, p.category, p.main_img fileurl, p.date, p.bis_name, m.prim from product p, member m
-     where p.bis_no = m.bis_no and p.category = '${category}' and m.prim = 1 and pro_no &gt; ${numToEnd} order by p.pro_no desc
-  </select>
-  
-  <select id="highinfiniteScrollDown" resultType="Product" parameterType="hashmap">   	
-    select p.pro_no, p.pro_name, p.price, p.category, p.main_img fileurl, p.date, p.bis_name, m.prim from product p, member m
-     where p.bis_no = m.bis_no and p.category = '${category}' and p.price &lt; ${priceStart} order by p.price desc
-  </select>
-  
-  <select id="highinfiniteScrollUp" resultType="Product" parameterType="hashmap">         
-    select p.pro_no, p.pro_name, p.price, p.category, p.main_img fileurl, p.date, p.bis_name, m.prim from product p, member m
-     where p.bis_no = m.bis_no and p.category = '${category}' and p.price &gt; ${priceEnd} order by p.price desc
-  </select>
-  
-  <select id="lowinfiniteScrollDown" resultType="Product" parameterType="hashmap">   	
-    select p.pro_no, p.pro_name, p.price, p.category, p.main_img fileurl, p.date, p.bis_name, m.prim from product p, member m
-     where p.bis_no = m.bis_no and p.category = '${category}' and p.price &gt; ${priceStart} order by p.price asc
-  </select>
-  
-  <select id="lowinfiniteScrollUp" resultType="Product" parameterType="hashmap">         
-    select p.pro_no, p.pro_name, p.price, p.category, p.main_img fileurl, p.date, p.bis_name, m.prim from product p, member m
-     where p.bis_no = m.bis_no and p.category = '${category}' and p.price &lt; ${priceEnd} order by p.price asc
+  <select id="totalCount" resultType="int" parameterType="map">
+    select count(*) from product
+    <if test="searchType != null and searchContent != null">
+      where ${searchType} like '%${searchContent}%' 
+    </if>
+    <if test="searchType == null and searchContent == null">
+      where category = 'java'
+    </if>
   </select>
   
   <select id="centerCount" resultType="int" parameterType="map">

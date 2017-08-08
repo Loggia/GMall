@@ -65,10 +65,10 @@ public interface BoardMapper {
 	
 	@Select("select count(p.pro_no) cnt, p.pro_no, p.main_img fileurl from trade t, product p where p.pro_no=t.pro_no group by t.pro_no order by cnt desc, date desc LIMIT 4;")
 	List<Product> popuList();
-	
+	   
 	@Select("select main_img fileurl from product ORDER by date desc LIMIT 4;")
 	List<Product> newList();
-	
+	   
 	@Select("select m.id, p.pro_name, m.nickname, p.main_img fileurl from member m, product p where m.bis_no=p.bis_no and prim=1 ORDER by date desc LIMIT 4;")
 	List<Product> primList();
 	

@@ -9,18 +9,10 @@ import logic.Product;
 import logic.Trade;
 
 public interface BoardDao {
-	List<Product> infiniteScrollDown(int numToStart, String category);
-	List<Product> infiniteScrollUp(int numToEnd, String category);
-	List<Product> priminfiniteScrollDown(int numToStart, String category);
-	List<Product> priminfiniteScrollUp(int numToEnd, String category);
-	List<Product> highinfiniteScrollDown(int priceStart, String category);
-	List<Product> highinfiniteScrollUp(int priceEnd, String category);
-	List<Product> lowinfiniteScrollDown(int priceStart, String category);
-	List<Product> lowinfiniteScrollUp(int priceEnd, String category);
-	List<Product> proList(String category);
-	List<Product> premiumList(String category);
-	List<Product> highPriceList(String category);
-	List<Product> lowPriceList(String category);
+	List<Product> proList(String category, String group, String searchType, String searchContent, Integer pageNum, int limit);
+	int proCount(String searchType, String searchContent, String category);
+	List<Product> totalList(String searchType, String searchContent, Integer pageNum, int limit);
+	int totalCount(String searchType, String searchContent);
 	
 	int centerCount(String searchType, String searchContent);
 	List<Board> centerList(String searchType, String searchContent, Integer pageNum, int limit);
@@ -44,6 +36,7 @@ public interface BoardDao {
 	Trade checkUser(String userid, String pro_no);
 	void reviewUpdate(Board board);
 	Product proInfo(String pro_no);
+	
 	List<Product> interList(String inter);
 	List<Product> popuList();
 	List<Product> newList();

@@ -22,64 +22,37 @@ public class BaeServiceImpl implements BaeService{
 	/*
 	   배기수 
 	*/
+	
+	/*
+	 상품 목록을 보여줌 
+	*/
 	@Override
-	public List<Product> infiniteScrollDown(int numToStart, String category) {
-		return boardDao.infiniteScrollDown(numToStart, category);
-	}
-
-	@Override
-	public List<Product> infiniteScrollUp(int numToEnd, String category) {
-		return boardDao.infiniteScrollUp(numToEnd, category);
+	public List<Product> proList(String category, String group, String searchType, String searchContent, Integer pageNum, int limit) {
+		return boardDao.proList(category, group, searchType, searchContent, pageNum, limit);
 	}
 	
+	/*
+	 해당 상품의 갯수를 가져옴 
+	*/
 	@Override
-	public List<Product> priminfiniteScrollDown(int numToStart, String category) {
-		return boardDao.priminfiniteScrollDown(numToStart, category);
-	}
-
-	@Override
-	public List<Product> priminfiniteScrollUp(int numToEnd, String category) {
-		return boardDao.priminfiniteScrollUp(numToEnd, category);
+	public int proCount(String searchType, String searchContent, String category) {
+		return boardDao.proCount(searchType, searchContent, category);
 	}
 	
+	/*
+	 상품 목록을 보여줌 
+	*/
 	@Override
-	public List<Product> highinfiniteScrollDown(int priceStart, String category) {
-		return boardDao.highinfiniteScrollDown(priceStart, category);
-	}
-
-	@Override
-	public List<Product> highinfiniteScrollUp(int priceEnd, String category) {
-		return boardDao.highinfiniteScrollUp(priceEnd, category);
-	}
-
-	@Override
-	public List<Product> lowinfiniteScrollDown(int priceStart, String category) {
-		return boardDao.lowinfiniteScrollDown(priceStart, category);
-	}
-
-	@Override
-	public List<Product> lowinfiniteScrollUp(int priceEnd, String category) {
-		return boardDao.lowinfiniteScrollUp(priceEnd, category);
-	}
-
-	@Override
-	public List<Product> proList(String category) {
-		return boardDao.proList(category);
+	public List<Product> totalList(String searchType, String searchContent, Integer pageNum, int limit) {
+		return boardDao.totalList(searchType, searchContent, pageNum, limit);
 	}
 	
+	/*
+	 해당 상품의 갯수를 가져옴 
+	*/
 	@Override
-	public List<Product> premiumList(String category) {
-		return boardDao.premiumList(category);
-	}
-	
-	@Override
-	public List<Product> highPriceList(String category) {
-		return boardDao.highPriceList(category);
-	}
-	
-	@Override
-	public List<Product> lowPriceList(String category) {
-		return boardDao.lowPriceList(category);
+	public int totalCount(String searchType, String searchContent) {
+		return boardDao.totalCount(searchType, searchContent);
 	}
 	
 	/*
@@ -315,7 +288,9 @@ public class BaeServiceImpl implements BaeService{
 	public Product proInfo(String pro_no) {
 		return boardDao.proInfo(pro_no);
 	}
-
+	
+	
+	
 	
 	
 }

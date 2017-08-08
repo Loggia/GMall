@@ -140,17 +140,12 @@ function list(pageNum)
         <td width="160">${product.pro_content}</td>
     </tr>
     <tr><td colspan="2" align="center">
-      <form:form modelAttribute="trade" action="cartAdd.mall" name="tradeForm">
-        <input type="hidden" name="pro_no" value="${product.pro_no}">
+      <form:form modelAttribute="trade" action="" name="tradeForm">
+        <input type="hidden" name="bis_name" value="${product.bis_name}">
           <table align="left">
           <tr>
             <td>
-                         갯수
-     			 <select name="quantity">
-				<c:forEach begin="1" end="10" var="idx">
-					<option>${idx}</option>
-				</c:forEach>
-			</select>
+                         갯수<form:input id="loc4" type="number" path="trd_cnt" class="form-control" style="width:50px;" />
             </td>
           </tr>
           <tr>

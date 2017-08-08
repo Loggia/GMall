@@ -9,7 +9,7 @@
 <script>
 function list(pageNum) 
 {
-  location.href = "proList.mall?category=${param.category}&group=${param.group}&pageNum=" + pageNum;
+  location.href = "totalList.mall?&pageNum=" + pageNum;
 }
 </script>
 </head>
@@ -21,12 +21,7 @@ function list(pageNum)
             <!-- /.box-header -->
             <div class="box-body table-responsive no-padding">
               <table class="table table-hover">
-                <tbody>
-                <tr>
-                  <td><a href="proList.mall?category=${param.category}&group=premium">프리미엄순</a></td>
-                  <td><a href="proList.mall?category=${param.category}&group=high">높은 가격순</a></td>
-                  <td><a href="proList.mall?category=${param.category}&group=low">낮은 가격순</a></td>                
-                </tr>
+                <tbody>            
             <c:if test="${listcount > 0}">
                 <tr class="scrollLocation">
                   <th>상품이미지</th>
@@ -38,19 +33,19 @@ function list(pageNum)
                 </tr>
                 
                 
-                <c:forEach items="${productlist}" var="product">
+                <c:forEach items="${totallist}" var="total">
                     <tr class="listToChange">
                         <td class="scrolling">
-                        <a href="productDetail.mall?pro_no=${product.pro_no}&category=${product.category}"><img src='../picture/${product.fileurl}' width='70' height='70' /></a>
+                        <a href="productDetail.mall?pro_no=${total.pro_no}&category=${total.category}"><img src='../picture/${product.fileurl}' width='70' height='70' /></a>
                         </td>
-                        <td><a href="productDetail.mall?pro_no=${product.pro_no}&category=${product.category}">${product.pro_name}</a></td>
-                        <td>${product.price}</td>
-                        <td><fmt:formatDate value="${product.date}" pattern="yyyy-MM-dd"/></td>                        
-                        <td>${product.bis_name}</td> 
-                        <c:if test="${product.prim == 1}"> 
+                        <td><a href="productDetail.mall?pro_no=${total.pro_no}&category=${total.category}">${total.pro_name}</a></td>
+                        <td>${total.price}</td>
+                        <td><fmt:formatDate value="${total.date}" pattern="yyyy-MM-dd"/></td>                        
+                        <td>${total.bis_name}</td> 
+                        <c:if test="${total.prim == 1}"> 
                           <td><img src='../img/prim.png' width='50' height='50' /></td>
                         </c:if>
-                        <c:if test="${product.prim == 0}">
+                        <c:if test="${total.prim == 0}">
                           <td>일반 사업자</td>
                         </c:if> 
                     </tr>

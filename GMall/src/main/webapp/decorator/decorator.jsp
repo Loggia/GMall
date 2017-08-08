@@ -229,8 +229,39 @@
 	color: #12d8fa;
 	text-decoration: underline;
 }
-
+.reloc
+{
+ position:absolute; top:-15%; left:20%; overflow:hidden; margin-top:10px; margin-left:10px;
+}        
+.reloc2    
+{             
+ position:absolute; top:-25%; left:73%; overflow:hidden; margin-top:-10px; margin-left:-100px;
+}    
+.reloc3          
+{             
+ position:absolute; top:30%; right:-110%; overflow:hidden; margin-top:10px; margin-right:100px;
+}
 </style>
+
+<script>  
+function list(pageNum) 
+{
+	var searchType = document.searchform.searchType.value;
+	if(searchType == null || searchType.length == 0)
+	{
+		document.searchform.searchContent.value = "";
+		document.searchform.pageNum.value = 1;
+		location.href = "totalList.mall?pageNum=" + pageNum;
+	}
+	else
+	{
+		document.searchform.pageNum.value = pageNum;
+		document.searchform.submit();
+		return true;
+	}
+	return false;
+}
+</script>
 </head>
 <body>
 	<!-- 헤더 영역 -->
@@ -415,16 +446,28 @@
 					<a href="${path }/board/main.mall" class="pull-left" style="margin-top: 5px;">
 					<img class="rotatey" id="logo" src="../img/logo.png"></a>
 
-					<form class="navbar-form pull-left" style="margin-top: 15px;">
-						<!-- 검색창 시작 -->
-						<div class="input-group">
-							<input type="search" class="form-control" placeholder="검색어를 입력해주세요">
-							<div class="input-group-btn">
-								<button class="btn btn-default" type="submit">
-									<i style="margin-top: 2px;" class="glyphicon glyphicon-search"></i>
-								</button>
-							</div>
-						</div>
+					<form action="totalList.mall" method="get" name="searchform" onsubmit="return list(1)" class="navbar-form pull-left" style="margin-top: 15px;">
+				    <!-- 검색창 시작 -->
+					  <div class="input-group">          
+  	                      <input type="hidden" name="pageNum" value="1">  	                        
+  	                      <select name="searchType" id="searchType" class="form-control reloc" style="width:90px;">
+  	                        <option value="">분류</option>    
+  	                        <option value="pro_name">상품명</option>  
+  	                        <option value="bis_name">사업자</option>  
+  	                      </select>&nbsp;        
+  	                      <script>
+  	                       if('${param.searchType}' != '')
+  	                       {
+  	                         document.getElementById("searchType").value = '${param.searchType}';  
+  	                       }  
+  	                      </script>
+  	                      <input type="search" name="searchContent" value="${param.searchContent}" class="form-control reloc2" placeholder="검색어를 입력해주세요" style="vertical-align:top;">   
+					      <div class="input-group-btn">
+						    <button class="btn btn-default reloc3" type="submit">
+							  <i style="margin-top: 2px;" class="glyphicon glyphicon-search"></i>
+						    </button>
+						  </div>  
+					 </div>
 						<!-- 검색창 끝 -->
 					</form>
 

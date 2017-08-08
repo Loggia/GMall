@@ -69,152 +69,66 @@ public class BoardController
 	}
 	
 	/*
-	 상품 리스트 무한스크롤 아래목록 불러오는 기능 
-	*/
-	@RequestMapping(value="board/infiniteScrollDown", method=RequestMethod.POST)
-	public @ResponseBody List<Product> infiniteScrollDownPOST(@RequestBody Product product, HttpServletRequest request) {
-		int numToStart = product.getPro_no()-1;
-		System.out.println("product1 : " + product);
-		String category = product.getCategory();
-		return baeService.infiniteScrollDown(numToStart, category);		
-	}
-	
-	/*
-	 상품 리스트 무한스크롤 위목록 불러오는 기능 
-	*/
-	@RequestMapping(value="board/infiniteScrollUp", method=RequestMethod.POST)
-	public @ResponseBody List<Product> infiniteScrollUpPOST(@RequestBody Product product, HttpServletRequest request) {
-		int numToEnd = product.getPro_no()+1;
-		System.out.println("product2 : " + product);
-		String category = product.getCategory();
-		return baeService.infiniteScrollUp(numToEnd, category);	 	
-	}
-	
-	/*
-	 프리미엄 리스트 무한스크롤 아래목록 불러오는 기능 
-	*/
-	@RequestMapping(value="board/priminfiniteScrollDown", method=RequestMethod.POST)
-	public @ResponseBody List<Product> priminfiniteScrollDownPOST(@RequestBody Product product, HttpServletRequest request) {
-		int numToStart = product.getPro_no()-1;
-		System.out.println("product1 : " + product);
-		String category = product.getCategory();
-		return baeService.priminfiniteScrollDown(numToStart, category);		
-	}
-	
-	/*
-	 프리미엄 리스트 무한스크롤 위목록 불러오는 기능 
-	*/
-	@RequestMapping(value="board/priminfiniteScrollUp", method=RequestMethod.POST)
-	public @ResponseBody List<Product> priminfiniteScrollUpPOST(@RequestBody Product product, HttpServletRequest request) {
-		int numToEnd = product.getPro_no()+1;
-		System.out.println("product2 : " + product);
-		String category = product.getCategory();
-		return baeService.priminfiniteScrollUp(numToEnd, category);	 	
-	}
-	
-	/*
-	 높은가격 리스트 무한스크롤 아래목록 불러오는 기능 
-	*/
-	@RequestMapping(value="board/highinfiniteScrollDown", method=RequestMethod.POST)
-	public @ResponseBody List<Product> highinfiniteScrollDownPOST(@RequestBody Product product, HttpServletRequest request) {
-		int priceStart = product.getPrice();
-		System.out.println("product1 : " + product);
-		String category = product.getCategory();
-		return baeService.highinfiniteScrollDown(priceStart, category);		
-	}
-	
-	/*
-	 높은가격 리스트 무한스크롤 위목록 불러오는 기능 
-	*/
-	@RequestMapping(value="board/highinfiniteScrollUp", method=RequestMethod.POST)
-	public @ResponseBody List<Product> highinfiniteScrollUpPOST(@RequestBody Product product, HttpServletRequest request) {
-		int priceEnd = product.getPrice();
-		System.out.println("product2 : " + product);
-		String category = product.getCategory();
-		return baeService.highinfiniteScrollUp(priceEnd, category);	 	
-	}
-	
-	/*
-	 낮은가격 리스트 무한스크롤 아래목록 불러오는 기능 
-	*/
-	@RequestMapping(value="board/lowinfiniteScrollDown", method=RequestMethod.POST)
-	public @ResponseBody List<Product> lowinfiniteScrollDownPOST(@RequestBody Product product, HttpServletRequest request) {
-		int priceStart = product.getPrice();
-		System.out.println("product1 : " + product);
-		String category = product.getCategory();
-		return baeService.lowinfiniteScrollDown(priceStart, category);		
-	}
-	
-	/*
-	 낮은가격 리스트 무한스크롤 위목록 불러오는 기능 
-	*/
-	@RequestMapping(value="board/lowinfiniteScrollUp", method=RequestMethod.POST)
-	public @ResponseBody List<Product> lowinfiniteScrollUpPOST(@RequestBody Product product, HttpServletRequest request) {
-		int priceEnd = product.getPrice();
-		System.out.println("product2 : " + product);
-		String category = product.getCategory();
-		return baeService.lowinfiniteScrollUp(priceEnd, category);	 	
-	}
-	
-	/*
 	 상품 리스트 불러오는 기능 
 	*/
-	@RequestMapping(value="board/proList", method = RequestMethod.GET)
-	public ModelAndView proList(HttpServletRequest request) {
+	@RequestMapping("board/proList")
+	public ModelAndView proList(Integer pageNum, String searchType, String searchContent, HttpServletRequest request, HttpSession session) {
 		String category = request.getParameter("category");
-		ModelAndView mav = new ModelAndView();
-		List<Product> productlist = baeService.proList(category);
-		mav.addObject("productlist", productlist);
-		return mav;
-	}
-	
-	/*
-	 프리미엄 리스트 불러오는 기능 
-	*/
-	@RequestMapping(value="board/premiumList", method = RequestMethod.GET)
-	public ModelAndView premiumList(HttpServletRequest request) {
-		String category = request.getParameter("category");
-		ModelAndView mav = new ModelAndView();
-		List<Product> productlist = baeService.premiumList(category);
-		mav.addObject("productlist", productlist);
-		return mav;
-	}
-	
-	/*
-	 높은가격 리스트 불러오는 기능 
-	*/
-	@RequestMapping(value="board/highPriceList", method = RequestMethod.GET)
-	public ModelAndView highPriceList(HttpServletRequest request) {
-		String category = request.getParameter("category");
-		ModelAndView mav = new ModelAndView();
-		List<Product> productlist = baeService.highPriceList(category);
-		mav.addObject("productlist", productlist);
-		return mav;
-	}
-	
-	/*
-	 낮은가격 리스트 불러오는 기능 
-	*/
-	@RequestMapping(value="board/lowPriceList", method = RequestMethod.GET)
-	public ModelAndView lowPriceList(HttpServletRequest request) {
-		String category = request.getParameter("category");
-		ModelAndView mav = new ModelAndView();
-		List<Product> productlist = baeService.lowPriceList(category);
-		mav.addObject("productlist", productlist);
-		return mav;
-	}
-	
-	/*
-	  고객센터 목록 기능
-	  String allsubject = "";
-		for(int i=0; i<listcount; i++)
+		String group = request.getParameter("group");
+		if(pageNum == null || pageNum.toString().equals(""))
 		{
-			String[] subject = new String[listcount];
-			Board a = centerlist.get(i);
-			subject[i] = a.getSubject();
-			allsubject += subject[i] + ",";
+			pageNum = 1;
 		}
-	*/
+		int limit = 20;
+		int listcount = baeService.proCount(searchType, searchContent, category);
+		System.out.println(listcount);
+		List<Product> productlist = baeService.proList(category, group, searchType, searchContent, pageNum, limit);
+		System.out.println("size : " + productlist.size());
+		int maxpage = (int)((double)listcount/limit + 0.95);
+		int startpage = (((int)((double)pageNum/10 + 0.9)) -1) * 10 + 1;
+		int endpage = startpage + 9;
+		if(endpage > maxpage)
+		{
+			endpage = maxpage;
+		}
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("productlist", productlist);
+		mav.addObject("listcount", listcount);
+		mav.addObject("maxpage", maxpage);
+		mav.addObject("startpage", startpage);
+		mav.addObject("endpage", endpage);
+		mav.addObject("pageNum", pageNum);
+		return mav;
+	}
+	
+	@RequestMapping("board/totalList")
+	public ModelAndView totalList(Integer pageNum, String searchType, String searchContent, HttpServletRequest request, HttpSession session) {
+		if(pageNum == null || pageNum.toString().equals(""))
+		{
+			pageNum = 1;
+		}
+		int limit = 20;
+		int listcount = baeService.totalCount(searchType, searchContent);
+		System.out.println(listcount);
+		List<Product> totallist = baeService.totalList(searchType, searchContent, pageNum, limit);
+		System.out.println("size : " + totallist.size());
+		int maxpage = (int)((double)listcount/limit + 0.95);
+		int startpage = (((int)((double)pageNum/10 + 0.9)) -1) * 10 + 1;
+		int endpage = startpage + 9;
+		if(endpage > maxpage)
+		{
+			endpage = maxpage;
+		}
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("totallist", totallist);
+		mav.addObject("listcount", listcount);
+		mav.addObject("maxpage", maxpage);
+		mav.addObject("startpage", startpage);
+		mav.addObject("endpage", endpage);
+		mav.addObject("pageNum", pageNum);
+		return mav;
+	}
+	
 	@RequestMapping("board/centerList")
 	public ModelAndView centerList(Board board, Integer pageNum, String searchType, String searchContent, HttpServletRequest request, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
