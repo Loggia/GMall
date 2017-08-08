@@ -89,11 +89,10 @@ public class TradeController
 	}
 	
 	@RequestMapping("trade/delvpage.mall")
-	public ModelAndView delvpage(Member member, HttpSession session) 
+	public ModelAndView delvpage(Member member, Integer pageNum, HttpSession session) 
 	{
 		ModelAndView mav = new ModelAndView();
 		Member login = (Member)session.getAttribute("LOGIN_MEMBER");
-		List<Trade> delivery = null;
 		
 		/*
 		 * 변수명 공모전 합니다 ㅋㅋㅋ
@@ -112,30 +111,21 @@ public class TradeController
 			return mav;
 		}
 		
-		if(login.getType() == 1) // 일반회원 배송조회
+		if(pageNum == null || pageNum.toString().equals(""))
 		{
-			delivery = jooService.delvpageBuyList(login.getId());
-			
-			if(delivery != null)
-			{
-				mav.addObject("delivery", delivery);
-			}
-			else
-			{
-				mav.addObject("delivery", new Trade());
-			}
+			pageNum = 1;
 		}
-		else if(login.getType() == 2) // 사업자 (조옹환이)
+		
+		int limit = 10;
+		int listcount = jooService.delvpageCount(login.getId(), login.getType());
+		List<Trade> delivery = koService.delvpageList(login.getId(), login.getType(), pageNum, limit);
+		int maxpage = (int)((double)listcount/limit + 0.95);
+		int startpage = (((int)((double)pageNum/10 + 0.9)) -1) * 10 + 1;
+		int endpage = startpage + 9;
+		
+		if(endpage > maxpage)
 		{
-			delivery=koService.deliveryList(login.getId());
-			if(delivery != null)
-			{
-				mav.addObject("delivery", delivery);
-			}
-			else
-			{
-				mav.addObject("delivery", new Trade());
-			}
+			endpage = maxpage;
 		}
 		
 		/*
@@ -165,6 +155,12 @@ public class TradeController
 		mav.addObject("del_ready", del_ready);
 		mav.addObject("deliverying", deliverying);
 		mav.addObject("del_complete", del_complete);
+		mav.addObject("maxpage", maxpage);
+		mav.addObject("startpage", startpage);
+		mav.addObject("endpage", endpage);
+		mav.addObject("listcount", listcount);
+		mav.addObject("delivery", delivery);
+		mav.addObject("pageNum", pageNum);
 		mav.addObject("member", login);   
 		
 		return mav;

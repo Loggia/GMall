@@ -44,11 +44,11 @@ public interface TradeMapper {
 	@Select("select c.discount, (select nickname from member where c.id = id) nickname, c.chk from member m, coupon_history c where m.bis_no=c.bis_no and m.id=#{id} and discount=#{discount}")
 	List<Coupon_history> bisDiscountCheck(Map<String, String> map);
 
-	// 주한울 일반 회원 배송 조회
+	// 주한울 일반 회원 배송 조회 (사용하지 않음)
 	@Select("select t.trd_code,p.pro_name,t.trd_money,p.bis_name,t.trd_date,t.delivery from trade t,product p where t.buy_id=#{id} and t.pro_no=p.pro_no order by trd_no")
 	List<Trade> delvpageBuyList(String id);
 
-	//고종환 사업자 배송조회
+	//고종환 사업자 배송조회 (사용하지 않음)
 	@Select("select p.pro_name, m.nickname, t.trd_money, t.trd_code, t.trd_date, t.delivery, t.trd_no  from trade t, product p,member m  where t.pro_no=p.pro_no and m.id=t.buy_id and sell_id=#{id}")
 	List<Trade> deliveryList(String id);
 	

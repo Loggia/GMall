@@ -31,6 +31,21 @@
 		 </choose>
 	</select>
 	
+	<select id="delvpageCount" parameterType="hashmap" resultType="int">
+		select count(*)
+		  from trade t,product p 
+		 <choose>
+		 	<when test="type == 1">
+		  		where t.buy_id = #{id}
+		  	</when>
+		  	
+		  	<when test="type == 2">
+				where t.sell_id = #{id}	
+			</when>
+		 </choose>
+		  and t.pro_no=p.pro_no
+	</select>
+	
 	<select id="tradeList" parameterType="hashmap" resultType="trade">
 		select t.*, p.pro_name, p.bis_name
 		  from trade t, product p
@@ -50,6 +65,23 @@
 			<when test="type == 3">
 				where t.pro_no=p.pro_no 
 				  and p.bis_no=(select bis_no from member m where m.id=t.sell_id) 
+			</when>
+		 </choose>
+	   order by trd_no asc limit ${startrow}, ${endrow}
+	</select>
+	
+	<select id="delvpageList" parameterType="hashmap" resultType="trade">
+		select t.trd_code, t.trd_money, t.trd_date, t.delivery, t.buy_id, p.pro_name, p.bis_name
+          from trade t,product p 
+		 <choose>
+		 	<when test="type == 1">
+		  		where buy_id = #{id}
+		  		  and t.pro_no=p.pro_no 
+		  	</when>
+		  	
+		  	<when test="type == 2">
+				where sell_id = #{id}
+				  and t.pro_no=p.pro_no 
 			</when>
 		 </choose>
 	   order by trd_no asc limit ${startrow}, ${endrow}

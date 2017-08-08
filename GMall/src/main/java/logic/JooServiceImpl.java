@@ -237,4 +237,10 @@ public class JooServiceImpl implements JooService
 	{
 		return tradeDao.tradeCount(id, type);
 	}
+
+	@Override
+	public int delvpageCount(String id, int type) 
+	{
+		return tradeDao.delvpageCount(id, type);
+	}
 }

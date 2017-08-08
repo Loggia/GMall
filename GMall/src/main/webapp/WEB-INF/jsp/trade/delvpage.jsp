@@ -32,6 +32,13 @@ $(document).ready(function(){
 	
 });
 </script>
+
+<script type="text/javascript">
+	function list(pageNum) 
+	{	
+		location.href = "delvpage.mall?pageNum=" + pageNum;
+	}	
+</script>
 </head>
 <body>
 	<div class="container-fluid"
@@ -197,7 +204,7 @@ $(document).ready(function(){
 								<c:forEach items="${delivery}" var="list">
 									<tr>
 										<td>${list.pro_name }</td>
-										<td>${list.nickname }</td>
+										<td>${list.buy_id }</td>
 										<td>${list.trd_money }</td>
 										<td>${list.trd_code }</td>
 										<td><f:formatDate value="${list.trd_date }" pattern="yy-MM-dd"/></td>
@@ -214,8 +221,20 @@ $(document).ready(function(){
 							</tbody>
 						</table>
 					</c:if>
-					
-					<br><br>
+					<div align="center">
+						<c:if test="${pageNum > 1}">
+							<a href="javascript:list(${pageNum - 1})">
+						</c:if>[이전]&nbsp;
+						<c:if test="${pageNum > 1}"></a></c:if>
+						<c:forEach var="a" begin="${startpage}" end="${endpage}">
+							<c:if test="${pageNum == a}">[${a}]</c:if>
+							<c:if test="${pageNum != a}"><a href="javascript:list(${a})">[${a}]</a></c:if>&nbsp;
+						</c:forEach>
+						<c:if test="${pageNum < maxpage}">
+							<a href="javascript:list(${pageNum + 1})">
+						</c:if>[다음]&nbsp;
+						<c:if test="${pageNum < maxpage}"></a></c:if>
+					</div><br><br><br>
 				</div>
 			</div>
 		</div>

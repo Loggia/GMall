@@ -97,10 +97,16 @@ public class KoServiceImpl implements KoService{
 		return tradeDao.tradeList(id);
 	}
     
-	//고종환 사업자 배송조회
+	//고종환 사업자 배송조회 (사용 안함)
 	@Override
 	public List<Trade> deliveryList(String id) {
 		return tradeDao.deliveryList(id);
+	}
+	
+	@Override
+	public List<Trade> delvpageList(String id, int type, Integer pageNum, int limit) 
+	{
+		return tradeDao.delvpageList(id, type, pageNum, limit);
 	}
 	
 	//고종환 사업자 쿠폰목록
@@ -128,5 +134,4 @@ public class KoServiceImpl implements KoService{
 		tradeDao.deliveryControl(trd_no,tradeCheck);
 		
 	}
-
 }

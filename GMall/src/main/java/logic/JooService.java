@@ -16,11 +16,13 @@ public interface JooService
 	List<String> selectBis_no(); // 주한울 - 사업자 번호 확인
 	List<Member> selectBookmark(String id); // 주한울 - 관심 사업자 조회
 	List<Product> selectNewsFeed(String id); // 주한울 - 관심 사업자 최근 등록 목록 조회
-	List<Trade> tradeList(String id, Integer type, Integer pageNum, Integer limit); // 주한울 - 일반 회원 구매 목록 확인
-	List<Trade> delvpageBuyList(String id); // 주한울 - 일반 회원 배송 조회
+	List<Trade> tradeList(String id, Integer type, Integer pageNum, Integer limit); // 주한울 - 거래목록 조회
 	List<Coupon_history> memberCoupon(String id); // 주한울 일반회원 쿠폰목록
 	List<Coupon_history> memberDiscountCheck(String id, String discount); // 주한울 일반회원 쿠폰 관리 선택시
 	List<Trade> moneyChangeList(Member member); // 주한울 일반회원, 사업자 보유금액(금액 변동) 
-	Member getUserById(String id);
+	Member getUserById(String id); // 주한울 - id로 멤버 조회
 	int tradeCount(String id, int type); // 주한울 - 총 거래수 확인 메서드
+	int delvpageCount(String id, int type); // 주한울 - 총 배송 정보 확인 메서드
+	
+	List<Trade> delvpageBuyList(String id); // 주한울 - 일반 회원 배송 조회 (사용하지 않음)
 }

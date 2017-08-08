@@ -129,10 +129,35 @@ public class TradeDaoImpl implements TradeDao{
 			return sqlSession.getMapper(TradeMapper.class).bisDiscountCheck(map);
 		}
 
-		//고종환 사업자 배송조회
+		//고종환 사업자 배송조회 (사용하지 않음)
 		@Override
 		public List<Trade> deliveryList(String id) {
 			return sqlSession.getMapper(TradeMapper.class).deliveryList(id);
+		}
+		
+		@Override
+		public List<Trade> delvpageList(String id, int type, Integer pageNum, int limit) 
+		{
+			try
+			{
+				int startrow = (pageNum - 1) * limit;
+		    	int endrow = startrow + limit;  	
+		    	
+		    	Map<String, Object> map = new HashMap<String, Object>();
+		    	
+		    	map.put("id", id);
+		    	map.put("type", type);
+		    	map.put("startrow", startrow);
+		    	map.put("endrow", endrow);
+		    	
+		    	return sqlSession.selectList(NS+"delvpageList", map);
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+				
+				return null;
+			}
 		}
 		
 		@Override
@@ -161,6 +186,7 @@ public class TradeDaoImpl implements TradeDao{
 			
 		}
 		
+		// 거래 목록 카운팅
 		@Override
 		public int tradeCount(String id, int type) 
 		{
@@ -169,6 +195,17 @@ public class TradeDaoImpl implements TradeDao{
 	    	map.put("type", type);
 	    	
 			return sqlSession.selectOne(NS+"tradeCount", map);
+		}
+ 
+		// 배송 목록 카운팅
+		@Override
+		public int delvpageCount(String id, int type) 
+		{
+			Map<String, Object> map = new HashMap<String, Object>();
+	    	map.put("id", id);
+	    	map.put("type", type);
+	    	
+			return sqlSession.selectOne(NS+"delvpageCount", map);
 		}
 }
 
