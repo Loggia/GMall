@@ -46,6 +46,11 @@ public class HDServiceImpl implements HDService{
 	public List<Message> reciveList(String loginUserId) {
 		return messageDao.reciveList(loginUserId);
 	}
+
+	@Override
+	public void msgSend(Message message) {
+		//maxNum messageDao.maxNum();
+	}
 	
 	
 

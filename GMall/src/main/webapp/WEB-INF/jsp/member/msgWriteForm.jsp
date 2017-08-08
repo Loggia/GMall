@@ -186,26 +186,16 @@ $(document).ready(function(){
 			</div>
 			<div class="my_right" style="width: calc(100% - 250px); padding-top: 40px;">
 				<div class="msgWrap" style="font-family: 'KoPub Dotum';">
-				<button type="button" class="btn btn-default" onclick="location.href='${path }/member/talkpage.mall'">받은쪽찌</button>
-				<button type="button" class="btn btn-default" onclick="location.href='${path }/member/sendListForm.mall'">보낸쪽지</button>
-				<button type="button" class="btn btn-default" onclick="location.href='${path }/member/msgWriteForm.mall'">쪽지 쓰기</button>
-				<ul class="msgListHead" style="margin-top: 10px;">
-					<li style="width: 12%">보낸사람</li>
-					<li style="width: 64%">내용</li>
-					<li style="width: 12%">날짜</li>
-					<li style="width: 12%"></li>
-				</ul>
-				
-				<ol class="msgList">
-					<c:forEach items="${reciveList }" var="reciveList">
-						<li>
-							<div style="width: 12%"><a>${reciveList.send_id }</a></div>
-							<div style="width: 64%"><a>${reciveList.msg_content }</a></div>
-							<div style="width: 12%"><span><fmt:formatDate value="${reciveList.msg_date }" pattern="yyyy-MM-dd"/></span></div>
-							<div style="width: 12%"><a>답장</a>/<a>삭제</a></div>
-						</li>
-					</c:forEach>
-				</ol>
+					<button type="button" class="btn btn-default" onclick="location.href='${path }/member/talkpage.mall'">받은쪽찌</button>
+					<button type="button" class="btn btn-default" onclick="location.href='${path }/member/sendListForm.mall'">보낸쪽지</button>
+					<button type="button" class="btn btn-default" onclick="location.href='${path }/member/msgWriteForm.mall'">쪽지 쓰기</button>
+					<form:form action="${path }/member/msgSend.mall" modelAttribute="message">
+						<form:input path="rec_id" />
+						<form:textarea path="msg_content" cols="67" rows="15"/>
+					
+						<form:input type="hidden" path="send_id" value="${member.id }" />
+						<button type="submit" class="btn btn-default">쪽지 전송</button>
+					</form:form>
 				</div>
 			</div>
 		</div>

@@ -190,18 +190,18 @@ $(document).ready(function(){
 				<button type="button" class="btn btn-default" onclick="location.href='${path }/member/sendListForm.mall'">보낸쪽지</button>
 				<button type="button" class="btn btn-default" onclick="location.href='${path }/member/msgWriteForm.mall'">쪽지 쓰기</button>
 				<ul class="msgListHead" style="margin-top: 10px;">
-					<li style="width: 12%">보낸사람</li>
+					<li style="width: 12%">받는사람</li>
 					<li style="width: 64%">내용</li>
 					<li style="width: 12%">날짜</li>
 					<li style="width: 12%"></li>
 				</ul>
 				
 				<ol class="msgList">
-					<c:forEach items="${reciveList }" var="reciveList">
+					<c:forEach items="${sendList }" var="sendList">
 						<li>
-							<div style="width: 12%"><a>${reciveList.send_id }</a></div>
-							<div style="width: 64%"><a>${reciveList.msg_content }</a></div>
-							<div style="width: 12%"><span><fmt:formatDate value="${reciveList.msg_date }" pattern="yyyy-MM-dd"/></span></div>
+							<div style="width: 12%"><a>${sendList.rec_id }</a></div>
+							<div style="width: 64%"><a>${sendList.msg_content }</a></div>
+							<div style="width: 12%"><span><fmt:formatDate value="${sendList.msg_date }" pattern="yyyy-MM-dd"/></span></div>
 							<div style="width: 12%"><a>답장</a>/<a>삭제</a></div>
 						</li>
 					</c:forEach>

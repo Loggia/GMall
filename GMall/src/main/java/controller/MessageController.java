@@ -37,6 +37,7 @@ public class MessageController {
 		Member loginUser = (Member)session.getAttribute("LOGIN_MEMBER");
 		String loginUserId = loginUser.getId();
 		List<Message> sendList = hdService.sendList(loginUserId);
+		mav.addObject("member", loginUser);
 		mav.addObject("sendList", sendList);
 		return mav;
 	}
@@ -53,14 +54,16 @@ public class MessageController {
 		ModelAndView mav = new ModelAndView();
 		Member loginUser = (Member)session.getAttribute("LOGIN_MEMBER");
 		String loginUserId = loginUser.getId();
-		//hdService.msgWriteForm();
+		mav.addObject("member", loginUser);
 		return mav;
 	}
 	
 	@RequestMapping("member/msgSend")
-	public ModelAndView msgWirte(HttpSession session, HttpServletRequest request) {
+	public ModelAndView msgWirte(HttpSession session, Message message, HttpServletRequest request) {
+		//String send_id = request.getParameter("send_id");
+		hdService.msgSend(message);
 		ModelAndView mav = new ModelAndView();
-		//hdService.msgSend();
+		mav.setViewName("member/talkpage");
 		return mav;
 	}
 	

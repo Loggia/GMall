@@ -16,4 +16,6 @@ public interface HDService {
 
 	List<Message> reciveList(String loginUserId);
 
+	void msgSend(Message message);
+
 }
