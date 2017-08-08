@@ -25,19 +25,19 @@ public class MessageController {
 		ModelAndView mav = new ModelAndView();
 		Member loginUser = (Member)session.getAttribute("LOGIN_MEMBER");
 		String loginUserId = loginUser.getId();
-		List<Message> sendList =  hdService.sendList(loginUserId);
+		List<Message> reciveList =  hdService.reciveList(loginUserId);
 		mav.addObject("member", loginUser);
-		mav.addObject("sendList", sendList);
+		mav.addObject("reciveList", reciveList);
 		return mav;
 	}
 	
-	@RequestMapping("member/reciveListForm")
-	public ModelAndView reciveListForm(HttpSession session) {
+	@RequestMapping("member/sendListForm")
+	public ModelAndView sendListForm(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		Member loginUser = (Member)session.getAttribute("LOGIN_MEMBER");
 		String loginUserId = loginUser.getId();
-		List<Message> reciveList = hdService.reciveList(loginUserId);
-		mav.addObject("reciveList", reciveList);
+		List<Message> sendList = hdService.sendList(loginUserId);
+		mav.addObject("sendList", sendList);
 		return mav;
 	}
 	

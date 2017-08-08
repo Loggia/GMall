@@ -26,13 +26,57 @@ $(document).ready(function(){
 });
 </script>
 <style type="text/css">
-.disc_sel ul li{
-	float: left;
-	margin-right: 20px;
+.msgWrap {
+	
 }
-.disc_sel  ul li input{
 
+.msgListHead {
+	padding: 0px;
 }
+
+.msgList {
+	padding: 0px;
+}
+
+.msgListHead li {
+	float: left;
+	height: 25px;
+	background-color: #f9f9f9;
+	border: 1px solid #e4e5e7;
+	border-right: none;
+	padding-left: 7px;
+}
+
+.msgListHead li:last-child {
+	float: left;
+	height: 25px;
+	background-color: #f9f9f9;
+	border: 1px solid #e4e5e7;
+	padding-left: 7px;
+}
+
+.msgList li {
+	float: left;
+	height: 30px;	
+	border-bottom: 1px solid #e4e5e7;
+	width: 100%;
+}
+.msgList li div {
+	float: left;
+	height: 30px;	
+	padding-left: 7px;
+	border-bottom: 1px solid #e4e5e7;
+}
+
+.msgList :hover {
+	background-color: #f5f5f5;
+}
+
+.msgList li a {
+	cursor: pointer;
+}
+
+
 </style>
 </head>
 <body>
@@ -139,7 +183,26 @@ $(document).ready(function(){
 					</c:if>
 				</ul>
 			</div>
-			<div class="my_right" style="width: calc(100% - 250px);"></div>
+			<div class="my_right" style="width: calc(100% - 250px); padding-top: 40px;">
+				<div class="msgWrap" style="font-family: 'KoPub Dotum';">
+				<ul class="msgListHead">
+					<li style="width: 12%">보낸사람</li>
+					<li style="width: 64%">내용</li>
+					<li style="width: 12%">날짜</li>
+					<li style="width: 12%"></li>
+				</ul>
+				<ol class="msgList">
+					<c:forEach items="${reciveList }" var="reciveList">
+						<li>
+							<div style="width: 12%"><a>${reciveList.send_id }</a></div>
+							<div style="width: 64%"><a>${reciveList.msg_content }</a></div>
+							<div style="width: 12%"><a>${reciveList.msg_date }</a></div>
+							<div style="width: 12%"><a>답장</a>/<a>삭제</a></div>
+						</li>
+					</c:forEach>
+				</ol>
+				</div>
+			</div>
 		</div>
 		<div class="col-xs-2"></div>
 	</div>
