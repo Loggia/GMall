@@ -231,15 +231,15 @@
 }
 .reloc
 {
- position:absolute; top:-15%; left:20%; overflow:hidden; margin-top:10px; margin-left:10px;
+ position:absolute; top:-15%; left:20%; overflow:hidden; margin-top:0px; margin-left:10px;
 }        
 .reloc2    
 {             
- position:absolute; top:-25%; left:73%; overflow:hidden; margin-top:-10px; margin-left:-100px;
+ position:absolute; top:-25%; left:73%; overflow:hidden; margin-top:-20px; margin-left:-100px;
 }    
 .reloc3          
 {             
- position:absolute; top:30%; right:-110%; overflow:hidden; margin-top:10px; margin-right:100px;
+ position:absolute; top:30%; right:-110%; overflow:hidden; margin-top:0px; margin-right:100px;
 }
 </style>
 
