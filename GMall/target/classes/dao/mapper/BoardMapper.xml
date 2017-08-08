@@ -127,11 +127,11 @@
   </select>
   
   <select id="inter" resultType="Product" parameterType="hashmap">
-  	select main_img fileurl from product ORDER by date LIMIT 4;
-  	<if test="inter == null">
-  		where category=#{inter }
-  	</if>
-  	ORDER by date LIMIT 4
+	select main_img fileurl from product
+		<if test="inter == null">
+			where category=#{inter }
+		</if>
+	ORDER by date LIMIT 4
   </select>
   
   
