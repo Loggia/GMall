@@ -20,8 +20,8 @@ public class MessageController {
 	@Autowired
 	public HDService hdService;
 	
-	@RequestMapping("message/sendListForm")
-	public ModelAndView sendListForm(HttpSession session) {
+	@RequestMapping("member/talkpage")
+	public ModelAndView talkpage(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		Member loginUser = (Member)session.getAttribute("LOGIN_MEMBER");
 		String loginUserId = loginUser.getId();
@@ -30,7 +30,7 @@ public class MessageController {
 		return mav;
 	}
 	
-	@RequestMapping("message/reciveListForm")
+	@RequestMapping("member/reciveListForm")
 	public ModelAndView reciveListForm(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		Member loginUser = (Member)session.getAttribute("LOGIN_MEMBER");
@@ -40,14 +40,14 @@ public class MessageController {
 		return mav;
 	}
 	
-	@RequestMapping("message/msgDetail")
+	@RequestMapping("member/msgDetail")
 	public ModelAndView msgDetail(HttpSession session, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
 		//hdService.msgDetail();
 		return mav;
 	}
 	
-	@RequestMapping("message/msgWriteForm")
+	@RequestMapping("member/msgWriteForm")
 	public ModelAndView msgWirteForm(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		Member loginUser = (Member)session.getAttribute("LOGIN_MEMBER");
@@ -56,14 +56,14 @@ public class MessageController {
 		return mav;
 	}
 	
-	@RequestMapping("message/msgSend")
+	@RequestMapping("member/msgSend")
 	public ModelAndView msgWirte(HttpSession session, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
 		//hdService.msgSend();
 		return mav;
 	}
 	
-	@RequestMapping("message/msgDelete")
+	@RequestMapping("member/msgDelete")
 	public ModelAndView msgDelete(HttpSession session, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
 		//hdService.msgDelete();
