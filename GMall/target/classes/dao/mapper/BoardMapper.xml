@@ -131,7 +131,7 @@
 		<if test="inter == null">
 			where category=#{inter }
 		</if>
-	ORDER by date LIMIT 4
+	ORDER by date desc LIMIT 4
   </select>
   
   
