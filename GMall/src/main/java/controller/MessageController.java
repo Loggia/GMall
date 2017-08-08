@@ -26,6 +26,7 @@ public class MessageController {
 		Member loginUser = (Member)session.getAttribute("LOGIN_MEMBER");
 		String loginUserId = loginUser.getId();
 		List<Message> sendList =  hdService.sendList(loginUserId);
+		mav.addObject("member", loginUser);
 		mav.addObject("sendList", sendList);
 		return mav;
 	}

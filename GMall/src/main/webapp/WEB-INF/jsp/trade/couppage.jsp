@@ -36,8 +36,7 @@ $(document).ready(function(){
 </style>
 </head>
 <body>
-	<div class="container-fluid"
-		style="padding-left: 0px; padding-right: 0px;">
+	<div class="container-fluid" style="padding-left: 0px; padding-right: 0px;">
 	<div class="hos"></div>
 
 		<div class="col-xs-2"></div>
