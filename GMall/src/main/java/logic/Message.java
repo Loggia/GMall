@@ -23,6 +23,35 @@ public class Message
 	
 	@NotEmpty
 	private String rec_id;
+	
+	@NotEmpty
+	private String have_id;
+	
+	@NotEmpty
+	private int read_chk;
+
+	@Override
+	public String toString() {
+		return "Message [msg_no=" + msg_no + ", msg_subject=" + msg_subject + ", msg_date=" + msg_date
+				+ ", msg_content=" + msg_content + ", send_id=" + send_id + ", rec_id=" + rec_id + ", have_id="
+				+ have_id + ", read_chk=" + read_chk + "]";
+	}
+
+	public String getHave_id() {
+		return have_id;
+	}
+
+	public void setHave_id(String have_id) {
+		this.have_id = have_id;
+	}
+
+	public int getRead_chk() {
+		return read_chk;
+	}
+
+	public void setRead_chk(int read_chk) {
+		this.read_chk = read_chk;
+	}
 
 	public int getMsg_no() 
 	{
