@@ -47,6 +47,7 @@ public class BoardController
 		List<Product> interList = hdService.interList("육류");
 		mav.addObject("interList",interList);
 		return mav;
+		
 	}
 	
 	/*
