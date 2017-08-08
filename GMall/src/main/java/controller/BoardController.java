@@ -43,12 +43,16 @@ public class BoardController
 		if((Member)session.getAttribute("LOGIN_MEMBER") == null) {
 			List<Product> interList = hdService.interList("");
 			mav.addObject("interList",interList);
+			System.out.println(interList);
 			
 		} else if((Member)session.getAttribute("LOGIN_MEMBER") != null) {
 			Member login = (Member)session.getAttribute("LOGIN_MEMBER");
 			String inter = login.getInterest();
 			List<Product> interList = hdService.interList(inter);
 			mav.addObject("interList",interList);
+			System.out.println(interList);
+			System.out.println(inter);
+			System.out.println(login.getId());
 		}
 		
 		List<Product> primList = hdService.primList();
@@ -57,6 +61,9 @@ public class BoardController
 		mav.addObject("primList", primList);
 		mav.addObject("newList", newList);
 		mav.addObject("popuList", popuList);
+		System.out.println(primList);
+		System.out.println(newList);
+		System.out.println(popuList);
 		return mav;
 		
 	}

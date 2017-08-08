@@ -15,20 +15,17 @@ public class HDServiceImpl implements HDService{
 	
 	@Override
 	public List<Product> primList() {
-		boardDao.primList();
-		return null;
+		return boardDao.primList();
 	}
 
 	@Override
 	public List<Product> newList() {
-		boardDao.newList();
-		return null;
+		return boardDao.newList();
 	}
 
 	@Override
 	public List<Product> popuList() {
-		boardDao.popuList();
-		return null;
+		return boardDao.popuList();
 	}
 
 	@Override

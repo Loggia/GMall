@@ -74,10 +74,10 @@ body {
 			</div>
 
 			<div style="display: inline;">
-				<c:forEach items="${newList }" var="new">
+				<c:forEach items="${newList }" var="newL">
 					<div class="col-xs-3">
 						<div class="3th-line mask" style="background-color: white; margin-left: 15px; margin-bottom: 15px;">
-							<img src="../img/${new.fileurl }">
+							<img src="../img/${newL.fileurl }">
 						</div>
 					</div>
 				</c:forEach>
