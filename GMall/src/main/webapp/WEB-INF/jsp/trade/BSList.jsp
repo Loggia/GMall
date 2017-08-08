@@ -41,7 +41,7 @@ $(document).ready(function(){
 </script>
 
 <script type="text/javascript">
-	function list(pageNum) 
+	function BSList(pageNum) 
 	{	
 		location.href = "BSList.mall?pageNum=" + pageNum;
 	}	
@@ -209,15 +209,15 @@ $(document).ready(function(){
 					</c:if>
 					<div align="center">
 						<c:if test="${pageNum > 1}">
-							<a href="javascript:list(${pageNum - 1})">
+							<a href="javascript:BSList(${pageNum - 1})">
 						</c:if>[이전]&nbsp;
 						<c:if test="${pageNum > 1}"></a></c:if>
 						<c:forEach var="a" begin="${startpage}" end="${endpage}">
 							<c:if test="${pageNum == a}">[${a}]</c:if>
-							<c:if test="${pageNum != a}"><a href="javascript:list(${a})">[${a}]</a></c:if>&nbsp;
+							<c:if test="${pageNum != a}"><a href="javascript:BSList(${a})">[${a}]</a></c:if>&nbsp;
 						</c:forEach>
 						<c:if test="${pageNum < maxpage}">
-							<a href="javascript:list(${pageNum + 1})">
+							<a href="javascript:BSList(${pageNum + 1})">
 						</c:if>[다음]&nbsp;
 						<c:if test="${pageNum < maxpage}"></a></c:if>
 					</div><br><br><br>

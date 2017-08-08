@@ -246,10 +246,10 @@ public class JooServiceImpl implements JooService
 	{
 		return tradeDao.moneyChangeCount(id, type);
 	}
-	
+
 	@Override
-	public int couponCount(String id, int type) 
+	public int couponCount(String id, int type, String discount) 
 	{
-		return tradeDao.couponCount(id, type);
+		return tradeDao.couponCount(id, type, discount);
 	}
 }

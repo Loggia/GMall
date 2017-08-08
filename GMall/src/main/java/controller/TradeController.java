@@ -153,54 +153,55 @@ public class TradeController
 	}
 	
 	// 주한울 - 쿠폰 목록 조회
-		@RequestMapping("trade/couppage.mall")
-		public ModelAndView couppage(Member member, Integer pageNum, HttpSession session, HttpServletRequest request) 
+	@RequestMapping("trade/couppage.mall")
+	public ModelAndView couppage(Member member, Integer pageNum, HttpSession session, HttpServletRequest request) 
+	{
+		ModelAndView mav = new ModelAndView();
+		Member login = (Member)session.getAttribute("LOGIN_MEMBER");
+		String discount = request.getParameter("discount");
+		
+		if(login == null)
 		{
-			ModelAndView mav = new ModelAndView();
-			Member login = (Member)session.getAttribute("LOGIN_MEMBER");
-			String discount = request.getParameter("discount");
-			
-			if(login == null)
-			{
-				mav.setViewName("alert");
-				mav.addObject("url", "../board/main.mall");
-				mav.addObject("msg", "로그인하고 시도하시기 바랍니다.");
-				
-				return mav;
-			}
-			
-			if(pageNum == null || pageNum.toString().equals(""))
-			{
-				pageNum = 1;
-			}
-			
-			if(discount == null || discount.equals("0"))
-			{
-				discount = "";
-			}
-			
-			int limit = 10;
-			int listcount = jooService.couponCount(login.getId(), login.getType());
-			List<Coupon_history> couponList = jooService.couponList(login.getId(), login.getType(), discount, pageNum, limit);
-			int maxpage = (int)((double)listcount/limit + 0.95);
-			int startpage = (((int)((double)pageNum/10 + 0.9)) -1) * 10 + 1;
-			int endpage = startpage + 9;
-			
-			if(endpage > maxpage)
-			{
-				endpage = maxpage;
-			}
-			
-			mav.addObject("maxpage", maxpage);
-			mav.addObject("startpage", startpage);
-			mav.addObject("endpage", endpage);
-			mav.addObject("listcount", listcount);
-			mav.addObject("couponList", couponList);
-			mav.addObject("pageNum", pageNum);
-			mav.addObject("member", login);
+			mav.setViewName("alert");
+			mav.addObject("url", "../board/main.mall");
+			mav.addObject("msg", "로그인하고 시도하시기 바랍니다.");
 			
 			return mav;
 		}
+		
+		if(pageNum == null || pageNum.toString().equals(""))
+		{
+			pageNum = 1;
+		}
+		
+		if(discount == null || discount.equals(""))
+		{
+			discount = "0";
+		}
+		
+		int limit = 2;
+		int listcount = jooService.couponCount(login.getId(), login.getType(), discount);
+		List<Coupon_history> couponList = jooService.couponList(login.getId(), login.getType(), discount, pageNum, limit);
+		int maxpage = (int)((double)listcount/limit + 0.95);
+		int startpage = (((int)((double)pageNum/10 + 0.9)) -1) * 10 + 1;
+		int endpage = startpage + 9;
+		
+		if(endpage > maxpage)
+		{
+			endpage = maxpage;
+		}
+		
+		mav.addObject("maxpage", maxpage);
+		mav.addObject("startpage", startpage);
+		mav.addObject("endpage", endpage);
+		mav.addObject("listcount", listcount);
+		mav.addObject("couponList", couponList);
+		mav.addObject("pageNum", pageNum);
+		mav.addObject("discount", discount);
+		mav.addObject("member", login);
+		
+		return mav;
+	}
 	
 	// 고종환 사업자 쿠폰목록 카테고리 선택시 ${path}/trade/bus_couponCheck.mall?category=10
 	@RequestMapping("trade/couponDiscountCheck")

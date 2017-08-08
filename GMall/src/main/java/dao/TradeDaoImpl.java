@@ -125,7 +125,7 @@ public class TradeDaoImpl implements TradeDao{
 		
 		/*
 		 * 고종환
-		 * 사업자 쿠폰목록 (사용 안함)
+		 * 사업자 쿠폰목록
 		 */
 		@Override
 		public List<Coupon_history> bisCoupon(String id) {
@@ -134,7 +134,7 @@ public class TradeDaoImpl implements TradeDao{
 		
 		/*
 		 * 주한울
-		 * 일반회원 쿠폰목록 카테고리 선택시 (사용 안함)
+		 * 일반회원 쿠폰목록 카테고리 선택시
 		 */
 		@Override
 		public List<Coupon_history> memberDiscountCheck(String id, String discount) 
@@ -146,7 +146,7 @@ public class TradeDaoImpl implements TradeDao{
 			return sqlSession.getMapper(TradeMapper.class).memberDiscountCheck(map);
 		}
 
-		//고종환 사업자 쿠폰목록 카테고리 선택시 (사용 안함)
+		//고종환 사업자 쿠폰목록 카테고리 선택시
 		@Override
 		public List<Coupon_history> bisDiscountCheck(String id, String discount) {
 			Map<String,String> map=new HashMap<String,String>();
@@ -260,13 +260,14 @@ public class TradeDaoImpl implements TradeDao{
 	    	
 			return sqlSession.selectOne(NS+"moneyChangeCount", map);
 		}
-		
+
 		@Override
-		public int couponCount(String id, int type) 
+		public int couponCount(String id, int type, String discount) 
 		{
 			Map<String, Object> map = new HashMap<String, Object>();
 	    	map.put("id", id);
 	    	map.put("type", type);
+	    	map.put("discount", discount);
 	    	
 			return sqlSession.selectOne(NS+"couponCount", map);
 		}

@@ -25,6 +25,13 @@ $(document).ready(function(){
 	
 });
 </script>
+
+<script type="text/javascript">
+	function couppageList(pageNum, discount) 
+	{		
+		location.href = "couppage.mall?pageNum=" + pageNum + "&discount=" + discount;
+	}	
+</script>
 <style type="text/css">
 .disc_sel ul li{
 	float: left;
@@ -190,15 +197,15 @@ $(document).ready(function(){
 						</table>
 						<div align="center">
 							<c:if test="${pageNum > 1}">
-								<a href="javascript:list(${pageNum - 1})">
+								<a href="javascript:couppageList(${pageNum - 1}, ${discount })">
 							</c:if>[이전]&nbsp;
 							<c:if test="${pageNum > 1}"></a></c:if>
 							<c:forEach var="a" begin="${startpage}" end="${endpage}">
 								<c:if test="${pageNum == a}">[${a}]</c:if>
-								<c:if test="${pageNum != a}"><a href="javascript:list(${a})">[${a}]</a></c:if>&nbsp;
+								<c:if test="${pageNum != a}"><a href="javascript:couppageList(${a}, ${discount })">[${a}]</a></c:if>&nbsp;
 							</c:forEach>
 							<c:if test="${pageNum < maxpage}">
-								<a href="javascript:list(${pageNum + 1})">
+								<a href="javascript:couppageList(${pageNum + 1}, ${discount })">
 							</c:if>[다음]&nbsp;
 							<c:if test="${pageNum < maxpage}"></a></c:if>
 						</div><br><br><br>

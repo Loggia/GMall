@@ -78,9 +78,9 @@
 			</when>
 		 </choose>
 		 
-		 <if test="discount != null and discount != ''">
-   			and c.discount = #{discount}
-  		 </if>
+		 <if test="discount != 0">
+		 	and c.discount = #{discount}
+		 </if>
 		 and c.bis_no=m.bis_no
 	   order by c.his_no desc limit ${startrow}, ${endrow}; 
 	</select>
@@ -149,6 +149,10 @@
 				where m.id = #{id}
 			</when>
 		 </choose>
+		 
+		 <if test="discount != 0">
+		 	and c.discount = #{discount}
+		 </if>
 		 and c.bis_no=m.bis_no
 	</select>
 </mapper>
