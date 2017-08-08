@@ -32,5 +32,7 @@ public class HDServiceImpl implements HDService{
 	public List<Product> interList(String inter) {
 		return boardDao.interList(inter);
 	}
+	
+	
 
 }
