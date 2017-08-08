@@ -81,4 +81,29 @@ public class ProductDaoImpl implements ProductDao{
 		
 		return sqlSession.getMapper(ProductMapper.class).getproductByNo(pro_no);
 	}
+
+	@Override
+	public int productCount(String bis_no, String category) 
+	{
+		Map<String, Object> map = new HashMap<String, Object>();
+    	
+    	map.put("bis_no", bis_no);
+    	map.put("category", category);
+    	
+    	return sqlSession.selectOne(NS+"productCount", map);
+	}
+
+	@Override
+	public List<Product> productList(String bis_no, String category, Integer pageNum, int limit) 
+	{
+		int startrow = (pageNum - 1) * limit;
+    	
+    	Map<String, Object> map = new HashMap<String, Object>();
+    	
+    	map.put("bis_no", bis_no);
+    	map.put("category", category);
+    	map.put("startrow", startrow);
+    	
+    	return sqlSession.selectList(NS+"productList", map);
+	}
 }

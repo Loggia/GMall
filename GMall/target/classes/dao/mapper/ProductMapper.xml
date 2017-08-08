@@ -9,4 +9,22 @@
     </if>
   </select>
 
+  <select id="productList" parameterType="hashmap" resultType="product">
+		select *
+		  from product
+		 where bis_no = #{bis_no}
+		 <if test="category != null">
+		 	and category = #{category}
+		 </if>
+	   order by pro_no desc limit ${startrow}, 10
+	</select>
+
+	<select id="productCount" parameterType="hashmap" resultType="int">
+		select count(*)
+		  from product
+		 where bis_no = #{bis_no}
+		 <if test="category != null">
+		 	and category = #{category}
+		 </if>
+	</select>
 </mapper>

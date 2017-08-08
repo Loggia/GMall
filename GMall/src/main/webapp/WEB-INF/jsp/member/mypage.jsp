@@ -24,11 +24,12 @@ $(document).ready(function(){
        });
        
        
-        $('.category').on('click', function(){
-         var category = $(this).val();
-         mybis_list(category);
-      }); 
-      
+        $('.category').on('click', function()
+        {
+        	var category = $(this).val();
+        	location.href = "mypage.mall?category=" + category;
+        	// mybis_list(category);
+      	}); 
 });   
 
   function mybis_list(category){
@@ -63,20 +64,46 @@ $(document).ready(function(){
                      html += "<td></td>";
                      html += "<td></td>";
                   }else if(type == 2){
-                     html += "<td>" + myBislist[i].category + "</td>";
-                     html += "<td>" + myBislist[i].pro_name + "</td>";
-                     html += "<td>" + myBislist[i].price + "</td>";
-                     html += "<td>" + myBislist[i].date2 + "</td>";
-                  }
+                      html += "<td>" + myBislist[i].category + "</td>";
+                      html += "<td>" + myBislist[i].pro_name + "</td>";
+                      html += "<td>" + myBislist[i].price + "</td>";
+                      html += "<td>" + myBislist[i].date2 + "</td>";
+                   }
                   html += "</tr>";
                 }
                 $('#hd').empty().html(html);
-               
              }
           });
        }  
 </script>
-<!-- <style type="text/css">
+
+<script type="text/javascript">
+	function mypageList(pageNum) 
+	{		
+		location.href = "mypage.mall?pageNum=" + pageNum + "&category=${category}";
+	}	
+</script>
+<!-- 
+<c:if test="${member.type == 2 }">
+						<button type="button" onclick="location.href='${path}/product/addProduct.mall'" class="btn btn-info">상품 등록</button>
+						<div align="center" id="test">
+							<c:if test="${pageNum > 1}">
+								<a href="javascript:mypageList(${pageNum - 1})">
+							</c:if>[이전]&nbsp;
+							<c:if test="${pageNum > 1}"></a></c:if>
+							<c:forEach var="a" begin="${startpage}" end="${endpage}">
+								<c:if test="${pageNum == a}">[${a}]</c:if>
+								<c:if test="${pageNum != a}"><a href="javascript:mypageList(${a})">[${a}]</a></c:if>&nbsp;
+							</c:forEach>
+							<c:if test="${pageNum < maxpage}">
+								<a href="javascript:mypageList(${pageNum + 1})">
+							</c:if>[다음]&nbsp;
+							<c:if test="${pageNum < maxpage}"></a></c:if>
+						</div><br><br><br>
+					</c:if>
+
+
+<style type="text/css">
 body {
 	background-color: #f4f4f4;
 }
@@ -458,6 +485,20 @@ body {
 					</c:if>
 					<c:if test="${member.type == 2 }">
 						<button type="button" onclick="location.href='${path}/product/addProduct.mall'" class="btn btn-info">상품 등록</button>
+						<div align="center">
+							<c:if test="${pageNum > 1}">
+								<a href="javascript:mypageList(${pageNum - 1})">
+							</c:if>[이전]&nbsp;
+							<c:if test="${pageNum > 1}"></a></c:if>
+							<c:forEach var="a" begin="${startpage}" end="${endpage}">
+								<c:if test="${pageNum == a}">[${a}]</c:if>
+								<c:if test="${pageNum != a}"><a href="javascript:mypageList(${a})">[${a}]</a></c:if>&nbsp;
+							</c:forEach>
+							<c:if test="${pageNum < maxpage}">
+								<a href="javascript:mypageList(${pageNum + 1})">
+							</c:if>[다음]&nbsp;
+							<c:if test="${pageNum < maxpage}"></a></c:if>
+						</div><br><br><br>
 					</c:if>
 				</div>
 			</div>

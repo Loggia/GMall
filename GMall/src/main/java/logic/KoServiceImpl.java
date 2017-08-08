@@ -134,4 +134,16 @@ public class KoServiceImpl implements KoService{
 		tradeDao.deliveryControl(trd_no,tradeCheck);
 		
 	}
+	
+	@Override
+	public int productCount(String bis_no, String category) 
+	{
+		return productDao.productCount(bis_no, category);
+	}
+
+	@Override
+	public List<Product> productList(String bis_no, String category, Integer pageNum, int limit) 
+	{
+		return productDao.productList(bis_no, category, pageNum, limit);
+	}
 }

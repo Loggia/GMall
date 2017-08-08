@@ -19,4 +19,7 @@ public interface KoService {
 	String tradeCheck(String trd_no);//고종환 사업자 배송현황 변경위한 쿼리
 	void deliveryControl(String trd_no, String tradeCheck);//고종환 사업자 배송현황 변경
 	List<Trade> delvpageList(String id, int type, Integer pageNum, int limit); // 고종환 배송 조회
+	
+	int productCount(String bis_no, String category); // 고종환 내 사업장 관리 카운팅
+	List<Product> productList(String bis_no, String category, Integer pageNum, int limit); // 고종환 내 사업장 관리 조회\	
 }

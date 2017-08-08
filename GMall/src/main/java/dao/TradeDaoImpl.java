@@ -41,14 +41,12 @@ public class TradeDaoImpl implements TradeDao{
 			try
 			{
 				int startrow = (pageNum - 1) * limit;
-		    	int endrow = startrow + limit;  	
 		    	
 		    	Map<String, Object> map = new HashMap<String, Object>();
 		    	
 		    	map.put("id", id);
 		    	map.put("type", type);
 		    	map.put("startrow", startrow);
-		    	map.put("endrow", endrow);
 		    	
 		    	return sqlSession.selectList(NS+"tradeList", map);
 			}
@@ -102,7 +100,6 @@ public class TradeDaoImpl implements TradeDao{
 			try
 			{
 				int startrow = (pageNum - 1) * limit;
-		    	int endrow = startrow + limit;  	
 		    	
 		    	Map<String, Object> map = new HashMap<String, Object>();
 		    	
@@ -110,7 +107,6 @@ public class TradeDaoImpl implements TradeDao{
 		    	map.put("type", type);
 		    	map.put("discount", discount);
 		    	map.put("startrow", startrow);
-		    	map.put("endrow", endrow);
 		    	
 		    	return sqlSession.selectList(NS+"couponList", map);
 			}
@@ -167,15 +163,13 @@ public class TradeDaoImpl implements TradeDao{
 		{
 			try
 			{
-				int startrow = (pageNum - 1) * limit;
-		    	int endrow = startrow + limit;  	
+				int startrow = (pageNum - 1) * limit;	
 		    	
 		    	Map<String, Object> map = new HashMap<String, Object>();
 		    	
 		    	map.put("id", id);
 		    	map.put("type", type);
 		    	map.put("startrow", startrow);
-		    	map.put("endrow", endrow);
 		    	
 		    	return sqlSession.selectList(NS+"delvpageList", map);
 			}
@@ -193,14 +187,12 @@ public class TradeDaoImpl implements TradeDao{
 			try
 			{
 				int startrow = (pageNum - 1) * limit;
-		    	int endrow = startrow + limit;  	
 		    	
 		    	Map<String, Object> map = new HashMap<String, Object>();
 		    	
 		    	map.put("id", id);
 		    	map.put("type", type);
 		    	map.put("startrow", startrow);
-		    	map.put("endrow", endrow);
 		    	
 		    	return sqlSession.selectList(NS+"moneyChangeList", map);
 			}

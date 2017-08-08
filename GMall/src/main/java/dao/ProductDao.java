@@ -19,4 +19,7 @@ public interface ProductDao {
 	List<Product> findAll(String bis_no, String category);
 
 	Product getproductByNo(Integer pro_no); // 구정연 상품리스트 출력 (장바구니)
+
+	int productCount(String bis_no, String category); // 고종환 내 사업장 관리 카운팅
+	List<Product> productList(String bis_no, String category, Integer pageNum, int limit); // 고종환 내 사업장 관리 조회
 }

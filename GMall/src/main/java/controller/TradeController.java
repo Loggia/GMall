@@ -179,7 +179,7 @@ public class TradeController
 			discount = "0";
 		}
 		
-		int limit = 2;
+		int limit = 10;
 		int listcount = jooService.couponCount(login.getId(), login.getType(), discount);
 		List<Coupon_history> couponList = jooService.couponList(login.getId(), login.getType(), discount, pageNum, limit);
 		int maxpage = (int)((double)listcount/limit + 0.95);

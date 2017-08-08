@@ -23,7 +23,7 @@
 				  and p.bis_no=(select bis_no from member m where m.id=t.sell_id) 
 			</when>
 		 </choose>
-	   order by trd_no desc limit ${startrow}, ${endrow}
+	   order by trd_no desc limit ${startrow}, 10
 	</select>
 	
 	<select id="moneyChangeList" parameterType="hashmap" resultType="trade">
@@ -45,7 +45,7 @@
 			</when>
 		 </choose>
 		 and t.pro_no = p.pro_no
-	   order by trd_no desc limit ${startrow}, ${endrow};
+	   order by trd_no desc limit ${startrow}, 10
 	</select>
 	
 	<select id="delvpageList" parameterType="hashmap" resultType="trade">
@@ -62,7 +62,7 @@
 				  and t.pro_no=p.pro_no 
 			</when>
 		 </choose>
-	   order by trd_no desc limit ${startrow}, ${endrow}
+	   order by trd_no desc limit ${startrow}, 10
 	</select>
 	
 	<select id="couponList" parameterType="hashmap" resultType="coupon_history">
@@ -82,7 +82,7 @@
 		 	and c.discount = #{discount}
 		 </if>
 		 and c.bis_no=m.bis_no
-	   order by c.his_no desc limit ${startrow}, ${endrow}; 
+	   order by c.his_no desc limit ${startrow}, 10; 
 	</select>
 	
 	<!-- 카운팅 쿼리문 -->
