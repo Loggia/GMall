@@ -39,13 +39,24 @@ public class BoardController
 	@RequestMapping("board/main")
 	public ModelAndView main(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		/*Member login = (Member)session.getAttribute("LOGIN_MEMBER");
-		String inter = login.getInterest();*/
+		
+		if((Member)session.getAttribute("LOGIN_MEMBER") == null) {
+			List<Product> interList = hdService.interList("");
+			mav.addObject("interList",interList);
+			
+		} else if((Member)session.getAttribute("LOGIN_MEMBER") != null) {
+			Member login = (Member)session.getAttribute("LOGIN_MEMBER");
+			String inter = login.getInterest();
+			List<Product> interList = hdService.interList(inter);
+			mav.addObject("interList",interList);
+		}
+		
 		List<Product> primList = hdService.primList();
 		List<Product> newList = hdService.newList();
 		List<Product> popuList = hdService.popuList();
-		List<Product> interList = hdService.interList("육류");
-		mav.addObject("interList",interList);
+		mav.addObject("primList", primList);
+		mav.addObject("newList", newList);
+		mav.addObject("popuList", popuList);
 		return mav;
 		
 	}
