@@ -23,7 +23,7 @@
 				  and p.bis_no=(select bis_no from member m where m.id=t.sell_id) 
 			</when>
 		 </choose>
-	   order by trd_no asc limit ${startrow}, ${endrow}
+	   order by trd_no desc limit ${startrow}, ${endrow}
 	</select>
 	
 	<select id="moneyChangeList" parameterType="hashmap" resultType="trade">
@@ -45,7 +45,7 @@
 			</when>
 		 </choose>
 		 and t.pro_no = p.pro_no
-	   order by trd_no asc limit ${startrow}, ${endrow};
+	   order by trd_no desc limit ${startrow}, ${endrow};
 	</select>
 	
 	<select id="delvpageList" parameterType="hashmap" resultType="trade">
@@ -62,7 +62,27 @@
 				  and t.pro_no=p.pro_no 
 			</when>
 		 </choose>
-	   order by trd_no asc limit ${startrow}, ${endrow}
+	   order by trd_no desc limit ${startrow}, ${endrow}
+	</select>
+	
+	<select id="couponList" parameterType="hashmap" resultType="coupon_history">
+		select c.id, c.discount, c.chk, m.bis_name
+		  from coupon_history c, member m 
+		 <choose>
+		 	<when test="type == 1">
+		  		where c.id = #{id}
+		  	</when>
+		  	
+		  	<when test="type == 2">
+				where m.id = #{id}
+			</when>
+		 </choose>
+		 
+		 <if test="discount != null and discount != ''">
+   			and c.discount = #{discount}
+  		 </if>
+		 and c.bis_no=m.bis_no
+	   order by c.his_no desc limit ${startrow}, ${endrow}; 
 	</select>
 	
 	<!-- 카운팅 쿼리문 -->
@@ -115,5 +135,20 @@
 			</when>
 		 </choose>
 		 and t.pro_no = p.pro_no
+	</select>
+	
+	<select id="couponCount" parameterType="hashmap" resultType="int">
+		select count(*)
+		  from coupon_history c, member m 
+		 <choose>
+		 	<when test="type == 1">
+		  		where c.id = #{id}
+		  	</when>
+		  	
+		  	<when test="type == 2">
+				where m.id = #{id}
+			</when>
+		 </choose>
+		 and c.bis_no=m.bis_no
 	</select>
 </mapper>

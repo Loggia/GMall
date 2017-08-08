@@ -198,12 +198,19 @@ public class JooServiceImpl implements JooService
 	
 	/*
 	 * 주한울
-	 * 일반회원 쿠폰목록
+	 * 일반회원 쿠폰목록 (사용 안함)
 	 */
 	@Override
 	public List<Coupon_history> memberCoupon(String id) 
 	{
 		return tradeDao.memberCoupon(id);
+	}
+	
+	// 쿠폰 목록 조회
+	@Override
+	public List<Coupon_history> couponList(String id, int type, String discount, Integer pageNum, int limit)
+	{
+		return tradeDao.couponList(id, type, discount, pageNum, limit);
 	}
 	
 	/*
@@ -238,5 +245,11 @@ public class JooServiceImpl implements JooService
 	public int moneyChangeCount(String id, int type) 
 	{
 		return tradeDao.moneyChangeCount(id, type);
+	}
+	
+	@Override
+	public int couponCount(String id, int type) 
+	{
+		return tradeDao.couponCount(id, type);
 	}
 }

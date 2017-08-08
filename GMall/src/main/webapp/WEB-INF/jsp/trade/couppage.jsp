@@ -134,9 +134,10 @@ $(document).ready(function(){
 					
 					<div class="disc_sel pull-right" style="margin-bottom: 40px; z-index: 5px;">
 						<ul>
-					     	<li><input type="button" class="btn btn-default" onclick="location.href='${path}/trade/couponDiscountCheck.mall?discount=5'"  value="5%"></li>
-							<li><input type="button" class="btn btn-default" onclick="location.href='${path}/trade/couponDiscountCheck.mall?discount=10'" value="10%"></li>
-							<li><input type="button" class="btn btn-default" onclick="location.href='${path}/trade/couponDiscountCheck.mall?discount=15'" value="15%"></li>
+							<li><input type="button" class="btn btn-default" onclick="location.href='${path}/trade/couppage.mall?discount=0'"  value="전체"></li>
+					     	<li><input type="button" class="btn btn-default" onclick="location.href='${path}/trade/couppage.mall?discount=5'"  value="5%"></li>
+							<li><input type="button" class="btn btn-default" onclick="location.href='${path}/trade/couppage.mall?discount=10'" value="10%"></li>
+							<li><input type="button" class="btn btn-default" onclick="location.href='${path}/trade/couppage.mall?discount=15'" value="15%"></li>
 							
 						</ul>
 					</div>
@@ -174,7 +175,7 @@ $(document).ready(function(){
 										</c:if>
 										<c:if test="${member.type == 2 }">
 											<td>${coupon.discount }%</td>
-											<td>${coupon.nickname }</td>
+											<td>${coupon.id }</td>
 											<c:choose>
 												<c:when test="${coupon.chk == 1}">
 													<td>X</td>
@@ -188,7 +189,20 @@ $(document).ready(function(){
 								</c:forEach>
 							</tbody>
 						</table>
-					
+						<div align="center">
+							<c:if test="${pageNum > 1}">
+								<a href="javascript:list(${pageNum - 1})">
+							</c:if>[이전]&nbsp;
+							<c:if test="${pageNum > 1}"></a></c:if>
+							<c:forEach var="a" begin="${startpage}" end="${endpage}">
+								<c:if test="${pageNum == a}">[${a}]</c:if>
+								<c:if test="${pageNum != a}"><a href="javascript:list(${a})">[${a}]</a></c:if>&nbsp;
+							</c:forEach>
+							<c:if test="${pageNum < maxpage}">
+								<a href="javascript:list(${pageNum + 1})">
+							</c:if>[다음]&nbsp;
+							<c:if test="${pageNum < maxpage}"></a></c:if>
+						</div><br><br><br>
 					</div>
 				</div>
 			</div>

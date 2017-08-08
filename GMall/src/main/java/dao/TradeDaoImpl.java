@@ -87,7 +87,7 @@ public class TradeDaoImpl implements TradeDao{
 
 		/*
 		 * 주한울
-		 * 일반회원 쿠폰목록
+		 * 일반회원 쿠폰목록 (사용 안함)
 		 */
 		@Override
 		public List<Coupon_history> memberCoupon(String id) 
@@ -95,10 +95,37 @@ public class TradeDaoImpl implements TradeDao{
 			return sqlSession.getMapper(TradeMapper.class).memberCoupon(id);
 		}
 		
+		// 쿠폰 목록 조회
+		@Override
+		public List<Coupon_history> couponList(String id, int type, String discount, Integer pageNum, int limit) 
+		{
+			try
+			{
+				int startrow = (pageNum - 1) * limit;
+		    	int endrow = startrow + limit;  	
+		    	
+		    	Map<String, Object> map = new HashMap<String, Object>();
+		    	
+		    	map.put("id", id);
+		    	map.put("type", type);
+		    	map.put("discount", discount);
+		    	map.put("startrow", startrow);
+		    	map.put("endrow", endrow);
+		    	
+		    	return sqlSession.selectList(NS+"couponList", map);
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+				
+				return null;
+			}
+		}
+		
 		
 		/*
 		 * 고종환
-		 * 사업자 쿠폰목록
+		 * 사업자 쿠폰목록 (사용 안함)
 		 */
 		@Override
 		public List<Coupon_history> bisCoupon(String id) {
@@ -107,7 +134,7 @@ public class TradeDaoImpl implements TradeDao{
 		
 		/*
 		 * 주한울
-		 * 일반회원 쿠폰목록 카테고리 선택시
+		 * 일반회원 쿠폰목록 카테고리 선택시 (사용 안함)
 		 */
 		@Override
 		public List<Coupon_history> memberDiscountCheck(String id, String discount) 
@@ -119,7 +146,7 @@ public class TradeDaoImpl implements TradeDao{
 			return sqlSession.getMapper(TradeMapper.class).memberDiscountCheck(map);
 		}
 
-		//고종환 사업자 쿠폰목록 카테고리 선택시
+		//고종환 사업자 쿠폰목록 카테고리 선택시 (사용 안함)
 		@Override
 		public List<Coupon_history> bisDiscountCheck(String id, String discount) {
 			Map<String,String> map=new HashMap<String,String>();
@@ -232,6 +259,16 @@ public class TradeDaoImpl implements TradeDao{
 	    	map.put("type", type);
 	    	
 			return sqlSession.selectOne(NS+"moneyChangeCount", map);
+		}
+		
+		@Override
+		public int couponCount(String id, int type) 
+		{
+			Map<String, Object> map = new HashMap<String, Object>();
+	    	map.put("id", id);
+	    	map.put("type", type);
+	    	
+			return sqlSession.selectOne(NS+"couponCount", map);
 		}
 }
 
