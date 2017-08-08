@@ -36,7 +36,6 @@ public class TradeController
 	{
 		ModelAndView mav = new ModelAndView("trade/BSList");
 		Member login = (Member)session.getAttribute("LOGIN_MEMBER");
-		List<Trade> trdList = null;
 		
 		if(login == null)
 		{
@@ -54,20 +53,7 @@ public class TradeController
 		
 		int limit = 10;
 		int listcount = jooService.tradeCount(login.getId(), login.getType());
-		
-		if(login.getType() == 1) // 일반회원 (주한울)
-		{
-			trdList = jooService.tradeList(login.getId(), login.getType(), pageNum, limit);
-		}
-		else if(login.getType() == 2) // 사업자
-		{
-			trdList = jooService.tradeList(login.getId(), login.getType(), pageNum, limit);
-		}
-		else //if(login.getType() == 3) // 관리자 (구정연)
- 		{
-			trdList = jooService.tradeList(login.getId(), login.getType(), pageNum, limit);
-		}
-		
+		List<Trade> trdList = jooService.tradeList(login.getId(), login.getType(), pageNum, limit);
 		int maxpage = (int)((double)listcount/limit + 0.95);
 		int startpage = (((int)((double)pageNum/10 + 0.9)) -1) * 10 + 1;
 		int endpage = startpage + 9;

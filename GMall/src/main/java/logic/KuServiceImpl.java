@@ -90,4 +90,14 @@ public class KuServiceImpl implements KuService
 		
 		return new Cart();
 	}
+	
+	/*
+	 * 정연이
+	 * 보유금액(금액 변동) 
+	 */
+	@Override
+	public List<Trade> moneyChangeList(String id, Integer type, Integer pageNum, Integer limit) 
+	{
+		return tradeDao.moneyChangeList(id, type, pageNum, limit);
+	}
 }

@@ -161,13 +161,28 @@ public class TradeDaoImpl implements TradeDao{
 		}
 		
 		@Override
-		public List<Trade> moneyChangeList(Member member) 
+		public List<Trade> moneyChangeList(String id, Integer type, Integer pageNum, Integer limit)
 		{
-			Map<String, Object> map = new HashMap<String, Object>();
-			map.put("id", member.getId());
-			map.put("type", member.getType());
-			
-			return sqlSession.selectList("dao.mapper.TradeMapper.moneyChangeList", map);
+			try
+			{
+				int startrow = (pageNum - 1) * limit;
+		    	int endrow = startrow + limit;  	
+		    	
+		    	Map<String, Object> map = new HashMap<String, Object>();
+		    	
+		    	map.put("id", id);
+		    	map.put("type", type);
+		    	map.put("startrow", startrow);
+		    	map.put("endrow", endrow);
+		    	
+		    	return sqlSession.selectList(NS+"moneyChangeList", map);
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+				
+				return null;
+			}
 		}
 		//고종환 사업자 배송현황 변경위한 쿼리
 		@Override
@@ -206,6 +221,17 @@ public class TradeDaoImpl implements TradeDao{
 	    	map.put("type", type);
 	    	
 			return sqlSession.selectOne(NS+"delvpageCount", map);
+		}
+
+		// 보유금액 카운팅
+		@Override
+		public int moneyChangeCount(String id, int type) 
+		{
+			Map<String, Object> map = new HashMap<String, Object>();
+	    	map.put("id", id);
+	    	map.put("type", type);
+	    	
+			return sqlSession.selectOne(NS+"moneyChangeCount", map);
 		}
 }
 

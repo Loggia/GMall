@@ -409,23 +409,45 @@ public class MemberController
 	 * 보유금액 & 수익금관리
 	 */
 	@RequestMapping("member/moneypage")
-	public ModelAndView moneypage(HttpSession session) 
+	public ModelAndView moneypage(Integer pageNum, HttpSession session) 
 	{
 		ModelAndView mav = new ModelAndView();
 		Member login = (Member)session.getAttribute("LOGIN_MEMBER");
-		List<Trade> tradeList = null; // shopService.tradeList();
 		
-		if(login.getType() == 3)
+		if(login == null)
 		{
-			tradeList = kuService.tradeList();
-		}
-		else
-		{
-			tradeList = jooService.moneyChangeList(login);
+			mav.setViewName("alert");
+			mav.addObject("url", "../board/main.mall");
+			mav.addObject("msg", "로그인하고 시도하시기 바랍니다.");
+			
+			return mav;
 		}
 		
+		if(pageNum == null || pageNum.toString().equals(""))
+		{
+			pageNum = 1;
+		}
+		
+		int limit = 10;
+		int listcount = jooService.moneyChangeCount(login.getId(), login.getType());
+		List<Trade> tradeList = kuService.moneyChangeList(login.getId(), login.getType(), pageNum, limit);
+		int maxpage = (int)((double)listcount/limit + 0.95);
+		int startpage = (((int)((double)pageNum/10 + 0.9)) -1) * 10 + 1;
+		int endpage = startpage + 9;
+		
+		if(endpage > maxpage)
+		{
+			endpage = maxpage;
+		}
+		
+		mav.addObject("maxpage", maxpage);
+		mav.addObject("startpage", startpage);
+		mav.addObject("endpage", endpage);
+		mav.addObject("listcount", listcount);
 		mav.addObject("tradeList",tradeList);
+		mav.addObject("pageNum", pageNum);
 		mav.addObject("member", login);
+		
 		return mav;
 	}
 	

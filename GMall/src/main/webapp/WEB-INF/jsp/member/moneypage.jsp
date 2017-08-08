@@ -32,6 +32,13 @@ $(document).ready(function(){
 	
 });
 </script>
+
+<script type="text/javascript">
+	function list(pageNum) 
+	{	
+		location.href = "moneypage.mall?pageNum=" + pageNum;
+	}	
+</script>
 </head>
 <body>
 	<div class="container-fluid"
@@ -186,7 +193,7 @@ $(document).ready(function(){
 							style="border-bottom: 1px solid #e5e5e5;">
 							<thead>
 								<tr>
-								<th>사업자</th>
+								<th>판매자</th>
 								<th>거래상품</th>
 								<th>주문금액</th>
 								<th>수수료</th>
@@ -206,8 +213,20 @@ $(document).ready(function(){
 							</tbody>
 						</table>
 					</c:if>
-					
-					<br><br>
+					<div align="center">
+						<c:if test="${pageNum > 1}">
+							<a href="javascript:list(${pageNum - 1})">
+						</c:if>[이전]&nbsp;
+						<c:if test="${pageNum > 1}"></a></c:if>
+						<c:forEach var="a" begin="${startpage}" end="${endpage}">
+							<c:if test="${pageNum == a}">[${a}]</c:if>
+							<c:if test="${pageNum != a}"><a href="javascript:list(${a})">[${a}]</a></c:if>&nbsp;
+						</c:forEach>
+						<c:if test="${pageNum < maxpage}">
+							<a href="javascript:list(${pageNum + 1})">
+						</c:if>[다음]&nbsp;
+						<c:if test="${pageNum < maxpage}"></a></c:if>
+					</div><br><br><br>
 				</div>
 			</div>
 		</div>

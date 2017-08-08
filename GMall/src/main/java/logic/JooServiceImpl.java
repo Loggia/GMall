@@ -216,16 +216,6 @@ public class JooServiceImpl implements JooService
 		return tradeDao.memberDiscountCheck(id,discount);
 	}
 	
-	/*
-	 * 주한울
-	 * 주한울 일반회원, 사업자 보유금액(금액 변동) 
-	 */
-	@Override
-	public List<Trade> moneyChangeList(Member member) 
-	{
-		return tradeDao.moneyChangeList(member);
-	}
-	
 	@Override
 	public Member getUserById(String id) 
 	{
@@ -242,5 +232,11 @@ public class JooServiceImpl implements JooService
 	public int delvpageCount(String id, int type) 
 	{
 		return tradeDao.delvpageCount(id, type);
+	}
+
+	@Override
+	public int moneyChangeCount(String id, int type) 
+	{
+		return tradeDao.moneyChangeCount(id, type);
 	}
 }
