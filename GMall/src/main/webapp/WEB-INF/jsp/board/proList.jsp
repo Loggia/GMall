@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>상품 리스트</title>
 <script>
-function list(pageNum) 
+function prolist(pageNum) 
 {
   location.href = "proList.mall?category=${param.category}&group=${param.group}&pageNum=" + pageNum;
 }
@@ -58,15 +58,15 @@ function list(pageNum)
                 <tr align="center" height="26">
                   <td colspan="5">
                     <c:if test="${pageNum > 1}">
-                      <a href="javascript:list(${pageNum - 1})">
+                      <a href="javascript:prolist(${pageNum - 1})">
                     </c:if>[이전]&nbsp;
                     <c:if test="${pageNum > 1}"></a></c:if>
                     <c:forEach var="a" begin="${startpage}" end="${endpage}">
   	                    <c:if test="${pageNum == a}">[${a}]</c:if>
-  	                    <c:if test="${pageNum != a}"><a href="javascript:list(${a})">[${a}]</a></c:if>&nbsp;  	 
+  	                    <c:if test="${pageNum != a}"><a href="javascript:prolist(${a})">[${a}]</a></c:if>&nbsp;  	 
                     </c:forEach>
                     <c:if test="${pageNum < maxpage}">
-                      <a href="javascript:list(${pageNum + 1})">
+                      <a href="javascript:prolist(${pageNum + 1})">
                     </c:if>[다음]&nbsp;
                     <c:if test="${pageNum < maxpage}"></a></c:if>
                   </td>
