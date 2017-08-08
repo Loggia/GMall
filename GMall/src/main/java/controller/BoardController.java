@@ -39,12 +39,12 @@ public class BoardController
 	@RequestMapping("board/main")
 	public ModelAndView main(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		Member login = (Member)session.getAttribute("LOGIN_MEMBER");
-		String inter = login.getInterest();
+		/*Member login = (Member)session.getAttribute("LOGIN_MEMBER");
+		String inter = login.getInterest();*/
 		List<Product> primList = hdService.primList();
 		List<Product> newList = hdService.newList();
 		List<Product> popuList = hdService.popuList();
-		List<Product> interList = hdService.interList(inter);
+		List<Product> interList = hdService.interList("육류");
 		mav.addObject("interList",interList);
 		return mav;
 	}
