@@ -261,7 +261,9 @@ public class BoardDaoImpl implements BoardDao{
 
 	@Override
 	public List<Product> interList(String inter) {
-		return sqlSession.getMapper(BoardMapper.class).interList(inter);
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+    	paramMap.put("inter", inter);
+    	return sqlSession.selectList(NS+"inter", paramMap);
 	}
 
 	@Override

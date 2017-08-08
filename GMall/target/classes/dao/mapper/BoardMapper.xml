@@ -126,6 +126,14 @@
     select buy_id from trade where buy_id = '${userid}' and pro_no=${pro_no} 
   </select>
   
+  <select id="inter" resultType="Product" parameterType="hashmap">
+  	select main_img fileurl from product ORDER by date LIMIT 4;
+  	<if test="inter == null">
+  		where category=#{inter }
+  	</if>
+  	ORDER by date LIMIT 4
+  </select>
+  
   
    
 </mapper>
