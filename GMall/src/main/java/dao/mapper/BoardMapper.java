@@ -63,8 +63,14 @@ public interface BoardMapper {
 			+ " sub_img1 fileurl1, sub_img2 fileurl2, sub_img3 fileurl3 from product where pro_no = #{pro_no}")
 	Product proInfo(String pro_no);
 	
-	@Select("select main_img fileurl from product where category=#{inter } ORDER by date LIMIT 4;")
-	List<Product> interList(String inter);
+	@Select("select count(p.pro_no) cnt, p.pro_no, p.main_img fileurl from trade t, product p where p.pro_no=t.pro_no group by t.pro_no order by cnt desc;")
+	List<Product> popuList();
+	
+	@Select("select main_img from product ORDER by date LIMIT 4;")
+	List<Product> newList();
+	
+	@Select("select m.id,p.pro_name,m.nickname, p.main_img from member m, product p where m.bis_no=p.bis_no and prim=1 ORDER by date LIMIT 4;")
+	List<Product> primList();
 	
 	
 	

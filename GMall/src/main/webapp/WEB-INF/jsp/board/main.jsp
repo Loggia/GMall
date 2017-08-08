@@ -55,26 +55,29 @@ body {
 <div class="container-fluid" style="padding: 0px 0px 0px 0px; margin-top: 16px; margin-bottom: 16px;">
 		<div class="main_cont" style="padding: 0px 0px 0px 0px; margin: 0 auto; width: 1268px;">
 			<div style="display: inline;">
-				<c:forEach begin="1" end="4">
+				<c:forEach items="${primList }" var="prim">
 					<div class="col-xs-3">
-					<div class="1st-line mask" style="background-color: white; margin-left: 15px; margin-bottom: 15px;">
+						<div class="1st-line mask" style="background-color: white; margin-left: 15px; margin-bottom: 15px;">
+							<img src="../img/${prim.fileurl }">
 						</div>
 					</div>
 				</c:forEach>
 			</div>
 			<div style="display: inline;">
-				<c:forEach begin="1" end="4">
+				<c:forEach items="${popuList }" var="popu">
 					<div class="col-xs-3">
 						<div class="2nd-line mask" style="background-color: white; margin-left: 15px; margin-bottom: 15px;">
+							<img src="../img/${popu.fileurl }">
 						</div>
 					</div>
 				</c:forEach>
 			</div>
 
 			<div style="display: inline;">
-				<c:forEach begin="1" end="4">
+				<c:forEach items="${newList }" var="new">
 					<div class="col-xs-3">
-					<div class="3th-line mask" style="background-color: white; margin-left: 15px; margin-bottom: 15px;">
+						<div class="3th-line mask" style="background-color: white; margin-left: 15px; margin-bottom: 15px;">
+							<img src="../img/${new.fileurl }">
 						</div>
 					</div>
 				</c:forEach>

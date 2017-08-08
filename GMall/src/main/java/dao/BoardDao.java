@@ -45,9 +45,9 @@ public interface BoardDao {
 	void reviewUpdate(Board board);
 	Product proInfo(String pro_no);
 	List<Product> interList(String inter);
-	void popuList();
-	void newList();
-	void primList();
+	List<Product> popuList();
+	List<Product> newList();
+	List<Product> primList();
 
 
 	

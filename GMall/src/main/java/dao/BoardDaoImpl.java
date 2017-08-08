@@ -267,18 +267,18 @@ public class BoardDaoImpl implements BoardDao{
 	}
 
 	@Override
-	public void popuList() {
-		
+	public List<Product> popuList() {
+		return sqlSession.getMapper(BoardMapper.class).popuList();
 	}
 
 	@Override
-	public void newList() {
-		
+	public List<Product> newList() {
+		return sqlSession.getMapper(BoardMapper.class).newList();
 	}
 
 	@Override
-	public void primList() {
-		
+	public List<Product> primList() {
+		return sqlSession.getMapper(BoardMapper.class).primList();
 	}
 	
 	
