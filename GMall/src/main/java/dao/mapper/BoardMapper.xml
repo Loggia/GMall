@@ -116,7 +116,7 @@
   </select>
   
   <select id="reList" resultType="Board" parameterType="map">
-    select board_no, id, pass, subject, content, board_type, regdate, readcnt, ans_chk, img1 fileurl from board 
+    select board_no, id, pass, subject, content, board_type, regdate, readcnt, ans_chk, img1 fileurl, grade from board 
     <if test="pro_no != null">
       where board_type = 3 and pro_no = '${pro_no}' order by board_no desc limit ${startrow}, ${endrow} 
     </if>
@@ -126,7 +126,7 @@
   </select>
   
   <select id="checkUser" resultType="Trade" parameterType="map">
-    select buy_id from trade where buy_id = '${userid}' and pro_no=${pro_no} 
+    select trd_no from trade where buy_id = '${userid}' and pro_no = ${pro_no} and rv_chk = 1
   </select>
   
   <select id="inter" resultType="Product" parameterType="hashmap">

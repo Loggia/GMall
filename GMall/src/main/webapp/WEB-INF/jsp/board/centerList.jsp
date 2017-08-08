@@ -206,19 +206,19 @@ body {
 	  
   }
   
- function list(pageNum) 
+ function centerlist(pageNum) 
  {
-		var searchType = document.searchform.searchType.value;
+		var searchType = document.centersearchform.searchType.value;
 		if(searchType == null || searchType.length == 0)
 		{
-			document.searchform.searchContent.value = "";
-			document.searchform.pageNum.value = 1;
+			document.centersearchform.searchContent.value = "";
+			document.centersearchform.pageNum.value = 1;
 			location.href = "centerList.mall?pageNum=" + pageNum;
 		}
 		else
 		{
-			document.searchform.pageNum.value = pageNum;
-			document.searchform.submit();
+			document.centersearchform.pageNum.value = pageNum;
+			document.centersearchform.submit();
 			
 			return true;
 		}
@@ -494,21 +494,21 @@ body {
 						</table>
 						<div align="center">
 							<c:if test="${pageNum > 1}">
-								<a href="javascript:list(${pageNum - 1})">
+								<a href="javascript:centerlist(${pageNum - 1})">
 							</c:if>[이전]&nbsp;
 							<c:if test="${pageNum > 1}"></a></c:if>
 							<c:forEach var="a" begin="${startpage}" end="${endpage}">
 								<c:if test="${pageNum == a}">[${a}]</c:if>
-							  	<c:if test="${pageNum != a}"><a href="javascript:list(${a})">[${a}]</a></c:if>&nbsp;
+							  	<c:if test="${pageNum != a}"><a href="javascript:centerlist(${a})">[${a}]</a></c:if>&nbsp;
 							</c:forEach>
 							<c:if test="${pageNum < maxpage}">
-								<a href="javascript:list(${pageNum + 1})">
+								<a href="javascript:centerlist(${pageNum + 1})">
 							</c:if>[다음]&nbsp;
 							<c:if test="${pageNum < maxpage}"></a></c:if>
 						</div><br>
 						
 						<div align="center">
-							<form action="centerList.mall" method="get" name="searchform" onsubmit="return list(1)">
+							<form action="centerList.mall" method="get" name="centersearchform" onsubmit="return centerlist(1)">
 								<input type="hidden" name="pageNum" value="1">
 								<select name="searchType" id="searchType">
 									<option value="">선택하세요</option>

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import dao.BoardDao;
 import dao.mapper.BoardMapper;
 import logic.Board;
+import logic.Member;
 import logic.Product;
 import logic.Trade;
 
@@ -23,16 +24,13 @@ public class BoardDaoImpl implements BoardDao{
 	@Override
 	public List<Product> proList(String category, String group, String searchType, String searchContent, Integer pageNum, int limit) {
 		int startrow = (pageNum - 1) * limit;
-    	int endrow = startrow + limit;  
     	System.out.println("startrow : " + startrow);
-    	System.out.println("endrow : " + endrow);
     	System.out.println("group : " + group);
     	System.out.println("category : " + category);
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("category", category);
     	paramMap.put("group", group);
 		paramMap.put("startrow", startrow);
-    	paramMap.put("endrow", endrow);
     	paramMap.put("searchType", searchType);
     	paramMap.put("searchContent", searchContent);
     	return sqlSession.selectList(NS+"proList", paramMap);
@@ -49,11 +47,9 @@ public class BoardDaoImpl implements BoardDao{
 	
 	@Override
 	public List<Product> totalList(String searchType, String searchContent, Integer pageNum, int limit) {
-		int startrow = (pageNum - 1) * limit;
-    	int endrow = startrow + limit;    	
+		int startrow = (pageNum - 1) * limit;	
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("startrow", startrow);
-    	paramMap.put("endrow", endrow);
     	paramMap.put("searchType", searchType);
     	paramMap.put("searchContent", searchContent);
     	return sqlSession.selectList(NS+"totalList", paramMap);
@@ -208,6 +204,36 @@ public class BoardDaoImpl implements BoardDao{
 	@Override
 	public Product proInfo(String pro_no) {
 		return sqlSession.getMapper(BoardMapper.class).proInfo(pro_no);
+	}
+	
+	@Override
+	public void rvchkUpdate(String userid, String pro_no) {	
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("userid", userid);
+		paramMap.put("pro_no", pro_no);
+		sqlSession.getMapper(BoardMapper.class).rvchkUpdate(paramMap);
+	}
+	
+	@Override
+	public Trade sellInfo(String pro_no) {
+		return sqlSession.getMapper(BoardMapper.class).sellInfo(pro_no);
+	}
+	
+	@Override
+	public void memGrade(String sellid, int grade, int memberScore) {
+		System.out.println("grade : " + grade);
+		System.out.println("memberScore : " + memberScore);
+		int realGrade = grade + memberScore;
+		System.out.println("realGrade : " + realGrade);
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("sellid", sellid);
+		paramMap.put("realGrade", realGrade);
+		sqlSession.getMapper(BoardMapper.class).memGrade(paramMap);
+	}
+	
+	@Override
+	public Member sellScore(String sellid) {
+		return sqlSession.getMapper(BoardMapper.class).sellScore(sellid);
 	}
 
 	@Override

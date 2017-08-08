@@ -267,10 +267,11 @@ public class BaeServiceImpl implements BaeService{
 	}
 
 	@Override
-	public void reviewInsert(Board board, HttpServletRequest request) {
+	public void reviewInsert(Board board, String userid, String pro_no, HttpServletRequest request) {
 		board.setBoard_type(3); 
 		int num = boardDao.getMaxNum();
 		board.setBoard_no(++num);
+		boardDao.rvchkUpdate(userid, pro_no);
 		boardDao.reviewInsert(board);
 	}
 
@@ -287,6 +288,21 @@ public class BaeServiceImpl implements BaeService{
 	@Override
 	public Product proInfo(String pro_no) {
 		return boardDao.proInfo(pro_no);
+	}
+
+	@Override
+	public Trade sellInfo(String pro_no) {
+		return boardDao.sellInfo(pro_no);
+	}
+
+	@Override
+	public void memGrade(String sellid, int grade, int memberScore) {
+		boardDao.memGrade(sellid, grade, memberScore);
+	}
+
+	@Override
+	public Member sellScore(String sellid) {
+		return boardDao.sellScore(sellid);
 	}
 	
 	

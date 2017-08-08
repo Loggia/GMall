@@ -13,9 +13,9 @@
 }
 #loc2
 {
-  text-align : right;
+  text-align : center;
 } 
-#loc3 ul li
+#loc3 ul li  
 {
   text-align : center;
   display : inline-block;  
@@ -188,10 +188,27 @@ function list(pageNum)
 	  <td width="20%"><h4><a href="#reviewModal${stat.count}" data-toggle="modal" class="pull-left"
 	  style="margin-top: 3px;">제목 : ${rvlist.subject}</a></h4><br><h4 id="arrange">내용 : ${rvlist.content}</h4></td>
       <td width="20%" align="center">작성자 : ${rvlist.id}<br>등록일 : <fmt:formatDate value="${rvlist.regdate}" pattern="yyyy-MM-dd"/></td>		  
-	  <c:if test="${userid != 'admin' && userid != 'guest' && userid == userinfo.buy_id && userid == rvlist.id && empty param.pageNum}">
+	  <td width="20%" align="center">평점<br>
+	    <c:if test="${rvlist.grade == 2}">  
+	      <font color="#EDD200">★</font>
+	    </c:if>
+	    <c:if test="${rvlist.grade == 4}">
+	      <font color="#EDD200">★★</font>
+	    </c:if>
+	    <c:if test="${rvlist.grade == 6}">
+	      <font color="#EDD200">★★★</font>
+	    </c:if>
+	    <c:if test="${rvlist.grade == 8}">
+	      <font color="#EDD200">★★★★</font>
+	    </c:if>
+	    <c:if test="${rvlist.grade == 10}">
+	      <font color="#EDD200">★★★★★</font>
+	    </c:if>
+	  </td>
+	  <c:if test="${userid != 'admin' && userid != 'guest' && userid == rvlist.id && empty param.pageNum}">
 	    <td width="20%" align="center"><a href="reviewupdateForm.mall?pro_no=${pro_no}&num=${rvlist.board_no}&pageNum=1">수정</a><br><a href="reviewdeleteForm.mall?pro_no=${pro_no}&num=${rvlist.board_no}&pageNum=1">삭제</a></td>
       </c:if> 
-	  <c:if test="${userid != 'admin' && userid != 'guest' && userid == userinfo.buy_id && userid == rvlist.id && not empty param.pageNum}">
+	  <c:if test="${userid != 'admin' && userid != 'guest' && userid == rvlist.id && not empty param.pageNum}">
 	    <td width="20%" align="center"><a href="reviewupdateForm.mall?pro_no=${pro_no}&num=${rvlist.board_no}&pageNum=${param.pageNum}">수정</a><br><a href="reviewdeleteForm.mall?pro_no=${pro_no}&num=${rvlist.board_no}&pageNum=${param.pageNum}">삭제</a></td>
       </c:if>
 	  <c:if test="${userid == 'admin' && userid != 'guest' && empty param.pageNum}">
@@ -243,8 +260,8 @@ function list(pageNum)
 </c:if>	
 </table>
 <div id="loc2">
-<c:if test="${userid != 'admin' && userid != 'guest' && userid == userinfo.buy_id}">
-   <tr><td id="loc"><a href="reviewAdd.mall?pro_no=${param.pro_no}">[글쓰기]</a></td></tr>
+<c:if test="${userid != 'admin' && userid != 'guest' && not empty userinfo.trd_no}">
+   <div id="loc"><button type="button" class="btn btn-info" onclick="location.href='reviewAdd.mall?pro_no=${param.pro_no}'">리뷰 남기기</button></div>
 </c:if>
 </div>
 </div>

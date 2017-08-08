@@ -723,9 +723,11 @@ public class BoardController
 		Member member = (Member)request.getSession().getAttribute("LOGIN_MEMBER");
 		String pro_no = request.getParameter("pro_no");
 		String userid = member.getId();
+		Trade sellinfo = baeService.sellInfo(pro_no);
 		mav.addObject(new Board());
 		mav.addObject("userid", userid);
 		mav.addObject("pro_no", pro_no);
+		mav.addObject("sellinfo", sellinfo);
 		return mav;
 	}
 	
@@ -741,7 +743,17 @@ public class BoardController
 			mav.getModel().putAll(bindingResult.getModel());
 			return mav;
 		}
-		baeService.reviewInsert(board, request);
+		String userid = request.getParameter("id");
+		String pro_no = request.getParameter("pro_no");
+		String sellid = request.getParameter("sellid");
+		System.out.println("sellid : " + sellid);
+		int grade = board.getGrade();
+		Member member = baeService.sellScore(sellid);
+		int memberScore = (int)member.getScore();
+		System.out.println("grade : " + grade);
+		System.out.println("memberScore : " + memberScore);
+		baeService.memGrade(sellid, grade, memberScore);
+		baeService.reviewInsert(board, userid, pro_no, request);
 		mav.setViewName("redirect:/board/productDetail.mall?pro_no=" + board.getPro_no());
 		return mav;
 	}

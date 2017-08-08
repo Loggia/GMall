@@ -31,6 +31,7 @@ private int board_no;
 	
 	private int ans_chk;
 	private int pro_no;
+	private int grade;
 	private MultipartFile img1;
 	private MultipartFile img2;
 	private MultipartFile img3;
@@ -115,6 +116,14 @@ private int board_no;
 		this.readcnt = readcnt;
 	}
 	
+	public int getGrade() {
+		return grade;
+	}
+
+	public void setGrade(int grade) {
+		this.grade = grade;
+	}
+
 	public String getFileurl() {
 		if(fileurl == null) return "";
 		return fileurl;

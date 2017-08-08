@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import logic.Board;
+import logic.Member;
 import logic.Product;
 import logic.Trade;
 
@@ -36,12 +37,15 @@ public interface BoardDao {
 	Trade checkUser(String userid, String pro_no);
 	void reviewUpdate(Board board);
 	Product proInfo(String pro_no);
+	void rvchkUpdate(String userid, String pro_no);
+	Trade sellInfo(String pro_no);
+	void memGrade(String sellid, int grade, int memberScore);
+	Member sellScore(String sellid);
 	
 	List<Product> interList(String inter);
 	List<Product> popuList();
 	List<Product> newList();
 	List<Product> primList();
-
 
 	
 }

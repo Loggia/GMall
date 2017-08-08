@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>상품 리스트</title>
 <script>
-function list(pageNum) 
+function totallist(pageNum) 
 {
   location.href = "totalList.mall?&pageNum=" + pageNum;
 }

@@ -2,6 +2,7 @@ package dao.mapper;
 
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
@@ -9,7 +10,9 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import logic.Board;
+import logic.Member;
 import logic.Product;
+import logic.Trade;
 
 public interface BoardMapper {
 
@@ -52,9 +55,9 @@ public interface BoardMapper {
 	void qnaUpdate(Board board);
 
 	@Insert("insert into board (board_no, id, pass, subject, content, board_type, regdate, readcnt, "
-			+ "pro_no) values(#{board_no}, #{id}, #{pass}, #{subject}, #{content}, #{board_type}, "
-			+ "now(), #{readcnt}, #{pro_no})")
-	void reviewInsert(Board board);
+			+ "pro_no, grade) values(#{board_no}, #{id}, #{pass}, #{subject}, #{content}, #{board_type}, "
+			+ "now(), #{readcnt}, #{pro_no}, #{grade})")
+	void reviewInsert(Board board); 
 
 	@Update("update board set subject=#{subject}, content=#{content} where board_no=#{board_no} and board_type = 3")
 	void reviewUpdate(Board board);
@@ -62,6 +65,18 @@ public interface BoardMapper {
 	@Select("select pro_no, bis_no, bis_name, date, pro_name, price, cnt, category, favorite, pro_content, main_img fileurl, "
 			+ " sub_img1 fileurl1, sub_img2 fileurl2, sub_img3 fileurl3 from product where pro_no = #{pro_no}")
 	Product proInfo(String pro_no);
+	
+	@Update("update trade set rv_chk=2 where buy_id='${userid}' and pro_no=${pro_no}")
+	void rvchkUpdate(Map<String, Object> paramMap);
+	
+	@Select("select * from trade where pro_no=#{pro_no}")
+	Trade sellInfo(String pro_no);
+	
+	@Select("select score from member where id='${value}'")
+	Member sellScore(String sellid);
+	
+	@Update("update member set score=${realGrade} where id='${sellid}'")
+	void memGrade(Map<String, Object> paramMap);
 	
 	@Select("select count(p.pro_no) cnt, p.pro_no, p.main_img fileurl from trade t, product p where p.pro_no=t.pro_no group by t.pro_no order by cnt desc, date desc LIMIT 4;")
 	List<Product> popuList();
@@ -71,5 +86,8 @@ public interface BoardMapper {
 	   
 	@Select("select m.id, p.pro_name, m.nickname, p.main_img fileurl from member m, product p where m.bis_no=p.bis_no and prim=1 ORDER by date desc LIMIT 4;")
 	List<Product> primList();
+	
+	
+	
 	
 }
