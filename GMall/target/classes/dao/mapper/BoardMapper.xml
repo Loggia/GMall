@@ -56,7 +56,7 @@
       where ${searchType} like '%${searchContent}%' 
     </if>
     <if test="searchType == null and searchContent == null">
-      where category = 'java'
+      where category = 'null'
     </if>
   </select>
   
