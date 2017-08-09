@@ -32,23 +32,36 @@ public class KuServiceImpl implements KuService
 		return tradeDao.tradeList();
 	}
 
+	@Override
+	public int nomalCount() // 일반회원 카운팅
+	{
+		return memberDao.nomalCount();
+	}
+	
 	/*
 	 * 구정연 
 	 * 일반회원목록
 	 */
 	@Override
-	public List<Member> nomalList() {
-		
-		return memberDao.nomalList();
+	public List<Member> nomalList(Integer pageNum, Integer limit) 
+	{
+		return memberDao.nomalList(pageNum, limit);
 	}
+	
+	@Override 
+	public int businessCount() // 사업자 카운팅
+	{
+		return memberDao.businessCount();
+	}
+	
 	/*
 	 * 구정연
 	 * 사업자관리
 	 */
 	@Override
-	public List<Member> businessList() {
-		
-		return memberDao.businessList();
+	public List<Member> businessList(Integer pageNum, Integer limit) 
+	{
+		return memberDao.businessList(pageNum, limit);
 	}
 	
 	/*

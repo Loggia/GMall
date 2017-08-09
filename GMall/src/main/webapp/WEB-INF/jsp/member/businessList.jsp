@@ -32,6 +32,13 @@ $(document).ready(function(){
 	
 });
 </script>
+
+<script type="text/javascript">
+	function businessList(pageNum) 
+	{	
+		location.href = "businessList.mall?pageNum=" + pageNum;
+	}	
+</script>
 </head>
 <body>
 	<div class="container-fluid"
@@ -97,9 +104,9 @@ $(document).ready(function(){
 						</c:if>
 						<c:if test="${member.type == 3 }">
 							<li class="menu_delv"><a href="${path }/member/nomalList.mall"><img
-									src="../img/truck2_color.png" width="64px" height="64px"><br>일반회원 관리</a></li>
+									src="../img/nomal_1.png" width="64px" height="64px"><br>일반회원 관리</a></li>
 							<li class="menu_delv"><a href="${path }/member/businessList.mall"><img
-									src="../img/coupon_color.png"><br>사업자회원 관리</a></li>
+									src="../img/busi_1.png"><br>사업자회원 관리</a></li>
 							<li class="menu_delv"><a href="${path }/member/moneypage.mall"><img
 									src="../img/money_color.png"><br>보유 금액</a></li>
 							<li class="menu_delv"><a href="${path }/member/talkpage.mall"><img
@@ -127,7 +134,7 @@ $(document).ready(function(){
 
 					<c:if test="${member.type == 3 }">
 						<h3>
-							<strong>배송 목록</strong>
+							<strong>사업자 회원 관리</strong>
 						</h3>
 						<table class="table table-hover"
 							style="border-bottom: 1px solid #e5e5e5;">
@@ -155,8 +162,20 @@ $(document).ready(function(){
 							</tbody>
 						</table>
 					</c:if>
-					
-					<br><br>
+					<div align="center">
+						<c:if test="${pageNum > 1}">
+							<a href="javascript:businessList(${pageNum - 1})">
+						</c:if>[이전]&nbsp;
+						<c:if test="${pageNum > 1}"></a></c:if>
+						<c:forEach var="a" begin="${startpage}" end="${endpage}">
+							<c:if test="${pageNum == a}">[${a}]</c:if>
+							<c:if test="${pageNum != a}"><a href="javascript:businessList(${a})">[${a}]</a></c:if>&nbsp;
+						</c:forEach>
+						<c:if test="${pageNum < maxpage}">
+							<a href="javascript:businessList(${pageNum + 1})">
+						</c:if>[다음]&nbsp;
+						<c:if test="${pageNum < maxpage}"></a></c:if>
+					</div><br><br><br>
 				</div>
 			</div>
 		</div>

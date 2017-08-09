@@ -187,7 +187,7 @@ $(document).ready(function(){
 					
 					<c:if test="${member.type == 3 }">
 						<h3>
-							<strong>배송 목록</strong>
+							<strong>금액 변동 목록</strong>
 						</h3>
 						<table class="table table-hover"
 							style="border-bottom: 1px solid #e5e5e5;">

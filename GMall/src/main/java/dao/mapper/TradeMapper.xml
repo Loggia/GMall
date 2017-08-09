@@ -9,18 +9,18 @@
 		 	<when test="type == 1">
 		  		where buy_id = #{id}
 		  		  and t.pro_no=p.pro_no 
-		 		  and p.bis_no=(select bis_no from member m where m.id=t.sell_id) 
+		 		  and p.bis_no=(select m.bis_no from member m where m.bis_no=p.bis_no) 
 		  	</when>
 		  	
 		  	<when test="type == 2">
 				where sell_id = #{id}
 				  and t.pro_no=p.pro_no 
-				  and p.bis_no=(select bis_no from member m where m.id=t.sell_id) 
+				  and p.bis_no=(select m.bis_no from member m where m.bis_no=p.bis_no) 
 			</when>
 			
 			<when test="type == 3">
 				where t.pro_no=p.pro_no 
-				  and p.bis_no=(select bis_no from member m where m.id=t.sell_id) 
+				  and p.bis_no=(select m.bis_no from member m where m.bis_no=p.bis_no) 
 			</when>
 		 </choose>
 	   order by trd_no desc limit ${startrow}, 10

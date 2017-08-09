@@ -220,7 +220,8 @@ public class MemberController {
 		ModelAndView mav = new ModelAndView();
 		Member login = (Member) session.getAttribute("LOGIN_MEMBER");
 
-		if (login == null) {
+		if (login == null)
+		{
 			mav.setViewName("alert");
 			mav.addObject("url", "../board/main.mall");
 			mav.addObject("msg", "로그인하고 시도하시기 바랍니다.");
@@ -229,12 +230,23 @@ public class MemberController {
 		}
 
 		// 구정연 관리자에서 회원수정
-		if (login.getId().equals("admin")) {
-			Member user = kuService.getUserById(id);
-			mav.addObject("member", user);
+		if (login.getId().equals("admin")) 
+		{
+			if(login.getId().equals(member.getId()))
+			{
+				mav.addObject("member", login);
+			}
+			else
+			{
+				Member user = kuService.getUserById(member.getId());
+				mav.addObject("member", user);
+			}
 		}
-
-		mav.addObject("member", login);
+		else
+		{
+			mav.addObject("member", login);
+		}
+		
 		return mav;
 	}
 
@@ -255,11 +267,7 @@ public class MemberController {
 
 				jooService.updateMember(member, request);
 				session.invalidate(); // 회원이 수정되면 세션 만료
-				request.getSession().setAttribute("LOGIN_MEMBER", member); // 수정된
-																			// 정보로
-																			// 다시
-																			// 세션
-																			// 생성
+				request.getSession().setAttribute("LOGIN_MEMBER", member);
 
 				/*
 				 * 주한울 회원이 수정된 후 mypage에서 관심사업장, 사업장관리에 값이 뿌려지지 않는 문제가 있어 추가한 코드
@@ -281,26 +289,21 @@ public class MemberController {
 			}
 		}
 		// 구정연 - 일반회원목록 수정
-		else if (login.getId().equals("admin")) {
-			if (member.getPass().equals(passfirm)) {
-				if (member.getPass().equals("")) {
-					member.setPass(login.getPass());
-				}
-
+		else if (login.getId().equals("admin")) 
+		{
+			if (member.getPass().equals(passfirm)) 
+			{
 				jooService.updateMember(member, request);
-			} else {
-				mav.setViewName("alert");
-				mav.addObject("url", "../trade/BSList.mall");
-				mav.addObject("msg", "입력한 비밀번호가 일치하지 않습니다.");
 			}
-			mav.setViewName("redirect:/trade/BSList.mall");
-		} else {
+		} 
+		else 
+		{
 			mav.setViewName("alert");
 			mav.addObject("url", "../member/mypage.mall");
 			mav.addObject("msg", "자신의 아이디만 수정 가능합니다.");
 		}
 
-		mav.addObject("member", member);
+		mav.addObject("member", login);
 		return mav;
 	}
 
@@ -311,9 +314,9 @@ public class MemberController {
 	public ModelAndView delete(Member member, HttpSession session, String id) {
 		ModelAndView mav = new ModelAndView("board/main");
 		Member login = (Member) session.getAttribute("LOGIN_MEMBER");
-		Member user = jooService.getUserById(id);
 
-		if (login == null) {
+		if (login == null) 
+		{
 			mav.setViewName("alert");
 			mav.addObject("url", "../board/main.mall");
 			mav.addObject("msg", "회원만 탈퇴 가능합니다.");
@@ -321,23 +324,33 @@ public class MemberController {
 			return mav;
 		}
 
-		if (login.getId().equals(member.getId()) || login.getId().equals("admin")) {
-			if (login.getId().equals(member.getId())) {
-				if (login.getPass().equals(member.getPass())) {
-
+		if (login.getId().equals(member.getId()) || login.getId().equals("admin")) 
+		{
+			if (login.getId().equals(member.getId())) 
+			{
+				if (login.getPass().equals(member.getPass())) 
+				{
 					jooService.deleteMember(member);
 					session.invalidate();
-
-				} else {
+				} 
+				else 
+				{
 					mav.setViewName("alert");
 					mav.addObject("url", "../member/mypage.mall");
 					mav.addObject("msg", "비밀번호를 확인하세요.");
 				}
 
-			} else {
+			} 
+			else // 관리자 회원 강제탈퇴
+			{
+				Member user = kuService.getUserById(member.getId());
 				jooService.deleteMember(user);
+				mav.setViewName("member/mypage");
+				mav.addObject("member", login);
 			}
-		} else {
+		} 
+		else 
+		{
 			mav.setViewName("alert");
 			mav.addObject("url", "../board/main.mall");
 			mav.addObject("msg", "본인의 계정만 탈퇴 가능합니다.");
@@ -351,13 +364,45 @@ public class MemberController {
 	 */
 
 	@RequestMapping("member/nomalList")
-	public ModelAndView nomalList(HttpSession session) {
-
-		Member login = (Member) session.getAttribute("LOGIN_MEMBER");
+	public ModelAndView nomalList(Integer pageNum, HttpSession session)
+	{
 		ModelAndView mav = new ModelAndView();
-		List<Member> nomalList = kuService.nomalList();
+		Member login = (Member) session.getAttribute("LOGIN_MEMBER");
+		
+		if (login == null || !login.getId().equals("admin")) 
+		{
+			mav.setViewName("alert");
+			mav.addObject("url", "../board/main.mall");
+			mav.addObject("msg", "관리자만 사용 가능한 기능입니다.");
+
+			return mav;
+		}
+		
+		if (pageNum == null || pageNum.toString().equals("")) 
+		{
+			pageNum = 1;
+		}
+		
+		int limit = 20;
+		int listcount = kuService.nomalCount();
+		List<Member> nomalList = kuService.nomalList(pageNum, limit);
+		int maxpage = (int) ((double) listcount / limit + 0.95);
+		int startpage = (((int) ((double) pageNum / 10 + 0.9)) - 1) * 10 + 1;
+		int endpage = startpage + 9;
+		
+		if (endpage > maxpage) 
+		{
+			endpage = maxpage;
+		}
+		
+		mav.addObject("maxpage", maxpage);
+		mav.addObject("startpage", startpage);
+		mav.addObject("endpage", endpage);
+		mav.addObject("listcount", listcount);
 		mav.addObject("nomalList", nomalList);
+		mav.addObject("pageNum", pageNum);
 		mav.addObject("member", login);
+		
 		return mav;
 
 	}
@@ -366,15 +411,46 @@ public class MemberController {
 	 * 구정연 사업자관리
 	 */
 	@RequestMapping("member/businessList")
-	public ModelAndView businessList(HttpSession session) {
-
-		Member login = (Member) session.getAttribute("LOGIN_MEMBER");
+	public ModelAndView businessList(Integer pageNum, HttpSession session) 
+	{
 		ModelAndView mav = new ModelAndView();
-		List<Member> businessList = kuService.businessList();
-		mav.addObject("businessList", businessList);
-		mav.addObject("member", login);
-		return mav;
+		Member login = (Member) session.getAttribute("LOGIN_MEMBER");
+		
+		if (login == null || !login.getId().equals("admin")) 
+		{
+			mav.setViewName("alert");
+			mav.addObject("url", "../board/main.mall");
+			mav.addObject("msg", "관리자만 사용 가능한 기능입니다.");
 
+			return mav;
+		}
+		
+		if (pageNum == null || pageNum.toString().equals("")) 
+		{
+			pageNum = 1;
+		}
+		
+		int limit = 20;
+		int listcount = kuService.businessCount();
+		List<Member> businessList = kuService.businessList(pageNum, limit);
+		int maxpage = (int) ((double) listcount / limit + 0.95);
+		int startpage = (((int) ((double) pageNum / 10 + 0.9)) - 1) * 10 + 1;
+		int endpage = startpage + 9;
+		
+		if (endpage > maxpage) 
+		{
+			endpage = maxpage;
+		}
+		
+		mav.addObject("maxpage", maxpage);
+		mav.addObject("startpage", startpage);
+		mav.addObject("endpage", endpage);
+		mav.addObject("listcount", listcount);
+		mav.addObject("businessList", businessList);
+		mav.addObject("pageNum", pageNum);
+		mav.addObject("member", login);
+		
+		return mav;
 	}
 
 	/*

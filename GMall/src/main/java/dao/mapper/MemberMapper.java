@@ -48,4 +48,16 @@ public interface MemberMapper
 
 	@Select("select * from member where id = #{id}")
 	Member getUserById(String id);
+
+	@Select("select count(*) from member where type = 1")
+	int nomalCount();
+	
+	@Select("select * from member where type = 1 limit #{startrow}, 20")
+	List<Member> nomalList(Map map);
+
+	@Select("select count(*) from member where type = 2")
+	int businessCount();
+
+	@Select("select * from member where type = 2 limit #{startrow}, 20")
+	List<Member> businessList(Map<String, Object> map);
 }

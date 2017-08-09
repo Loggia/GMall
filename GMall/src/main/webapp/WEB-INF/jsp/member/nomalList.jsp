@@ -32,6 +32,13 @@ $(document).ready(function(){
 	
 });
 </script>
+
+<script type="text/javascript">
+	function nomalList(pageNum) 
+	{	
+		location.href = "nomalList.mall?pageNum=" + pageNum;
+	}	
+</script>
 </head>
 <body>
 	<div class="container-fluid"
@@ -126,7 +133,7 @@ $(document).ready(function(){
 
 					<c:if test="${member.type == 3 }">
 						<h3>
-							<strong>배송 목록</strong>
+							<strong>일반 회원 관리</strong>
 						</h3>
 						<table class="table table-hover"
 							style="border-bottom: 1px solid #e5e5e5;">
@@ -152,8 +159,20 @@ $(document).ready(function(){
 							</tbody>
 						</table>
 					</c:if>
-					
-					<br><br>
+					<div align="center">
+						<c:if test="${pageNum > 1}">
+							<a href="javascript:nomalList(${pageNum - 1})">
+						</c:if>[이전]&nbsp;
+						<c:if test="${pageNum > 1}"></a></c:if>
+						<c:forEach var="a" begin="${startpage}" end="${endpage}">
+							<c:if test="${pageNum == a}">[${a}]</c:if>
+							<c:if test="${pageNum != a}"><a href="javascript:nomalList(${a})">[${a}]</a></c:if>&nbsp;
+						</c:forEach>
+						<c:if test="${pageNum < maxpage}">
+							<a href="javascript:nomalList(${pageNum + 1})">
+						</c:if>[다음]&nbsp;
+						<c:if test="${pageNum < maxpage}"></a></c:if>
+					</div><br><br><br>
 				</div>
 			</div>
 		</div>

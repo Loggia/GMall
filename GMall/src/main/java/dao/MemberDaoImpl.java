@@ -146,30 +146,46 @@ public class MemberDaoImpl implements MemberDao
 		}
 	}
 
+	@Override
+	public int nomalCount() 
+	{
+		return sqlSession.getMapper(MemberMapper.class).nomalCount();
+	}
+	
 	/*
 	 * 구정연
 	 * 일반회원목록
 	 */
+	@Override
+	public List<Member> nomalList(Integer pageNum, Integer limit) 
+	{
+		int startrow = (pageNum - 1) * limit;
+    	
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("startrow", startrow);
+		
+		return sqlSession.getMapper(MemberMapper.class).nomalList(map);
+	}
 	
 	@Override
-	public List<Member> nomalList() {
-		
-		Map<String, Integer> paramMap = new HashMap<String,Integer>();
-		paramMap.put("type", 1);
-		
-		return sqlSession.selectList(NS + "list" , paramMap);
+	public int businessCount() 
+	{
+		return sqlSession.getMapper(MemberMapper.class).businessCount();
 	}
+	
 	/*
 	 * 구정연
 	 * 사업자 관리
 	 */
 	@Override
-	public List<Member> businessList() {
+	public List<Member> businessList(Integer pageNum, Integer limit) 
+	{
+		int startrow = (pageNum - 1) * limit;
+    	
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("startrow", startrow);
 		
-		Map<String, Integer> paramMap = new HashMap<String,Integer>();
-		paramMap.put("type", 2);
-		
-		return sqlSession.selectList(NS + "list" , paramMap);
+		return sqlSession.getMapper(MemberMapper.class).businessList(map);
 	}
 
 	/*
@@ -205,5 +221,4 @@ public class MemberDaoImpl implements MemberDao
 		
 		return sqlSession.getMapper(MemberMapper.class).getUserById(id);
 	}
-	
 }

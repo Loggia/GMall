@@ -5,8 +5,10 @@ import java.util.List;
 public interface KuService 
 {
 	List<Trade> tradeList(); //구정연 - 회원거래목록
-	List<Member> nomalList(); //구정연 - 일반회원관리
-	List<Member> businessList();//구정연 - 사업자관리
+	int nomalCount(); // 구정연 - 일반회원 카운팅
+	List<Member> nomalList(Integer pageNum, Integer limit); //구정연 - 일반회원관리
+	int businessCount(); // 구정연 - 사업자 카운팅
+	List<Member> businessList(Integer pageNum, Integer limit);//구정연 - 사업자관리
 	List<Member> primList(); //구정연 - 프리미엄 리스트출력
 	void primupdate(); //구정연 - 프리미엄 업데이트
 	Member getUserById(String id); //구정연 - 일반회원목록 아이디로 가져오기
