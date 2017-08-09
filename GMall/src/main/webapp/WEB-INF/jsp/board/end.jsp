@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<form:form modelAttribute="trade" action="" name="tradeForm">
 ${trade.address}
 ${trade.buy_id}
 ${trade.trd_date}
@@ -19,5 +20,8 @@ ${trade.pro_no}
 ${trade.sell_id}
 <hr>
 ${trade.trd_code}
+
+<input type="submit" value="사업자 즐겨찾기">
+</form:form>
 </body>
 </html>
