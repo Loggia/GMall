@@ -325,6 +325,10 @@ public class MemberController {
 			if (member.getPass().equals(passfirm)) 
 			{
 				jooService.updateMember(member, request);
+				
+				mav.setViewName("success");
+				mav.addObject("url", "../member/mypage.mall");
+				mav.addObject("msg", "정상적으로 수정되었습니다.");
 			}
 		} 
 		else 
@@ -380,7 +384,10 @@ public class MemberController {
 			{
 				Member user = kuService.getUserById(member.getId());
 				jooService.deleteMember(user);
-				mav.setViewName("member/mypage");
+				
+				mav.setViewName("success");
+				mav.addObject("url", "../member/mypage.mall");
+				mav.addObject("msg", user.getId() + " 회원을 강제 탈퇴시켰습니다.");
 				mav.addObject("member", login);
 			}
 		} 
