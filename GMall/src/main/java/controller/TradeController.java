@@ -95,6 +95,7 @@ public class TradeController
 			mav.addObject("msg", "로그인하고 시도하시기 바랍니다.");
 			
 			return mav;
+			
 		}
 		
 		if(pageNum == null || pageNum.toString().equals(""))
@@ -228,12 +229,11 @@ public class TradeController
 	
 	//deliveryControl 사업자 배송 조절
 	@RequestMapping("trade/deliveryControl")
-	public ModelAndView deliveryControl(Member member, HttpSession session,HttpServletRequest request){
+	public ModelAndView deliveryControl(Member member, Integer pageNum, HttpSession session,HttpServletRequest request){
 		ModelAndView mav=new ModelAndView("trade/delvpage");
 		Member login=(Member) session.getAttribute("LOGIN_MEMBER");
 		String trd_no=request.getParameter("trd_no");
 		String tradeCheck= koService.tradeCheck(trd_no);
-		System.out.println(tradeCheck);
 		if(tradeCheck.equals("상품준비중")){
 			tradeCheck="배송준비중";
 		}else if(tradeCheck.equals("배송준비중")){
@@ -243,8 +243,6 @@ public class TradeController
 		}
 		
 		koService.deliveryControl(trd_no,tradeCheck);
-		mav.addObject("member",login);
-		//member 값 채워주기
 		int pro_ready = 0; // 상품 준비중
 		int del_ready = 0; // 배송 준비중
 		int deliverying = 0; // 배송 중
@@ -257,18 +255,29 @@ public class TradeController
 			mav.addObject("msg", "로그인하고 시도하시기 바랍니다.");
 			
 			return mav;
+			
 		}
 		
-		List<Trade> delivery=koService.deliveryList(login.getId());
-		if(delivery != null)
+		if(pageNum == null || pageNum.toString().equals(""))
 		{
-			mav.addObject("delivery", delivery);
-		}
-		else
-		{
-			mav.addObject("delivery", new Trade());
+			pageNum = 1;
 		}
 		
+		int limit = 10;
+		int listcount = jooService.delvpageCount(login.getId(), login.getType());
+		List<Trade> delivery = koService.delvpageList(login.getId(), login.getType(), pageNum, limit);
+		int maxpage = (int)((double)listcount/limit + 0.95);
+		int startpage = (((int)((double)pageNum/10 + 0.9)) -1) * 10 + 1;
+		int endpage = startpage + 9;
+		
+		if(endpage > maxpage)
+		{
+			endpage = maxpage;
+		}
+		
+		/*
+		 * 배송 상태 카운팅
+		 */
 		for(Trade t : delivery)
 		{
 			if(t.getDelivery().equals("상품준비중"))
@@ -288,11 +297,19 @@ public class TradeController
 				del_complete++;
 			}
 		}
+			
 		mav.addObject("pro_ready", pro_ready);
 		mav.addObject("del_ready", del_ready);
 		mav.addObject("deliverying", deliverying);
 		mav.addObject("del_complete", del_complete);
+		mav.addObject("maxpage", maxpage);
+		mav.addObject("startpage", startpage);
+		mav.addObject("endpage", endpage);
+		mav.addObject("listcount", listcount);
+		mav.addObject("delivery", delivery);
+		mav.addObject("pageNum", pageNum);
 		mav.addObject("member", login);   
+		
 		return mav;
 		}
 }

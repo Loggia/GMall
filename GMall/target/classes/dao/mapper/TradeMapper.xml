@@ -49,7 +49,7 @@
 	</select>
 	
 	<select id="delvpageList" parameterType="hashmap" resultType="trade">
-		select t.trd_code, t.trd_money, t.trd_date, t.delivery, t.buy_id, p.pro_name, p.bis_name
+		select t.trd_code, t.trd_money, t.trd_date, t.delivery, t.buy_id, p.pro_name, p.bis_name, t.trd_no
           from trade t,product p 
 		 <choose>
 		 	<when test="type == 1">
