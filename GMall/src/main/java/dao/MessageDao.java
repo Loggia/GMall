@@ -20,4 +20,6 @@ public interface MessageDao {
 
 	void msgDelete(Integer msg_no);
 
+	void deleteAllSendMsg(String id);
+
 }

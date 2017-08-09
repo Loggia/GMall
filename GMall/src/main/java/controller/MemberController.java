@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import logic.HDService;
 import logic.JooService;
 import logic.KoService;
 import logic.KuService;
@@ -25,6 +26,8 @@ public class MemberController {
 	public KoService koService; // 종환이꺼
 	@Autowired
 	public KuService kuService; // 정연이껑
+	@Autowired
+	public HDService hdService; // 사나가짱이다!
 
 	/*
 	 * 주한울 회원가입
@@ -366,6 +369,9 @@ public class MemberController {
 				if (login.getPass().equals(member.getPass())) 
 				{
 					jooService.deleteMember(member);
+					String msgdelId = member.getId();
+					hdService.deleteAllSendMsg(msgdelId);
+					hdService.deleteAllReciveMsg(msgdelId);
 					session.invalidate();
 					
 					mav.setViewName("success");
@@ -379,11 +385,14 @@ public class MemberController {
 					mav.addObject("msg", "비밀번호를 확인하세요.");
 				}
 
-			} 
+			}
 			else // 관리자 회원 강제탈퇴
 			{
 				Member user = kuService.getUserById(member.getId());
 				jooService.deleteMember(user);
+				String PowermsgdelId = user.getId();
+				hdService.deleteAllSendMsg(PowermsgdelId);
+				hdService.deleteAllReciveMsg(PowermsgdelId);
 				
 				mav.setViewName("success");
 				mav.addObject("url", "../member/mypage.mall");

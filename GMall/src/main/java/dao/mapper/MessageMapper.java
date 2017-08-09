@@ -32,5 +32,8 @@ public interface MessageMapper {
 	
 	@Delete("delete from message where msg_no=#{msg_no}")
 	void msgDelete(Integer msg_no);
+	
+	@Delete("delete from message where send_id={id}")
+	void deleteAllSendMsg(String id);
 
 }

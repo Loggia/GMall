@@ -71,6 +71,17 @@ public class HDServiceImpl implements HDService{
 	public void msgDelete(Integer msg_no) {
 		messageDao.msgDelete(msg_no);
 	}
+
+	@Override
+	public void deleteAllSendMsg(String id) {
+		messageDao.deleteAllSendMsg(id);
+	}
+
+	@Override
+	public void deleteAllReciveMsg(String msgdelId) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 
