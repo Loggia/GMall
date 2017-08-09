@@ -39,7 +39,7 @@ public class TradeController
 		
 		if(login == null)
 		{
-			mav.setViewName("alert");
+			mav.setViewName("error");
 			mav.addObject("url", "../board/main.mall");
 			mav.addObject("msg", "로그인하고 시도하시기 바랍니다.");
 			
@@ -90,7 +90,7 @@ public class TradeController
 		
 		if(login == null)
 		{
-			mav.setViewName("alert");
+			mav.setViewName("error");
 			mav.addObject("url", "../board/main.mall");
 			mav.addObject("msg", "로그인하고 시도하시기 바랍니다.");
 			
@@ -163,7 +163,7 @@ public class TradeController
 		
 		if(login == null)
 		{
-			mav.setViewName("alert");
+			mav.setViewName("error");
 			mav.addObject("url", "../board/main.mall");
 			mav.addObject("msg", "로그인하고 시도하시기 바랍니다.");
 			
@@ -250,7 +250,7 @@ public class TradeController
 		
 		if(login == null)
 		{
-			mav.setViewName("alert");
+			mav.setViewName("error");
 			mav.addObject("url", "../board/main.mall");
 			mav.addObject("msg", "로그인하고 시도하시기 바랍니다.");
 			

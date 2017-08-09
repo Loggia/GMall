@@ -23,6 +23,9 @@ public interface MemberMapper
 
 	@Delete("delete from member where id=#{id} and pass=#{pass}")
 	void delete(Member member);
+	
+	@Select("select id from member")
+	List<String> selectCheck_Id();
 
 	@Select("select * from member where id=#{id} and pass=#{pass}")
 	Member getUserByIdAndPw(Map<String, String> map);

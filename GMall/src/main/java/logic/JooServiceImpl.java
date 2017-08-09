@@ -146,6 +146,12 @@ public class JooServiceImpl implements JooService
 		memberDao.delete(member);
 	}
 	
+	@Override 
+	public List<String> selectCheck_Id() // 아이디 중복 확인
+	{
+		return memberDao.selectCheck_Id();
+	}
+	
 	/*
 	 * 주한울
 	 * 사업자 번호 확인

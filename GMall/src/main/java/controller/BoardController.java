@@ -137,7 +137,7 @@ public class BoardController
 		
 		if(login == null)
 		{
-			mav.setViewName("alert");
+			mav.setViewName("error");
 			mav.addObject("url", "../board/main.mall");
 			mav.addObject("msg", "로그인하고 시도하시기 바랍니다.");
 			
@@ -201,21 +201,21 @@ public class BoardController
 		
 	    if(searchType != null && searchContent != null && board1 != null && !board1.getPass().equals(password))
 		{
-			mav.setViewName("alert");
+			mav.setViewName("error");
 			mav.addObject("url", "../board/centerList.mall?pageNum=" + pageNum + "&searchType=" + searchType + "&searchContent=" + searchContent);
 			mav.addObject("msg", "비밀번호를 잘못입력하셨습니다.");
 			return mav;
 		}
 	    else if(pageNum!=null && searchType == null && searchContent == null && board1 != null && !board1.getPass().equals(password))
 		{
-			mav.setViewName("alert");
+			mav.setViewName("error");
 			mav.addObject("url", "../board/centerList.mall?pageNum=" + pageNum);
 			mav.addObject("msg", "비밀번호를 잘못입력하셨습니다.");
 			return mav;
 		}
 	    else if(searchType == null && searchContent == null && board1 != null && !board1.getPass().equals(password))
 		{
-			mav.setViewName("alert");
+			mav.setViewName("error");
 			mav.addObject("url", "../board/centerList.mall");
 			mav.addObject("msg", "비밀번호를 잘못입력하셨습니다.");
 			return mav;
@@ -390,7 +390,7 @@ public class BoardController
 		}
 		if(!pass.equals(dbpass))
 		{
-			mav.setViewName("alert");
+			mav.setViewName("error");
 			mav.addObject("url", "../board/centerList.mall?pageNum=" + pageNum);
 			mav.addObject("msg", "비밀번호를 잘못입력하셨습니다.");
 			return mav;
@@ -521,21 +521,21 @@ public class BoardController
 		Board board1 =  baeService.qnapassthrough(num);
 	    if(searchType != null && searchContent != null && board1 != null && !board1.getPass().equals(password))
 		{
-			mav.setViewName("alert");
+			mav.setViewName("error");
 			mav.addObject("url", "../board/productDetail.mall?pro_no=" + pro_no + "&pageNum=" + pageNum + "&searchType=" + searchType + "&searchContent=" + searchContent);
 			mav.addObject("msg", "비밀번호를 잘못입력하셨습니다.");
 			return mav;
 		}
 	    else if(pageNum!=null && searchType == null && searchContent == null && board1 != null && !board1.getPass().equals(password))
 		{
-			mav.setViewName("alert");
+			mav.setViewName("error");
 			mav.addObject("url", "../board/productDetail.mall?pro_no=" + pro_no + "&pageNum=" + pageNum);
 			mav.addObject("msg", "비밀번호를 잘못입력하셨습니다.");
 			return mav;
 		}
 	    else if(searchType == null && searchContent == null && board1 != null && !board1.getPass().equals(password))
 		{
-			mav.setViewName("alert");
+			mav.setViewName("error");
 			mav.addObject("url", "../board/productDetail.mall?pro_no=" + pro_no);
 			mav.addObject("msg", "비밀번호를 잘못입력하셨습니다.");
 			return mav;
@@ -659,7 +659,7 @@ public class BoardController
 		}
 		if(!pass.equals(dbpass))
 		{
-			mav.setViewName("alert");
+			mav.setViewName("error");
 			mav.addObject("url", "../board/productDetail.mall?pro_no=" + pro_no + "&pageNum=" + pageNum);
 			mav.addObject("msg", "비밀번호를 잘못입력하셨습니다.");
 			return mav;

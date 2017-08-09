@@ -33,40 +33,53 @@ public class MemberController {
 	public ModelAndView join(Member member) // id=resd // 5자리 이상을 넣으면
 	{
 		ModelAndView mav = new ModelAndView("board/main");
+		List<String> checkId = jooService.selectCheck_Id();
 		mav.addObject("url", "../board/main.mall");
+		
+		for(String id : checkId)
+		{
+			if(id.equals(member.getId()))
+			{
+				mav.setViewName("error");
+				mav.addObject("msg", "중복되는 아이디 번호입니다.");
+			}
+		}
 
-		if (member.getType() == 1) {
+		if (member.getType() == 1) 
+		{
 			member.setBis_no("");
 			member.setBis_name("");
 
 			jooService.insertMember(member);
-		} else if (member.getType() == 2) {
-			if (jooService.cheakMember(member.getBis_no())) {
+		} 
+		else if (member.getType() == 2) 
+		{
+			if (jooService.cheakMember(member.getBis_no())) 
+			{
 				List<String> bis_no = jooService.selectBis_no(); // 임의로 추가한 사업자
-																	// 번호를 쿼리
-				boolean flag = false;
+																 // 번호를 쿼리
 
 				for (String no : bis_no) // 입력한 사업자 번호가 추가되어 있는 사업자 번호와 일치하는지 비교
 				{
-					if (no.equals(member.getBis_no())) {
-						flag = !flag; // bis_table에 일치하는 사업자 번호가 있다면 flag의 값을
-										// true로 변경
+					if (no.equals(member.getBis_no())) 
+					{
+						mav.setViewName("error");
+						mav.addObject("msg", "중복되거나 존재하지 않는 사업자 번호입니다.");
 					}
 				}
-
-				if (!flag) {
-					mav.setViewName("alert");
-					mav.addObject("msg", "중복되는 아이디나 사업자 번호입니다.");
-				}
-
+				
 				jooService.insertMember(member);
 				jooService.insertCoupon(member.getBis_no(), member.getId());
-			} else {
-				mav.setViewName("alert");
+			} 
+			else 
+			{
+				mav.setViewName("error");
 				mav.addObject("msg", "회원가입이 실패하였습니다.");
 			}
-		} else {
-			mav.setViewName("alert");
+		}
+		else 
+		{
+			mav.setViewName("error");
 			mav.addObject("msg", "회원가입이 실패하였습니다.");
 		}
 
@@ -77,14 +90,16 @@ public class MemberController {
 	 * 주한울 로그인 기능
 	 */
 	@RequestMapping("member/login")
-	public ModelAndView login(Member member, HttpServletRequest request) {
+	public ModelAndView login(Member member, HttpServletRequest request, HttpSession session) {
 		ModelAndView mav = new ModelAndView("board/main");
-
-		try {
+		
+		try 
+		{
 			Member login = jooService.getUserByIdAndPw(member.getId(), member.getPass());
 
-			if (login == null || !login.getId().equals(member.getId()) || !login.getPass().equals(member.getPass())) {
-				mav.setViewName("alert");
+			if (login == null || !login.getId().equals(member.getId()) || !login.getPass().equals(member.getPass())) 
+			{
+				mav.setViewName("error");
 				mav.addObject("url", "../board/main.mall");
 				mav.addObject("msg", "아이디나 비밀번호를 잘못입력하셨습니다.");
 
@@ -92,7 +107,9 @@ public class MemberController {
 			}
 
 			request.getSession().setAttribute("LOGIN_MEMBER", login);
-		} catch (Exception e) {
+		} 
+		catch (Exception e) 
+		{
 			e.printStackTrace();
 		}
 
@@ -127,7 +144,7 @@ public class MemberController {
 		
 		if(login == null)
 		{
-			mav.setViewName("alert");
+			mav.setViewName("error");
 			mav.addObject("url", "../board/main.mall");
 			mav.addObject("msg", "로그인하고 시도하시기 바랍니다.");
 			
@@ -203,7 +220,7 @@ public class MemberController {
 		if (login.getPass().equals(pass)) {
 			mav.setViewName("member/infoForm");
 		} else {
-			mav.setViewName("alert");
+			mav.setViewName("error");
 			mav.addObject("url", "../member/passConfirmForm.mall");
 			mav.addObject("msg", "잘못된 비밀번호입니다.");
 		}
@@ -222,7 +239,7 @@ public class MemberController {
 
 		if (login == null)
 		{
-			mav.setViewName("alert");
+			mav.setViewName("error");
 			mav.addObject("url", "../board/main.mall");
 			mav.addObject("msg", "로그인하고 시도하시기 바랍니다.");
 
@@ -291,7 +308,7 @@ public class MemberController {
 			} 
 			else 
 			{
-				mav.setViewName("alert");
+				mav.setViewName("error");
 				mav.addObject("url", "../member/mypage.mall");
 				mav.addObject("msg", "입력한 비밀번호가 일치하지 않습니다.");
 			}
@@ -306,7 +323,7 @@ public class MemberController {
 		} 
 		else 
 		{
-			mav.setViewName("alert");
+			mav.setViewName("error");
 			mav.addObject("url", "../member/mypage.mall");
 			mav.addObject("msg", "자신의 아이디만 수정 가능합니다.");
 		}
@@ -325,7 +342,7 @@ public class MemberController {
 
 		if (login == null) 
 		{
-			mav.setViewName("alert");
+			mav.setViewName("error");
 			mav.addObject("url", "../board/main.mall");
 			mav.addObject("msg", "회원만 탈퇴 가능합니다.");
 
@@ -343,7 +360,7 @@ public class MemberController {
 				} 
 				else 
 				{
-					mav.setViewName("alert");
+					mav.setViewName("error");
 					mav.addObject("url", "../member/mypage.mall");
 					mav.addObject("msg", "비밀번호를 확인하세요.");
 				}
@@ -359,7 +376,7 @@ public class MemberController {
 		} 
 		else 
 		{
-			mav.setViewName("alert");
+			mav.setViewName("error");
 			mav.addObject("url", "../board/main.mall");
 			mav.addObject("msg", "본인의 계정만 탈퇴 가능합니다.");
 		}
@@ -379,7 +396,7 @@ public class MemberController {
 		
 		if (login == null || !login.getId().equals("admin")) 
 		{
-			mav.setViewName("alert");
+			mav.setViewName("error");
 			mav.addObject("url", "../board/main.mall");
 			mav.addObject("msg", "관리자만 사용 가능한 기능입니다.");
 
@@ -426,7 +443,7 @@ public class MemberController {
 		
 		if (login == null || !login.getId().equals("admin")) 
 		{
-			mav.setViewName("alert");
+			mav.setViewName("error");
 			mav.addObject("url", "../board/main.mall");
 			mav.addObject("msg", "관리자만 사용 가능한 기능입니다.");
 
@@ -470,7 +487,7 @@ public class MemberController {
 		Member login = (Member) session.getAttribute("LOGIN_MEMBER");
 
 		if (login == null) {
-			mav.setViewName("alert");
+			mav.setViewName("error");
 			mav.addObject("url", "../board/main.mall");
 			mav.addObject("msg", "로그인하고 시도하시기 바랍니다.");
 

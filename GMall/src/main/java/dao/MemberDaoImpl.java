@@ -108,6 +108,12 @@ public class MemberDaoImpl implements MemberDao
 		}
 	}
 	
+	@Override
+	public List<String> selectCheck_Id() // 아이디 중복 확인
+	{
+		return sqlSession.getMapper(MemberMapper.class).selectCheck_Id();
+	}
+	
 	/*
 	 * 주한울
 	 * 사업자 번호 확인
