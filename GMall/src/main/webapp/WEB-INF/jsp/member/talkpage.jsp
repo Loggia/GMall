@@ -189,6 +189,9 @@ $(document).ready(function(){
 				<button type="button" class="btn btn-default" onclick="location.href='${path }/member/talkpage.mall'">받은쪽찌</button>
 				<button type="button" class="btn btn-default" onclick="location.href='${path }/member/sendListForm.mall'">보낸쪽지</button>
 				<button type="button" class="btn btn-default" onclick="location.href='${path }/member/msgWriteForm.mall'">쪽지 쓰기</button>
+				
+				<div style="display: block; margin: 10px 0px;">받은 쪽지함</div>
+				
 				<ul class="msgListHead" style="margin-top: 10px;">
 					<li style="width: 12%">보낸사람</li>
 					<li style="width: 64%">내용</li>
@@ -197,6 +200,7 @@ $(document).ready(function(){
 				</ul>
 				
 				<ol class="msgList">
+				<c:if test="${reciveList != null }">
 					<c:forEach items="${reciveList }" var="reciveList">
 						<li>
 							<input type="hidden" value="${reciveList.msg_no }">
@@ -206,6 +210,10 @@ $(document).ready(function(){
 							<div style="width: 12%"><a href="${path }/member/msgDelete.mall?msg_no=${reciveList.msg_no }">삭제</a></div>
 						</li>
 					</c:forEach>
+				</c:if>
+				<c:if test="${empty reciveList}">
+					받은 쪽지가 엄서영
+				</c:if>
 				</ol>
 				</div>
 			</div>

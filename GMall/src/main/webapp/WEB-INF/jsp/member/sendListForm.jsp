@@ -197,6 +197,7 @@ $(document).ready(function(){
 				</ul>
 				
 				<ol class="msgList">
+					<c:if test="${sendList != null}">
 					<c:forEach items="${sendList }" var="sendList">
 						<li>
 							<input type="hidden" value="${reciveList.msg_no }">
@@ -206,6 +207,10 @@ $(document).ready(function(){
 							<div style="width: 12%"><a href="${path }/member/msgDelete.mall?msg_no=${sendList.msg_no }">삭제</a></div>
 						</li>
 					</c:forEach>
+					</c:if>
+					<c:if test="${empty sendList}">
+					보낸 쪽지가 엄서영
+					</c:if>
 				</ol>
 				</div>
 			</div>
