@@ -66,12 +66,24 @@ public interface TradeMapper {
 	int his_no();
 	
 	//구정연 구매기능
-	@Insert("insert into trade ( trd_no , trd_code , trd_cnt , trd_money , trd_fee , trd_date , pro_no"
+		@Insert("insert into trade ( trd_no , trd_code , trd_cnt , trd_money , trd_fee , trd_date , pro_no"
 				+ " ,buy_id , sell_id , cop_no , address , delivery , rv_chk) values ( #{trd_no}, #{trd_code} , "
-				+ " #{trd_cnt} , #{trd_money} , 1 , now() , #{pro_no} , #{buy_id} , #{sell_id} , null , #{address} , #{delivery} , #{rv_chk})")
-	void createtrade(Trade trade);
+				+ " #{trd_cnt} , #{trd_money} , #{trd_fee} , now() , #{pro_no} , #{buy_id} , #{sell_id} , null , #{address} , #{delivery} , #{rv_chk})")
+		void createtrade(Trade trade);
 
 	//구정연 거래넘버
 	@Select("select max(trd_no)+1 from trade ")
 	int getMaxtrd_no();
+	//구정연 구매기능 판매자
+	@Select("select id from member where bis_name = #{bis_name}")
+	String sell_id(String bis_name);
+	//구정연 구매기능에서 프리미엄 확인여부 
+	@Select("select m.prim from product p , member m where p.bis_name = m.bis_name and pro_name = #{pro_name}")
+	String prim(String pro_name);
+	//구정연 프리미엄인 수수료
+	@Select("select TRUNCATE(p.price*0.08,0) from product p, member m where p.bis_name = m.bis_name and pro_name = #{pro_name}")
+	int yesprim(String pro_name);
+	//구정연 프리미엄 아닌 수수료
+	@Select("select TRUNCATE(p.price*0.1,0) from product p, member m where p.bis_name = m.bis_name and pro_name = #{pro_name}")
+	int Noprim(String pro_name);
 }
