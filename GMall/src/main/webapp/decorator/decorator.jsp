@@ -236,11 +236,11 @@
 }        
 .reloc2    
 {             
- position:absolute; top:-25%; left:73%; overflow:hidden; margin-top:-20px; margin-left:-100px;
+ position:absolute; top:-25%; left:69%; overflow:hidden; margin-top:-20px; margin-left:-100px;
 }    
 .reloc3          
 {             
- position:absolute; top:30%; right:-110%; overflow:hidden; margin-top:0px; margin-right:100px;
+ position:absolute; top:30%; right:-100.5%; overflow:hidden; margin-top:0px; margin-right:100px;
 }
 </style>
 
@@ -464,7 +464,7 @@ function list(pageNum)
   	                      </script>
   	                      <input type="search" name="searchContent" value="${param.searchContent}" class="form-control reloc2" placeholder="검색어를 입력해주세요" style="vertical-align:top;">   
 					      <div class="input-group-btn">
-						    <button class="btn btn-default reloc3" type="submit">
+						    <button class="btn btn-default reloc3" type="submit" style="margin-left: -2px;">
 							  <i style="margin-top: 2px;" class="glyphicon glyphicon-search"></i>
 						    </button>
 						  </div>  
@@ -473,7 +473,7 @@ function list(pageNum)
 					</form>
 
 					<!-- 마이메뉴 시작 -->
-					<div id="mymenu_wrap" class="pull-right" style="margin-top: 25px; margin-right: 4px;">
+					<div id="mymenu_wrap" class="pull-right" style="margin-top: 21px; margin-right: 4px;">
 						<!-- <div id="mymenu" data-toggle="popover" data-container="body" data-click-state="0"> -->
 							<img id="mymenu" src="../img/mm_no.png" data-toggle="popover" data-container="body" data-click-state="0">
 							<!-- <span class="glyphicon glyphicon-user" aria-hidden="true"
