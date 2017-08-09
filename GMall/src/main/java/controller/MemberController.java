@@ -330,7 +330,8 @@ public class MemberController {
 				jooService.updateMember(member, request);
 				
 				mav.setViewName("success");
-				mav.addObject("url", "../member/mypage.mall");
+				if(member.getType() == 1) mav.addObject("url", "../member/nomalList.mall");
+				else mav.addObject("url", "../member/businessList.mall");
 				mav.addObject("msg", "정상적으로 수정되었습니다.");
 			}
 		} 
@@ -396,9 +397,9 @@ public class MemberController {
 				
 				
 				mav.setViewName("success");
-				mav.addObject("url", "../member/mypage.mall");
+				if(member.getType() == 1) mav.addObject("url", "../member/nomalList.mall");
+				else mav.addObject("url", "../member/businessList.mall");
 				mav.addObject("msg", user.getId() + " 회원을 강제 탈퇴시켰습니다.");
-				mav.addObject("member", login);
 			}
 		} 
 		else 
