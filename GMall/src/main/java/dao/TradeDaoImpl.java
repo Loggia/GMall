@@ -31,7 +31,7 @@ public class TradeDaoImpl implements TradeDao{
 			return null;
 		}
 		
-		//구정연 거래넘버
+				//구정연 거래넘버
 				@Override
 				public int getMaxtrd_no() {
 					
@@ -45,6 +45,33 @@ public class TradeDaoImpl implements TradeDao{
 					sqlSession.getMapper(TradeMapper.class).createtrade(trade);
 				}
 
+				//구정연 구매기능에서 프리미엄 확인여부 
+				@Override
+				public String prim(String pro_name) {
+					
+					return sqlSession.getMapper(TradeMapper.class).prim(pro_name);
+					
+				}
+				//구정연 프리미엄인 수수료 
+				@Override 
+				public int yesprim(String pro_name) {
+					
+					return sqlSession.getMapper(TradeMapper.class).yesprim(pro_name);
+				}
+				//구정연 프리미엄아닌 수수료 
+				@Override
+				public int Noprim(String pro_name) {
+					
+					return sqlSession.getMapper(TradeMapper.class).Noprim(pro_name);
+				}
+				//구정연 구매기능 판매자
+				@Override
+				public String sell_id(String bis_name) {
+					
+					return sqlSession.getMapper(TradeMapper.class).sell_id(bis_name);
+				}
+
+			
 		/*
 		 * 주한울
 		 * 일반 회원 구매 목록

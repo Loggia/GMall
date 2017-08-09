@@ -11,6 +11,10 @@ public interface TradeDao {
 	List<Trade> tradeList(); //구정연 - 회원거래목록
 	void createtrade(Trade trade); // 구정연 구매기능
 	int getMaxtrd_no(); //구정연 거래넘버
+	String sell_id(String bis_name);//구정연 구매기능 판매자
+	String prim(String pro_name); //구정연 구매기능에서 프리미엄 확인여부 
+	int yesprim(String pro_name);//구정연 프리미엄인 수수료 
+	int Noprim(String pro_name);//구정연 프리미엄 아닌 수수료
 	
 	List<Trade> moneyChangeList(String id, Integer type, Integer pageNum, Integer limit); // 정연이 - 보유금액(금액 변동) 
 
