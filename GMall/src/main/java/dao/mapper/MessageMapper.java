@@ -2,6 +2,7 @@ package dao.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
@@ -15,7 +16,7 @@ public interface MessageMapper {
 	@Select("select * from message where rec_id=#{loginUserId } and have_id=#{loginUserId } order by msg_date desc")
 	List<Message> reciveList(String loginUserId);
 	
-	@Select("select max(msg_no) from message")
+	@Select("select IFNULL(MAX(msg_no),0) from message")
 	int maxNum();
 	
 	@Insert("insert into message (msg_no, msg_date, msg_content, send_id, rec_id, have_id, read_chk)" + 
@@ -28,5 +29,8 @@ public interface MessageMapper {
 	
 	@Select("select * from message where msg_no=#{msg_no}")
 	Message msgDetail(Integer msg_no);
+	
+	@Delete("delete from message where msg_no=#{msg_no}")
+	void msgDelete(Integer msg_no);
 
 }

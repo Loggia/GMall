@@ -20,4 +20,6 @@ public interface HDService {
 
 	Message msgDetail(Integer msg_no);
 
+	void msgDelete(Integer msg_no);
+
 }

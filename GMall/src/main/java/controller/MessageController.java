@@ -71,10 +71,10 @@ public class MessageController {
 	}
 	
 	@RequestMapping("member/msgDelete")
-	public ModelAndView msgDelete(HttpSession session, HttpServletRequest request) {
+	public ModelAndView msgDelete(HttpSession session, Integer msg_no) {
+		hdService.msgDelete(msg_no);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("redirect:/member/talkpage.mall");
-		//hdService.msgDelete();
 		return mav;
 	}
 	

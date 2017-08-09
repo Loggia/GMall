@@ -203,7 +203,7 @@ $(document).ready(function(){
 							<div style="width: 12%">${reciveList.send_id }</div>
 							<div style="width: 64%"><a href="${path }/member/msgDetail.mall?msg_no=${reciveList.msg_no }">${reciveList.msg_content }</a></div>
 							<div style="width: 12%"><span><fmt:formatDate value="${reciveList.msg_date }" pattern="yyyy-MM-dd"/></span></div>
-							<div style="width: 12%"><a>답장</a>/<a>삭제</a></div>
+							<div style="width: 12%"><a href="${path }/member/msgDelete.mall?msg_no=${reciveList.msg_no }">삭제</a></div>
 						</li>
 					</c:forEach>
 				</ol>

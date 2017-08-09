@@ -50,6 +50,9 @@ public class HDServiceImpl implements HDService{
 	@Override
 	public void msgSend(Message message) {
 		int msg_no = messageDao.maxNum();
+		if(msg_no==0) {
+			
+		}
 		message.setMsg_no(++msg_no);
 		messageDao.sendInsert(message);
 		msg_no = msg_no+1;
@@ -62,6 +65,11 @@ public class HDServiceImpl implements HDService{
 	@Override
 	public Message msgDetail(Integer msg_no) {
 		return messageDao.msgDetail(msg_no);
+	}
+
+	@Override
+	public void msgDelete(Integer msg_no) {
+		messageDao.msgDelete(msg_no);
 	}
 	
 	

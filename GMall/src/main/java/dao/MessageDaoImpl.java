@@ -45,6 +45,11 @@ public class MessageDaoImpl implements MessageDao{
 	public Message msgDetail(Integer msg_no) {
 		return sqlSession.getMapper(MessageMapper.class).msgDetail(msg_no);
 	}
+
+	@Override
+	public void msgDelete(Integer msg_no) {
+		sqlSession.getMapper(MessageMapper.class).msgDelete(msg_no);
+	}
 	
 
 	
