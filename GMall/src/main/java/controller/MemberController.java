@@ -394,6 +394,7 @@ public class MemberController {
 				hdService.deleteAllSendMsg(PowermsgdelId);
 				hdService.deleteAllReciveMsg(PowermsgdelId);
 				
+				
 				mav.setViewName("success");
 				mav.addObject("url", "../member/mypage.mall");
 				mav.addObject("msg", user.getId() + " 회원을 강제 탈퇴시켰습니다.");

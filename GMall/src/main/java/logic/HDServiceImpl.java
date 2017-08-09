@@ -79,7 +79,6 @@ public class HDServiceImpl implements HDService{
 
 	@Override
 	public void deleteAllReciveMsg(String msgdelId) {
-		// TODO Auto-generated method stub
 		
 	}
 	
