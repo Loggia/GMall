@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title></title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 		$(".list_1st a").mouseover(function(){
@@ -228,14 +229,15 @@ body {
 								<input type="hidden" name="id" value="${member.id }">
 								<input type="hidden" name="type" value="${member.type }">
 						</div>
-						<div class="profimg">
-							<c:if test="${member.picture==null }">
+						<div ng-app="" class="profimg">
+							<%-- <c:if test="${member.picture==null }">
 								<img class="img-circle updateimg" src="../prof/prof_1.png">
 							</c:if>
 							<c:if test="${member.picture!=null }">
 								<img class="img-circle updateimg" src="../prof/${member.picture }">
-							</c:if>
-							<div style="margin-top: 20px;"><input type="file" name="pictureFile"></div>
+							</c:if> --%>
+							<input ng-bind="profimg" type="image">
+							<div style="margin-top: 20px;"><input ng-model="profimg" type="file" name="pictureFile"></div>
 						</div>
 						<div class="form-group">
 							<label for="message-text" class="control-label">변경할 비밀번호:</label> <input
