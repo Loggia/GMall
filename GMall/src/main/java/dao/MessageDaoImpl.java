@@ -25,5 +25,27 @@ public class MessageDaoImpl implements MessageDao{
 	public List<Message> reciveList(String loginUserId) {
 		return sqlSession.getMapper(MessageMapper.class).reciveList(loginUserId);
 	}
+
+	@Override
+	public int maxNum() {
+		return sqlSession.getMapper(MessageMapper.class).maxNum();
+	}
+
+	@Override
+	public void sendInsert(Message message) {
+		sqlSession.getMapper(MessageMapper.class).sendInsert(message);
+	}
+
+	@Override
+	public void reciveInsert(Message message) {
+		sqlSession.getMapper(MessageMapper.class).reciveInsert(message);
+	}
+
+	@Override
+	public Message msgDetail(Integer msg_no) {
+		return sqlSession.getMapper(MessageMapper.class).msgDetail(msg_no);
+	}
+	
+
 	
 }

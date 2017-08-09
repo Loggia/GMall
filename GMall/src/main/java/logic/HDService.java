@@ -18,4 +18,6 @@ public interface HDService {
 
 	void msgSend(Message message);
 
+	Message msgDetail(Integer msg_no);
+
 }

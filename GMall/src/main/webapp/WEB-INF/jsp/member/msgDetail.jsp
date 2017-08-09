@@ -189,24 +189,22 @@ $(document).ready(function(){
 				<button type="button" class="btn btn-default" onclick="location.href='${path }/member/talkpage.mall'">받은쪽찌</button>
 				<button type="button" class="btn btn-default" onclick="location.href='${path }/member/sendListForm.mall'">보낸쪽지</button>
 				<button type="button" class="btn btn-default" onclick="location.href='${path }/member/msgWriteForm.mall'">쪽지 쓰기</button>
-				<ul class="msgListHead" style="margin-top: 10px;">
-					<li style="width: 12%">받는사람</li>
-					<li style="width: 64%">내용</li>
-					<li style="width: 12%">날짜</li>
-					<li style="width: 12%"></li>
-				</ul>
 				
-				<ol class="msgList">
-					<c:forEach items="${sendList }" var="sendList">
-						<li>
-							<input type="hidden" value="${reciveList.msg_no }">
-							<div style="width: 12%"><a>${sendList.rec_id }</a></div>
-							<div style="width: 64%"><a href="${path }/member/msgDetail.mall?msg_no=${sendList.msg_no }">${sendList.msg_content }</a></div>
-							<div style="width: 12%"><span><fmt:formatDate value="${sendList.msg_date }" pattern="yyyy-MM-dd"/></span></div>
-							<div style="width: 12%"><a>답장</a>/<a>삭제</a></div>
-						</li>
-					</c:forEach>
-				</ol>
+				<div class="detailWrap">
+					<div class="msgHead">
+						<dl>
+							<dt>받는사람</dt>
+							<dd>${message.rec_id }</dd>
+							<dt>보낸사람</dt>
+							<dd>${message.send_id }</dd>
+							<dt>날짜</dt>
+							<dd>${message.msg_date }</dd>
+						</dl>
+					</div>
+					<div class="msgBody">
+						${message.content }
+					</div>
+				</div>
 				</div>
 			</div>
 		</div>

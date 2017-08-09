@@ -49,7 +49,19 @@ public class HDServiceImpl implements HDService{
 
 	@Override
 	public void msgSend(Message message) {
-		//maxNum messageDao.maxNum();
+		int msg_no = messageDao.maxNum();
+		message.setMsg_no(++msg_no);
+		messageDao.sendInsert(message);
+		msg_no = msg_no+1;
+		message.setMsg_no(msg_no);
+		messageDao.reciveInsert(message);
+		
+		
+	}
+
+	@Override
+	public Message msgDetail(Integer msg_no) {
+		return messageDao.msgDetail(msg_no);
 	}
 	
 	

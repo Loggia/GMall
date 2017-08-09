@@ -190,11 +190,11 @@ $(document).ready(function(){
 					<button type="button" class="btn btn-default" onclick="location.href='${path }/member/sendListForm.mall'">보낸쪽지</button>
 					<button type="button" class="btn btn-default" onclick="location.href='${path }/member/msgWriteForm.mall'">쪽지 쓰기</button>
 					<form:form action="${path }/member/msgSend.mall" modelAttribute="message">
-						<form:input path="rec_id" />
-						<form:textarea path="msg_content" cols="67" rows="15"/>
+						<form:input path="rec_id" style="pistion: block;"/>
+						<form:textarea path="msg_content" cols="67" rows="15" style="pistion: block;"/>
 					
 						<form:input type="hidden" path="send_id" value="${member.id }" />
-						<button type="submit" class="btn btn-default">쪽지 전송</button>
+						<button type="submit" class="btn btn-default" style="pistion: block;">쪽지 전송</button>
 					</form:form>
 				</div>
 			</div>

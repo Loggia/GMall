@@ -43,9 +43,10 @@ public class MessageController {
 	}
 	
 	@RequestMapping("member/msgDetail")
-	public ModelAndView msgDetail(HttpSession session, HttpServletRequest request) {
+	public ModelAndView msgDetail(HttpSession session, Integer msg_no) {
+		Message message = hdService.msgDetail(msg_no);
 		ModelAndView mav = new ModelAndView();
-		//hdService.msgDetail();
+		mav.addObject("message", message);
 		return mav;
 	}
 	
@@ -65,13 +66,14 @@ public class MessageController {
 		hdService.msgSend(message);
 		System.out.println(message);
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("member/talkpage");
+		mav.setViewName("redirect:/member/talkpage.mall");
 		return mav;
 	}
 	
 	@RequestMapping("member/msgDelete")
 	public ModelAndView msgDelete(HttpSession session, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
+		mav.setViewName("redirect:/member/talkpage.mall");
 		//hdService.msgDelete();
 		return mav;
 	}

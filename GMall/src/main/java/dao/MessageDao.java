@@ -10,4 +10,12 @@ public interface MessageDao {
 
 	List<Message> reciveList(String loginUserId);
 
+	int maxNum();
+
+	void sendInsert(Message message);
+
+	void reciveInsert(Message message);
+
+	Message msgDetail(Integer msg_no);
+
 }
