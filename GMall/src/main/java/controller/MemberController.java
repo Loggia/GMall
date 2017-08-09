@@ -49,6 +49,9 @@ public class MemberController {
 		{
 			member.setBis_no("");
 			member.setBis_name("");
+			
+			mav.setViewName("success");
+			mav.addObject("msg", "정상적으로 가입되었습니다.");
 
 			jooService.insertMember(member);
 		} 
@@ -67,6 +70,9 @@ public class MemberController {
 						mav.addObject("msg", "중복되거나 존재하지 않는 사업자 번호입니다.");
 					}
 				}
+				
+				mav.setViewName("success");
+				mav.addObject("msg", "정상적으로 사업자 등록되었습니다.");
 				
 				jooService.insertMember(member);
 				jooService.insertCoupon(member.getBis_no(), member.getId());
@@ -357,6 +363,10 @@ public class MemberController {
 				{
 					jooService.deleteMember(member);
 					session.invalidate();
+					
+					mav.setViewName("success");
+					mav.addObject("url", "../board/main.mall");
+					mav.addObject("msg", "정상적으로 탈퇴되었습니다.");
 				} 
 				else 
 				{
