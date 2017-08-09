@@ -30,10 +30,10 @@
 		$('#mymenu').on("click", function() {
 			if ($(this).attr('data-click-state') == 1) {
 				$(this).attr('data-click-state', 0);
-				$(this).attr('src', './img/mymenu_noclick.png');
+				$(this).attr('src', '../img/mm_no.png');
 			} else {
 				$(this).attr('data-click-state', 1);
-				$(this).attr('src', './img/mymenu_click.png');
+				$(this).attr('src', '../img/mm_clk.png');
 			}
 		}).popover({
 			placement : 'bottom',
@@ -473,9 +473,10 @@ function list(pageNum)
 
 					<!-- 마이메뉴 시작 -->
 					<div id="mymenu_wrap" class="pull-right" style="margin-top: 25px; margin-right: 4px;">
-						<div id="mymenu" data-toggle="popover" data-container="body">
-							<span class="glyphicon glyphicon-user" aria-hidden="true"
-								style="color: white;"></span><b style="color: white">MY 쇼핑</b>
+						<!-- <div id="mymenu" data-toggle="popover" data-container="body" data-click-state="0"> -->
+							<img id="mymenu" src="../img/mm_no.png" data-toggle="popover" data-container="body" data-click-state="0">
+							<!-- <span class="glyphicon glyphicon-user" aria-hidden="true"
+								style="color: white;"></span><b style="color: white">MY 쇼핑</b> -->
 							<div class="hide">
 								<ol id="mymenu_Form">
 									<c:if test="${LOGIN_MEMBER.id == null }">
