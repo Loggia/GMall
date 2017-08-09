@@ -21,24 +21,80 @@ public class MessageController {
 	public HDService hdService;
 	
 	@RequestMapping("member/talkpage")
-	public ModelAndView talkpage(HttpSession session) {
+	public ModelAndView talkpage(HttpSession session, Integer pageNum) {
 		ModelAndView mav = new ModelAndView();
 		Member loginUser = (Member)session.getAttribute("LOGIN_MEMBER");
 		String loginUserId = loginUser.getId();
-		List<Message> reciveList =  hdService.reciveList(loginUserId);
-		mav.addObject("member", loginUser);
+		
+		if (pageNum == null || pageNum.toString().equals("")) 
+		{
+			pageNum = 1;
+		}
+		
+		int limit = 8;
+		int listcount = hdService.reciveListCount(loginUserId);
+		System.out.println(listcount);
+		List<Message> reciveList = hdService.reciveList(loginUserId,pageNum, limit);
+		int maxpage = (int) ((double) listcount / limit + 0.95);
+		int startpage = (((int) ((double) pageNum / 10 + 0.9)) - 1) * 10 + 1;
+		int endpage = startpage + 9;
+		System.out.println("endpage :"+endpage);
+		System.out.println("maxpage :"+maxpage);
+		if (endpage > maxpage) 
+		{
+			endpage = maxpage;
+		}
+		System.out.println("startpage :"+startpage);
+		System.out.println("endpage :"+endpage);
+		System.out.println("maxpage :"+maxpage);
+		System.out.println("pageNum :"+pageNum);
+		mav.addObject("maxpage", maxpage);
+		mav.addObject("startpage", startpage);
+		mav.addObject("endpage", endpage);
+		mav.addObject("listcount", listcount);
 		mav.addObject("reciveList", reciveList);
+		mav.addObject("pageNum", pageNum);
+		
+		mav.addObject("member", loginUser);
 		return mav;
 	}
 	
 	@RequestMapping("member/sendListForm")
-	public ModelAndView sendListForm(HttpSession session) {
+	public ModelAndView sendListForm(HttpSession session, Integer pageNum) {
 		ModelAndView mav = new ModelAndView();
 		Member loginUser = (Member)session.getAttribute("LOGIN_MEMBER");
 		String loginUserId = loginUser.getId();
-		List<Message> sendList = hdService.sendList(loginUserId);
-		mav.addObject("member", loginUser);
+		
+		if (pageNum == null || pageNum.toString().equals("")) 
+		{
+			pageNum = 1;
+		}
+		
+		int limit = 8;
+		int listcount = hdService.sendListCount(loginUserId);
+		System.out.println("listcount: "+listcount);
+		List<Message> sendList = hdService.sendList(loginUserId,pageNum, limit);
+		int maxpage = (int) ((double) listcount / limit + 0.95);
+		int startpage = (((int) ((double) pageNum / 10 + 0.9)) - 1) * 10 + 1;
+		int endpage = startpage + 9;
+		System.out.println("endpage :"+endpage);
+		System.out.println("maxpage :"+maxpage);
+		if (endpage > maxpage) 
+		{
+			endpage = maxpage;
+		}
+		System.out.println("startpage :"+startpage);
+		System.out.println("endpage :"+endpage);
+		System.out.println("maxpage :"+maxpage);
+		System.out.println("pageNum :"+pageNum);
+		mav.addObject("maxpage", maxpage);
+		mav.addObject("startpage", startpage);
+		mav.addObject("endpage", endpage);
+		mav.addObject("listcount", listcount);
 		mav.addObject("sendList", sendList);
+		mav.addObject("pageNum", pageNum);
+		
+		mav.addObject("member", loginUser);
 		return mav;
 	}
 	
@@ -46,6 +102,8 @@ public class MessageController {
 	public ModelAndView msgDetail(HttpSession session, Integer msg_no) {
 		Message message = hdService.msgDetail(msg_no);
 		ModelAndView mav = new ModelAndView();
+		Member loginUser = (Member)session.getAttribute("LOGIN_MEMBER");
+		mav.addObject("member", loginUser);
 		mav.addObject("message", message);
 		return mav;
 	}

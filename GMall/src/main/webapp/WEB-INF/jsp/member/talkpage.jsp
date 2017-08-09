@@ -79,6 +79,14 @@ $(document).ready(function(){
 
 
 </style>
+
+<script type="text/javascript">
+	function reciveList(pageNum) 
+	{	
+		location.href = "talkpage.mall?pageNum=" + pageNum;
+	}	
+</script>
+
 </head>
 <body>
 	<div class="container-fluid"
@@ -186,7 +194,7 @@ $(document).ready(function(){
 			</div>
 			<div class="my_right" style="width: calc(100% - 250px); padding-top: 40px;">
 				<div class="msgWrap" style="font-family: 'KoPub Dotum';">
-				<button type="button" class="btn btn-default" onclick="location.href='${path }/member/talkpage.mall'">받은쪽찌</button>
+				<button type="button" class="btn btn-default" onclick="location.href='${path }/member/talkpage.mall'">받은쪽지</button>
 				<button type="button" class="btn btn-default" onclick="location.href='${path }/member/sendListForm.mall'">보낸쪽지</button>
 				<button type="button" class="btn btn-default" onclick="location.href='${path }/member/msgWriteForm.mall'">쪽지 쓰기</button>
 				
@@ -213,21 +221,22 @@ $(document).ready(function(){
 					</ol>
 					<div align="center">
 						<c:if test="${pageNum > 1}">
-							<a href="javascript:nomalList(${pageNum - 1})">
+							<a href="javascript:reciveList(${pageNum - 1})">
 						</c:if>[이전]&nbsp;
 						<c:if test="${pageNum > 1}"></a></c:if>
 						<c:forEach var="a" begin="${startpage}" end="${endpage}">
 							<c:if test="${pageNum == a}">[${a}]</c:if>
-							<c:if test="${pageNum != a}"><a href="javascript:nomalList(${a})">[${a}]</a></c:if>&nbsp;
+							<c:if test="${pageNum != a}"><a href="javascript:reciveList(${a})">[${a}]</a></c:if>&nbsp;
 						</c:forEach>
 						<c:if test="${pageNum < maxpage}">
-							<a href="javascript:nomalList(${pageNum + 1})">
+							<a href="javascript:reciveList(${pageNum + 1})">
 						</c:if>[다음]&nbsp;
 						<c:if test="${pageNum < maxpage}"></a></c:if>
 					</div><br><br><br>
 				</c:if>
 				
 				<c:if test="${empty reciveList}">
+					<br><br><br>
 					받은 쪽지가 엄서영
 				</c:if>
 				</div>

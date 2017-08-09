@@ -186,7 +186,7 @@ $(document).ready(function(){
 			</div>
 			<div class="my_right" style="width: calc(100% - 250px); padding-top: 40px;">
 				<div class="msgWrap" style="font-family: 'KoPub Dotum';">
-				<button type="button" class="btn btn-default" onclick="location.href='${path }/member/talkpage.mall'">받은쪽찌</button>
+				<button type="button" class="btn btn-default" onclick="location.href='${path }/member/talkpage.mall'">받은쪽지</button>
 				<button type="button" class="btn btn-default" onclick="location.href='${path }/member/sendListForm.mall'">보낸쪽지</button>
 				<button type="button" class="btn btn-default" onclick="location.href='${path }/member/msgWriteForm.mall'">쪽지 쓰기</button>
 				
@@ -227,6 +227,7 @@ $(document).ready(function(){
 					</div><br><br><br>
 					</c:if>
 					<c:if test="${empty sendList}">
+					<br><br><br>
 					보낸 쪽지가 엄서영
 					</c:if>
 				</div>

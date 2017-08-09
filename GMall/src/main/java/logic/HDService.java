@@ -12,9 +12,9 @@ public interface HDService {
 
 	List<Product> interList(String inter);
 
-	List<Message> sendList(String loginUserId);
+	List<Message> sendList(String loginUserId, Integer pageNum, Integer limit);
 
-	List<Message> reciveList(String loginUserId);
+	List<Message> reciveList(String loginUserId, Integer pageNum, Integer limit);
 
 	void msgSend(Message message);
 
@@ -25,5 +25,9 @@ public interface HDService {
 	void deleteAllSendMsg(String id);
 
 	void deleteAllReciveMsg(String id);
+
+	int reciveListCount(String loginUserId);
+
+	int sendListCount(String loginUserId);
 
 }

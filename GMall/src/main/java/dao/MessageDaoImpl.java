@@ -1,6 +1,8 @@
 package dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,14 +18,30 @@ public class MessageDaoImpl implements MessageDao{
 	private SqlSessionTemplate sqlSession; 
 	private final String NS = "dao.mapper.MessageMapper."; 
 	
+	
+	
 	@Override
-	public List<Message> sendList(String loginUserId) {
-		return sqlSession.getMapper(MessageMapper.class).sendList(loginUserId);
+	public List<Message> sendList(String loginUserId, Integer pageNum, Integer limit) {
+		
+		int startrow = (pageNum - 1) * limit;
+    	
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("startrow", startrow);
+		map.put("loginUserId", loginUserId);
+		
+		return sqlSession.getMapper(MessageMapper.class).sendList(map);
 	}
 
 	@Override
-	public List<Message> reciveList(String loginUserId) {
-		return sqlSession.getMapper(MessageMapper.class).reciveList(loginUserId);
+	public List<Message> reciveList(String loginUserId, Integer pageNum, Integer limit) {
+		
+		int startrow = (pageNum - 1) * limit;
+    	
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("startrow", startrow);
+		map.put("loginUserId", loginUserId);
+		
+		return sqlSession.getMapper(MessageMapper.class).reciveList(map);
 	}
 
 	@Override
@@ -59,6 +77,16 @@ public class MessageDaoImpl implements MessageDao{
 	@Override
 	public void deleteAllReciveMsg(String id) {
 		sqlSession.getMapper(MessageMapper.class).deleteAllReciveMsg(id);
+	}
+
+	@Override
+	public int reciveListCount(String loginUserId) {
+		return sqlSession.getMapper(MessageMapper.class).reciveListCount(loginUserId);
+	}
+
+	@Override
+	public int sendListCount(String loginUserId) {
+		return sqlSession.getMapper(MessageMapper.class).sendListCount(loginUserId);
 	}
 	
 }

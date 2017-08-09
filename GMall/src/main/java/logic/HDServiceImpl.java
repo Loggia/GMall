@@ -38,13 +38,13 @@ public class HDServiceImpl implements HDService{
 	}
 
 	@Override
-	public List<Message> sendList(String loginUserId) {
-		return messageDao.sendList(loginUserId);
+	public List<Message> sendList(String loginUserId, Integer pageNum, Integer limit) {
+		return messageDao.sendList(loginUserId,pageNum,limit);
 	}
 
 	@Override
-	public List<Message> reciveList(String loginUserId) {
-		return messageDao.reciveList(loginUserId);
+	public List<Message> reciveList(String loginUserId, Integer pageNum, Integer limit) {
+		return messageDao.reciveList(loginUserId,pageNum,limit);
 	}
 
 	@Override
@@ -80,6 +80,16 @@ public class HDServiceImpl implements HDService{
 	@Override
 	public void deleteAllReciveMsg(String id) {
 		messageDao.deleteAllReciveMsg(id);
+	}
+
+	@Override
+	public int reciveListCount(String loginUserId) {
+		return messageDao.reciveListCount(loginUserId);
+	}
+
+	@Override
+	public int sendListCount(String loginUserId) {
+		return messageDao.sendListCount(loginUserId);
 	}
 	
 	

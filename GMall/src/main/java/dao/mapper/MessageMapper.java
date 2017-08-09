@@ -1,6 +1,7 @@
 package dao.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
@@ -10,11 +11,17 @@ import logic.Message;
 
 public interface MessageMapper {
 	
-	@Select("select * from message where send_id=#{loginUserId } and have_id=#{loginUserId } order by msg_date desc")
-	List<Message> sendList(String loginUserId);
+	@Select("select count(*) from message where send_id=#{loginUserId } and have_id=#{loginUserId }")
+	int sendListCount(String loginUserId);
 	
-	@Select("select * from message where rec_id=#{loginUserId } and have_id=#{loginUserId } order by msg_date desc")
-	List<Message> reciveList(String loginUserId);
+	@Select("select * from message where send_id=#{loginUserId } and have_id=#{loginUserId } order by msg_date desc limit #{startrow}, 8")
+	List<Message> sendList(Map<String, Object> map);
+	
+	@Select("select count(*) from message where rec_id=#{loginUserId } and have_id=#{loginUserId }")
+	int reciveListCount(String loginUserId);
+	
+	@Select("select * from message where rec_id=#{loginUserId } and have_id=#{loginUserId } order by msg_date desc limit #{startrow}, 8")
+	List<Message> reciveList(Map<String, Object> map);
 	
 	@Select("select IFNULL(MAX(msg_no),0) from message")
 	int maxNum();
