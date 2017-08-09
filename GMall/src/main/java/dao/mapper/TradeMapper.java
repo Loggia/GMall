@@ -3,6 +3,7 @@ package dao.mapper;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
@@ -63,4 +64,14 @@ public interface TradeMapper {
 	//고종환 쿠폰사용내역번호
 	@Select("select max(his_no) from coupon_history")
 	int his_no();
+	
+	//구정연 구매기능
+	@Insert("insert into trade ( trd_no , trd_code , trd_cnt , trd_money , trd_fee , trd_date , pro_no"
+				+ " ,buy_id , sell_id , cop_no , address , delivery , rv_chk) values ( #{trd_no}, #{trd_code} , "
+				+ " #{trd_cnt} , #{trd_money} , 1 , now() , #{pro_no} , #{buy_id} , #{sell_id} , null , #{address} , #{delivery} , #{rv_chk})")
+	void createtrade(Trade trade);
+
+	//구정연 거래넘버
+	@Select("select max(trd_no)+1 from trade ")
+	int getMaxtrd_no();
 }

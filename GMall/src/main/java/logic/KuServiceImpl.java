@@ -1,5 +1,8 @@
 package logic;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -113,4 +116,49 @@ public class KuServiceImpl implements KuService
 	{
 		return tradeDao.moneyChangeList(id, type, pageNum, limit);
 	}
+	
+	
+	/*
+	 * 구정연
+	 * 장바구니 가격총합 
+	 */
+	@Override
+	public Integer totalAmount(List<ProductSet> productList) {
+		
+		int total = 0;
+		for (ProductSet is : productList){
+			total += is.getProduct().getPrice() * is.getQuantity();
+		}
+		return total;
+	}
+
+	@Override
+	public Trade checkEnd(String id, String trd_address, Cart cart) {
+		
+		Trade trade = new Trade();
+		trade.setTrd_no(tradeDao.getMaxtrd_no()); //거래넘버
+		trade.setAddress(trd_address); // 주소
+		trade.setBuy_id(id); //구매자
+		trade.setDelivery("상품준비중"); //배달
+		trade.setRv_chk(1); //리뷰
+		
+		DateFormat sdFormat = new SimpleDateFormat("yyMMddmmss");
+		Date nowDate = new Date();
+		String tempDate = sdFormat.format(nowDate);
+		trade.setTrd_code(tempDate+"%"+id); //거래코드
+		
+		List<ProductSet> productList = cart.getProductList();
+		for(int i=0; i<productList.size(); i++) {
+			ProductSet productset = (ProductSet)productList.get(0);
+			trade.setTrd_cnt(productset.getQuantity()); //수량
+			trade.setTrd_money(productset.getQuantity()*productset.getProduct().getPrice()); //총가격
+			trade.setPro_no(productset.getProduct().getPro_no()); //상품번호
+			trade.setSell_id(productset.getProduct().getBis_name()); //판매자 (상호) 조인으로 아이디 가져올수도있을까
+			
+		}
+		tradeDao.createtrade(trade);
+		
+		return trade;
+	}
+	
 }

@@ -9,6 +9,9 @@ import logic.Coupon_history;
 public interface TradeDao {
 
 	List<Trade> tradeList(); //구정연 - 회원거래목록
+	void createtrade(Trade trade); // 구정연 구매기능
+	int getMaxtrd_no(); //구정연 거래넘버
+	
 	List<Trade> moneyChangeList(String id, Integer type, Integer pageNum, Integer limit); // 정연이 - 보유금액(금액 변동) 
 
 	List<Coupon_history> memberCoupon(String id); // 주한울 일반회원 쿠폰목록 (사용 안함)

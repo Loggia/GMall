@@ -30,6 +30,20 @@ public class TradeDaoImpl implements TradeDao{
 			// return sqlSession.getMapper(TradeMapper.class).tradeList();
 			return null;
 		}
+		
+		//구정연 거래넘버
+				@Override
+				public int getMaxtrd_no() {
+					
+					return sqlSession.getMapper(TradeMapper.class).getMaxtrd_no();
+				}
+				
+				//구정연 구매기능
+				@Override
+				public void createtrade(Trade trade) {
+					
+					sqlSession.getMapper(TradeMapper.class).createtrade(trade);
+				}
 
 		/*
 		 * 주한울
