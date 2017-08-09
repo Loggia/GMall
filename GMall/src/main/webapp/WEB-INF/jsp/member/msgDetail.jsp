@@ -202,7 +202,7 @@ $(document).ready(function(){
 						</dl>
 					</div>
 					<div class="msgBody">
-						${message.content }
+						${message.msg_content }
 					</div>
 				</div>
 				</div>
