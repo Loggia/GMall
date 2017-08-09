@@ -22,22 +22,41 @@ $(document).ready(function(){
 	    $(".list_3th a").mouseout(function(){
 	        $(".list_3th a").css("color", "black");
 	    });
-	    
-	    $('.coupgive').on("click", function() {
-			if ($(this).attr('data-click-state') == 1) {
+	    var seq = 0;
+ 	    $('.coupgive').click(function() {
+			seq = $(this).parent().index();
+/* 			if ($(this).attr('data-click-state') == 1) {
 				$(this).attr('data-click-state', 0);
 				$(this).attr('src', './img/mymenu_noclick.png');
 			} else {
 				$(this).attr('data-click-state', 1);
 				$(this).attr('src', './img/mymenu_click.png');
 			}
-		}).popover({
-			placement : 'bottom',
-			html : true,
-			content : $('#coupgive_Form').html()
-		});
-	
-});
+             popover_rtn(seq);
+ */			
+ 			if ($("#coupgive_view"+seq).attr('data-click-state') == 1) {
+ 				$("#coupgive_view"+seq).attr('data-click-state', 0);
+				$("#coupgive_view"+seq).attr('src', './img/mymenu_noclick.png');
+			} else {
+				$("#coupgive_view"+seq).attr('data-click-state', 1);
+				$("#coupgive_view"+seq).attr('src', './img/mymenu_click.png');
+			}
+ 		   popover_rtn(seq);
+		})
+ });
+function popover_rtn(id) {
+	var value =  $('.coupgive_Form'+id).html();
+	$('#coupgive_view'+id).popover({
+		placement : 'bottom',
+		html : true,
+		content : value
+	 });
+}
+function chck(disc,id) 
+{	
+	var v = $("#id_"+id).val();
+	location.href="${path}/trade/insertCoupon.mall?discount="+disc+"&id="+v;
+ }
 </script>
 
 <script type="text/javascript">
@@ -168,15 +187,30 @@ $(document).ready(function(){
 								<th>거래코드</th><th>상품이름</th><th>판매 금액</th><th>구매자</th><th>일자</th>
 							</tr>
 						</thead>
-						<tbody>
-							<c:forEach items="${trdList}" var="trd">
+	                    <tbody>
+				
+							<c:forEach items="${trdList}" var="trd" varStatus="stat">
+			
 							<tr> 
 								<td>${trd.trd_code }</td>
 								<td>${trd.pro_name }</td>
 								<td>${trd.trd_money }원</td>
-								<td class="coupgive" data-toggle="popover" data-container="body">${trd.buy_id }</td>
-								<td><f:formatDate value="${trd.trd_date }" pattern="yy-MM-dd"/></td>
+								<td class="coupgive" id="coupgive_view${stat.index}" data-toggle="popover" data-container="body">
+								<input type="hidden" id="id_${stat.index}" value="${trd.buy_id }">${trd.buy_id }</td>
+								
+								<td><f:formatDate value="${trd.trd_date }" pattern="yy-MM-dd"/></td>	
+								
+								<div class="hide">
+								   <ol class="coupgive_Form${stat.index}" >
+										<li class="mymemu_list" style="margin: 5px;"><a href="javascript:chck(5, ${stat.index})" style="text-decoration: none;" class="ml" >5% 쿠폰 발급</a></li>
+										<li class="mymemu_list" style="margin: 5px;"><a href="javascript:chck(10, ${stat.index})" style="text-decoration: none;" class="ml">10% 쿠폰 발급</a></li>
+										<li class="mymemu_list" style="margin: 5px;"><a href="javascript:chck(15, ${stat.index})" style="text-decoration: none;" class="ml">15% 쿠폰 발급</a></li>
+								  </ol>
+								</div>		
+									
 							</tr>
+
+					
 							</c:forEach>
 						</tbody>
 					</table>

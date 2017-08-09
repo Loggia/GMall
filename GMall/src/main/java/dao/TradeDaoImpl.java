@@ -263,5 +263,11 @@ public class TradeDaoImpl implements TradeDao{
 	    	
 			return sqlSession.selectOne(NS+"couponCount", map);
 		}
+		
+		//고종환 쿠폰내역번호
+		@Override
+		public int his_no() {
+			return sqlSession.getMapper(TradeMapper.class).his_no();
+		}
 }
 

@@ -28,4 +28,6 @@ public interface TradeDao {
 	List<Trade> delvpageList(String id, int type, Integer pageNum, int limit); // 고종환 배송 조회
 	String tradeCheck(String trd_no);//고종환 배송현황 변경위한 쿼리
 	void deliveryControl(String trd_no, String tradeCheck); //고종환 사업자 배송현황 변경
+	
+	int his_no();//고종환 쿠폰내역번호
 }

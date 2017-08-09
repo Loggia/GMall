@@ -4,6 +4,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import dao.BoardDao;
+import dao.CouponDao;
 import dao.MemberDao;
 import dao.ProductDao;
 import dao.TradeDao;
@@ -26,6 +28,8 @@ public class KoServiceImpl implements KoService{
 	TradeDao tradeDao;
 	@Autowired
 	ProductDao productDao;
+	@Autowired
+	CouponDao couponDao;
 	
 	/*
 	 * 고종환 
@@ -146,4 +150,17 @@ public class KoServiceImpl implements KoService{
 	{
 		return productDao.productList(bis_no, category, pageNum, limit);
 	}
+	
+	//고종환 쿠폰내역번호
+	@Override
+	public int his_no() {
+		return tradeDao.his_no();
+	}
+
+	//고종환 사업자 쿠폰 주기
+	@Override
+	public void insertCoupon(Map<String, Object> coupon_history) {
+		couponDao.insertCoupon(coupon_history);
+	}
+
 }

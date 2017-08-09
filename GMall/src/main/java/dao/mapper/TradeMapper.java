@@ -59,4 +59,8 @@ public interface TradeMapper {
 	//고종환 사업자 배송현황변경
 	@Update("update trade set delivery=#{tradeCheck} where trd_no=#{trd_no}")
 	void deliveryControl(Map<String, String> map);
+	
+	//고종환 쿠폰사용내역번호
+	@Select("select max(his_no) from coupon_history")
+	int his_no();
 }

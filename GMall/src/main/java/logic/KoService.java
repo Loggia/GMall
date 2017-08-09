@@ -1,6 +1,7 @@
 package logic;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -22,4 +23,7 @@ public interface KoService {
 	
 	int productCount(String bis_no, String category); // 고종환 내 사업장 관리 카운팅
 	List<Product> productList(String bis_no, String category, Integer pageNum, int limit); // 고종환 내 사업장 관리 조회\	
+	
+	int his_no();//고종환 쿠폰내역번호
+	void insertCoupon(Map<String, Object> coupon_history);//고종환 사업자 쿠폰주기
 }

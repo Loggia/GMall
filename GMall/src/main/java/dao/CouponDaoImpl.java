@@ -33,4 +33,12 @@ public class CouponDaoImpl implements CouponDao
 			sqlSession.getMapper(CouponMapper.class).insert(map);
 		}
 	}
+	
+	//고종환 사업자 쿠폰주기
+	@Override
+	public void insertCoupon(Map<String, Object> coupon_history) {
+		sqlSession.getMapper(CouponMapper.class).insertCoupon(coupon_history);
+		
+		
+	}
 }

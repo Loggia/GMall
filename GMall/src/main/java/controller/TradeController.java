@@ -1,6 +1,8 @@
 package controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -312,4 +314,56 @@ public class TradeController
 		
 		return mav;
 		}
+	
+	//고종환 쿠폰주기
+	//trade/insertCoupon.mall
+	@RequestMapping("trade/insertCoupon")
+	public ModelAndView insertCoupon(HttpSession session,HttpServletRequest request,Integer pageNum){
+		String id = request.getParameter("id");  //쿠폰받는사람
+		String discount = request.getParameter("discount"); //할인률
+		int his_no = koService.his_no()+1; //쿠폰사용내역번호
+		
+		Member login=(Member)session.getAttribute("LOGIN_MEMBER");
+		String bis_no=login.getBis_no(); //사업자번호
+		
+		Map<String, Object> coupon_history=new HashMap<String, Object>();
+		coupon_history.put("his_no", his_no);
+		coupon_history.put("cop_no", discount+"%"+bis_no);
+		coupon_history.put("bis_no", bis_no);
+		coupon_history.put("discount", discount);
+		coupon_history.put("id", id);
+		coupon_history.put("chk", 1);
+		
+		koService.insertCoupon(coupon_history);
+		///쿠폰주기끝
+
+		ModelAndView mav=new ModelAndView("trade/BSList");
+		
+		if(pageNum == null || pageNum.toString().equals(""))
+		{
+			pageNum = 1;
+		}
+		
+		int limit = 10;
+		int listcount = jooService.tradeCount(login.getId(), login.getType());
+		List<Trade> trdList = jooService.tradeList(login.getId(), login.getType(), pageNum, limit);
+		int maxpage = (int)((double)listcount/limit + 0.95);
+		int startpage = (((int)((double)pageNum/10 + 0.9)) -1) * 10 + 1;
+		int endpage = startpage + 9;
+		
+		if(endpage > maxpage)
+		{
+			endpage = maxpage;
+		}
+		
+		mav.addObject("maxpage", maxpage);
+		mav.addObject("startpage", startpage);
+		mav.addObject("endpage", endpage);
+		mav.addObject("listcount", listcount);
+		mav.addObject("trdList", trdList);
+		mav.addObject("pageNum", pageNum);
+		mav.addObject("member", login);
+		
+		return mav;
+	}
 }
