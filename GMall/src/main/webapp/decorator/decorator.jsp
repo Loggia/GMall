@@ -466,7 +466,7 @@ function list(pageNum)
 					      <div class="input-group-btn">
 						    <button class="btn btn-default reloc3" type="submit" style="margin-left: -2px;">
 							  <i style="margin-top: 2px;" class="glyphicon glyphicon-search"></i>
-						    </button>
+						    </button> 
 						  </div>  
 					 </div>
 						<!-- 검색창 끝 -->
