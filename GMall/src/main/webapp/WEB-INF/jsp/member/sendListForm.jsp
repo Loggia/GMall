@@ -199,8 +199,8 @@ $(document).ready(function(){
 					<li style="width: 12%"></li>
 				</ul>
 				
-				<ol class="msgList">
-					<c:if test="${sendList != null}">
+					<c:if test="${not empty sendList}">
+					<ol class="msgList">
 					<c:forEach items="${sendList }" var="sendList">
 						<li>
 							<input type="hidden" value="${reciveList.msg_no }">
@@ -210,11 +210,25 @@ $(document).ready(function(){
 							<div style="width: 12%"><a href="${path }/member/msgDelete.mall?msg_no=${sendList.msg_no }">삭제</a></div>
 						</li>
 					</c:forEach>
+					</ol>
+					<div align="center">
+						<c:if test="${pageNum > 1}">
+							<a href="javascript:nomalList(${pageNum - 1})">
+						</c:if>[이전]&nbsp;
+						<c:if test="${pageNum > 1}"></a></c:if>
+						<c:forEach var="a" begin="${startpage}" end="${endpage}">
+							<c:if test="${pageNum == a}">[${a}]</c:if>
+							<c:if test="${pageNum != a}"><a href="javascript:nomalList(${a})">[${a}]</a></c:if>&nbsp;
+						</c:forEach>
+						<c:if test="${pageNum < maxpage}">
+							<a href="javascript:nomalList(${pageNum + 1})">
+						</c:if>[다음]&nbsp;
+						<c:if test="${pageNum < maxpage}"></a></c:if>
+					</div><br><br><br>
 					</c:if>
 					<c:if test="${empty sendList}">
 					보낸 쪽지가 엄서영
 					</c:if>
-				</ol>
 				</div>
 			</div>
 		</div>
