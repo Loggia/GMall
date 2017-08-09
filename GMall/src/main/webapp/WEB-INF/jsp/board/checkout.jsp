@@ -21,7 +21,12 @@
 <table>
 	<tr><td>주소</td><td><input name="trd_address"></input></td></tr>
 </table>
-	
+
+<h2>쿠폰사용</h2>
+	<c:forEach items="${coupon}" var="coupon">
+		<input type="button" value="${coupon.cop_no}">
+	</c:forEach>
+
 <h2>장바구니 목록</h2>
 <table>
 <tr>

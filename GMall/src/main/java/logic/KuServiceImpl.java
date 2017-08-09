@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import dao.BoardDao;
+import dao.CouponDao;
 import dao.MemberDao;
 import dao.ProductDao;
 import dao.TradeDao;
@@ -24,6 +25,8 @@ public class KuServiceImpl implements KuService
 	TradeDao tradeDao;
 	@Autowired
 	ProductDao productDao;
+	@Autowired
+	CouponDao couponDao;
 	
 	/*
 	 * 구정연 
@@ -173,5 +176,14 @@ public class KuServiceImpl implements KuService
 		
 		return trade;
 	}
+	
+	//구정연 구매기능 쿠폰 
+		@Override
+		public List<Coupon> selectcoupon(String id) {
+			
+			return couponDao.selectcoupon(id);
+			
+		}
+		
 	
 }

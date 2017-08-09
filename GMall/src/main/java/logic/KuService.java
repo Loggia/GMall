@@ -17,4 +17,5 @@ public interface KuService
 	Cart getCart(); // 구정연 장바구니 
 	Integer totalAmount(List<ProductSet> productList); //구정연 구매확인(총가격)
 	Trade checkEnd(String id, String trd_address, Cart cart); //구정연 구매기능
+	List<Coupon> selectcoupon(String id);//구정연 구매기능 쿠폰 
 }
