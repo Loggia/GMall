@@ -339,29 +339,10 @@ public class TradeController
 
 		ModelAndView mav=new ModelAndView("trade/BSList");
 		
-		if(pageNum == null || pageNum.toString().equals(""))
-		{
-			pageNum = 1;
-		}
 		
-		int limit = 10;
-		int listcount = jooService.tradeCount(login.getId(), login.getType());
-		List<Trade> trdList = jooService.tradeList(login.getId(), login.getType(), pageNum, limit);
-		int maxpage = (int)((double)listcount/limit + 0.95);
-		int startpage = (((int)((double)pageNum/10 + 0.9)) -1) * 10 + 1;
-		int endpage = startpage + 9;
-		
-		if(endpage > maxpage)
-		{
-			endpage = maxpage;
-		}
-		
-		mav.addObject("maxpage", maxpage);
-		mav.addObject("startpage", startpage);
-		mav.addObject("endpage", endpage);
-		mav.addObject("listcount", listcount);
-		mav.addObject("trdList", trdList);
-		mav.addObject("pageNum", pageNum);
+		mav.setViewName("success");
+		mav.addObject("url", "../trade/BSList.mall");
+		mav.addObject("msg", id+"님에게"+discount+"%쿠폰을 지급하였습니다.");
 		mav.addObject("member", login);
 		
 		return mav;
