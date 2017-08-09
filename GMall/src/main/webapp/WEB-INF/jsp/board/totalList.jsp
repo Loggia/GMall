@@ -53,15 +53,15 @@ function totallist(pageNum)
                 <tr align="center" height="26">
                   <td colspan="5">
                     <c:if test="${pageNum > 1}">
-                      <a href="javascript:list(${pageNum - 1})">
+                      <a href="javascript:totallist(${pageNum - 1})">
                     </c:if>[이전]&nbsp;
                     <c:if test="${pageNum > 1}"></a></c:if>
                     <c:forEach var="a" begin="${startpage}" end="${endpage}">
   	                    <c:if test="${pageNum == a}">[${a}]</c:if>
-  	                    <c:if test="${pageNum != a}"><a href="javascript:list(${a})">[${a}]</a></c:if>&nbsp;  	 
+  	                    <c:if test="${pageNum != a}"><a href="javascript:totallist(${a})">[${a}]</a></c:if>&nbsp;  	 
                     </c:forEach>
                     <c:if test="${pageNum < maxpage}">
-                      <a href="javascript:list(${pageNum + 1})">
+                      <a href="javascript:totallist(${pageNum + 1})">
                     </c:if>[다음]&nbsp;
                     <c:if test="${pageNum < maxpage}"></a></c:if>
                   </td>

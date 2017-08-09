@@ -102,19 +102,19 @@ function list_disp(id)
      }
 }
  
-function list(pageNum) 
+function productlist(pageNum) 
 {
-		var searchType = document.searchform.searchType.value;
+		var searchType = document.productsearchform.searchType.value;
 		if(searchType == null || searchType.length == 0)
 		{
-			document.searchform.searchContent.value = "";
-			document.searchform.pageNum.value = 1;
+			document.productsearchform.searchContent.value = "";
+			document.productsearchform.pageNum.value = 1;
 			location.href = "productDetail.mall?pro_no=" + ${param.pro_no} + "&pageNum=" + pageNum;
 		}
 		else
 		{
-			document.searchform.pageNum.value = pageNum;
-			document.searchform.submit();
+			document.productsearchform.pageNum.value = pageNum;
+			document.productsearchform.submit();
 			return true;
 		}
 		return false;
@@ -241,15 +241,15 @@ function list(pageNum)
 	<tr align="center" height="26">
       <td colspan="5">
         <c:if test="${pageNum > 1}">
-           <a href="javascript:list(${pageNum - 1})">
+           <a href="javascript:productlist(${pageNum - 1})">
         </c:if>[이전]&nbsp;
         <c:if test="${pageNum > 1}"></a></c:if>
         <c:forEach var="a" begin="${startpage2}" end="${endpage2}">
   	       <c:if test="${pageNum == a}">[${a}]</c:if>
-  	       <c:if test="${pageNum != a}"><a href="javascript:list(${a})">[${a}]</a></c:if>&nbsp;  	 
+  	       <c:if test="${pageNum != a}"><a href="javascript:productlist(${a})">[${a}]</a></c:if>&nbsp;  	 
         </c:forEach>
         <c:if test="${pageNum < maxpage2}">
-           <a href="javascript:list(${pageNum + 1})">
+           <a href="javascript:productlist(${pageNum + 1})">
         </c:if>[다음]&nbsp;
         <c:if test="${pageNum < maxpage2}"></a></c:if>
      </td>
@@ -407,15 +407,15 @@ function list(pageNum)
 <tr align="center" height="26">
   <td colspan="5">
         <c:if test="${pageNum > 1}">
-           <a href="javascript:list(${pageNum - 1})">
+           <a href="javascript:productlist(${pageNum - 1})">
         </c:if>[이전]&nbsp;
         <c:if test="${pageNum > 1}"></a></c:if>
         <c:forEach var="a" begin="${startpage}" end="${endpage}">
   	       <c:if test="${pageNum == a}">[${a}]</c:if>
-  	       <c:if test="${pageNum != a}"><a href="javascript:list(${a})">[${a}]</a></c:if>&nbsp;  	 
+  	       <c:if test="${pageNum != a}"><a href="javascript:productlist(${a})">[${a}]</a></c:if>&nbsp;  	 
         </c:forEach>
         <c:if test="${pageNum < maxpage}">
-           <a href="javascript:list(${pageNum + 1})">
+           <a href="javascript:productlist(${pageNum + 1})">
         </c:if>[다음]&nbsp;
         <c:if test="${pageNum < maxpage}"></a></c:if>
   </td>
@@ -425,7 +425,7 @@ function list(pageNum)
   <tr><td colspan="5">등록된 Q&A가 없습니다.</td></tr>
 </c:if>
 <tr><td colspan="5" align="center">
-  <form action="productDetail.mall" method="get" name="searchform" onsubmit="return list(1)">
+  <form action="productDetail.mall" method="get" name="productsearchform" onsubmit="return productlist(1)">
   	<input type="hidden" name="pro_no" value="${param.pro_no}">
   	<input type="hidden" name="pageNum" value="1">
   	<select name="searchType" id="searchType">
