@@ -55,6 +55,7 @@ public class MessageController {
 		Member loginUser = (Member)session.getAttribute("LOGIN_MEMBER");
 		String loginUserId = loginUser.getId();
 		mav.addObject("member", loginUser);
+		mav.addObject(new Message());
 		return mav;
 	}
 	
@@ -62,6 +63,7 @@ public class MessageController {
 	public ModelAndView msgWirte(HttpSession session, Message message, HttpServletRequest request) {
 		//String send_id = request.getParameter("send_id");
 		hdService.msgSend(message);
+		System.out.println(message);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("member/talkpage");
 		return mav;

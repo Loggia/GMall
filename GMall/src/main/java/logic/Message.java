@@ -10,9 +10,6 @@ public class Message
 	private int msg_no;
 	
 	@NotEmpty
-	private String msg_subject;
-	
-	@NotEmpty
 	private Date msg_date;
 	
 	@NotEmpty
@@ -32,7 +29,7 @@ public class Message
 
 	@Override
 	public String toString() {
-		return "Message [msg_no=" + msg_no + ", msg_subject=" + msg_subject + ", msg_date=" + msg_date
+		return "Message [msg_no=" + msg_no + ", msg_date=" + msg_date
 				+ ", msg_content=" + msg_content + ", send_id=" + send_id + ", rec_id=" + rec_id + ", have_id="
 				+ have_id + ", read_chk=" + read_chk + "]";
 	}
@@ -61,16 +58,6 @@ public class Message
 	public void setMsg_no(int msg_no) 
 	{
 		this.msg_no = msg_no;
-	}
-
-	public String getMsg_subject() 
-	{
-		return msg_subject;
-	}
-
-	public void setMsg_subject(String msg_subject) 
-	{
-		this.msg_subject = msg_subject;
 	}
 
 	public Date getMsg_date() 
