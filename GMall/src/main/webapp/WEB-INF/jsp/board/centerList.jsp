@@ -178,7 +178,7 @@ body {
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
-</style>
+</style> -->
 
 <style type="text/css">
 #loc
@@ -189,7 +189,8 @@ body {
 {
   text-align : right;
 }
-</style> -->
+</style>
+
 <script>
  function list_disp(id)
   {
@@ -344,8 +345,8 @@ body {
 							            <a href="centeranswerForm.mall?num=${clist.board_no}&pageNum=${param.pageNum}">[답변]</a>
 							          </c:if>
 							          <c:if test="${clist.ans_chk == 1}"> 
-							             <font color="blue">&nbsp;&nbsp;√</font>
-							          </c:if> 
+							            &nbsp;<img src="../img/check.png" width="30" height="30">
+							          </c:if>   
 							          </td>
 							          <c:if test="${not empty clist.pass}">
 							          <td align="left">${clist.subject}<img src="../img/rock.jpg" width="20" height="20" /></td>
@@ -365,7 +366,7 @@ body {
 								           <input type="hidden" name="pageNum" value="${param.pageNum}">
 								           <input type="hidden" name="num" value="${clist.board_no}">
 							               <input type="text" name="password">
-							               <input type="submit" value="확인">
+							               <input class="btn btn-default" type="submit" value="확인">
 							             </form>
 							           </c:if>
 							           <c:if test="${not empty clist.pass && not empty param.pageNum &&not empty param.searchType && not empty param.searchContent && empty password}"> 
@@ -376,15 +377,15 @@ body {
 								           <input type="hidden" name="searchContent" value="${param.searchContent}">  	                          
 								          <input type="hidden" name="num" value="${clist.board_no}">
 							               <input type="text" name="password">
-							               <input type="submit" value="확인">
+							               <input class="btn btn-default" type="submit" value="확인">
 							             </form>
 							           </c:if>
 							           <c:if test="${not empty password && not empty num}"> 
 							            <c:if test="${(clist.pass == password) && (clist.board_no == num)}">
-							             <table border="1" cellpadding="0" cellspacing="0" width="100%" height="70%">
+							             <table class="table table-hover" style="border-bottom: 1px solid #e5e5e5;" align="center">
 								          <tr>
-								          	<td align="center">내용 : ${clist.content}</td>
-							              </tr> 
+								          	<td align="center"><h3>내용 : ${clist.content}<h3></td>
+							              </tr>     
 							              <tr>  
 							                <td align="center">첨부파일 → 
 							                  <c:if test="${empty clist.fileurl || clist.fileurl2 || clist.fileurl3}"> 
@@ -409,7 +410,7 @@ body {
 								           <input type="hidden" name="pageNum" value="${param.pageNum}">
 								           <input type="hidden" name="num" value="${clist.board_no}">
 							               <input type="text" name="password">
-							               <input type="submit" value="확인">
+							               <input class="btn btn-default" type="submit" value="확인">
 							            </form>
 								      </c:if>
 								      <c:if test="${(clist.pass != password && not empty clist.pass) && (not empty param.pageNum && not empty param.searchType && not empty param.searchContent && not empty param.num && not empty param.password)}">
@@ -420,16 +421,16 @@ body {
 							             <input type="hidden" name="searchContent" value="${param.searchContent}">           
 							          	 <input type="hidden" name="num" value="${clist.board_no}">
 						                 <input type="text" name="password">
-						                 <input type="submit" value="확인">
+						                 <input class="btn btn-default" type="submit" value="확인">
 						                </form>
 							         </c:if>
 							        </c:if>
 							        <c:if test="${empty clist.pass}"> 
-							          <table border="1" cellpadding="0" cellspacing="0" width="100%" height="70%">
+							          <table class="table table-hover" style="border-bottom: 1px solid #e5e5e5;" align="center">
 							           <tr>
-							          	 <td align="center">내용 : ${clist.content}</td>
-						               </tr> 
-						               <tr>  
+							          	 <td align="center"><h3>내용 : ${clist.content}</h3></td>
+						               </tr>   
+						               <tr>      
 						                  <td align="center">첨부파일 → 
 						                    <c:if test="${empty clist.fileurl || clist.fileurl2 || clist.fileurl3}"> 
 						                       <font color="gray">첨부파일 없음</font>
@@ -525,7 +526,7 @@ body {
 								</script>
 								
 								<input type="text" name="searchContent" value="${param.searchContent}">
-								<input type="submit" value="검색">
+								<input class="btn btn-default" type="submit" value="검색">
 							</form>
 						</div>
 					<br><br>

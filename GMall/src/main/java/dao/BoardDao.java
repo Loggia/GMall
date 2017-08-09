@@ -38,14 +38,16 @@ public interface BoardDao {
 	void reviewUpdate(Board board);
 	Product proInfo(String pro_no);
 	void rvchkUpdate(String userid, String pro_no);
-	Trade sellInfo(String pro_no);
+	List<Trade> sellInfo(String pro_no);
 	void memGrade(String sellid, int grade, int memberScore);
 	Member sellScore(String sellid);
+	List<Trade> protrInfo(String pro_no);
+	Member sessionType(String userid);
+	Product proBis(String bisname, String pro_no);
 	
 	List<Product> interList(String inter);
 	List<Product> popuList();
 	List<Product> newList();
 	List<Product> primList();
-
 	
 }

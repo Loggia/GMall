@@ -291,7 +291,7 @@ public class BaeServiceImpl implements BaeService{
 	}
 
 	@Override
-	public Trade sellInfo(String pro_no) {
+	public List<Trade> sellInfo(String pro_no) {
 		return boardDao.sellInfo(pro_no);
 	}
 
@@ -303,6 +303,21 @@ public class BaeServiceImpl implements BaeService{
 	@Override
 	public Member sellScore(String sellid) {
 		return boardDao.sellScore(sellid);
+	}
+
+	@Override
+	public List<Trade> protrInfo(String pro_no) {
+		return boardDao.protrInfo(pro_no);
+	}
+
+	@Override
+	public Member sessionType(String userid) {
+		return boardDao.sessionType(userid);
+	}
+
+	@Override
+	public Product proBis(String bisname, String pro_no) {
+		return boardDao.proBis(bisname, pro_no);
 	}
 	
 	

@@ -125,8 +125,18 @@
     </if> 
   </select>
   
+  <select id="proBis" resultType="Product" parameterType="map">
+    select bis_no from product 
+    <if test="bisname != null and prono != null">
+      where bis_name = '${bisname}' and pro_no = ${prono}
+    </if>
+    <if test="bisname == null and prono != null">
+      where category = 'null'
+    </if>
+  </select>
+  
   <select id="checkUser" resultType="Trade" parameterType="map">
-    select trd_no from trade where buy_id = '${userid}' and pro_no = ${pro_no} and rv_chk = 1
+    select trd_code from trade where buy_id = '${userid}' and pro_no = ${pro_no} and rv_chk = 1
   </select>
   
   <select id="inter" resultType="Product" parameterType="hashmap">

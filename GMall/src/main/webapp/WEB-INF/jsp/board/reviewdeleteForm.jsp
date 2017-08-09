@@ -5,20 +5,36 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Q&A 글 삭제</title>
+<title>Review 삭제</title>
+<style type="text/css">
+a
+{
+ color : black;
+}
+</style>
 </head>
 <body>
+<div class="container-fluid" style="padding-left: 0px; padding-right: 0px;">
+  <div class="col-xs-2"></div>
+    <div class="col-xs-8 info_content">
 <form action="reviewdelete.mall" name="deleteform"  method="post">
   <input type="hidden" name="num" value="${param.num}">
   <input type="hidden" name="pageNum" value="${param.pageNum}">
   <input type="hidden" name="pro_no" value="${param.pro_no}">
-    <table border="1">
-      <tr><td>리뷰를 삭제 하시겠습니까?</td></tr>
-        <tr><td colspan="2" align="center">
-        <a href="javascript:document.deleteform.submit()">[삭제]</a>
-        <a href="productDetail.mall?pro_no=${param.pro_no}&pageNum=${param.pageNum}">[목록]</a>
-        </td></tr>
+    <table class="table table-hover" style="border-bottom: 1px solid #e5e5e5; width:350px;" align="center">
+      <tr>
+        <td align="center">Review를 삭제 하시겠습니까?</td>
+      </tr>  
+      <tr>
+        <td colspan="2" align="center"> 
+          <button class="btn btn-default"><a href="javascript:document.deleteform.submit()">삭제</a></button>
+          <button class="btn btn-default"><a href="productDetail.mall?pro_no=${param.pro_no}&pageNum=${param.pageNum}">목록</a></button>
+        </td>
+      </tr>
     </table>    
 </form>
+  </div>
+  <div class="col-xs-2"></div>
+</div>
 </body>
 </html>

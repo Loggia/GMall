@@ -70,13 +70,19 @@ public interface BoardMapper {
 	void rvchkUpdate(Map<String, Object> paramMap);
 	
 	@Select("select * from trade where pro_no=#{pro_no}")
-	Trade sellInfo(String pro_no);
+	List<Trade> sellInfo(String pro_no);
 	
 	@Select("select score from member where id='${value}'")
 	Member sellScore(String sellid);
 	
 	@Update("update member set score=${realGrade} where id='${sellid}'")
 	void memGrade(Map<String, Object> paramMap);
+	
+	@Select("select trd_code from trade where pro_no='${value}'")
+	List<Trade> protrInfo(String pro_no);
+	
+	@Select("select type, bis_name from member where id='${value}'")
+	Member sessionType(String userid);
 	
 	@Select("select count(p.pro_no) cnt, p.pro_no, p.main_img fileurl from trade t, product p where p.pro_no=t.pro_no group by t.pro_no order by cnt desc, date desc LIMIT 4;")
 	List<Product> popuList();

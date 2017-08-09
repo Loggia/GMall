@@ -15,7 +15,10 @@ function totallist(pageNum)
 </head>
 
 <body>
-<div class="row">
+<div class="container-fluid" style="padding-left: 0px; padding-right: 0px;">
+  <div class="col-xs-2"></div>
+    <div class="col-xs-8 info_content">
+      <div class="row">
         <div class="col-xs-12">
           <div class="box">
             <!-- /.box-header -->
@@ -77,6 +80,9 @@ function totallist(pageNum)
           </div>
           <!-- /.box -->
         </div>
+  </div>
+ </div> 
+ <div class="col-xs-2"></div>
 </div>
 </body>
 </html>

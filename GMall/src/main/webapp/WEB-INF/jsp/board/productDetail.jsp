@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/jsp/jspHeader.jsp" %>    
+<%@ include file="/WEB-INF/jsp/jspHeader.jsp" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -14,6 +14,7 @@
 #loc2
 {
   text-align : center;
+  margin-bottom : 30px;
 } 
 #loc3 ul li  
 {
@@ -22,13 +23,13 @@
 } 
 #loc4
 {  
-  position:absolute; top:42%; left:59%; overflow:hidden; margin-top:-200px; margin-left:-100px;
+  overflow:hidden; margin-top:-35px; margin-left:120px;
 } 
-#loc5
-{  
-  width : 150px;
-  float : left;
-} 
+#loc5            
+{          
+  width : 150px;  
+  float : left;    
+}   
 #arrange      
 {         
   width        : 350px;           
@@ -41,10 +42,18 @@
 {
   word-break : break-all;
 }
-</style>
-<script>
-function explain_disp()
+.prodeloc
 {
+  left:80%; overflow:hidden;  margin-left:230px; 
+}   
+a
+{
+  color : black;
+}  
+</style>          
+<script>      
+function explain_disp()
+{  
 	  var disp = document.getElementById('explain');
 	  if(disp.style.display == 'block')
     {
@@ -122,83 +131,99 @@ function productlist(pageNum)
 </script>
 </head>
 <body>
+<div class="container-fluid" style="padding-left: 0px; padding-right: 0px;">
+  <div class="col-xs-2"></div>
+    <div class="col-xs-8 info_content">
 <div>
-<div>
+<div class="prodeloc"><h2>${proinfo.bis_name}</h2></div>  
+<div>  
 <c:set var="product" value="${proinfo}" />
-<table align="center" width="30%">
+<table class="table table-hover" style="border-bottom: 1px solid #e5e5e5; width:800px;" align="center">
   <tr>  
   <td><img src="../picture/${product.fileurl}" width="250" height="250"></td>
   <td align="center">
     <table>
-    <tr><td width="80">상품명</td>  
-        <td width="160">${product.pro_name}</td>
-    </tr>  
-    <tr><td width="80">가격</td>
-        <td width="160">${product.price}원</td>
+    <tr><td width="80"><h2>상품명</h2></td>  
+        <td width="160"><h2>${product.pro_name}</h2></td>  
+    </tr>    
+    <tr><td width="80"><h2>가격</h2></td>
+        <td width="160"><h2><fmt:formatNumber value="${product.price}" groupingUsed="true"/>원</h2></td>
     </tr>
-    <tr><td width="80">상품내용</td>
-        <td width="160">${product.pro_content}</td>
+    <tr><td width="100"><h2>상품내용</h2></td>    
+        <td width="160"><h2>&nbsp;&nbsp;${product.pro_content}</h2></td>
     </tr>
     <tr><td colspan="2" align="center">
-      <form:form modelAttribute="trade" action="cartAdd.mall" name="tradeForm">
-        <input type="hidden" name="pro_no" value="${product.pro_no}">
+      <form:form modelAttribute="trade" action="" name="tradeForm">
+        <input type="hidden" name="bis_name" value="${product.bis_name}">
           <table align="left">
           <tr>
             <td>
-               <select name="quantity">
-				<c:forEach begin="1" end="10" var="idx">
-					<option>${idx}</option>
-				</c:forEach>
-			</select>
+              <h2>갯수<form:input id="loc4" type="number" path="trd_cnt" class="form-control" style="width:50px;" /></h2>
             </td>
           </tr>
           <tr>
             <td>
               <br><br><br> 
-              &nbsp;&nbsp;&nbsp;<input id="loc5" type="submit" class="form-control" value="카트에 넣기">
-              <input id="loc5" type="button" class="form-control" value="목록보기" onclick="location.href='proList.mall?category=${category}'">
+              &nbsp;&nbsp;&nbsp;
+              <c:if test="${usertype == 0}">              
+                <input id="loc5" type="button" class="btn btn-success" value="목록보기" onclick="location.href='proList.mall?category=${category}'">
+              </c:if>
+              <c:if test="${usertype == 1}">
+                <input id="loc5" type="submit" class="btn btn-success" value="카트에 넣기" onclick="">
+                <input id="loc5" type="button" class="btn btn-success" value="목록보기" onclick="location.href='proList.mall?category=${category}'">
+                <input id="loc5" type="button" class="btn btn-success" value="즐겨찾기" onclick="">
+              </c:if>
+              <c:if test="${usertype == 2 && probis.bis_no == proinfo.bis_no}">
+                <input id="loc5" type="submit" class="btn btn-success" value="수정하기" onclick="">
+                <input id="loc5" type="button" class="btn btn-success" value="목록보기" onclick="location.href='proList.mall?category=${category}'">
+              </c:if>
+              <c:if test="${usertype == 2 && probis.bis_no != proinfo.bis_no}">
+                <input id="loc5" type="button" class="btn btn-success" value="목록보기" onclick="location.href='proList.mall?category=${category}'">
+              </c:if>
+              <c:if test="${usertype == 3}">               
+                <input id="loc5" type="button" class="btn btn-success" value="목록보기" onclick="location.href='proList.mall?category=${category}'">   
+              </c:if>
             </td>
-          </tr>
+          </tr> 
           </table>  
       </form:form>
          </td>
      </tr>
     </table>
-  </td>
+  </td> 
   </tr>
 </table>        
 </div>
 <br><br>
 <div id="loc3" align="center">      
 <ul>
-<li><button class="btn btn-default" onclick="return explain_disp()">상품소개</button></li>
-<li><button class="btn btn-default" onclick="return review_disp()">리뷰</button></li>
-<li><button class="btn btn-default" onclick="return qna_disp()">QnA</button></li>
+<li><button class="btn btn-warning" onclick="return explain_disp()">상품소개</button></li>
+<li><button class="btn btn-warning" onclick="return review_disp()">리뷰</button></li>
+<li><button class="btn btn-warning" onclick="return qna_disp()">QnA</button></li>
 </ul>
-</div>
-<div id="explain" style="display:none; width:100%;" align="center">
+</div> 
+<div id="explain" style="display:block;" align="center">
 	<c:set var="product" value="${proinfo}" />
-	<h3>${product.pro_name}</h3>
 	<img src="../picture/${product.fileurl1}" /><br>
 	<img src="../picture/${product.fileurl2}" /><br>
 	<img src="../picture/${product.fileurl3}" />
 </div>
 <div id="review" style="display:none; width:100%;">
-<table border="1" cellpadding="0" cellspacing="0" width="40%" align="center"> 
-<c:if test="${relistcount > 0}"> 
-	<tr width="100%"><td colspan="5" align="center"><h1>Review</h1></td></tr>
-	<c:forEach items="${reviewlist}" var="rvlist" varStatus="stat">
+<table class="table table-hover" style="border-bottom: 1px solid #e5e5e5; width:850px;" align="center"> 
+<c:if test="${relistcount > 0}">    
+	<tr width="100%"><td colspan="5" align="center"><h1>Review</h1></td></tr> 
+	<c:forEach items="${reviewlist}" var="rvlist" varStatus="stat">  
     <tr>             
-	  <td width="20%"><h4><a href="#reviewModal${stat.count}" data-toggle="modal" class="pull-left"
-	  style="margin-top: 3px;">제목 : ${rvlist.subject}</a></h4><br><h4 id="arrange">내용 : ${rvlist.content}</h4></td>
-      <td width="20%" align="center">작성자 : ${rvlist.id}<br>등록일 : <fmt:formatDate value="${rvlist.regdate}" pattern="yyyy-MM-dd"/></td>		  
-	  <td width="20%" align="center">평점<br>
-	    <c:if test="${rvlist.grade == 2}">  
-	      <font color="#EDD200">★</font>
-	    </c:if>
+	  <td width="20%" align="center"><h4><a href="#reviewModal${stat.count}" data-toggle="modal" 
+	  style="margin-top: 3px;">제목 : ${rvlist.subject}</a></h4><h4 id="arrange">내용 : ${rvlist.content}</h4></td>
+      <td width="20%" align="center"><br>작성자 : ${rvlist.id}<br>등록일 : <fmt:formatDate value="${rvlist.regdate}" pattern="yyyy-MM-dd"/></td>		  
+	  <td width="20%" align="center"><br>평점<br>  
+	    <c:if test="${rvlist.grade == 2}">   
+	      <font color="#EDD200">★</font>   
+	    </c:if>      
 	    <c:if test="${rvlist.grade == 4}">
 	      <font color="#EDD200">★★</font>
-	    </c:if>
+	    </c:if>  
 	    <c:if test="${rvlist.grade == 6}">
 	      <font color="#EDD200">★★★</font>
 	    </c:if>
@@ -208,18 +233,36 @@ function productlist(pageNum)
 	    <c:if test="${rvlist.grade == 10}">
 	      <font color="#EDD200">★★★★★</font>
 	    </c:if>
-	  </td>
+	  </td> 
 	  <c:if test="${userid != 'admin' && userid != 'guest' && userid == rvlist.id && empty param.pageNum}">
-	    <td width="20%" align="center"><a href="reviewupdateForm.mall?pro_no=${pro_no}&num=${rvlist.board_no}&pageNum=1">수정</a><br><a href="reviewdeleteForm.mall?pro_no=${pro_no}&num=${rvlist.board_no}&pageNum=1">삭제</a></td>
-      </c:if> 
+	    <td width="20%" align="center">  
+	      <br>  
+	      <button class="btn btn-default"><a href="reviewupdateForm.mall?pro_no=${pro_no}&num=${rvlist.board_no}&pageNum=1">수정</a>
+	      <button class="btn btn-default"><a href="reviewdeleteForm.mall?pro_no=${pro_no}&num=${rvlist.board_no}&pageNum=1">삭제</a>
+	    </td>        
+      </c:if>       
 	  <c:if test="${userid != 'admin' && userid != 'guest' && userid == rvlist.id && not empty param.pageNum}">
-	    <td width="20%" align="center"><a href="reviewupdateForm.mall?pro_no=${pro_no}&num=${rvlist.board_no}&pageNum=${param.pageNum}">수정</a><br><a href="reviewdeleteForm.mall?pro_no=${pro_no}&num=${rvlist.board_no}&pageNum=${param.pageNum}">삭제</a></td>
+	    <td width="20%" align="center">
+	      <br>  
+	      <button class="btn btn-default"><a href="reviewupdateForm.mall?pro_no=${pro_no}&num=${rvlist.board_no}&pageNum=${param.pageNum}">수정</a>
+	      <button class="btn btn-default"><a href="reviewdeleteForm.mall?pro_no=${pro_no}&num=${rvlist.board_no}&pageNum=${param.pageNum}">삭제</a>
+	    </td>  
       </c:if>
 	  <c:if test="${userid == 'admin' && userid != 'guest' && empty param.pageNum}">
-	    <td width="20%" align="center"><a href="reviewdeleteForm.mall?pro_no=${pro_no}&num=${rvlist.board_no}&pageNum=1">삭제</a></td>
+	    <td width="20%" align="center">  
+	      <button class="btn btn-default"><a href="reviewupdateForm.mall?pro_no=${pro_no}&num=${rvlist.board_no}&pageNum=1">수정</a>
+	    </td>
 	  </c:if>
 	  <c:if test="${userid == 'admin' && userid != 'guest' && not empty param.pageNum}">
-	    <td width="20%" align="center"><a href="reviewdeleteForm.mall?pro_no=${pro_no}&num=${rvlist.board_no}&pageNum=${param.pageNum}">삭제</a></td>
+	    <td width="20%" align="center">
+	      <button class="btn btn-default"><a href="reviewdeleteForm.mall?pro_no=${pro_no}&num=${rvlist.board_no}&pageNum=${param.pageNum}">삭제</a>
+        </td>  
+      </c:if>
+      <c:if test="${userid != 'admin' && userid != 'guest' && userid != rvlist.id && empty param.pageNum}">
+	    <td width="20%" align="center"></td>
+      </c:if>
+      <c:if test="${userid != 'admin' && userid != 'guest' && userid != rvlist.id && not empty param.pageNum}">
+	    <td width="20%" align="center"></td>
       </c:if>
 	</tr>
     <div class="modal fade" id="reviewModal${stat.count}" role="dialog">
@@ -264,13 +307,13 @@ function productlist(pageNum)
 </c:if>	
 </table>
 <div id="loc2">
-<c:if test="${userid != 'admin' && userid != 'guest' && not empty userinfo.trd_no}">
+<c:if test="${userid != 'admin' && userid != 'guest' && codeequal == 1}">
    <div id="loc"><button type="button" class="btn btn-info" onclick="location.href='reviewAdd.mall?pro_no=${param.pro_no}'">리뷰 남기기</button></div>
 </c:if>
 </div>
 </div>
 <div id="qna" style="display:none; width:100%;">
-<table border="1" cellpadding="0" cellspacing="0" width="100%">
+<table class="table table-hover" style="border-bottom: 1px solid #e5e5e5; width:850px;" align="center">
 <c:if test="${listcount > 0}">
 	<tr width="100%">
 	  <td colspan="5" align="center"><h1>Q&A</h1></td></tr>
@@ -297,7 +340,7 @@ function productlist(pageNum)
             <a href="qnaanswerForm.mall?pro_no=${param.pro_no}&num=${qalist.board_no}&pageNum=${param.pageNum}">[답변]</a>
           </c:if>
           <c:if test="${qalist.ans_chk == 1}"> 
-             <font color="blue">√</font>
+             &nbsp;<img src="../img/check.png" width="30" height="30">
           </c:if> 
           </td>
           <c:if test="${not empty qalist.pass}">
@@ -314,31 +357,31 @@ function productlist(pageNum)
 	        <div id="listLine${stat.count}" style="display:none;">
 	        <c:if test="${not empty qalist.pass && empty param.searchType && empty param.searchContent && empty param.num && empty param.password}"> 
 	          <form action="productDetail.mall" method="get" name="onpass" id="loc">
-	                       비밀번호1 : 	                       
+	                       비밀번호 : 	                       
 	          	<input type="hidden" name="pro_no" value="${param.pro_no}">
 	          	<input type="hidden" name="pageNum" value="${param.pageNum}">
 	          	<input type="hidden" name="num" value="${qalist.board_no}">
                 <input type="text" name="password">
-                <input type="submit" value="확인">
+                <input type="submit" class="btn btn-default" value="확인">
               </form>
             </c:if>
             <c:if test="${not empty qalist.pass && not empty param.pageNum &&not empty param.searchType && not empty param.searchContent && empty password}"> 
 	          <form action="productDetail.mall" method="get" name="onpass2" id="loc">
-	                       비밀번호2 : 	  
+	                       비밀번호 : 	  
 	            <input type="hidden" name="pro_no" value="${param.pro_no}">   
 	            <input type="hidden" name="pageNum" value="${param.pageNum}">  
 	            <input type="hidden" name="searchType" value="${param.searchType}">  
 	            <input type="hidden" name="searchContent" value="${param.searchContent}">  	                          
 	          	<input type="hidden" name="num" value="${qalist.board_no}">
                 <input type="text" name="password">
-                <input type="submit" value="확인">
+                <input type="submit" class="btn btn-default" value="확인">
               </form>
             </c:if>	     
             <c:if test="${not empty password && not empty num}"> 
              <c:if test="${(qalist.pass == password) && (qalist.board_no == num)}">
-            	<table border="1" cellpadding="0" cellspacing="0" width="100%" height="70%">
+            	<table class="table table-hover" style="border-bottom: 1px solid #e5e5e5;" align="center">
 	           <tr>
-	          	 <td align="center">내용 : ${qalist.content}</td>
+	          	 <td align="center"><h3>내용 : ${qalist.content}</h3></td>
                </tr> 
                <tr>  
                   <td align="center">첨부파일 → 
@@ -360,31 +403,31 @@ function productlist(pageNum)
 	         </c:if>
 	         <c:if test="${((qalist.pass != password) || (qalist.board_no != num)) && empty param.searchType && not empty qalist.pass}">
 	          <form action="productDetail.mall" method="get" name="onpass4" id="loc">
-	                       비밀번호3 : 
+	                       비밀번호 : 
 	            <input type="hidden" name="pro_no" value="${param.pro_no}">
 	            <input type="hidden" name="pageNum" value="${param.pageNum}">
 	          	<input type="hidden" name="num" value="${qalist.board_no}">
                 <input type="text" name="password">
-                <input type="submit" value="확인">
+                <input type="submit" class="btn btn-default" value="확인">
               </form>
 	         </c:if> 
 	         <c:if test="${(qalist.pass != password && not empty qalist.pass) && (not empty param.pageNum && not empty param.searchType && not empty param.searchContent && not empty param.num && not empty param.password)}">
 	         	<form action="productDetail.mall" method="get" name="onpass5" id="loc">
-	                       비밀번호4 : 
+	                       비밀번호 : 
 	            <input type="hidden" name="pro_no" value="${param.pro_no}">
 	            <input type="hidden" name="pageNum" value="${param.pageNum}">  
 	            <input type="hidden" name="searchType" value="${param.searchType}">  
 	            <input type="hidden" name="searchContent" value="${param.searchContent}">           
 	          	<input type="hidden" name="num" value="${qalist.board_no}">
                 <input type="text" name="password">
-                <input type="submit" value="확인">
+                <input type="submit" class="btn btn-default" value="확인">
               </form>
 	         </c:if>
 	        </c:if> 
 	        <c:if test="${empty qalist.pass}"> 
-	          <table border="1" cellpadding="0" cellspacing="0" width="100%" height="70%">
+	          <table class="table table-hover" style="border-bottom: 1px solid #e5e5e5;" align="center">
 	           <tr>
-	          	 <td align="center">내용 : ${qalist.content}</td>
+	          	 <td align="center"><h3>내용 : ${qalist.content}</h3></td>
                </tr> 
                <tr>  
                   <td align="center">첨부파일 → 
@@ -426,7 +469,7 @@ function productlist(pageNum)
 </tr>         		
 </c:if>
 <c:if test="${listcount ==0}">
-  <tr><td colspan="5">등록된 Q&A가 없습니다.</td></tr>
+  <tr><td colspan="5" align="center">등록된 Q&A가 없습니다.</td></tr>
 </c:if>
 <tr><td colspan="5" align="center">
   <form action="productDetail.mall" method="get" name="productsearchform" onsubmit="return productlist(1)">
@@ -445,20 +488,35 @@ function productlist(pageNum)
   	  }
   	</script>
   	<input type="text" name="searchContent" value="${param.searchContent}">
-  	<input type="submit" value="검색">
+  	<input type="submit" class="btn btn-default" value="검색">
   </form>
 </td></tr>
-</table>
+</table>  
 <div id="loc2">
 <c:if test="${userid != 'admin' && userid != 'guest'}">
-   <tr><td id="loc"><a href="qnaAdd.mall?pro_no=${param.pro_no}">[글쓰기]</a></td></tr>
-   <tr><td id="loc"><a href="productDetail.mall?pro_no=${param.pro_no}">[글목록]</a></td></tr>
+   <tr>
+     <td id="loc">
+       <button class="btn btn-default"><a href="qnaAdd.mall?pro_no=${param.pro_no}">글쓰기</a></button>
+     </td>
+   </tr>
+   <tr>
+     <td id="loc">
+       <button class="btn btn-default"><a href="productDetail.mall?pro_no=${param.pro_no}">글목록</a></button>
+     </td>
+   </tr>
 </c:if>
 <c:if test="${userid == 'admin' || userid == 'guest'}">
-   <tr><td id="loc"><a href="productDetail.mall?pro_no=${param.pro_no}">[글목록]</a></td></tr>
+   <tr>
+     <td id="loc">
+       <button class="btn btn-default"><a href="productDetail.mall?pro_no=${param.pro_no}">글목록</a></button>
+     </td>
+   </tr>
 </c:if>
 </div>
 </div>
+</div>
+  </div>
+  <div class="col-xs-2"></div>
 </div>
 </body>
 </html>

@@ -33,9 +33,12 @@ public interface BaeService {
 	Trade checkUser(String userid, String pro_no); //배기수 - 해당 상품 구매자인 경우만 리뷰가 작성 가능하게 하기 위해 상품 구매자인지를 확인
 	void reviewUpdate(Board board, HttpServletRequest request); //배기수 - 리뷰글 수정 기능
 	Product proInfo(String pro_no); //배기수 - 해당 상품번호의 상품정보를 가져옴
-	Trade sellInfo(String pro_no); //배기수 - 해당 상품의 판매자
+	List<Trade> sellInfo(String pro_no); //배기수 - 해당 상품의 판매자
 	Member sellScore(String sellid); //배기수 - 판매자의 점수를 가져옴
 	void memGrade(String sellid, int grade, int memberScore); //배기수 - 판매자에게 점수를 줌 
+	List<Trade> protrInfo(String pro_no); //배기수 - 상품의 거래번호를 가져옴
+	Member sessionType(String userid); //배기수 - 현재 로그인된 회원의 회원타입을 가져옴
+	Product proBis(String bisname, String pro_no); //배기수 - 현재 로그인된 회원의 bis_name와 현재 상품의 상품번호를 비교하여 상품 등록자의 사업번호를 가져옴
 	
 	
 	

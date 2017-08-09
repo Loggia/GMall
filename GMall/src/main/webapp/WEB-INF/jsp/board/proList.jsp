@@ -6,6 +6,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>상품 리스트</title>
+<style type="text/css">
+a
+{
+  color : black;
+}
+</style> 
 <script>
 function prolist(pageNum) 
 {
@@ -26,9 +32,9 @@ function prolist(pageNum)
               <table class="table table-hover">
                 <tbody>
                 <tr>
-                  <td><a href="proList.mall?category=${param.category}&group=premium">프리미엄순</a></td>
-                  <td><a href="proList.mall?category=${param.category}&group=high">높은 가격순</a></td>
-                  <td><a href="proList.mall?category=${param.category}&group=low">낮은 가격순</a></td>                
+                  <td><button class="btn btn-default"><a href="proList.mall?category=${param.category}&group=premium">프리미엄순</a></button></td>
+                  <td><button class="btn btn-default"><a href="proList.mall?category=${param.category}&group=high">높은 가격순</a></button></td>
+                  <td><button class="btn btn-default"><a href="proList.mall?category=${param.category}&group=low">낮은 가격순</a></button></td>                
                 </tr>
             <c:if test="${listcount > 0}">
                 <tr class="scrollLocation">

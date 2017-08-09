@@ -215,7 +215,7 @@ public class BoardDaoImpl implements BoardDao{
 	}
 	
 	@Override
-	public Trade sellInfo(String pro_no) {
+	public List<Trade> sellInfo(String pro_no) {
 		return sqlSession.getMapper(BoardMapper.class).sellInfo(pro_no);
 	}
 	
@@ -234,6 +234,25 @@ public class BoardDaoImpl implements BoardDao{
 	@Override
 	public Member sellScore(String sellid) {
 		return sqlSession.getMapper(BoardMapper.class).sellScore(sellid);
+	}
+	
+	@Override
+	public List<Trade> protrInfo(String pro_no) {
+		return sqlSession.getMapper(BoardMapper.class).protrInfo(pro_no);
+	}
+	
+	@Override
+	public Member sessionType(String userid) {
+		return sqlSession.getMapper(BoardMapper.class).sessionType(userid);
+	}
+	
+	@Override
+	public Product proBis(String bisname, String pro_no) {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		System.out.println("bisname : " + bisname);
+    	paramMap.put("bisname", bisname);
+    	paramMap.put("prono", pro_no);
+		return sqlSession.selectOne(NS+"proBis", paramMap);
 	}
 
 	@Override

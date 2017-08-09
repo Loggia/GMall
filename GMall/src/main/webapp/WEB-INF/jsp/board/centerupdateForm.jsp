@@ -6,6 +6,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>고객센터 글 수정</title>
+<style type="text/css">
+a
+{
+  color : black;
+}  
+</style>
 <script type="text/javascript">
   function file_delete() {
 	document.updateform.filep.value="";
@@ -22,14 +28,17 @@
 </script>
 </head>
 <body>
+<div class="container-fluid" style="padding-left: 0px; padding-right: 0px;">
+  <div class="col-xs-2"></div>
+    <div class="col-xs-8 info_content">
 <form:form modelAttribute="board" action="centerupdate.mall?pageNum=${pageNum}" enctype="multipart/form-data" name="updateform">
 	<input type="hidden" name="filep" value="${board.fileurl}">
 	<input type="hidden" name="filep2" value="${board.fileurl2}">
 	<input type="hidden" name="filep3" value="${board.fileurl3}">
 	<form:hidden path="board_no" />
 	<form:hidden path="id" />
-	<table cellpadding="0" cellspacing="0" border="1">
-	  <tr><td colspan="2">고객센터 글 수정</td></tr>
+	<table class="table table-hover" style="border-bottom: 1px solid #e5e5e5; width:800px;" align="center">
+	  <tr><td align="center" colspan="2"><h2>고객센터 글 수정</h2></td></tr>
 	  <tr><td>제목</td>
 	      <td><form:input path="subject" />
 	      <font color="red"><form:errors path="subject"/></font></td>
@@ -58,13 +67,13 @@
       	   </div>
       	 </c:if>
       	 <c:if test="${empty board.fileurl}">
-      	 <div>첨부파일 1 : <input type="file" name="img1"></div>
+      	 <div>첨부파일 1 : <input class="btn btn-default" type="file" name="img1"></div>
       	 </c:if>
       	 <c:if test="${empty board.fileurl2}">
-      	 <div>첨부파일 2 : <input type="file" name="img2"></div>
+      	 <div>첨부파일 2 : <input class="btn btn-default" type="file" name="img2"></div>
       	 </c:if>
       	 <c:if test="${empty board.fileurl3}">
-      	 <div>첨부파일 3 : <input type="file" name="img3"></div>    
+      	 <div>첨부파일 3 : <input class="btn btn-default" type="file" name="img3"></div>    
       	 </c:if> 
       	 </td> 	  
       </tr>
@@ -73,11 +82,14 @@
         <font color="red"><form:errors path="pass"/></font></td>
       </tr>
       <tr><td colspan="2" align="center">
-        <a href="javascript:document.updateform.submit()">[수정]</a>&nbsp;
-        <a href="centerdeleteForm.mall?num=${board.board_no}&pageNum=${param.pageNum}">[삭제]</a>
-        <a href="centerList.mall?pageNum=${param.pageNum}">[목록]</a></td>
-      </tr>                  	 
+        <button class="btn btn-default"><a href="javascript:document.updateform.submit()">수정</a></button>
+        <button class="btn btn-default"><a href="centerdeleteForm.mall?num=${board.board_no}&pageNum=${param.pageNum}">삭제</a></button>
+        <button class="btn btn-default" onclick="location href='centerList.mall?pageNum=${param.pageNum}'">목록</button>
+      </tr>                    	 
 	</table>  
 </form:form>
+  </div>
+  <div class="col-xs-2"></div>
+</div>
 </body>
 </html>

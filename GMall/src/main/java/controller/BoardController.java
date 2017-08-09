@@ -4,12 +4,14 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.plaf.synth.SynthSliderUI;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -137,7 +139,7 @@ public class BoardController
 		
 		if(login == null)
 		{
-			mav.setViewName("error");
+			mav.setViewName("alert");
 			mav.addObject("url", "../board/main.mall");
 			mav.addObject("msg", "로그인하고 시도하시기 바랍니다.");
 			
@@ -201,21 +203,21 @@ public class BoardController
 		
 	    if(searchType != null && searchContent != null && board1 != null && !board1.getPass().equals(password))
 		{
-			mav.setViewName("error");
+			mav.setViewName("alert");
 			mav.addObject("url", "../board/centerList.mall?pageNum=" + pageNum + "&searchType=" + searchType + "&searchContent=" + searchContent);
 			mav.addObject("msg", "비밀번호를 잘못입력하셨습니다.");
 			return mav;
 		}
 	    else if(pageNum!=null && searchType == null && searchContent == null && board1 != null && !board1.getPass().equals(password))
 		{
-			mav.setViewName("error");
+			mav.setViewName("alert");
 			mav.addObject("url", "../board/centerList.mall?pageNum=" + pageNum);
 			mav.addObject("msg", "비밀번호를 잘못입력하셨습니다.");
 			return mav;
 		}
 	    else if(searchType == null && searchContent == null && board1 != null && !board1.getPass().equals(password))
 		{
-			mav.setViewName("error");
+			mav.setViewName("alert");
 			mav.addObject("url", "../board/centerList.mall");
 			mav.addObject("msg", "비밀번호를 잘못입력하셨습니다.");
 			return mav;
@@ -258,7 +260,7 @@ public class BoardController
 			return mav;
 		}
 		baeService.centerInsert(board, request);
-		mav.setViewName("redirect:/board/main.mall");
+		mav.setViewName("redirect:/board/centerList.mall");
 		return mav;
 	}
 	
@@ -390,7 +392,7 @@ public class BoardController
 		}
 		if(!pass.equals(dbpass))
 		{
-			mav.setViewName("error");
+			mav.setViewName("alert");
 			mav.addObject("url", "../board/centerList.mall?pageNum=" + pageNum);
 			mav.addObject("msg", "비밀번호를 잘못입력하셨습니다.");
 			return mav;
@@ -483,7 +485,29 @@ public class BoardController
 		List<Board> qnalist = baeService.qnaList(searchType, searchContent, pageNum, limit, pro_no);
 		List<Board> reviewlist = baeService.reList(pageNum, limit, pro_no);
 		Trade userinfo = baeService.checkUser(userid, pro_no);
-		System.out.println(userinfo);
+		List<Trade> protrinfo = baeService.protrInfo(pro_no);
+		System.out.println("protrinfo : " + protrinfo);
+		Member sessiontype = baeService.sessionType(userid);
+		if(sessiontype == null)
+		{
+			sessiontype = new Member();
+		}
+		int usertype = sessiontype.getType();
+		String bisname = sessiontype.getBis_name();
+		Product probis = baeService.proBis(bisname, pro_no);
+		if(userinfo == null)
+		{
+			userinfo = new Trade();
+		}
+		int codeequal = 0;
+		for(Trade protrdcode : protrinfo)
+		{
+			if(protrdcode.getTrd_code().equals(userinfo.getTrd_code()))
+			{
+				codeequal = 1;
+			}
+		}
+		System.out.println("codeequal : " + codeequal);
 		int maxpage = (int)((double)listcount/limit + 0.95);
 		int startpage = (((int)((double)pageNum/10 + 0.9)) -1) * 10 + 1;
 		int endpage = startpage + 9;
@@ -516,26 +540,29 @@ public class BoardController
 		mav.addObject("userinfo", userinfo);
 		mav.addObject("proinfo", proinfo);
 		mav.addObject("category", category);
+		mav.addObject("codeequal", codeequal);
+		mav.addObject("usertype", usertype);
+		mav.addObject("probis", probis);
 		mav.addObject(trade);
 		
 		Board board1 =  baeService.qnapassthrough(num);
 	    if(searchType != null && searchContent != null && board1 != null && !board1.getPass().equals(password))
 		{
-			mav.setViewName("error");
+			mav.setViewName("alert");
 			mav.addObject("url", "../board/productDetail.mall?pro_no=" + pro_no + "&pageNum=" + pageNum + "&searchType=" + searchType + "&searchContent=" + searchContent);
 			mav.addObject("msg", "비밀번호를 잘못입력하셨습니다.");
 			return mav;
 		}
 	    else if(pageNum!=null && searchType == null && searchContent == null && board1 != null && !board1.getPass().equals(password))
 		{
-			mav.setViewName("error");
+			mav.setViewName("alert");
 			mav.addObject("url", "../board/productDetail.mall?pro_no=" + pro_no + "&pageNum=" + pageNum);
 			mav.addObject("msg", "비밀번호를 잘못입력하셨습니다.");
 			return mav;
 		}
 	    else if(searchType == null && searchContent == null && board1 != null && !board1.getPass().equals(password))
 		{
-			mav.setViewName("error");
+			mav.setViewName("alert");
 			mav.addObject("url", "../board/productDetail.mall?pro_no=" + pro_no);
 			mav.addObject("msg", "비밀번호를 잘못입력하셨습니다.");
 			return mav;
@@ -659,7 +686,7 @@ public class BoardController
 		}
 		if(!pass.equals(dbpass))
 		{
-			mav.setViewName("error");
+			mav.setViewName("alert");
 			mav.addObject("url", "../board/productDetail.mall?pro_no=" + pro_no + "&pageNum=" + pageNum);
 			mav.addObject("msg", "비밀번호를 잘못입력하셨습니다.");
 			return mav;
@@ -723,7 +750,8 @@ public class BoardController
 		Member member = (Member)request.getSession().getAttribute("LOGIN_MEMBER");
 		String pro_no = request.getParameter("pro_no");
 		String userid = member.getId();
-		Trade sellinfo = baeService.sellInfo(pro_no);
+		List<Trade> sellinfolist = baeService.sellInfo(pro_no);
+		Trade sellinfo =  sellinfolist.get(0);
 		mav.addObject(new Board());
 		mav.addObject("userid", userid);
 		mav.addObject("pro_no", pro_no);
