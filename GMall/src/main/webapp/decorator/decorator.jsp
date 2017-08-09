@@ -43,6 +43,7 @@
 
 		$(".ml").mouseover(function() {
 			$(".ml").css("color", "#12d8fa");
+			
 		});
 		$(".ml").mouseout(function() {0
 			$(".ml").css("color", "black");
