@@ -259,9 +259,12 @@ public class MemberController {
 		Member login = (Member) session.getAttribute("LOGIN_MEMBER");
 		String passfirm = request.getParameter("passfirm");
 
-		if (login.getId().equals(member.getId())) {
-			if (member.getPass().equals(passfirm)) {
-				if (member.getPass().equals("")) {
+		if (login.getId().equals(member.getId())) 
+		{
+			if (member.getPass().equals(passfirm)) 
+			{
+				if (member.getPass().equals("")) 
+				{
 					member.setPass(login.getPass());
 				}
 
@@ -272,17 +275,22 @@ public class MemberController {
 				/*
 				 * 주한울 회원이 수정된 후 mypage에서 관심사업장, 사업장관리에 값이 뿌려지지 않는 문제가 있어 추가한 코드
 				 */
-				if (login.getType() == 1) {
+				if (login.getType() == 1) 
+				{
 					List<Member> bookmark = jooService.selectBookmark(member.getId());
 					List<Product> newsfeed = jooService.selectNewsFeed(member.getId());
 
 					mav.addObject("bookmark", bookmark);
 					mav.addObject("newsfeed", newsfeed);
-				} else if (login.getType() == 2) {
+				} 
+				else if (login.getType() == 2) 
+				{
 					List<Product> myBis_list = koService.getProductList(login.getBis_no());// 내아이디만
 					mav.addObject("myBis_list", myBis_list);
 				}
-			} else {
+			} 
+			else 
+			{
 				mav.setViewName("alert");
 				mav.addObject("url", "../member/mypage.mall");
 				mav.addObject("msg", "입력한 비밀번호가 일치하지 않습니다.");
