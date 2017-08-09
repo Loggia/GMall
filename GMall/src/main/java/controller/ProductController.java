@@ -42,19 +42,22 @@ public class ProductController
 	//고종환 상품 업데이트 
 	@RequestMapping("product/productUpdate")
 	public ModelAndView productupdate(Product product,BindingResult bindingResult, HttpServletRequest request,HttpSession session){
-		ModelAndView mav=new ModelAndView("member/mypage");
+		ModelAndView mav=new ModelAndView();
 		int pro_no = koService.prono()+1;
 		
-		//Member member=(Member)request.getSession().getAttribute("LOGIN_MEMBER");
 		Member login=(Member)session.getAttribute("LOGIN_MEMBER");
 
         product.setPro_no(pro_no);	
         product.setBis_no(login.getBis_no());
         product.setBis_name(login.getBis_name());
         koService.ProductAdd(product,request);
-		List<Product> myBis_list=koService.getProductList(login.getBis_no());//내아이디만
-		mav.addObject("myBis_list",myBis_list);
-		mav.addObject("member",login);
+        //상품업데이트끝
+        
+
+		mav.setViewName("success");
+		mav.addObject("url", "../member/mypage.mall");
+		mav.addObject("msg", "상품을 등록하였습니다.");
+		mav.addObject("member", login);
 		
 		return mav;
 	}
