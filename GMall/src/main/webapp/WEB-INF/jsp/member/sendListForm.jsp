@@ -189,6 +189,9 @@ $(document).ready(function(){
 				<button type="button" class="btn btn-default" onclick="location.href='${path }/member/talkpage.mall'">받은쪽찌</button>
 				<button type="button" class="btn btn-default" onclick="location.href='${path }/member/sendListForm.mall'">보낸쪽지</button>
 				<button type="button" class="btn btn-default" onclick="location.href='${path }/member/msgWriteForm.mall'">쪽지 쓰기</button>
+				
+				<div style="display: block; margin: 10px 0px;">보낸 쪽지함</div>
+				
 				<ul class="msgListHead" style="margin-top: 10px;">
 					<li style="width: 12%">받는사람</li>
 					<li style="width: 64%">내용</li>

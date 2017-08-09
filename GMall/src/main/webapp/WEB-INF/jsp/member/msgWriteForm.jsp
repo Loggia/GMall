@@ -189,6 +189,9 @@ $(document).ready(function(){
 					<button type="button" class="btn btn-default" onclick="location.href='${path }/member/talkpage.mall'">받은쪽찌</button>
 					<button type="button" class="btn btn-default" onclick="location.href='${path }/member/sendListForm.mall'">보낸쪽지</button>
 					<button type="button" class="btn btn-default" onclick="location.href='${path }/member/msgWriteForm.mall'">쪽지 쓰기</button>
+					
+					<div style="display: block; margin: 10px 0px;">쪽지 쓰기</div>
+					
 					<form:form action="${path }/member/msgSend.mall" modelAttribute="message">
 						<form:input path="rec_id" style="pistion: block;"/>
 						<form:textarea path="msg_content" cols="67" rows="15" style="pistion: block;"/>
