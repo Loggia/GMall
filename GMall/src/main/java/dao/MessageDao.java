@@ -22,4 +22,6 @@ public interface MessageDao {
 
 	void deleteAllSendMsg(String id);
 
+	void deleteAllReciveMsg(String id);
+
 }

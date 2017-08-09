@@ -24,6 +24,6 @@ public interface HDService {
 
 	void deleteAllSendMsg(String id);
 
-	void deleteAllReciveMsg(String msgdelId);
+	void deleteAllReciveMsg(String id);
 
 }

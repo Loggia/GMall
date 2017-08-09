@@ -78,8 +78,8 @@ public class HDServiceImpl implements HDService{
 	}
 
 	@Override
-	public void deleteAllReciveMsg(String msgdelId) {
-		
+	public void deleteAllReciveMsg(String id) {
+		messageDao.deleteAllReciveMsg(id);
 	}
 	
 	

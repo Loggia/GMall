@@ -56,6 +56,9 @@ public class MessageDaoImpl implements MessageDao{
 		sqlSession.getMapper(MessageMapper.class).deleteAllSendMsg(id);
 	}
 	
-
+	@Override
+	public void deleteAllReciveMsg(String id) {
+		sqlSession.getMapper(MessageMapper.class).deleteAllReciveMsg(id);
+	}
 	
 }
