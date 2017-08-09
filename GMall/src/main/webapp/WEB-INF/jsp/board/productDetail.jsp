@@ -138,19 +138,19 @@ function productlist(pageNum)
 <div class="prodeloc"><h2>${proinfo.bis_name}</h2></div>  
 <div>  
 <c:set var="product" value="${proinfo}" />
-<table class="table table-hover" style="border-bottom: 1px solid #e5e5e5; width:800px;" align="center">
-  <tr>  
-  <td><img src="../picture/${product.fileurl}" width="250" height="250"></td>
+<table class="table table-hover" style="border-bottom: 1px solid #e5e5e5; width:850px;" align="center">
+  <tr>    
+  <td width="300"><img src="../picture/${product.fileurl}" width="250" height="250"></td>
   <td align="center">
     <table>
-    <tr><td width="80"><h2>상품명</h2></td>  
-        <td width="160"><h2>${product.pro_name}</h2></td>  
+    <tr><td width="120"><h2>상품명</h2></td>  
+        <td width="180"><h2>${product.pro_name}</h2></td>  
     </tr>    
-    <tr><td width="80"><h2>가격</h2></td>
-        <td width="160"><h2><fmt:formatNumber value="${product.price}" groupingUsed="true"/>원</h2></td>
+    <tr><td width="100"><h2>가격</h2></td>
+        <td width="180"><h2><fmt:formatNumber value="${product.price}" groupingUsed="true"/>원</h2></td>
     </tr>
-    <tr><td width="100"><h2>상품내용</h2></td>    
-        <td width="160"><h2>&nbsp;&nbsp;${product.pro_content}</h2></td>
+    <tr><td width="120"><h2>상품내용</h2></td>    
+        <td width="180"><h2>&nbsp;&nbsp;${product.pro_content}</h2></td>
     </tr>
     <tr><td colspan="2" align="center">
       <form:form modelAttribute="trade" action="" name="tradeForm">
