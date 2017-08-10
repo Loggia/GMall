@@ -8,7 +8,7 @@
     <typeAlias type="logic.Product" alias="Product" />
     <typeAlias type="logic.Coupon" alias="Coupon" />
     <typeAlias type="logic.Coupon_history" alias="Coupon_history" />
-    <typeAlias type="logic.Message" alias="Message" />
+    <typeAlias type="logic.Message" alias="Message" /> 
     <typeAlias type="logic.Bookmark" alias="Bookmark" />
   </typeAliases>
   <mappers>
