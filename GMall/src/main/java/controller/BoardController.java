@@ -26,6 +26,7 @@ import org.springframework.web.servlet.ModelAndView;
 import logic.BaeService;
 import logic.Board;
 import logic.HDService;
+import logic.KuService;
 import logic.Member;
 import logic.Product;
 import logic.Trade;
@@ -37,6 +38,8 @@ public class BoardController
 	public BaeService baeService;
 	@Autowired
 	public HDService hdService;
+	@Autowired
+	public KuService kuService;
 	
 	@RequestMapping("board/main")
 	public ModelAndView main(HttpSession session) {
@@ -808,6 +811,7 @@ public class BoardController
 		System.out.println("memberScore : " + memberScore);
 		baeService.memGrade(sellid, grade, memberScore);
 		baeService.reviewInsert(board, userid, pro_no, request);
+		kuService.primupdate();
 		mav.setViewName("redirect:/board/productDetail.mall?pro_no=" + board.getPro_no());
 		return mav;
 	}
