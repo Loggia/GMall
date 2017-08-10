@@ -100,15 +100,6 @@ public class KuServiceImpl implements KuService
 		
 		return productDao.getproductByNo(pro_no);
 	}
-
-	/*
-	 * 구정연 장바구니
-	 */
-	@Override
-	public Cart getCart() {
-		
-		return new Cart();
-	}
 	
 	/*
 	 * 정연이
@@ -136,40 +127,39 @@ public class KuServiceImpl implements KuService
 	}
 
 	@Override
-	public Trade checkEnd(String id, String trd_address, Cart cart) {
-		
+	public Trade checkEnd(String id, String trd_address, Cart cart)
+	{
 		Trade trade = new Trade();
-		
 		List<ProductSet> productList = cart.getProductList();
-		System.out.println("프로덕트" + productList);
 		DateFormat sdFormat = new SimpleDateFormat("yyMMddmmss");
 		Date nowDate = new Date();
 		String tempDate = sdFormat.format(nowDate);
 		trade.setTrd_code(tempDate+"%"+id); //거래코드
 		
-		for(int i=0; i<productList.size(); i++) {
+		for(int i=0; i<productList.size(); i++) 
+		{
+			ProductSet productset = (ProductSet)productList.get(i);
 			
 			trade.setTrd_no(tradeDao.getMaxtrd_no()); //거래넘버
 			trade.setAddress(trd_address); // 주소
 			trade.setBuy_id(id); //구매자
 			trade.setDelivery("상품준비중"); //배달
 			trade.setRv_chk(1); //리뷰
-			
-			ProductSet productset = (ProductSet)productList.get(i);
 			trade.setTrd_cnt(productset.getQuantity()); //수량
 			trade.setTrd_money(productset.getQuantity()*productset.getProduct().getPrice()); //총가격
 			trade.setPro_no(productset.getProduct().getPro_no()); //상품번호
-			
 			trade.setSell_id(tradeDao.sell_id(productset.getProduct().getBis_name())); //판매자 (상호) 조인으로 아이디 가져올수도있을까
 			
 			String prim = tradeDao.prim(productset.getProduct().getPro_name());
-			if (prim.equals("1")) {
+			
+			if (prim.equals("1")) 
+			{
 				trade.setTrd_fee(tradeDao.yesprim(productset.getProduct().getPro_name()));
-			} else {
+			} 
+			else 
+			{
 				trade.setTrd_fee(tradeDao.Noprim(productset.getProduct().getPro_name()));
 			} //수수료
-			
-			
 			
 			tradeDao.createtrade(trade);
 		}
@@ -179,10 +169,10 @@ public class KuServiceImpl implements KuService
 	
 	//구정연 구매기능 쿠폰 
 		@Override
-		public List<Coupon> selectcoupon(String id) {
+		public List<Coupon_history> selectCoupon(String id) 
+		{
 			
-			return couponDao.selectcoupon(id);
-			
+			return couponDao.selectCoupon(id);
 		}
 		
 	

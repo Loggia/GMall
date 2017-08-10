@@ -18,29 +18,51 @@ public class CartController
 	@Autowired 
 	public KuService kuService;
 	
+	@RequestMapping("board/cart")
+	public ModelAndView cart(HttpSession session)
+	{
+		return cartAdd(null, null, session);
+	}
+	
 	@RequestMapping("board/cartAdd")
-	public ModelAndView cartAdd(Integer pro_no, Integer quantity , HttpSession session){
-		System.out.println(pro_no);
-		Product selectedproduct = kuService.getproductByNo(pro_no);
-		System.out.println(selectedproduct);
+	public ModelAndView cartAdd(Integer pro_no, Integer quantity , HttpSession session)
+	{
+		ModelAndView mav = new ModelAndView("board/cart");
 		Cart cart = (Cart)session.getAttribute("CART_KEY");
+		Product selectedProduct;
 		
-		if(cart == null) {
-			cart = kuService.getCart();
+		if(cart == null) 
+		{
+			cart = new Cart();
 			session.setAttribute("CART_KEY", cart);
 		}
-		cart.push(new ProductSet(selectedproduct , quantity));
-		ModelAndView mav = new ModelAndView("board/cart");
+		
+		if(pro_no != null)
+		{
+			selectedProduct = kuService.getproductByNo(pro_no);
+			cart.push(new ProductSet(selectedProduct , quantity));
+		}
+		else
+		{
+			for(ProductSet p : cart.getProductList())
+			{
+				p.setProduct(kuService.getproductByNo(p.getProduct().getPro_no()));
+			}
+		}
+		
 		mav.addObject("cart" , cart);
 		return mav;
 	}
+	
 	@RequestMapping("board/cartDelete")
-	public ModelAndView cartDel(int index, HttpSession session){
+	public ModelAndView cartDel(int index, HttpSession session)
+	{
+		ModelAndView mav = new ModelAndView("board/cart");
 		Cart cart = (Cart)session.getAttribute("CART_KEY");
 		String name = cart.remove(index);
-		ModelAndView mav = new ModelAndView("board/cart");
-		mav.addObject("cart" , cart);
-		return mav;
 		
+		mav.addObject("cart" , cart);
+		
+		return mav;
 	}
 }

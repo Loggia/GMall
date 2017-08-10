@@ -447,7 +447,7 @@ function list(pageNum)
 					<a href="${path }/board/main.mall" class="pull-left" style="margin-top: 5px;">
 					<img class="rotatey" id="logo" src="../img/logo.png"></a>
 
-					<form action="totalList.mall" method="get" name="searchform" onsubmit="return list(1)" class="navbar-form pull-left" style="margin-top: 15px;">
+					<form action="${path }/board/totalList.mall" method="get" name="searchform" onsubmit="return list(1)" class="navbar-form pull-left" style="margin-top: 15px;">
 				    <!-- 검색창 시작 -->
 					  <div class="input-group">          
   	                      <input type="hidden" name="pageNum" value="1">  	                        
@@ -487,7 +487,7 @@ function list(pageNum)
 									</c:if>
 									<c:if test="${LOGIN_MEMBER.id != null }">
 									<li class="mymemu_list" style="margin: 5px;"><a style="text-decoration: none;" class="ml" href="${path }/member/mypage.mall">내 정보</a></li>
-									<li class="mymemu_list" style="margin: 5px;"><a style="text-decoration: none;" class="ml" href="cartForm.mall">장바구니</a></li>
+									<li class="mymemu_list" style="margin: 5px;"><a style="text-decoration: none;" class="ml" href="${path }/board/cart.mall">장바구니</a></li>
 									<li class="mymemu_list" style="margin: 5px;"><a style="text-decoration: none;" class="ml" href="deleveryForm.mall">배송정보</a></li>
 									</c:if>
 								</ol>

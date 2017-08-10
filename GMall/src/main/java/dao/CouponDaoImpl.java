@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import dao.mapper.CouponMapper;
 import logic.Coupon;
+import logic.Coupon_history;
 
 @Repository
 public class CouponDaoImpl implements CouponDao
@@ -38,16 +39,15 @@ public class CouponDaoImpl implements CouponDao
 	
 	//고종환 사업자 쿠폰주기
 	@Override
-	public void insertCoupon(Map<String, Object> coupon_history) {
+	public void insertCoupon(Map<String, Object> coupon_history) 
+	{
 		sqlSession.getMapper(CouponMapper.class).insertCoupon(coupon_history);
-		
-		
 	}
 	
 	//구정연 구매기능 쿠폰
-		@Override
-		public List<Coupon> selectcoupon(String id) {
-			return sqlSession.getMapper(CouponMapper.class).selectcoupon(id);
-			
-		}
+	@Override
+	public List<Coupon_history> selectCoupon(String id) 
+	{
+		return sqlSession.getMapper(CouponMapper.class).selectCoupon(id);
+	}
 }
