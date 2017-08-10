@@ -91,7 +91,7 @@ function prolist(pageNum)
                     </tr>
                 </c:forEach>
                 <tr align="center" height="26">  
-                  <td colspan="5">
+                  <td align="center" colspan="5">
                     <c:if test="${pageNum > 1}">
                       <a href="javascript:prolist(${pageNum - 1})">
                     </c:if>[이전]&nbsp;
