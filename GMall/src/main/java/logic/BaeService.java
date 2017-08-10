@@ -39,8 +39,7 @@ public interface BaeService {
 	List<Trade> protrInfo(String pro_no); //배기수 - 상품의 거래번호를 가져옴
 	Member sessionType(String userid); //배기수 - 현재 로그인된 회원의 회원타입을 가져옴
 	Product proBis(String bisname, String pro_no); //배기수 - 현재 로그인된 회원의 bis_name와 현재 상품의 상품번호를 비교하여 상품 등록자의 사업번호를 가져옴
-	
-	
+	List<Product> favorPrice(String favor); //배기수 - 분류된 상품의 가격을 가져옴
 	
 	
 	

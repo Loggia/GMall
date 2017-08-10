@@ -319,6 +319,11 @@ public class BaeServiceImpl implements BaeService{
 	public Product proBis(String bisname, String pro_no) {
 		return boardDao.proBis(bisname, pro_no);
 	}
+
+	@Override
+	public List<Product> favorPrice(String favor) {
+		return boardDao.favorPrice(favor);
+	}
 	
 	
 	

@@ -44,6 +44,7 @@ public interface BoardDao {
 	List<Trade> protrInfo(String pro_no);
 	Member sessionType(String userid);
 	Product proBis(String bisname, String pro_no);
+	List<Product> favorPrice(String favor);
 	
 	List<Product> interList(String inter);
 	List<Product> popuList();

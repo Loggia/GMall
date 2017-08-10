@@ -29,42 +29,68 @@ function prolist(pageNum)
           <div class="box">
             <!-- /.box-header -->
             <div class="box-body table-responsive no-padding">
-              <table class="table table-hover">
+              <table class="table table-hover" style="border-bottom: 1px solid #e5e5e5;" align="center">
                 <tbody>
-                <tr>
+                <tr align="center">    
                   <td><button class="btn btn-default"><a href="proList.mall?category=${param.category}&group=premium">프리미엄순</a></button></td>
                   <td><button class="btn btn-default"><a href="proList.mall?category=${param.category}&group=high">높은 가격순</a></button></td>
                   <td><button class="btn btn-default"><a href="proList.mall?category=${param.category}&group=low">낮은 가격순</a></button></td>                
                 </tr>
-            <c:if test="${listcount > 0}">
-                <tr class="scrollLocation">
-                  <th>상품이미지</th>
-                  <th>상품명</th>
-                  <th>가격</th>
-                  <th>등록일</th>
-                  <th>사업자명</th>  
-                  <th>프리미엄</th>                      
-                </tr>
-                
-                
+            <c:if test="${listcount > 0}">  
+                <tr class="proloc" align="center">
+                  <th align="center">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;상품이미지</th>  
+                  <th align="center">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;상품명</th>    
+                  <th align="center">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp; 
+                                     가격</th>
+                  <th align="center">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                     평균가</th>
+                  <th align="center">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                     등록일</th>   
+                  <th align="center">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;사업자명</th>      
+                  <th align="center">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        
+                                     프리미엄</th>                        
+                </tr>       
                 <c:forEach items="${productlist}" var="product">
-                    <tr class="listToChange">
-                        <td class="scrolling">
+                    <tr>
+                        <td align="center">
                         <a href="productDetail.mall?pro_no=${product.pro_no}&category=${product.category}"><img src='../picture/${product.fileurl}' width='70' height='70' /></a>
                         </td>
-                        <td><a href="productDetail.mall?pro_no=${product.pro_no}&category=${product.category}">${product.pro_name}</a></td>
-                        <td>${product.price}</td>
-                        <td><fmt:formatDate value="${product.date}" pattern="yyyy-MM-dd"/></td>                        
-                        <td>${product.bis_name}</td> 
+                        <td align="center"><a href="productDetail.mall?pro_no=${product.pro_no}&category=${product.category}">${product.pro_name}</a></td>
+                        <td align="center">${product.price}</td>
+                        <td align="center">
+                          ${product.averfavorprice}원<br>
+                          <c:if test="${product.price > product.averfavorprice}">
+                            <font color="red">(+${product.price - product.averfavorprice}원)</font>
+                          </c:if>
+                          <c:if test="${product.price < product.averfavorprice}">
+                            <font color="blue">(-${product.averfavorprice - product.price}원)</font>
+                          </c:if>
+                          <c:if test="${product.price == product.averfavorprice}">
+                            (${product.price - product.averfavorprice}원)
+                          </c:if>
+                        </td>                          
+                        <td align="center"><fmt:formatDate value="${product.date}" pattern="yyyy-MM-dd"/></td>                        
+                        <td align="center">${product.bis_name}</td> 
                         <c:if test="${product.prim == 1}"> 
-                          <td><img src='../img/prim.png' width='50' height='50' /></td>
+                          <td align="center"><img src='../img/prim.png' width='50' height='50' /></td>
                         </c:if>
                         <c:if test="${product.prim == 0}">
-                          <td>일반 사업자</td>
+                          <td align="center">일반 사업자</td>
                         </c:if> 
                     </tr>
                 </c:forEach>
-                <tr align="center" height="26">
+                <tr align="center" height="26">  
                   <td colspan="5">
                     <c:if test="${pageNum > 1}">
                       <a href="javascript:prolist(${pageNum - 1})">

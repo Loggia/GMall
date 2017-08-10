@@ -23,34 +23,60 @@ function totallist(pageNum)
           <div class="box">
             <!-- /.box-header -->
             <div class="box-body table-responsive no-padding">
-              <table class="table table-hover">
+              <table class="table table-hover" style="border-bottom: 1px solid #e5e5e5;" align="center">
                 <tbody>            
             <c:if test="${listcount > 0}">
-                <tr class="scrollLocation">
-                  <th>상품이미지</th>
-                  <th>상품명</th>
-                  <th>가격</th>
-                  <th>등록일</th>
-                  <th>사업자명</th>  
-                  <th>프리미엄</th>                      
-                </tr>
-                
-                
+                <tr align="center">  
+                  <th align="center">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;상품이미지</th>  
+                  <th align="center">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;상품명</th>    
+                  <th align="center">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp; 
+                                     가격</th>
+                  <th align="center">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                     평균가</th>
+                  <th align="center">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                     등록일</th>   
+                  <th align="center">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;사업자명</th>      
+                  <th align="center">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        
+                                     프리미엄</th>                       
+                </tr>               
                 <c:forEach items="${totallist}" var="total">
-                    <tr class="listToChange">
-                        <td class="scrolling">
+                    <tr>
+                        <td align="center">
                         <a href="productDetail.mall?pro_no=${total.pro_no}&category=${total.category}"><img src='../picture/${product.fileurl}' width='70' height='70' /></a>
                         </td>
-                        <td><a href="productDetail.mall?pro_no=${total.pro_no}&category=${total.category}">${total.pro_name}</a></td>
-                        <td>${total.price}</td>
-                        <td><fmt:formatDate value="${total.date}" pattern="yyyy-MM-dd"/></td>                        
-                        <td>${total.bis_name}</td> 
+                        <td align="center"><a href="productDetail.mall?pro_no=${total.pro_no}&category=${total.category}">${total.pro_name}</a></td>
+                        <td align="center">${total.price}</td>
+                        <td align="center">
+                          ${total.averfavorprice}원<br>
+                          <c:if test="${total.price > total.averfavorprice}">
+                            <font color="red">(+${total.price - total.averfavorprice}원)</font>
+                          </c:if>
+                          <c:if test="${total.price < total.averfavorprice}">
+                            <font color="blue">(-${total.averfavorprice - total.price}원)</font>
+                          </c:if>
+                          <c:if test="${total.price == total.averfavorprice}">
+                            (${total.price - total.averfavorprice}원)
+                          </c:if>
+                        </td>
+                        <td align="center"><fmt:formatDate value="${total.date}" pattern="yyyy-MM-dd"/></td>                        
+                        <td align="center">${total.bis_name}</td> 
                         <c:if test="${total.prim == 1}"> 
-                          <td><img src='../img/prim.png' width='50' height='50' /></td>
+                          <td align="center"><img src='../img/prim.png' width='50' height='50' /></td>
                         </c:if>
                         <c:if test="${total.prim == 0}">
-                          <td>일반 사업자</td>
-                        </c:if> 
+                          <td align="center">일반 사업자</td>
+                        </c:if>   
                     </tr>
                 </c:forEach>
                 <tr align="center" height="26">

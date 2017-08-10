@@ -85,7 +85,20 @@ public class BoardController
 		int listcount = baeService.proCount(searchType, searchContent, category);
 		System.out.println(listcount);
 		List<Product> productlist = baeService.proList(category, group, searchType, searchContent, pageNum, limit);
-		System.out.println("size : " + productlist.size());
+		System.out.println("size : " + productlist.size());		
+		for(int i=0; i<productlist.size() ; i++)
+		{
+			int averprice = 0;
+			int totalprice = 0;
+			String favor = productlist.get(i).getFavorite();
+			List<Product> favorprice = baeService.favorPrice(favor);
+			for(int j=0; j<favorprice.size() ; j++)
+			{
+				totalprice += favorprice.get(j).getPrice();
+				averprice = totalprice / favorprice.size();
+				productlist.get(i).setAverfavorprice(averprice);
+			}
+		} 		
 		int maxpage = (int)((double)listcount/limit + 0.95);
 		int startpage = (((int)((double)pageNum/10 + 0.9)) -1) * 10 + 1;
 		int endpage = startpage + 9;
@@ -120,6 +133,19 @@ public class BoardController
 		if(endpage > maxpage)
 		{
 			endpage = maxpage;
+		}
+		for(int i=0; i<totallist.size() ; i++)
+		{
+			int averprice = 0;
+			int totalprice = 0;
+			String favor = totallist.get(i).getFavorite();
+			List<Product> favorprice = baeService.favorPrice(favor);
+			for(int j=0; j<favorprice.size() ; j++)
+			{
+				totalprice += favorprice.get(j).getPrice();
+				averprice = totalprice / favorprice.size();
+				totallist.get(i).setAverfavorprice(averprice);
+			}
 		}
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("totallist", totallist);

@@ -50,9 +50,8 @@ public class Product
 	@NotEmpty
 	private String date2;
 	
-
-	
-	
+	private int averfavorprice;
+		
 	public int getPro_no() 
 	{
 		return pro_no;
@@ -169,9 +168,6 @@ public class Product
 		this.pro_content = pro_content;
 	}
 	
-	
-
-
 	public String getFileurl() {
 		if(fileurl == null) return "";
 		return fileurl;
@@ -248,6 +244,14 @@ public class Product
 		this.date2 = date2;
 	}
 
+	public int getAverfavorprice() {
+		return averfavorprice;
+	}
+
+	public void setAverfavorprice(int averfavorprice) {
+		this.averfavorprice = averfavorprice;
+	}
+
 	@Override
 	public String toString() {
 		return "Product [pro_no=" + pro_no + ", bis_no=" + bis_no + ", bis_name=" + bis_name + ", date=" + date
@@ -255,9 +259,8 @@ public class Product
 				+ ", category=" + category + ", favorite=" + favorite + ", pro_content=" + pro_content + ", fileurl="
 				+ fileurl + ", fileurl1=" + fileurl1 + ", fileurl2=" + fileurl2 + ", fileurl3=" + fileurl3
 				+ ", main_img=" + main_img + ", sub_img1=" + sub_img1 + ", sub_img2=" + sub_img2 + ", sub_img3="
-				+ sub_img3 + ", date2=" + date2 + "]";
+				+ sub_img3 + ", date2=" + date2 + ", averfavorprice=" + averfavorprice + "]";
 	}
-
 
 	
 }

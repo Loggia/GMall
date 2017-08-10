@@ -254,6 +254,11 @@ public class BoardDaoImpl implements BoardDao{
     	paramMap.put("prono", pro_no);
 		return sqlSession.selectOne(NS+"proBis", paramMap);
 	}
+	
+	@Override
+	public List<Product> favorPrice(String favor) {
+		return sqlSession.getMapper(BoardMapper.class).favorPrice(favor);
+	}
 
 	@Override
 	public List<Product> interList(String inter) {
