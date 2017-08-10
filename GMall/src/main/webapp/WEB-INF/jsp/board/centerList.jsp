@@ -493,43 +493,42 @@ body {
 							</td></tr>  -->
 							</tbody>
 						</table>
-						<div align="center">
-							<ul class="pagination">
-								<c:if test="${pageNum == 1}">
-									<li class="disabled">
-										<a aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
-									</li>
-								</c:if>
-								<c:if test="${pageNum > 1}">
-									<li class="">
-										<a href="javascript:centerlist(${pageNum - 1})" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
-									</li>
-								</c:if>
-	
-								<c:forEach var="a" begin="${startpage}" end="${endpage}">
-									<c:if test="${pageNum == a}">
-										<li class="active">
-											<a href="#">${a}<span class="sr-only"></span></a>
-										</li>
-									</c:if>
-									<c:if test="${pageNum != a}">
-										<li>
-											<a href="javascript:centerlist(${a})">${a}<span class="sr-only"></span></a>
-										</li>
-									</c:if>
-								</c:forEach>
-								<c:if test="${pageNum == maxpage}">
-									<li class="disabled">
-										<a aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
-									</li>
-								</c:if>
-								<c:if test="${pageNum < maxpage}">
-									<li>
-										<a href="javascript:centerlist(${pageNum + 1})" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
-									</li>
-								</c:if>
-							</ul>
-						</div><br><br><br>
+	                    <div align="center">                     
+	                      <ul class="pagination">  
+                            <c:if test="${pageNum == 1}">
+		                      <li class="disabled">
+		                        <a aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+		                      </li>
+	                        </c:if>
+		                    <c:if test="${pageNum > 1}">
+		                      <li class="">
+		                        <a href="javascript:centerlist(${pageNum - 1})" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+		                      </li>
+		                    </c:if>
+		                    <c:forEach var="a" begin="${startpage}" end="${endpage}">
+		                      <c:if test="${pageNum == a}">
+		                        <li class="active">
+			                      <a href="#">${a}<span class="sr-only"></span></a>
+			                    </li>
+		                      </c:if>
+		                      <c:if test="${pageNum != a}">
+	                            <li>
+			                      <a href="javascript:centerlist(${a})">${a}<span class="sr-only"></span></a>
+			                    </li>
+		                      </c:if>
+		                    </c:forEach>
+		                    <c:if test="${pageNum == maxpage}">
+		                      <li class="disabled">
+		                        <a aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+		                      </li>
+		                    </c:if>
+		                    <c:if test="${pageNum < maxpage}">
+		                      <li>
+		                        <a href="javascript:centerlist(${pageNum + 1})" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+		                      </li>
+		                    </c:if>
+                          </ul>
+                        </div>
 						
 						<div align="center">
 							<form action="centerList.mall" method="get" name="centersearchform" onsubmit="return centerlist(1)">

@@ -38,6 +38,10 @@
   overflow     : hidden;    
   display      : block;     
 }
+#review
+{
+  margin-bottom : 100px;     
+}
 .line
 {
   word-break : break-all;
@@ -45,9 +49,9 @@
 .prodeloc
 {
   left:80%; overflow:hidden;  margin-left:230px; 
-}   
-a
-{
+}       
+a   
+{ 
   color : black;
 }  
 </style>          
@@ -284,28 +288,48 @@ function productlist(pageNum)
         </div>
       </div>
     </div>     
-	</c:forEach>
-	<tr align="center" height="26">
-      <td colspan="5">
-        <c:if test="${pageNum > 1}">
-           <a href="javascript:productlist(${pageNum - 1})">
-        </c:if>[이전]&nbsp;
-        <c:if test="${pageNum > 1}"></a></c:if>
-        <c:forEach var="a" begin="${startpage2}" end="${endpage2}">
-  	       <c:if test="${pageNum == a}">[${a}]</c:if>
-  	       <c:if test="${pageNum != a}"><a href="javascript:productlist(${a})">[${a}]</a></c:if>&nbsp;  	 
-        </c:forEach>
-        <c:if test="${pageNum < maxpage2}">
-           <a href="javascript:productlist(${pageNum + 1})">
-        </c:if>[다음]&nbsp;
-        <c:if test="${pageNum < maxpage2}"></a></c:if>
-     </td>
-   </tr>    
+	</c:forEach>    
 </c:if>
 <c:if test="${relistcount ==0}">
   <tr><td colspan="5">등록된 리뷰가 없습니다.</td></tr>
 </c:if>	
 </table>
+<div align="center">                     
+	  <ul class="pagination">  
+        <c:if test="${pageNum == 1}">
+		  <li class="disabled">
+		    <a aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+		  </li>
+	    </c:if>
+		<c:if test="${pageNum > 1}">
+		  <li class="">
+		    <a href="javascript:productlist(${pageNum - 1})" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+		  </li>
+		</c:if>
+		<c:forEach var="a" begin="${startpage}" end="${endpage}">
+		  <c:if test="${pageNum == a}">
+		    <li class="active">
+			  <a href="#">${a}<span class="sr-only"></span></a>
+			</li>
+		  </c:if>
+		  <c:if test="${pageNum != a}">
+	        <li>
+			  <a href="javascript:productlist(${a})">${a}<span class="sr-only"></span></a>
+			</li>
+		  </c:if>
+		</c:forEach>
+		<c:if test="${pageNum == maxpage}">
+		  <li class="disabled">
+		    <a aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+		  </li>
+		</c:if>
+		<c:if test="${pageNum < maxpage}">
+		  <li>
+		    <a href="javascript:productlist(${pageNum + 1})" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+		  </li>
+		</c:if>
+      </ul>
+    </div>
 <div id="loc2">
 <c:if test="${userid != 'admin' && userid != 'guest' && codeequal == 1}">
    <div id="loc"><button type="button" class="btn btn-info" onclick="location.href='reviewAdd.mall?pro_no=${param.pro_no}'">리뷰 남기기</button></div>
@@ -450,23 +474,7 @@ function productlist(pageNum)
             </div>
 		  </td>
         </tr>
-      </c:forEach>
-<tr align="center" height="26">
-  <td colspan="5">
-        <c:if test="${pageNum > 1}">
-           <a href="javascript:productlist(${pageNum - 1})">
-        </c:if>[이전]&nbsp;
-        <c:if test="${pageNum > 1}"></a></c:if>
-        <c:forEach var="a" begin="${startpage}" end="${endpage}">
-  	       <c:if test="${pageNum == a}">[${a}]</c:if>
-  	       <c:if test="${pageNum != a}"><a href="javascript:productlist(${a})">[${a}]</a></c:if>&nbsp;  	 
-        </c:forEach>
-        <c:if test="${pageNum < maxpage}">
-           <a href="javascript:productlist(${pageNum + 1})">
-        </c:if>[다음]&nbsp;
-        <c:if test="${pageNum < maxpage}"></a></c:if>
-  </td>
-</tr>         		
+      </c:forEach>         		
 </c:if>
 <c:if test="${listcount ==0}">
   <tr><td colspan="5" align="center">등록된 Q&A가 없습니다.</td></tr>
@@ -492,6 +500,42 @@ function productlist(pageNum)
   </form>
 </td></tr>
 </table>  
+<div align="center">                     
+	  <ul class="pagination">  
+        <c:if test="${pageNum == 1}">
+		  <li class="disabled">
+		    <a aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+		  </li>
+	    </c:if>
+		<c:if test="${pageNum > 1}">
+		  <li class="">
+		    <a href="javascript:productlist(${pageNum - 1})" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+		  </li>
+		</c:if>
+		<c:forEach var="a" begin="${startpage}" end="${endpage}">
+		  <c:if test="${pageNum == a}">
+		    <li class="active">
+			  <a href="#">${a}<span class="sr-only"></span></a>
+			</li>
+		  </c:if>
+		  <c:if test="${pageNum != a}">
+	        <li>
+			  <a href="javascript:productlist(${a})">${a}<span class="sr-only"></span></a>
+			</li>
+		  </c:if>
+		</c:forEach>
+		<c:if test="${pageNum == maxpage}">
+		  <li class="disabled">
+		    <a aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+		  </li>
+		</c:if>
+		<c:if test="${pageNum < maxpage}">
+		  <li>
+		    <a href="javascript:productlist(${pageNum + 1})" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+		  </li>
+		</c:if>
+      </ul>
+    </div>
 <div id="loc2">
 <c:if test="${userid != 'admin' && userid != 'guest'}">
    <tr>

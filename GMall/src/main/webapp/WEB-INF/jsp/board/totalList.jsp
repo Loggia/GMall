@@ -84,29 +84,50 @@ function totallist(pageNum)
                           <td align="center">일반 사업자</td>
                         </c:if>   
                     </tr>
-                </c:forEach>
-                <tr height="26">
-                  <td class="totalloc" colspan="5">
-                    <c:if test="${pageNum > 1}">
-                      <a href="javascript:totallist(${pageNum - 1})">
-                    </c:if>[이전]&nbsp;
-                    <c:if test="${pageNum > 1}"></a></c:if>
-                    <c:forEach var="a" begin="${startpage}" end="${endpage}">
-  	                    <c:if test="${pageNum == a}">[${a}]</c:if>
-  	                    <c:if test="${pageNum != a}"><a href="javascript:totallist(${a})">[${a}]</a></c:if>&nbsp;  	 
-                    </c:forEach>
-                    <c:if test="${pageNum < maxpage}">
-                      <a href="javascript:totallist(${pageNum + 1})">
-                    </c:if>[다음]&nbsp;
-                    <c:if test="${pageNum < maxpage}"></a></c:if>
-                  </td>
-                </tr>     
+                </c:forEach>                    
             </c:if>
             <c:if test="${listcount ==0}">
               <tr><td colspan="5">등록된 상품이 없습니다.</td></tr>
             </c:if>  
               </tbody>
             </table>
+            <div align="center">                     
+						<ul class="pagination">  
+							<c:if test="${pageNum == 1}">
+								<li class="disabled">
+									<a aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+								</li>
+							</c:if>
+								<c:if test="${pageNum > 1}">
+								<li class="">
+									<a href="javascript:totallist(${pageNum - 1})" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+								</li>
+							</c:if>
+		
+							<c:forEach var="a" begin="${startpage}" end="${endpage}">
+								<c:if test="${pageNum == a}">
+									<li class="active">
+										<a href="#">${a}<span class="sr-only"></span></a>
+									</li>
+								</c:if>
+								<c:if test="${pageNum != a}">
+									<li>
+										<a href="javascript:totallist(${a})">${a}<span class="sr-only"></span></a>
+									</li>
+								</c:if>
+							</c:forEach>
+							<c:if test="${pageNum == maxpage}">
+								<li class="disabled">
+									<a aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+								</li>
+							</c:if>
+							<c:if test="${pageNum < maxpage}">
+								<li>
+									<a href="javascript:totallist(${pageNum + 1})" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+								</li>
+							</c:if>
+						</ul>
+		    </div>
           </div>
             <!-- /.box-body -->
           </div>

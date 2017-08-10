@@ -10,13 +10,9 @@
 a
 {
   color : black;
-}
-.proloc          
-{             
-  position:absolute; left:40%; overflow:hidden; margin-left:0px;              
-} 
+}  
 </style> 
-<script>
+<script>  
 function prolist(pageNum) 
 {
   location.href = "proList.mall?category=${param.category}&group=${param.group}&pageNum=" + pageNum;
@@ -40,7 +36,7 @@ function prolist(pageNum)
                   <td><button class="btn btn-default"><a href="proList.mall?category=${param.category}&group=high">높은 가격순</a></button></td>
                   <td><button class="btn btn-default"><a href="proList.mall?category=${param.category}&group=low">낮은 가격순</a></button></td>                
                 </tr>
-            <c:if test="${listcount > 0}">  
+            <c:if test="${listcount > 0}">      
                 <tr align="center">
                   <th align="center">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -93,29 +89,50 @@ function prolist(pageNum)
                           <td align="center">일반 사업자</td>
                         </c:if> 
                     </tr>
-                </c:forEach>
-                <tr height="26">  
-                  <td class="proloc" colspan="5">
-                    <c:if test="${pageNum > 1}">
-                      <a href="javascript:prolist(${pageNum - 1})">
-                    </c:if>[이전]&nbsp;
-                    <c:if test="${pageNum > 1}"></a></c:if>
-                    <c:forEach var="a" begin="${startpage}" end="${endpage}">
-  	                    <c:if test="${pageNum == a}">[${a}]</c:if>
-  	                    <c:if test="${pageNum != a}"><a href="javascript:prolist(${a})">[${a}]</a></c:if>&nbsp;  	 
-                    </c:forEach>
-                    <c:if test="${pageNum < maxpage}">
-                      <a href="javascript:prolist(${pageNum + 1})">
-                    </c:if>[다음]&nbsp;
-                    <c:if test="${pageNum < maxpage}"></a></c:if>
-                  </td>
-                </tr>     
+                </c:forEach>                               
             </c:if>
             <c:if test="${listcount ==0}">
               <tr><td colspan="5">등록된 상품이 없습니다.</td></tr>
             </c:if>  
               </tbody>
             </table>
+            <div align="center">                     
+						<ul class="pagination">  
+							<c:if test="${pageNum == 1}">
+								<li class="disabled">
+									<a aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+								</li>
+							</c:if>
+								<c:if test="${pageNum > 1}">
+								<li class="">
+									<a href="javascript:prolist(${pageNum - 1})" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+								</li>
+							</c:if>
+		
+							<c:forEach var="a" begin="${startpage}" end="${endpage}">
+								<c:if test="${pageNum == a}">
+									<li class="active">
+										<a href="#">${a}<span class="sr-only"></span></a>
+									</li>
+								</c:if>
+								<c:if test="${pageNum != a}">
+									<li>
+										<a href="javascript:prolist(${a})">${a}<span class="sr-only"></span></a>
+									</li>
+								</c:if>
+							</c:forEach>
+							<c:if test="${pageNum == maxpage}">
+								<li class="disabled">
+									<a aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+								</li>
+							</c:if>
+							<c:if test="${pageNum < maxpage}">
+								<li>
+									<a href="javascript:prolist(${pageNum + 1})" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+								</li>
+							</c:if>
+						</ul>
+		    </div> 
           </div>
             <!-- /.box-body -->
           </div>
