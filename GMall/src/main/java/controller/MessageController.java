@@ -33,29 +33,24 @@ public class MessageController {
 		
 		int limit = 8;
 		int listcount = hdService.reciveListCount(loginUserId);
-		System.out.println(listcount);
 		List<Message> reciveList = hdService.reciveList(loginUserId,pageNum, limit);
 		int maxpage = (int) ((double) listcount / limit + 0.95);
 		int startpage = (((int) ((double) pageNum / 10 + 0.9)) - 1) * 10 + 1;
 		int endpage = startpage + 9;
-		System.out.println("endpage :"+endpage);
-		System.out.println("maxpage :"+maxpage);
+
 		if (endpage > maxpage) 
 		{
 			endpage = maxpage;
 		}
-		System.out.println("startpage :"+startpage);
-		System.out.println("endpage :"+endpage);
-		System.out.println("maxpage :"+maxpage);
-		System.out.println("pageNum :"+pageNum);
+
 		mav.addObject("maxpage", maxpage);
 		mav.addObject("startpage", startpage);
 		mav.addObject("endpage", endpage);
 		mav.addObject("listcount", listcount);
 		mav.addObject("reciveList", reciveList);
 		mav.addObject("pageNum", pageNum);
-		
 		mav.addObject("member", loginUser);
+		
 		return mav;
 	}
 	

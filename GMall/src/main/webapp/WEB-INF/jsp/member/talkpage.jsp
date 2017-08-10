@@ -220,7 +220,6 @@ $(document).ready(function(){
 					</c:forEach>
 					</ol>
 					<div align="center">
-
 							<ul class="pagination">
 								<c:if test="${pageNum == 1}">
 									<li class="disabled">
@@ -256,7 +255,6 @@ $(document).ready(function(){
 									</li>
 								</c:if>
 							</ul>
-							
 						</div><br><br><br>
 				</c:if>
 				
