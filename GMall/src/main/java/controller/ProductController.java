@@ -86,7 +86,7 @@ public class ProductController
 		System.out.println(category);
 		Member member=(Member)session.getAttribute("LOGIN_MEMBER");
 		String bis_name=member.getBis_name();
-		List<Product> myBislist=koService.categoryCheck(bis_name,category);
+		List<Product> myBislist=koService.categoryCheck(bis_name,category); 
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("myBislist", myBislist);
 		
