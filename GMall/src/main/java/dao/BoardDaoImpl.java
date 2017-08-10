@@ -24,9 +24,6 @@ public class BoardDaoImpl implements BoardDao{
 	@Override
 	public List<Product> proList(String category, String group, String searchType, String searchContent, Integer pageNum, int limit) {
 		int startrow = (pageNum - 1) * limit;
-    	System.out.println("startrow : " + startrow);
-    	System.out.println("group : " + group);
-    	System.out.println("category : " + category);
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("category", category);
     	paramMap.put("group", group);
@@ -128,7 +125,6 @@ public class BoardDaoImpl implements BoardDao{
 	@Override
 	public int qnaCount(String searchType, String searchContent, String pro_no) {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
-		System.out.println("pro_no1 : " + pro_no);
 		paramMap.put("searchType", searchType);
 		paramMap.put("searchContent", searchContent);
 		paramMap.put("pro_no", pro_no);
@@ -140,7 +136,6 @@ public class BoardDaoImpl implements BoardDao{
 		int startrow = (pageNum - 1) * limit;
     	int endrow = startrow + limit;  	
     	Map<String, Object> paramMap = new HashMap<String, Object>();
-    	System.out.println("pro_no2 : " + pro_no);
     	paramMap.put("startrow", startrow);
     	paramMap.put("endrow", endrow);
     	paramMap.put("searchType", searchType);
@@ -166,7 +161,6 @@ public class BoardDaoImpl implements BoardDao{
 
 	@Override
 	public int reCount(String pro_no) {
-		System.out.println("pro_no!! : " + pro_no);
 		Map<String, Object> paramMap = new HashMap<String, Object>();
     	paramMap.put("pro_no", pro_no);
 		return sqlSession.selectOne(NS+"reCount", paramMap);
@@ -221,10 +215,7 @@ public class BoardDaoImpl implements BoardDao{
 	
 	@Override
 	public void memGrade(String sellid, int grade, int memberScore) {
-		System.out.println("grade : " + grade);
-		System.out.println("memberScore : " + memberScore);
 		int realGrade = grade + memberScore;
-		System.out.println("realGrade : " + realGrade);
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("sellid", sellid);
 		paramMap.put("realGrade", realGrade);
@@ -249,7 +240,6 @@ public class BoardDaoImpl implements BoardDao{
 	@Override
 	public Product proBis(String bisname, String pro_no) {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
-		System.out.println("bisname : " + bisname);
     	paramMap.put("bisname", bisname);
     	paramMap.put("prono", pro_no);
 		return sqlSession.selectOne(NS+"proBis", paramMap);

@@ -51,16 +51,12 @@ public class BoardController
 		if((Member)session.getAttribute("LOGIN_MEMBER") == null) {
 			List<Product> interList = hdService.interList("");
 			mav.addObject("interList",interList);
-			System.out.println(interList);
 			
 		} else if((Member)session.getAttribute("LOGIN_MEMBER") != null) {
 			Member login = (Member)session.getAttribute("LOGIN_MEMBER");
 			String inter = login.getInterest();
 			List<Product> interList = hdService.interList(inter);
 			mav.addObject("interList",interList);
-			System.out.println(interList);
-			System.out.println(inter);
-			System.out.println(login.getId());
 		}
 		
 		List<Product> primList = hdService.primList();
@@ -69,9 +65,6 @@ public class BoardController
 		mav.addObject("primList", primList);
 		mav.addObject("newList", newList);
 		mav.addObject("popuList", popuList);
-		System.out.println(primList);
-		System.out.println(newList);
-		System.out.println(popuList);
 		return mav;
 		
 	}
@@ -89,9 +82,7 @@ public class BoardController
 		}
 		int limit = 20;
 		int listcount = baeService.proCount(searchType, searchContent, category);
-		System.out.println(listcount);
 		List<Product> productlist = baeService.proList(category, group, searchType, searchContent, pageNum, limit);
-		System.out.println("size : " + productlist.size());		
 		for(int i=0; i<productlist.size() ; i++)
 		{
 			int averprice = 0;
@@ -130,9 +121,7 @@ public class BoardController
 		}
 		int limit = 20;
 		int listcount = baeService.totalCount(searchType, searchContent);
-		System.out.println(listcount);
 		List<Product> totallist = baeService.totalList(searchType, searchContent, pageNum, limit);
-		System.out.println("size : " + totallist.size());
 		int maxpage = (int)((double)listcount/limit + 0.95);
 		int startpage = (((int)((double)pageNum/10 + 0.9)) -1) * 10 + 1;
 		int endpage = startpage + 9;
@@ -361,7 +350,6 @@ public class BoardController
 	public ModelAndView centerupdate(@Valid Board board, BindingResult bindingResult, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
 		String pass = baeService.getBoardPassword(board.getBoard_no());
-		System.out.println("pass:"+pass);
 		if(!pass.equals(board.getPass()))
 		{
 			mav.setViewName("board/centerupdateForm");
@@ -529,7 +517,6 @@ public class BoardController
 		    userinfo = userinfolist.get(0);
 		}
 		List<Trade> protrinfo = baeService.protrInfo(pro_no);
-		System.out.println("protrinfo : " + protrinfo);
 		Member sessiontype = baeService.sessionType(userid);
 		if(sessiontype == null)
 		{
@@ -550,7 +537,6 @@ public class BoardController
 				codeequal = 1;
 			}
 		}
-		System.out.println("codeequal : " + codeequal);
 		int maxpage = (int)((double)listcount/limit + 0.95);
 		int startpage = (((int)((double)pageNum/10 + 0.9)) -1) * 10 + 1;
 		int endpage = startpage + 9;
@@ -664,9 +650,7 @@ public class BoardController
 	@RequestMapping("board/qnaupdate")
 	public ModelAndView qnaupdate(@Valid Board board, BindingResult bindingResult, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
-		System.out.println("board : " + board);
 		String pass = baeService.getBoardPassword(board.getBoard_no());
-		System.out.println("pass:"+pass);
 		if(!pass.equals(board.getPass()))
 		{
 			mav.setViewName("board/qnaupdateForm");
@@ -849,7 +833,6 @@ public class BoardController
 	@RequestMapping("board/reviewupdate")
 	public ModelAndView reviewupdate(@Valid Board board, BindingResult bindingResult, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
-		System.out.println("board : " + board);
 		baeService.reviewUpdate(board, request);
 		mav.addObject("board", board);
 		mav.setViewName("redirect:/board/productDetail.mall?pro_no="+ request.getParameter("pro_no") + "&pageNum=" + request.getParameter("pageNum"));
