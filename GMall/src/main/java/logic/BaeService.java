@@ -30,7 +30,7 @@ public interface BaeService {
 	int reCount(String pro_no); //배기수 - 해당번호의 리뷰 갯수를 가져옴
 	List<Board> reList(Integer pageNum, int limit, String pro_no); //배기수 - 리뷰 목록을 가져옴
 	void reviewInsert(Board board, String userid, String pro_no, HttpServletRequest request); //배기수 - 리뷰글 작성 기능
-	Trade checkUser(String userid, String pro_no); //배기수 - 해당 상품 구매자인 경우만 리뷰가 작성 가능하게 하기 위해 상품 구매자인지를 확인
+	List<Trade> checkUser(String userid, String pro_no); //배기수 - 해당 상품 구매자인 경우만 리뷰가 작성 가능하게 하기 위해 상품 구매자인지를 확인
 	void reviewUpdate(Board board, HttpServletRequest request); //배기수 - 리뷰글 수정 기능
 	Product proInfo(String pro_no); //배기수 - 해당 상품번호의 상품정보를 가져옴
 	List<Trade> sellInfo(String pro_no); //배기수 - 해당 상품의 판매자

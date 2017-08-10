@@ -513,7 +513,18 @@ public class BoardController
 		Product proinfo = baeService.proInfo(pro_no);
 		List<Board> qnalist = baeService.qnaList(searchType, searchContent, pageNum, limit, pro_no);
 		List<Board> reviewlist = baeService.reList(pageNum, limit, pro_no);
-		Trade userinfo = baeService.checkUser(userid, pro_no);
+		List<Trade> userinfolist = baeService.checkUser(userid, pro_no);
+		Trade userinfo = new Trade();
+		if(userinfolist.size() == 0)
+		{  
+			userinfolist = new ArrayList<Trade>();
+			userinfolist.add(new Trade());
+			userinfo = userinfolist.get(0);
+		}
+		if(userinfolist.size() != 0)
+		{
+		    userinfo = userinfolist.get(0);
+		}
 		List<Trade> protrinfo = baeService.protrInfo(pro_no);
 		System.out.println("protrinfo : " + protrinfo);
 		Member sessiontype = baeService.sessionType(userid);

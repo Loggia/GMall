@@ -34,7 +34,7 @@ public interface BoardDao {
 	int reCount(String pro_no);
 	List<Board> reList(Integer pageNum, int limit, String pro_no);
 	void reviewInsert(Board board);
-	Trade checkUser(String userid, String pro_no);
+	List<Trade> checkUser(String userid, String pro_no);
 	void reviewUpdate(Board board);
 	Product proInfo(String pro_no);
 	void rvchkUpdate(String userid, String pro_no);

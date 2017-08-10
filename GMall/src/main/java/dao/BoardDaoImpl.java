@@ -189,11 +189,11 @@ public class BoardDaoImpl implements BoardDao{
 	}
 
 	@Override
-	public Trade checkUser(String userid, String pro_no) {
+	public List<Trade> checkUser(String userid, String pro_no) {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("userid", userid);
 		paramMap.put("pro_no", pro_no);
-		return sqlSession.selectOne(NS+"checkUser", paramMap);
+		return sqlSession.selectList(NS+"checkUser", paramMap);
 	}
 
 	@Override

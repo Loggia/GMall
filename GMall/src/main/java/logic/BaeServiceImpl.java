@@ -276,7 +276,7 @@ public class BaeServiceImpl implements BaeService{
 	}
 
 	@Override
-	public Trade checkUser(String userid, String pro_no) {
+	public List<Trade> checkUser(String userid, String pro_no) {
 		return boardDao.checkUser(userid, pro_no);
 	}
 
