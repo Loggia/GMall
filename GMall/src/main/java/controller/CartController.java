@@ -20,14 +20,15 @@ public class CartController
 	
 	@RequestMapping("board/cartAdd")
 	public ModelAndView cartAdd(Integer pro_no, Integer quantity , HttpSession session){
+		System.out.println(pro_no);
 		Product selectedproduct = kuService.getproductByNo(pro_no);
+		System.out.println(selectedproduct);
 		Cart cart = (Cart)session.getAttribute("CART_KEY");
 		
 		if(cart == null) {
 			cart = kuService.getCart();
 			session.setAttribute("CART_KEY", cart);
 		}
-		System.out.println(quantity);
 		cart.push(new ProductSet(selectedproduct , quantity));
 		ModelAndView mav = new ModelAndView("board/cart");
 		mav.addObject("cart" , cart);
