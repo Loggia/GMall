@@ -229,6 +229,8 @@ $(document).ready(function(){
 					<c:if test="${empty sendList}">
 					<br><br><br>
 					보낸 쪽지가 엄서영
+					<br><br><br>
+					<hr>
 					</c:if>
 				</div>
 			</div>

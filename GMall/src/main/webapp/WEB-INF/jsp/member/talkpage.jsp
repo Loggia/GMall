@@ -261,6 +261,8 @@ $(document).ready(function(){
 				<c:if test="${empty reciveList}">
 					<br><br><br>
 					받은 쪽지가 엄서영
+					<br><br><br>
+					<hr>
 				</c:if>
 				</div>
 			</div>
