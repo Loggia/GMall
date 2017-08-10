@@ -51,7 +51,7 @@ $(document).ready(function(){
 		<div class="col-xs-8 info_content">
 			<div class="my_left">
 				<div class="left_prof">
-					<div style="text-align: center;"><img style="margin-top: 30px;" src="../img/sanaprof.PNG" class="img-circle" width="150px" height="150px"></div>
+					<div style="text-align: center;"><img style="margin-top: 30px;" src="../prof/${member.picture }" class="img-circle" width="150px" height="150px"></div>
 					<a href="${path }/member/passConfirmForm.mall"><img style="position: absolute; margin-left: 150px; margin-top: 18px;" src="../img/option.png"></a>
 					<br>
 					<div style="text-align: center;">${member.name }</div>

@@ -98,7 +98,7 @@ $(document).ready(function(){
 			<div class="my_left">
 				<div class="left_prof">
 					<div style="text-align: center;">
-						<img style="margin-top: 30px;" src="../img/sanaprof.PNG"
+						<img style="margin-top: 30px;" src="../prof/${member.picture }"
 							class="img-circle" width="150px" height="150px">
 					</div>
 					<a href="${path }/member/passConfirmForm.mall"><img

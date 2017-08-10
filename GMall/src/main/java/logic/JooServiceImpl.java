@@ -1,5 +1,6 @@
 package logic;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -97,8 +98,14 @@ public class JooServiceImpl implements JooService
 	private String pictureInsert(String id, MultipartFile pictureFile, HttpServletRequest request) 
 	{
 		String uploadPath = request.getServletContext().getRealPath("/") + "/prof/";
-		String url = uploadPath + id + "PictureImg";
+		String url = uploadPath + id + ".png";
 		FileOutputStream fos = null;
+		File file = new File(url);
+		
+		if(file.exists())
+		{
+			file.delete();
+		}
 		
 		try
 		{
@@ -133,7 +140,7 @@ public class JooServiceImpl implements JooService
 			}
 		}
 		
-		return id + "PictureImg";
+		return id + ".png";
 	}
 	
 	/*
