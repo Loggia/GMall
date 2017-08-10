@@ -201,13 +201,23 @@ dd {
 				<div class="detailWrap">
 					<div class="msgHead">
 						<dl>
-						<hr>
-							<dt>받는사람</dt>
-							<dd>${message.rec_id }</dd>
-							<dt>보낸사람</dt>
 							<hr>
-							<dd>${message.send_id }</dd>
-							<dt>날짜</dt>
+							<c:if test="${message.rec_id == member.id }">
+							</c:if>
+							<c:if test="${message.rec_id != member.id }">
+								<dt>받는사람&nbsp;&nbsp;</dt>
+								<dd>${message.rec_id }</dd>
+							</c:if>
+							
+							<c:if test="${message.send_id == member.id }">
+							</c:if>
+							<c:if test="${message.send_id != member.id }">
+								<dt>보낸사람&nbsp;&nbsp;</dt>
+								<dd>${message.send_id }</dd>
+							</c:if>
+							
+							<hr>
+							<dt>날짜&nbsp;&nbsp;</dt>
 							<dd>${message.msg_date }</dd>
 							<hr>
 						</dl>
@@ -215,6 +225,7 @@ dd {
 					<div class="msgBody">
 						${message.msg_content }
 					</div>
+					<hr>
 				</div>
 				</div>
 			</div>
