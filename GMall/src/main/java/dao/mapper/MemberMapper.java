@@ -33,7 +33,7 @@ public interface MemberMapper
 	@Select("select * from bis_table")
 	List<String> selectBis_no();
 	
-	@Select("select m.bis_name,m.tel,m.prim from member m,bookmark b where b.id=#{id} and m.bis_no=b.bis_no order by m.bis_no")
+	@Select("select m.bis_name,m.tel,m.prim, b.mark_no from member m,bookmark b where b.id=#{id} and m.bis_no=b.bis_no order by m.bis_no")
 	List<Member> bookmark(String id);
 	
 	@Select("select id, bis_no from member where bis_no=#{bis_no}")

@@ -390,6 +390,7 @@ body {
 									<th>상호</th>
 									<th>연락처</th>
 									<th>프리미엄 여부</th>
+									<th></th>
 								</c:if>
 								<c:if test="${member.type == 2 }">
 									<th>상품 카테고리</th>
@@ -417,6 +418,7 @@ body {
 										<td>${mark.bis_name }</td>
 										<td>${mark.tel }</td>
 										<td>${mark.prim }</td>
+										<td><a href="${path }/member/deleteBookmark.mall?mark_no=${mark.mark_no}" style="color: red;">해제하기</a></td>
 									</tr>
 								</c:forEach>
 							</c:if>

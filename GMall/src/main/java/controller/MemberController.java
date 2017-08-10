@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -575,6 +576,37 @@ public class MemberController {
 		List<Member> primList = kuService.primList();
 		mav.addObject("primList", primList);
 		return mav;
+	}
+	
+	@RequestMapping("member/deleteBookmark")
+	public ModelAndView deleteBookmark(HttpServletRequest request, HttpSession session)
+	{
+		ModelAndView mav = new ModelAndView("member/mypage");
+		Member login = (Member) session.getAttribute("LOGIN_MEMBER");
+		String mark_no = request.getParameter("mark_no");
+		
+		if (login == null) 
+		{
+			mav.setViewName("error");
+			mav.addObject("url", "../board/main.mall");
+			mav.addObject("msg", "로그인하고 시도하시기 바랍니다.");
 
+			return mav;
+		}
+		
+		if(jooService.deleteBookmark(mark_no))
+		{
+			mav.setViewName("success");
+			mav.addObject("url", "../member/mypage.mall");
+			mav.addObject("msg", "사업자가 즐겨찾기가 해제되었습니다..");
+		}
+		else
+		{
+			mav.setViewName("error");
+			mav.addObject("url", "../member/mypage.mall");
+			mav.addObject("msg", "사업자 즐겨찾기 해제가 실패하였습니다.");
+		}
+		
+		return mav;
 	}
 }

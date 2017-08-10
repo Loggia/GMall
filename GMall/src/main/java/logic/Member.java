@@ -37,6 +37,7 @@ public class Member
 	private double score;
 	private String cop_no;
 	private String interest;
+	private String mark_no;
 
 	public String getId() 
 	{
@@ -204,5 +205,15 @@ public class Member
 	public void setInterest(String interest) 
 	{
 		this.interest = interest;
+	}
+
+	public String getMark_no() 
+	{
+		return mark_no;
+	}
+
+	public void setMark_no(String mark_no) 
+	{
+		this.mark_no = mark_no;
 	}
 }

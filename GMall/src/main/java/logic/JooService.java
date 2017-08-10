@@ -34,4 +34,5 @@ public interface JooService
 	String getBis_no(String pro_no); 
 	int bookmarkCount(String id);
 	boolean addBookmark(String id, String bis_no);
+	boolean deleteBookmark(String mark_no);
 }

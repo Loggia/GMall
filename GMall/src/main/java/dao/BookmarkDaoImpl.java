@@ -21,6 +21,7 @@ public class BookmarkDaoImpl implements BookmarkDao
 	{
 		return sqlSession.getMapper(BookmarkMapper.class).bookmarkCount(id);
 	}
+	
 	@Override
 	public boolean addBookmark(String id, String bis_no)
 	{
@@ -34,6 +35,21 @@ public class BookmarkDaoImpl implements BookmarkDao
 			map.put("maxCount", maxCount);
 			
 			sqlSession.getMapper(BookmarkMapper.class).addBookmark(map);
+			
+			return true;
+		}
+		catch (Exception e) 
+		{
+			return false;
+		}
+	}
+
+	@Override
+	public boolean deleteBookmark(String mark_no) 
+	{
+		try
+		{
+			sqlSession.getMapper(BookmarkMapper.class).deleteBookmark(mark_no);
 			
 			return true;
 		}

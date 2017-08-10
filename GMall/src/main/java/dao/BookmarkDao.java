@@ -8,4 +8,6 @@ public interface BookmarkDao
 	int bookmarkCount(String id);
 
 	boolean addBookmark(String id, String bis_no);
+
+	boolean deleteBookmark(String mark_no);
 }

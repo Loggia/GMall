@@ -2,6 +2,7 @@ package dao.mapper;
 
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
@@ -13,7 +14,7 @@ public interface BookmarkMapper
 	@Select("select count(*) from bookmark where id = #{id}")
 	int bookmarkCount(String id);
 	
-	@Select("select count(*) from bookmark")
+	@Select("select count(*)+1 from bookmark")
 	int maxCount();
 
 	
@@ -22,6 +23,9 @@ public interface BookmarkMapper
 			+ " #{trd_cnt} , #{trd_money} , #{trd_fee} , now() , #{pro_no} , #{buy_id} , #{sell_id} , null , #{address} , #{delivery} , #{rv_chk})")
 	void createtrade(Trade trade);
 	
-	@Insert("insert into bookmark (mark_no, id, bis_no) values(#{maxCount}, #{id}, #{bis_no}")
+	@Insert("insert into bookmark (mark_no, id, bis_no) values(#{maxCount}, #{id}, #{bis_no})")
 	void addBookmark(Map<Object, Object> map);
+
+	@Delete("delete from bookmark where mark_no = #{mark_no}")
+	void deleteBookmark(String mark_no);
 }

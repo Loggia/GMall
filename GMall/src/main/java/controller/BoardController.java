@@ -858,6 +858,7 @@ public class BoardController
 		return mav;
 	}
 	
+	// 즐겨찾기 추가
 	@RequestMapping("board/addBookmark")
 	public ModelAndView addBookmark(HttpServletRequest request, HttpSession session)
 	{
@@ -892,12 +893,11 @@ public class BoardController
 			{
 				mav.setViewName("error");
 				mav.addObject("url", "../member/mypage.mall");
-				mav.addObject("msg", "정상적으로 사업자 등록되었습니다.");
+				mav.addObject("msg", "사업자 등록에 실패하였습니다.");
 			}
 		}
 		
 		mav.addObject("member", login);
-		
 		return mav;
 	}
 }

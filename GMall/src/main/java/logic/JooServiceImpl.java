@@ -289,4 +289,10 @@ public class JooServiceImpl implements JooService
 	{
 		return bookmarkDao.addBookmark(id, bis_no);
 	}
+
+	@Override
+	public boolean deleteBookmark(String mark_no) 
+	{
+		return bookmarkDao.deleteBookmark(mark_no);
+	}
 }
