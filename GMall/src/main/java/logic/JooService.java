@@ -26,6 +26,12 @@ public interface JooService
 	int delvpageCount(String id, int type); // 주한울 - 총 배송 카운팅 메서드
 	int moneyChangeCount(String id, int type); // 주한울 - 총 보유금액(금액변동) 카운팅 메서드
 	int couponCount(String id, int type, String discount); // 주한울 - 총 쿠폰 카운팅 메서드
-	
 	List<Trade> delvpageBuyList(String id); // 주한울 - 일반 회원 배송 조회 (사용하지 않음)
+	
+	/*
+	 * 즐겨찾기 관련 메서드
+	 */
+	String getBis_no(String pro_no); 
+	int bookmarkCount(String id);
+	boolean addBookmark(String id, String bis_no);
 }

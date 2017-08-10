@@ -106,4 +106,11 @@ public class ProductDaoImpl implements ProductDao{
     	
     	return sqlSession.selectList(NS+"productList", map);
 	}
+
+	// 상품 번호로 bis_no 리턴
+	@Override
+	public String getBis_no(String pro_no) 
+	{
+		return sqlSession.getMapper(ProductMapper.class).getBis_no(pro_no);
+	}
 }

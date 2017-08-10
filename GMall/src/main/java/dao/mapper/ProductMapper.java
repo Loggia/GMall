@@ -34,5 +34,9 @@ public interface ProductMapper {
 	@Select("select * from product where pro_no = #{pro_no}")
 	Product getproductByNo(Integer pro_no); // 구정연 상품리스트전부 출력(장바구니)
 
+	// 상품 번호로 bis_no 값 쿼리
+	@Select("select bis_no from product where pro_no = #{pro_no}")
+	String getBis_no(String pro_no);
+
 
 }

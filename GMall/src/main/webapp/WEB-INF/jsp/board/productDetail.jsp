@@ -175,7 +175,7 @@ function productlist(pageNum)
               <c:if test="${usertype == 1}">
                 <input id="loc5" type="submit" class="btn btn-success" value="카트에 넣기" onclick="">
                 <input id="loc5" type="button" class="btn btn-success" value="목록보기" onclick="location.href='proList.mall?category=${category}'">
-                <input id="loc5" type="button" class="btn btn-success" value="즐겨찾기" onclick="">
+                <input id="loc5" type="button" class="btn btn-success" value="즐겨찾기" onclick="location.href='addBookmark.mall?pro_no=${product.pro_no }'">
               </c:if>
               <c:if test="${usertype == 2 && probis.bis_no == proinfo.bis_no}">
                 <input id="loc5" type="submit" class="btn btn-success" value="수정하기" onclick="">

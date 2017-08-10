@@ -26,6 +26,7 @@ import org.springframework.web.servlet.ModelAndView;
 import logic.BaeService;
 import logic.Board;
 import logic.HDService;
+import logic.JooService;
 import logic.KuService;
 import logic.Member;
 import logic.Product;
@@ -40,6 +41,8 @@ public class BoardController
 	public HDService hdService;
 	@Autowired
 	public KuService kuService;
+	@Autowired
+	public JooService jooService; // 주한울 서비스
 	
 	@RequestMapping("board/main")
 	public ModelAndView main(HttpSession session) {
@@ -872,8 +875,46 @@ public class BoardController
 		return mav;
 	}
 	
-	
-	
-	
+	@RequestMapping("board/addBookmark")
+	public ModelAndView addBookmark(HttpServletRequest request, HttpSession session)
+	{
+		ModelAndView mav = new ModelAndView("");
+		Member login = (Member)session.getAttribute("LOGIN_MEMBER");
+		String pro_no = request.getParameter("pro_no");
 		
+		if(login == null)
+		{
+			mav.setViewName("error");
+			mav.addObject("url", "../board/main.mall");
+			mav.addObject("msg", "로그인하고 시도하시기 바랍니다.");
+			
+			return mav;
+		}
+		
+		if(jooService.bookmarkCount(login.getId()) >= 3)
+		{
+			mav.setViewName("error");
+			mav.addObject("url", "../member/mypage.mall");
+			mav.addObject("msg", "즐겨찾기는 최대 3개까지 가능합니다.");
+		}
+		else
+		{
+			if(jooService.addBookmark(login.getId(), jooService.getBis_no(pro_no)))
+			{
+				mav.setViewName("success");
+				mav.addObject("url", "../member/mypage.mall");
+				mav.addObject("msg", "사업자가 즐겨찾기 되었습니다.");
+			}
+			else
+			{
+				mav.setViewName("error");
+				mav.addObject("url", "../member/mypage.mall");
+				mav.addObject("msg", "정상적으로 사업자 등록되었습니다.");
+			}
+		}
+		
+		mav.addObject("member", login);
+		
+		return mav;
+	}
 }

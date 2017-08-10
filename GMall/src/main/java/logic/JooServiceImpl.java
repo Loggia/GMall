@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import dao.BoardDao;
+import dao.BookmarkDao;
 import dao.CouponDao;
 import dao.MemberDao;
 import dao.ProductDao;
@@ -31,6 +32,8 @@ public class JooServiceImpl implements JooService
 	ProductDao productDao;
 	@Autowired
 	CouponDao couponDao;
+	@Autowired
+	BookmarkDao bookmarkDao;
 	
 	/*
 	 * 주한울
@@ -264,5 +267,26 @@ public class JooServiceImpl implements JooService
 	public int couponCount(String id, int type, String discount) 
 	{
 		return tradeDao.couponCount(id, type, discount);
+	}
+
+	/*
+	 * 즐겨찾기 관련 메서드
+	 */
+	@Override
+	public String getBis_no(String pro_no) 
+	{
+		return productDao.getBis_no(pro_no);
+	}
+	
+	@Override
+	public int bookmarkCount(String id) 
+	{
+		return bookmarkDao.bookmarkCount(id);
+	}
+
+	@Override
+	public boolean addBookmark(String id, String bis_no) 
+	{
+		return bookmarkDao.addBookmark(id, bis_no);
 	}
 }

@@ -9,7 +9,7 @@
     <typeAlias type="logic.Coupon" alias="Coupon" />
     <typeAlias type="logic.Coupon_history" alias="Coupon_history" />
     <typeAlias type="logic.Message" alias="Message" />
-    
+    <typeAlias type="logic.Bookmark" alias="Bookmark" />
   </typeAliases>
   <mappers>
     <mapper resource="dao/mapper/BoardMapper.xml"/>
@@ -18,5 +18,6 @@
     <mapper resource="dao/mapper/ProductMapper.xml" />
     <mapper resource="dao/mapper/CouponMapper.xml" />
     <mapper resource="dao/mapper/MessageMapper.xml" />
+    <mapper resource="dao/mapper/BookmarkMapper.xml" />
   </mappers>    
 </configuration>  
