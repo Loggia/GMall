@@ -17,4 +17,5 @@ public interface KuService
 	Integer totalAmount(List<ProductSet> productList); //구정연 구매확인(총가격)
 	Trade checkEnd(String id, String trd_address, Cart cart); //구정연 구매기능
 	List<Coupon_history> selectCoupon(String id);//구정연 구매기능 쿠폰 
+	void deleteCoupon(String his_no); // 쿠폰 사용시 쿠폰 삭제
 }

@@ -13,4 +13,6 @@ public interface CouponDao
 	void insertCoupon(Map<String, Object> coupon_history);//고종환 사업자 쿠폰주기
 	
 	List<Coupon_history> selectCoupon(String id);//구정연 구매기능 쿠폰 
+
+	void deleteCoupon(String his_no); // 쿠폰 사용시 삭제
 }

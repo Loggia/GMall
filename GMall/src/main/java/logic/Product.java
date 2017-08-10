@@ -51,6 +51,7 @@ public class Product
 	private String date2;
 	
 	private int averfavorprice;
+	private String cop_no;
 		
 	public int getPro_no() 
 	{
@@ -250,6 +251,23 @@ public class Product
 
 	public void setAverfavorprice(int averfavorprice) {
 		this.averfavorprice = averfavorprice;
+	}
+
+	public String getCop_no() 
+	{
+		return cop_no;
+	}
+
+	public void setCop_no(String cop_no) 
+	{
+		if(cop_no == null)
+		{
+			this.cop_no = "사용 안함";
+		}
+		else
+		{
+			this.cop_no = cop_no;
+		}
 	}
 
 	@Override

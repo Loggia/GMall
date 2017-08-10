@@ -3,6 +3,7 @@ package dao.mapper;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
@@ -20,4 +21,7 @@ public interface CouponMapper
 
 	@Select("select * from coupon_history c, member m where c.id = #{id} and c.bis_no = m.bis_no")
 	List<Coupon_history> selectCoupon(String id);
+
+	@Delete("delete from coupon_history where his_no = #{his_no}")
+	void deleteCoupon(String his_no);
 }

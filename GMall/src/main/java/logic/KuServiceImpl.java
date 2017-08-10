@@ -149,6 +149,7 @@ public class KuServiceImpl implements KuService
 			trade.setTrd_money(productset.getQuantity()*productset.getProduct().getPrice()); //총가격
 			trade.setPro_no(productset.getProduct().getPro_no()); //상품번호
 			trade.setSell_id(tradeDao.sell_id(productset.getProduct().getBis_name())); //판매자 (상호) 조인으로 아이디 가져올수도있을까
+			trade.setCop_no(productset.getProduct().getCop_no());
 			
 			String prim = tradeDao.prim(productset.getProduct().getPro_name());
 			
@@ -168,12 +169,16 @@ public class KuServiceImpl implements KuService
 	}
 	
 	//구정연 구매기능 쿠폰 
-		@Override
-		public List<Coupon_history> selectCoupon(String id) 
-		{
-			
-			return couponDao.selectCoupon(id);
-		}
+	@Override
+	public List<Coupon_history> selectCoupon(String id) 
+	{
+		return couponDao.selectCoupon(id);
+	}
+
+	@Override
+	public void deleteCoupon(String his_no)
+	{
+		couponDao.deleteCoupon(his_no);
+	}
 		
-	
 }

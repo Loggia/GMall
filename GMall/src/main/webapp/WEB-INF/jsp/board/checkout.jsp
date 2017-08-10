@@ -25,7 +25,7 @@
 			</tr>	
 		</table>
 		
-		<form action="${path }" method="post" name="checkoutForm">
+		<form action="${path }/board/end.mall?his_no=${his_no}" method="post" name="checkoutForm">
 			<h2>구매 목록</h2>
 			<table class="table table-hover" style="border-bottom: 1px solid #e5e5e5;">
 				<tr>
@@ -48,7 +48,7 @@
 				<tr>
 					<td colspan="3" align="center">
 						<select name="selectCoupon" id="selectCoupon" class="form-control" style="width: 170px; cursor: pointer;">
-							<option>할인 쿠폰</option>
+							<option value="none/none/none">할인 쿠폰</option>
 							<c:forEach items="${coupon_history }" var="coupons">
 								<option value="${coupons.his_no }/${coupons.bis_no }/${coupons.discount }">${coupons.bis_name } / ${coupons.discount }%</option>
 							</c:forEach>
@@ -70,7 +70,7 @@
 				</tr>
 			</table>
 			
-			<br><input type="submit" value="구매하기">&nbsp;
+			<input type="submit" value="구매하기">&nbsp;
 			
 			<h2>쿠폰사용</h2>
 			<c:forEach items="${coupon}" var="coupon">

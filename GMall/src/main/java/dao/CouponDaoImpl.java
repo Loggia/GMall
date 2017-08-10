@@ -50,4 +50,11 @@ public class CouponDaoImpl implements CouponDao
 	{
 		return sqlSession.getMapper(CouponMapper.class).selectCoupon(id);
 	}
+
+	// 쿠폰 사용시 삭제
+	@Override
+	public void deleteCoupon(String his_no) 
+	{
+		sqlSession.getMapper(CouponMapper.class).deleteCoupon(his_no);
+	}
 }

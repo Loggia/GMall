@@ -41,6 +41,10 @@ public class CartController
 		{
 			selectedProduct = kuService.getproductByNo(pro_no);
 			cart.push(new ProductSet(selectedProduct , quantity));
+			
+			mav.setViewName("success");
+			mav.addObject("url", "../board/cart.mall");
+			mav.addObject("msg", "장바구니에 상품이 추가되었습니다.");
 		}
 		else
 		{
