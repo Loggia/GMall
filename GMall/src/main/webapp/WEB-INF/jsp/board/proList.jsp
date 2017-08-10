@@ -11,6 +11,10 @@ a
 {
   color : black;
 }
+.proloc          
+{             
+  position:absolute; left:40%; overflow:hidden; margin-left:0px;              
+} 
 </style> 
 <script>
 function prolist(pageNum) 
@@ -90,8 +94,8 @@ function prolist(pageNum)
                         </c:if> 
                     </tr>
                 </c:forEach>
-                <tr align="center" height="26">  
-                  <td align="center" colspan="5">
+                <tr height="26">  
+                  <td class="proloc" colspan="5">
                     <c:if test="${pageNum > 1}">
                       <a href="javascript:prolist(${pageNum - 1})">
                     </c:if>[이전]&nbsp;

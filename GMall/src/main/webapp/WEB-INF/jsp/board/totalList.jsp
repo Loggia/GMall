@@ -6,6 +6,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>상품 리스트</title>
+<style type="text/css">
+.totalloc          
+{             
+  position:absolute; left:40%; overflow:hidden; margin-left:0px;              
+}   
+</style>
 <script>
 function totallist(pageNum) 
 {
@@ -79,8 +85,8 @@ function totallist(pageNum)
                         </c:if>   
                     </tr>
                 </c:forEach>
-                <tr align="center" height="26">
-                  <td align="center" colspan="5">
+                <tr height="26">
+                  <td class="totalloc" colspan="5">
                     <c:if test="${pageNum > 1}">
                       <a href="javascript:totallist(${pageNum - 1})">
                     </c:if>[이전]&nbsp;
