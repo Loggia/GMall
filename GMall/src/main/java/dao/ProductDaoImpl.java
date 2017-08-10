@@ -113,4 +113,11 @@ public class ProductDaoImpl implements ProductDao{
 	{
 		return sqlSession.getMapper(ProductMapper.class).getBis_no(pro_no);
 	}
+	
+	//고종환 상품삭제하기
+	@Override
+	public void productDelete(String pro_no) {
+		sqlSession.getMapper(ProductMapper.class).productDelete(pro_no);
+		
+	}
 }

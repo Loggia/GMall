@@ -97,6 +97,32 @@ public class ProductController
 		return jsonObject.toString();
 	}
 	
+	//고종환 사업자 목록에서 상품삭제    /product/productDelete.mall?pro_no
+	@RequestMapping("product/productDelete")
+	public ModelAndView productDelete(HttpServletRequest request,HttpSession session){
+		ModelAndView mav=new ModelAndView();
+		String pro_no=request.getParameter("pro_no");
+		
+		Member login=(Member)session.getAttribute("LOGIN_MEMBER");
+		
+		if(login == null)
+		{
+			mav.setViewName("error");
+			mav.addObject("url", "../member/mypage.mall");
+			mav.addObject("msg", "로그인하고 시도하시기 바랍니다.");
+			return mav;
+		}else{
+			koService.productDelete(pro_no);
+			mav.setViewName("success");
+			mav.addObject("url", "../member/mypage.mall");
+			mav.addObject("msg", "상품을 삭제 하였습니다.");
+			mav.addObject("member", login);
+			
+			return mav;
+		}
+	}
+	
+	
 	
 
 }

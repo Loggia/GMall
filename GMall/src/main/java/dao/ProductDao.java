@@ -24,4 +24,6 @@ public interface ProductDao {
 	List<Product> productList(String bis_no, String category, Integer pageNum, int limit); // 고종환 내 사업장 관리 조회
 
 	String getBis_no(String pro_no); // 상품번호로 bis_no 리턴
+	
+	void productDelete(String pro_no);//고종환 상품삭제하기
 }

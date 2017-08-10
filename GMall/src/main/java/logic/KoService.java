@@ -26,4 +26,5 @@ public interface KoService {
 	
 	int his_no();//고종환 쿠폰내역번호
 	void insertCoupon(Map<String, Object> coupon_history);//고종환 사업자 쿠폰주기
+	void productDelete(String pro_no);//고종환 상품 삭제하기
 }

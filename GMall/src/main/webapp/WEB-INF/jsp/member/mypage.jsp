@@ -427,6 +427,7 @@ body {
 										<td>${product.pro_name }</td>
 										<td>${product.price }원</td>
 										<td><f:formatDate value="${product.date }" pattern="yy-MM-dd"/></td>
+										<td><a href="${path }/product/productDelete.mall?pro_no=${product.pro_no }">삭제하기</a></td>
 									</tr>
 								</c:forEach>
 							</c:if>

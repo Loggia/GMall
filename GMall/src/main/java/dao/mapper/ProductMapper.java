@@ -3,6 +3,7 @@ package dao.mapper;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
@@ -37,6 +38,11 @@ public interface ProductMapper {
 	// 상품 번호로 bis_no 값 쿼리
 	@Select("select bis_no from product where pro_no = #{pro_no}")
 	String getBis_no(String pro_no);
+	
+	//고종환 상품 삭제하기
+	@Delete("delete from product where pro_no=#{pro_no}")
+	void productDelete(String pro_no);
+
 
 
 }

@@ -162,5 +162,12 @@ public class KoServiceImpl implements KoService{
 	public void insertCoupon(Map<String, Object> coupon_history) {
 		couponDao.insertCoupon(coupon_history);
 	}
+	
+	//고종환 상품삭제 하기
+	@Override
+	public void productDelete(String pro_no) {
+		productDao.productDelete(pro_no);
+		
+	}
 
 }
