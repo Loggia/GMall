@@ -41,7 +41,7 @@ function prolist(pageNum)
                   <td><button class="btn btn-default"><a href="proList.mall?category=${param.category}&group=low">낮은 가격순</a></button></td>                
                 </tr>
             <c:if test="${listcount > 0}">  
-                <tr class="proloc" align="center">
+                <tr align="center">
                   <th align="center">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;상품이미지</th>  
