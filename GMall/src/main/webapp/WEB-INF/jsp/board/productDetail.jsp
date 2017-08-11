@@ -28,7 +28,7 @@
 #loc5            
 {          
   width : 150px;  
-  float : left;  
+  float : left;   
   margin-right : 15px;  
 }   
 #arrange      
@@ -50,9 +50,13 @@
 .prodeloc
 {
   left:80%; overflow:hidden;  margin-left:230px; 
-}       
-a   
-{ 
+} 
+.quanloc    
+{  
+  position:absolute; top:39%; left:59%; overflow:hidden; margin-left:0px;     
+}                     
+a                        
+{     
   color : black;
 }  
 </style>          
@@ -148,52 +152,54 @@ function productlist(pageNum)
   <td width="300"><img src="../picture/${product.fileurl}" width="250" height="250"></td>
   <td align="center">
     <table>
-    <tr><td width="120"><h2>상품명</h2></td>  
-        <td width="180"><h2>${product.pro_name}</h2></td>  
+    <tr><td width="120"><h4>상품명</h4></td>  
+        <td width="180"><h4>${product.pro_name}</h4></td>  
     </tr>    
-    <tr><td width="100"><h2>가격</h2></td>
-        <td width="180"><h2><fmt:formatNumber value="${product.price}" groupingUsed="true"/>원</h2></td>
+    <tr><td width="100"><h4>가격</h4></td>
+        <td width="180"><h4><fmt:formatNumber value="${product.price}" groupingUsed="true"/>원</h4></td>
     </tr>
-    <tr><td width="120"><h2>상품내용</h2></td>    
-        <td width="180"><h2>&nbsp;&nbsp;${product.pro_content}</h2></td>
+    <tr><td width="120"><h4>상품내용</h4></td>    
+        <td width="180"><h4>${product.pro_content}</h4></td>
     </tr>
-    <tr><td colspan="2" align="center">
-      <form:form modelAttribute="trade" action="cartAdd.mall" name="tradeForm">
-        <input type="hidden" name="pro_no" value="${product.pro_no}">
-          <table align="left">
-          <tr>
-            <td>
-               <select name="quantity">
-				<c:forEach begin="1" end="10" var="idx">
-					<option>${idx}</option>
-				</c:forEach>
-			</select>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <br><br><br> 
-              &nbsp;&nbsp;&nbsp;
-              <c:if test="${usertype == 0}">              
-                <input id="loc5" type="button" class="btn btn-success" value="목록보기" onclick="location.href='proList.mall?category=${category}'">
-              </c:if>
-              <c:if test="${usertype == 1}">
-                <input id="loc5" type="submit" class="btn btn-success" value="카트에 넣기" onclick="">
-                <input id="loc5" type="button" class="btn btn-success" value="목록보기" onclick="location.href='proList.mall?category=${category}'">
-                <input id="loc5" type="button" class="btn btn-success" value="즐겨찾기" onclick="location.href='addBookmark.mall?pro_no=${product.pro_no }'">
-              </c:if>
-              <c:if test="${usertype == 2 && probis.bis_no == proinfo.bis_no}">
-                <input id="loc5" type="submit" class="btn btn-success" value="수정하기" onclick="">
-                <input id="loc5" type="button" class="btn btn-success" value="목록보기" onclick="location.href='proList.mall?category=${category}'">
-              </c:if>
-              <c:if test="${usertype == 2 && probis.bis_no != proinfo.bis_no}">
-                <input id="loc5" type="button" class="btn btn-success" value="목록보기" onclick="location.href='proList.mall?category=${category}'">
-              </c:if>
-              <c:if test="${usertype == 3}">               
-                <input id="loc5" type="button" class="btn btn-success" value="목록보기" onclick="location.href='proList.mall?category=${category}'">   
-              </c:if>
-            </td>
-          </tr> 
+    <tr>
+      <td colspan="2" align="center">
+        <form:form modelAttribute="trade" action="cartAdd.mall" name="tradeForm">
+          <input type="hidden" name="pro_no" value="${product.pro_no}">
+            <table align="left">    
+            <tr>         
+              <td><h4>수량</h4></td>  
+              <td class = "quanloc">      
+                 <select name="quantity">
+				  <c:forEach begin="1" end="10" var="idx">
+			        <option>${idx}</option>
+				  </c:forEach>
+			     </select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <br><br><br> 
+                &nbsp;&nbsp;&nbsp;
+                <c:if test="${usertype == 0}">              
+                  <input id="loc5" type="button" class="btn btn-success" value="목록보기" onclick="location.href='proList.mall?category=${category}'">
+                </c:if>
+                <c:if test="${usertype == 1}">
+                  <input id="loc5" type="submit" class="btn btn-success" value="카트에 넣기" onclick="">
+                  <input id="loc5" type="button" class="btn btn-success" value="목록보기" onclick="location.href='proList.mall?category=${category}'">
+                  <input id="loc5" type="button" class="btn btn-success" value="즐겨찾기" onclick="location.href='addBookmark.mall?pro_no=${product.pro_no }'">
+                </c:if>
+                <c:if test="${usertype == 2 && probis.bis_no == proinfo.bis_no}">
+                  <input id="loc5" type="submit" class="btn btn-success" value="수정하기" onclick="">
+                  <input id="loc5" type="button" class="btn btn-success" value="목록보기" onclick="location.href='proList.mall?category=${category}'">
+                </c:if>
+                <c:if test="${usertype == 2 && probis.bis_no != proinfo.bis_no}">
+                  <input id="loc5" type="button" class="btn btn-success" value="목록보기" onclick="location.href='proList.mall?category=${category}'">
+                </c:if>
+                <c:if test="${usertype == 3}">               
+                  <input id="loc5" type="button" class="btn btn-success" value="목록보기" onclick="location.href='proList.mall?category=${category}'">   
+                </c:if>
+              </td>
+            </tr> 
           </table>  
       </form:form>
          </td>
