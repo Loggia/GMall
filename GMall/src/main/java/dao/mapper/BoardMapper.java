@@ -90,7 +90,7 @@ public interface BoardMapper {
 	@Select("select main_img fileurl from product ORDER by date desc LIMIT 4;")
 	List<Product> newList();
 	   
-	@Select("select m.id, p.pro_name, m.nickname, p.main_img fileurl from member m, product p where m.bis_no=p.bis_no and prim=1 ORDER by date desc LIMIT 4;")
+	@Select("select *, p.main_img fileurl from member m, product p where m.bis_no=p.bis_no and prim=1 ORDER by date desc LIMIT 4;")
 	List<Product> primList();
 
 	@Select("select price from product where favorite='${value}'")
