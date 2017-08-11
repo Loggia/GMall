@@ -34,8 +34,8 @@ body {
 <body>
 <div class="container-fluid">
 <div class="col-xs-2"></div>
-<div class="col-xs-8">
-<div class="mask" style="margin: 0 auto; margin-top: 350px; background-color: white; width: 500px; height: 400px; text-align: center">
+<div class="col-xs-8" style=" height: 700px;">
+<div class="mask" style="background-color: white; width: 500px; height: 400px; text-align: center; margin: 0 auto; margin-top: 150px;">
 	<a href="${path }/board/main.mall">
 		<img style="width: 300px; height: 100px; margin-top: 30px;" class="rotatey" id="logo" src="../img/logo.png">
 	</a>

@@ -230,14 +230,14 @@ body {
 								<input type="hidden" name="type" value="${member.type }">
 						</div>
 						<div ng-app="" class="profimg">
-							<%-- <c:if test="${member.picture==null }">
+							<c:if test="${member.picture==null }">
 								<img class="img-circle updateimg" src="../prof/prof_1.png">
 							</c:if>
 							<c:if test="${member.picture!=null }">
 								<img class="img-circle updateimg" src="../prof/${member.picture }">
-							</c:if> --%>
-							<input ng-bind="profimg" type="image">
-							<div style="margin-top: 20px;"><input ng-model="profimg" type="file" name="pictureFile"></div>
+							</c:if>
+							<!-- <input ng-bind="profimg" type="image"> -->
+							<div style="margin-top: 20px;"><input type="file" name="pictureFile"></div>
 						</div>
 						<div class="form-group">
 							<label for="message-text" class="control-label">변경할 비밀번호:</label> <input

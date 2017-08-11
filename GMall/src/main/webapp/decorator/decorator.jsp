@@ -525,7 +525,17 @@ function list(pageNum)
 	<!-- 바디영역 끝 -->
 	<!-- 푸터 영역 -->
 	<footer class="container-fluid" style="padding: 0px 0px 0px 0px;">
-		<div class="col-xs-12" style="background-color: rgba(255, 0, 0, 0.15); height: 100px; position: absolute;">
+		<div></div>
+		<div class="col-xs-12" style="height: 100px; position: absolute; text-align: center; border-top: 1px solid #a3a4a6;">
+			<br>
+			<p>
+				회사명: (주)구디 | 대표자: 이승엽 | 전화: 02-2108-5900 | 팩스: 02-2108-5999 |
+				사업자등록번호: 119-86-83838<br> 주소: (우)08505 서울시 금천구 가산디지털2로 115,
+				509호, 811호 (가산동, 대륭테크노타운 3차) | 통신판매업신고번호: 제 2014-서울금천-0864 호 <br>
+				개인정보책임자: 주승재 | <a href="mailto:jsj@goodee.co.kr">jsj@goodee.co.kr</a>
+				| Copyright(C) 2015 GooDee ALL Right Reserved.
+			</p>
+			<br>
 		</div>
 		<button type="button" class="btn btn-success btn-sm TOP" onclick="location.href='#'">TOP</button>
 	</footer>
