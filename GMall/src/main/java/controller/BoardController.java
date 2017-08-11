@@ -74,6 +74,7 @@ public class BoardController
 	*/
 	@RequestMapping("board/proList")
 	public ModelAndView proList(Integer pageNum, String searchType, String searchContent, HttpServletRequest request, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
 		String category = request.getParameter("category");
 		String group = request.getParameter("group");
 		if(pageNum == null || pageNum.toString().equals(""))
@@ -103,7 +104,6 @@ public class BoardController
 		{
 			endpage = maxpage;
 		}
-		ModelAndView mav = new ModelAndView();
 		mav.addObject("productlist", productlist);
 		mav.addObject("listcount", listcount);
 		mav.addObject("maxpage", maxpage);
@@ -115,6 +115,7 @@ public class BoardController
 	
 	@RequestMapping("board/totalList")
 	public ModelAndView totalList(Integer pageNum, String searchType, String searchContent, HttpServletRequest request, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
 		if(pageNum == null || pageNum.toString().equals(""))
 		{
 			pageNum = 1;
@@ -142,7 +143,6 @@ public class BoardController
 				totallist.get(i).setAverfavorprice(averprice);
 			}
 		}
-		ModelAndView mav = new ModelAndView();
 		mav.addObject("totallist", totallist);
 		mav.addObject("listcount", listcount);
 		mav.addObject("maxpage", maxpage);
