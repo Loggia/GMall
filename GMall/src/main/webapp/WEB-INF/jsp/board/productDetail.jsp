@@ -50,13 +50,9 @@
 .prodeloc
 {
   left:80%; overflow:hidden;  margin-left:230px; 
-} 
-.quanloc    
-{  
-    
-}                     
+}                    
 a                        
-{     
+{       
   color : black;
 }  
 </style>          
@@ -166,9 +162,9 @@ function productlist(pageNum)
         <form:form modelAttribute="trade" action="cartAdd.mall" name="tradeForm">
           <input type="hidden" name="pro_no" value="${product.pro_no}">
             <table align="left">    
-            <tr>         
-              <td><h4>수량</h4></td>  
-              <td class = "quanloc">      
+            <tr>           
+              <td width="120"><h4>수량</h4></td>      
+              <td width="180" align="left">                                                    
                  <select name="quantity">
 				  <c:forEach begin="1" end="10" var="idx">
 			        <option>${idx}</option>
