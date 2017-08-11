@@ -433,7 +433,7 @@ body {
 							   <c:forEach items="${myBis_list}" var="product">
 									<tr>
 										<td>${product.category }</td>
-										<td>${product.pro_name }</td>
+										<td><a href="${path }/board/productDetail.mall?pro_no=${product.pro_no}&category=${product.category}">${product.pro_name }</a></td>
 										<td>${product.price }원</td>
 										<td><f:formatDate value="${product.date }" pattern="yy-MM-dd"/></td>
 										<td><a href="${path }/product/productDelete.mall?pro_no=${product.pro_no }">삭제하기</a></td>
