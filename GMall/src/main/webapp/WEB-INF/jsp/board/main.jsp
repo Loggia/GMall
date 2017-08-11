@@ -54,7 +54,8 @@ body {
 
 <div class="container-fluid" style="padding: 0px 0px 0px 0px; margin-top: 16px; margin-bottom: 16px;">
 		<div class="main_cont" style="padding: 0px 0px 0px 0px; margin: 0 auto; width: 1268px;">
-			<div style="display: inline;">
+		
+		<%-- 	<div style="display: inline;">
 				<c:forEach items="${primList }" var="prim">
 					<div class="col-xs-3">
 						<div class="1st-line mask" style="background-color: white; margin-left: 15px; margin-bottom: 15px;">
@@ -62,7 +63,59 @@ body {
 						</div>
 					</div>
 				</c:forEach>
+			</div> --%>
+			
+			<div style="display: inline;">
+			<c:forEach items="${primList }" var="prim">
+			<div class="col-xs-3">
+			<div id="carousel" class="carousel slide 1st-line mask" data-ride="carousel" style="background-color: white; margin-left: 15px; margin-bottom: 15px;">
+				<!-- Indicators -->
+				<ol class="carousel-indicators" style="margin-top: 10px;">
+					<li data-target="#carousel" data-slide-to="0" class="active"></li>
+					<li data-target="#carousel" data-slide-to="1"></li>
+					<li data-target="#carousel" data-slide-to="2"></li>
+				</ol>
+
+				<!-- Wrapper for slides -->
+				<div class="carousel-inner" role="listbox">
+
+					<div class="item active">
+						<img src="../img/sanaprof.PNG" alt="" align="" style="width: 300px; height: 300px;">
+						<div class="carousel-caption">
+						<h4 style="margin-bottom: 20px;">사나 이미지</h4>
+						</div>
+					</div>
+
+					<div class="item">
+						<img src="../img/logo.png" alt="" align="middle" style="width: 300px; height: 300px;">
+						<div class="carousel-caption">
+							<h4 style="margin-bottom: 20px;">로고</h4>
+						</div>
+					</div>
+
+					<div class="item">
+						<img src="../img/prim.png" alt="" align="middle" style="width: 300px; height: 300px;">
+						<div class="carousel-caption">
+							<h4 style="margin-bottom: 20px;">프리미엄</h4>
+						</div>
+					</div>
+
+				</div>
+
+				<!-- Controls -->
+				<a class="left carousel-control" href="#carousel" role="button" data-slide="prev" style="background-image: linear-gradient(to right,rgba(0,0,0,0) 0,rgba(0,0,0,0) 100%);">
+					<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					<span class="sr-only">Previous</span>
+				</a>
+				<a style="background-image: linear-gradient(to right,rgba(0,0,0,0) 0,rgba(0,0,0,0) 100%);" class="right carousel-control" href="#carousel" role="button" data-slide="next">
+					<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					<span class="sr-only">Next</span>
+				</a>
 			</div>
+			</div>
+			</c:forEach>
+			</div>
+			
 			<div style="display: inline;">
 				<c:forEach items="${popuList }" var="popu">
 					<div class="col-xs-3">
