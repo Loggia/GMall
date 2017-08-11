@@ -66,9 +66,9 @@ body {
 			</div> --%>
 			
 			<div style="display: inline;">
-			<c:forEach items="${primList }" var="prim">
+			<c:forEach items="${primList }" var="prim" varStatus="stat">
 			<div class="col-xs-3">
-			<div id="carousel" class="carousel slide 1st-line mask" data-ride="carousel" style="background-color: white; margin-left: 15px; margin-bottom: 15px;">
+			<div id="carousel${stat.index }" class="carousel slide 1st-line mask" data-ride="carousel" style="background-color: white; margin-left: 15px; margin-bottom: 15px;">
 				<!-- Indicators -->
 				<ol class="carousel-indicators" style="margin-top: 10px;">
 					<li data-target="#carousel" data-slide-to="0" class="active"></li>
@@ -103,11 +103,11 @@ body {
 				</div>
 
 				<!-- Controls -->
-				<a class="left carousel-control" href="#carousel" role="button" data-slide="prev" style="background-image: linear-gradient(to right,rgba(0,0,0,0) 0,rgba(0,0,0,0) 100%);">
+				<a class="left carousel-control" href="#carousel${stat.index }" role="button" data-slide="prev" style="background-image: linear-gradient(to right,rgba(0,0,0,0) 0,rgba(0,0,0,0) 100%);">
 					<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
 					<span class="sr-only">Previous</span>
 				</a>
-				<a style="background-image: linear-gradient(to right,rgba(0,0,0,0) 0,rgba(0,0,0,0) 100%);" class="right carousel-control" href="#carousel" role="button" data-slide="next">
+				<a style="background-image: linear-gradient(to right,rgba(0,0,0,0) 0,rgba(0,0,0,0) 100%);" class="right carousel-control" href="#carousel${stat.index }" role="button" data-slide="next">
 					<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 					<span class="sr-only">Next</span>
 				</a>
