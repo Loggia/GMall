@@ -326,15 +326,27 @@ public class MemberController {
 		// 구정연 - 일반회원목록 수정
 		else if (login.getId().equals("admin")) 
 		{
+			Member userInfo = jooService.getUserById(request.getParameter("id"));
+			
 			if (member.getPass().equals(passfirm)) 
 			{
-				jooService.updateMember(member, request);
+				if (member.getPass().equals("")) 
+				{
+					member.setPass(userInfo.getPass());
+				}
 				
-				mav.setViewName("success");
-				if(member.getType() == 1) mav.addObject("url", "../member/nomalList.mall");
-				else mav.addObject("url", "../member/businessList.mall");
-				mav.addObject("msg", "정상적으로 수정되었습니다.");
 			}
+			else
+			{
+				member.setPass(userInfo.getPass());
+			}
+			
+			jooService.updateMember(member, request);
+			
+			mav.setViewName("success");
+			if(member.getType() == 1) mav.addObject("url", "../member/nomalList.mall");
+			else mav.addObject("url", "../member/businessList.mall");
+			mav.addObject("msg", "정상적으로 수정되었습니다.");
 		} 
 		else 
 		{
