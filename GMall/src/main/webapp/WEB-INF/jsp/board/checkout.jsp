@@ -6,8 +6,79 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Insert title here</title>
+		<link rel="stylesheet" type="text/css" href="${path }/css/delvpage.css"> 
+		<style type="text/css">
+		
+		.float {
+		 	float: right;
+		}
+		
+		.circle1 {
+			 width:100px;
+			 height:100px;
+			 border-radius:100px;
+			 -moz-border-radius : 100px;
+			 -webkit-border-radius : 100px;
+			 -ms-border-radius :100px;
+			 -khtml-border-radius : 100px;
+			 -o-border-radius :100px;
+			 background:#09F;
+			 font:normal 12px/100px "나눔고딕", "돋움", "굴림";
+			 color:#fff;
+			 text-align:center;
+			 display: inline-block;
+			}
+		.circle2 {
+			 width:100px;
+			 height:100px;
+			 border-radius:100px;
+			 -moz-border-radius : 100px;
+			 -webkit-border-radius : 100px;
+			 -ms-border-radius :100px;
+			 -khtml-border-radius : 100px;
+			 -o-border-radius :100px;
+			 background:#2b68a7;
+			 font:normal 12px/100px "나눔고딕", "돋움", "굴림";
+			 color:#fff;
+			 text-align:center;
+			 display: inline-block;
+			}
+		font {
+		font-family : Times New Roman;
+		font-weight: bold;
+		}
+		
+		.box {
+			width: 100%;
+			height: 140px;
+			border-radius: 5px;
+			background:#dddee0;
+			border-bottom: 5px black;
+		}
+		h2 {
+			font-family : '돋움';
+			font-weight: bold;
+		}
+		</style>
 	</head>
 	<body>
+	
+	<div class="container-fluid" style="padding-left: 0px; padding-right: 0px;">
+		
+		<div class="col-xs-2"></div>
+
+		<div class="col-xs-8 info_content">
+		<div class="float">
+		<br>
+	<p class="circle2"><img src="../img/baguni.png" width="64px" height="64px"></p> <font >BASKET</font>
+		<img src="../img/arrow.png" width="30px" height="30px;">
+	<P class="circle1"><img src="../img/daller.png" width="64px" height="64px"></p> <font >PAYMENT</font>
+	<img src="../img/arrow.png" width="30px" height="30px;">
+	<P class="circle2"><img src="../img/order.png" width="64px" height="64px"></p> <font >COMPLETE</font>
+		<br>
+	</div>
+		<p class="box"><br><br><br><font size="10px">주문/판매</font></p>
+			<br><br><br>
 		<h2>구매자 정보</h2>
 		<table class="table table-hover" style="border-bottom: 1px solid #e5e5e5;">
 			<tr>
@@ -69,14 +140,14 @@
 					<td colspan="2" align="center">총합: ${totalAmount}원</td>
 				</tr>
 			</table>
-			
-			<input type="submit" value="구매하기">&nbsp;
-			
-			<h2>쿠폰사용</h2>
-			<c:forEach items="${coupon}" var="coupon">
-				<input type="button" value="${coupon.cop_no}">
-			</c:forEach>
+			<div class="float">
+			<input  id="loc5" class="btn btn-success" type="submit" value="구매하기">&nbsp;
+			</div>
 		</form>
-		<a href="../board/proList.mall">목록보기</a>
+		
+
+		</div>
+		<div class="col-xs-2"></div>
+		</div>
 	</body>
 </html>
