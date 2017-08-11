@@ -15,7 +15,7 @@
 <script>
 function totallist(pageNum) 
 {
-  location.href = "totalList.mall?&pageNum=" + pageNum;
+	location.href = "totalList.mall?&pageNum=" + pageNum + "&searchType=${param.searchType}&searchContent=${param.searchContent}";
 }
 </script>
 </head>

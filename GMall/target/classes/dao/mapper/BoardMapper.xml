@@ -38,9 +38,17 @@
   	select p.pro_no, p.pro_name, p.price, p.category, p.favorite, p.main_img fileurl, p.date, p.bis_name, m.prim 
             from  product p ,member m 
             where p.bis_no = m.bis_no 
-    <if test="searchType != null and searchContent != null">
-      and p.${searchType} like '%${searchContent}%' order by p.date desc limit ${startrow}, 20 
-    </if>       
+    <choose>  
+	  <when test="searchType != null and searchContent != null">     
+	    and p.${searchType} like '%${searchContent}%' order by p.date desc limit ${startrow}, 20 
+	  </when>   
+      <when test="searchType == null and searchContent == null">  
+        and p.pro_name = null 
+      </when>
+      <when test="searchType != null or searchContent == 'notval'">
+        and p.pro_name = null 
+      </when>  
+    </choose>
   </select>            
   
   <select id="proCount" resultType="int" parameterType="map">

@@ -46,6 +46,10 @@ public class BoardDaoImpl implements BoardDao{
 	public List<Product> totalList(String searchType, String searchContent, Integer pageNum, int limit) {
 		int startrow = (pageNum - 1) * limit;	
 		Map<String, Object> paramMap = new HashMap<String, Object>();
+		if(searchContent == "")
+		{
+			searchContent = "notval";
+		}
 		paramMap.put("startrow", startrow);
     	paramMap.put("searchType", searchType);
     	paramMap.put("searchContent", searchContent);
@@ -55,6 +59,10 @@ public class BoardDaoImpl implements BoardDao{
 	@Override
 	public int totalCount(String searchType, String searchContent) {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
+		if(searchContent == "")
+		{
+			searchContent = "notval";
+		}
     	paramMap.put("searchType", searchType);
     	paramMap.put("searchContent", searchContent);
     	return sqlSession.selectOne(NS+"totalCount", paramMap);
