@@ -84,6 +84,7 @@ public class BoardController
 		int limit = 20;
 		int listcount = baeService.proCount(searchType, searchContent, category);
 		List<Product> productlist = baeService.proList(category, group, searchType, searchContent, pageNum, limit);
+		
 		for(int i=0; i<productlist.size() ; i++)
 		{
 			int averprice = 0;

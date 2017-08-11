@@ -42,7 +42,7 @@ public class Product
 	private String fileurl2;
 	private String fileurl3;
 	
-	private MultipartFile main_img;
+	private MultipartFile main_img; 
 	private MultipartFile sub_img1;
 	private MultipartFile sub_img2;
 	private MultipartFile sub_img3;
