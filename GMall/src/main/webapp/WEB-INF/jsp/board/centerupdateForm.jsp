@@ -84,7 +84,7 @@ a
       <tr><td colspan="2" align="center">
         <button class="btn btn-default"><a href="javascript:document.updateform.submit()">수정</a></button>
         <button class="btn btn-default"><a href="centerdeleteForm.mall?num=${board.board_no}&pageNum=${param.pageNum}">삭제</a></button>
-        <button class="btn btn-default" onclick="location href='centerList.mall?pageNum=${param.pageNum}'">목록</button>
+        <button class="btn btn-default"><a href="centerList.mall?pageNum=${param.pageNum}">목록</button>
       </tr>                    	 
 	</table>  
 </form:form>

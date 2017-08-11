@@ -28,7 +28,8 @@
 #loc5            
 {          
   width : 150px;  
-  float : left;    
+  float : left;  
+  margin-right : 15px;  
 }   
 #arrange      
 {         
