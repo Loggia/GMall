@@ -53,7 +53,7 @@
 } 
 .quanloc    
 {  
-  position:absolute; top:39%; left:59%; overflow:hidden; margin-left:0px;     
+    
 }                     
 a                        
 {     
