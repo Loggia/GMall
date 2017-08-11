@@ -801,12 +801,9 @@ public class BoardController
 		String userid = request.getParameter("id");
 		String pro_no = request.getParameter("pro_no");
 		String sellid = request.getParameter("sellid");
-		System.out.println("sellid : " + sellid);
 		int grade = board.getGrade();
 		Member member = baeService.sellScore(sellid);
 		int memberScore = (int)member.getScore();
-		System.out.println("grade : " + grade);
-		System.out.println("memberScore : " + memberScore);
 		baeService.memGrade(sellid, grade, memberScore);
 		baeService.reviewInsert(board, userid, pro_no, request);
 		kuService.primupdate();
