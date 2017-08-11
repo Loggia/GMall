@@ -536,7 +536,7 @@ function list(pageNum)
 				509호, 811호 (가산동, 대륭테크노타운 3차) | 통신판매업신고번호: 제 2014-서울금천-0864 호 <br>
 				개인정보책임자: 주승재 | <a href="mailto:jsj@goodee.co.kr">jsj@goodee.co.kr</a>
 				| Copyright(C) 2015 GooDee ALL Right Reserved.
-			</p>
+			</p>  
 			<br>
 		</div>
 		<button type="button" class="btn btn-success btn-sm TOP" onclick="location.href='#'">TOP</button>
