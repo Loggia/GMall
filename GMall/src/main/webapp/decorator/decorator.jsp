@@ -528,6 +528,8 @@ function list(pageNum)
 		<div></div>
 		<div class="col-xs-12" style="height: 100px; position: absolute; text-align: center; border-top: 1px solid #a3a4a6;">
 			<br>
+			<img src="../img/goodee_gray.png" style="width: 200px; height: 70px;">
+			<br><br>
 			<p>
 				회사명: (주)구디 | 대표자: 이승엽 | 전화: 02-2108-5900 | 팩스: 02-2108-5999 |
 				사업자등록번호: 119-86-83838<br> 주소: (우)08505 서울시 금천구 가산디지털2로 115,
