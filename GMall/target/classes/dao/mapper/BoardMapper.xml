@@ -8,7 +8,7 @@
             and p.category = '${category}' 
 			    <choose>
 			    	<when test="searchType != null and searchContent != null and group == null">
-			    		and ${searchType} like '%${searchContent}%' order by p.date desc limit ${startrow}, ${endrow} 
+			    		and ${searchType} like '%${searchContent}%' order by p.pro_no desc, p.date desc limit ${startrow}, ${endrow} 
 			    	</when>
 			    	<when test="searchType != null and searchContent != null and group == 'premium'">
 			    		and ${searchType} like '%${searchContent}%' order by m.prim desc, p.date desc limit ${startrow}, ${endrow}                                
