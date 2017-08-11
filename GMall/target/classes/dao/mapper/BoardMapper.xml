@@ -20,7 +20,7 @@
 			    		and ${searchType} like '%${searchContent}%' order by p.price asc, p.date desc limit ${startrow}, ${endrow}  
 			    	</when>
 			    	<when test="group == null or group == ''">
-			    		 order by p.date desc limit ${startrow}, 20
+			    		 order by p.pro_no desc, p.date desc limit ${startrow}, 20
 			    	</when>
 			    	<when test="group == 'premium'">
 			    		 order by m.prim desc, p.date desc limit ${startrow}, 20                              
