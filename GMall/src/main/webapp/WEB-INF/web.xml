@@ -71,8 +71,12 @@
   </listener>
   
   <error-page>
-  	<error-code>403</error-code>
-  	<location>/WEB-INF/jsp/noAuthority.jsp</location>
+  	<error-code>404</error-code>
+  	<location>/error/404error.jsp</location>
+  </error-page>
+    <error-page>
+  	<error-code>500</error-code>
+  	<location>/error/500error.jsp</location>
   </error-page>
   
    <filter>
