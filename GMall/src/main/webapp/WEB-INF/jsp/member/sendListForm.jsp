@@ -211,20 +211,43 @@ $(document).ready(function(){
 						</li>
 					</c:forEach>
 					</ol>
-					<div align="center">
-						<c:if test="${pageNum > 1}">
-							<a href="javascript:nomalList(${pageNum - 1})">
-						</c:if>[이전]&nbsp;
-						<c:if test="${pageNum > 1}"></a></c:if>
-						<c:forEach var="a" begin="${startpage}" end="${endpage}">
-							<c:if test="${pageNum == a}">[${a}]</c:if>
-							<c:if test="${pageNum != a}"><a href="javascript:nomalList(${a})">[${a}]</a></c:if>&nbsp;
-						</c:forEach>
-						<c:if test="${pageNum < maxpage}">
-							<a href="javascript:nomalList(${pageNum + 1})">
-						</c:if>[다음]&nbsp;
-						<c:if test="${pageNum < maxpage}"></a></c:if>
-					</div><br><br><br>
+						<div align="center">
+							<ul class="pagination">
+								<c:if test="${pageNum == 1}">
+									<li class="disabled">
+										<a aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+									</li>
+								</c:if>
+								<c:if test="${pageNum > 1}">
+									<li class="">
+										<a href="javascript:reciveList(${pageNum - 1})" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+									</li>
+								</c:if>
+
+								<c:forEach var="a" begin="${startpage}" end="${endpage}">
+									<c:if test="${pageNum == a}">
+										<li class="active">
+											<a href="#">${a}<span class="sr-only"></span></a>
+										</li>
+									</c:if>
+									<c:if test="${pageNum != a}">
+										<li>
+											<a href="javascript:reciveList(${a})">${a}<span class="sr-only"></span></a>
+										</li>
+									</c:if>
+								</c:forEach>
+								<c:if test="${pageNum == maxpage}">
+									<li class="disabled">
+										<a aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+									</li>
+								</c:if>
+								<c:if test="${pageNum < maxpage}">
+									<li>
+										<a href="javascript:reciveList(${pageNum + 1})" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+									</li>
+								</c:if>
+							</ul>
+						</div><br><br><br>
 					</c:if>
 					<c:if test="${empty sendList}">
 					<br><br><br>
