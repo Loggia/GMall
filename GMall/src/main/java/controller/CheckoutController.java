@@ -114,6 +114,8 @@ public class CheckoutController
 		Cart cart = (Cart)session.getAttribute("CART_KEY");
 		Trade trade = null;
 		
+		System.out.println(cart.getProductList().get(0).getProduct());
+		
 		if(login.getAddress() != null) 
 		{
 			if(address != null) trade = kuService.checkEnd(login.getId(), address, cart);

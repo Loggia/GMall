@@ -74,12 +74,18 @@
 	<P class="circle2"><img src="../img/order.png" width="64px" height="64px"></p> <font >COMPLETE</font>
 		<br>
 		</div>
-		<p class="box"><font><br><br><br><font size="10px">장바구니</font></p>
+		<p class="box"><br><br><br><font size="10px">장바구니</font></p>
 			<br><br><br>
 		<table class="table table-hover" style="border-bottom: 5px solid #e5e5e5;" width="80%;">
 			<tr>
+				<td colspan="5">
+					<font>일반상품(${cartsize})</font>
+				</td>
+			</tr>
+			<tr>
 			
 				<th>상호</th>
+				<th>상품이미지</th>
 				<th>상품명</th>
 				<th>가격</th>
 				<th>수량</th>
@@ -90,10 +96,12 @@
 			<c:forEach items="${cart.productList}" var="productSet" varStatus="stat">
 				<tr>
 					<td>${productSet.product.bis_name }</td>
+				
+					 <td><img src="../picture/${productSet.product.fileurl}"/></td> 
 					<td>${productSet.product.pro_name}</td>
 					<td>${productSet.product.price}</td>
 					<td>${productSet.quantity}</td>
-					<td>${productSet.quantity * productSet.product.price} 원
+					<td><font>${productSet.quantity * productSet.product.price} 원</font>
 						<a href="cartDelete.mall?index=${stat.index}">ⓧ</a>
 					</td>
 					<c:set var="tot" value="${tot+(productSet.quantity * productSet.product.price)}"/>
@@ -101,7 +109,7 @@
 			</c:forEach>
 			
 			<tr>
-				<td colspan="5" align="right">
+				<td colspan="6" align="right">
 					<font color="green">총구입금액:${tot}원</font>
 				</td>
 			</tr>
