@@ -53,7 +53,7 @@ body {
 <body>
 
 <div class="container-fluid" style="padding: 0px 0px 0px 0px; margin-top: 16px; margin-bottom: 16px;">
-		<div class="main_cont" style="padding: 0px 0px 0px 0px; margin: 0 auto; width: 1268px;">
+		<div class="main_cont" style="padding: 0px 0px 0px 0px; margin: 0 auto; width: 1268px;"> 
 		
 		<%-- 	<div style="display: inline;">
 				<c:forEach items="${primList }" var="prim">
