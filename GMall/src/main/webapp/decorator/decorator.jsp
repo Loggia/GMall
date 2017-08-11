@@ -282,7 +282,7 @@ function list(pageNum)
 					<c:if test="${LOGIN_MEMBER.id != null}">
 						<button type="submit" onclick="location.href='${path }/member/logout.mall'"
 							class="btn btn-success pull-right"
-							style="margin-top: 3px;">${LOGIN_MEMBER.nickname }</button>
+							style="margin-top: 3px;">로그아웃</button>
 					</c:if>
 					
 					<!-- 모달 로그인폼 바디-->
