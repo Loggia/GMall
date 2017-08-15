@@ -489,7 +489,7 @@ function list(pageNum)
 									    <c:if test="${LOGIN_MEMBER.type== 1 }">
 								        	<li class="mymemu_list" style="margin: 5px;"><a style="text-decoration: none;" class="ml" href="${path }/member/mypage.mall">내 정보</a></li>
 								     	    <li class="mymemu_list" style="margin: 5px;"><a style="text-decoration: none;" class="ml" href="${path }/board/cart.mall">장바구니</a></li>
-								    	    <li class="mymemu_list" style="margin: 5px;"><a style="text-decoration: none;" class="ml" href="deleveryForm.mall">배송정보</a></li>
+								    	    <li class="mymemu_list" style="margin: 5px;"><a style="text-decoration: none;" class="ml" href="${path }/trade/deleveryForm.mall">배송정보</a></li>
 								    	</c:if>
 								    	<c:if test="${LOGIN_MEMBER.type== 2 }">
 								        	<li class="mymemu_list" style="margin: 5px;"><a style="text-decoration: none;" class="ml" href="${path }/member/mypage.mall">내 정보</a></li>
@@ -498,7 +498,6 @@ function list(pageNum)
 								    	 <c:if test="${LOGIN_MEMBER.type== 3 }">
 								        	<li class="mymemu_list" style="margin: 5px;"><a style="text-decoration: none;" class="ml" href="${path }/member/mypage.mall">내 정보</a></li>
 								     	    <li class="mymemu_list" style="margin: 5px;"><a style="text-decoration: none;" class="ml" href="${path }/board/cart.mall">장바구니</a></li>
-								    	    <li class="mymemu_list" style="margin: 5px;"><a style="text-decoration: none;" class="ml" href="deleveryForm.mall">배송정보</a></li>
 								    	</c:if>	
 									</c:if>
 								</ol>
