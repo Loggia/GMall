@@ -65,8 +65,7 @@ public interface TradeMapper {
 	@Select("select max(his_no) from coupon_history")
 	int his_no();
 	
-	//구정연 구매기능
-		@Insert("insert into trade ( trd_no , trd_code , trd_cnt , trd_money , trd_fee , trd_date , pro_no"
+	@Insert("insert into trade ( trd_no , trd_code , trd_cnt , trd_money , trd_fee , trd_date , pro_no"
 				+ " ,buy_id , sell_id , cop_no , address , delivery , rv_chk) values ( #{trd_no}, #{trd_code} , "
 				+ " #{trd_cnt} , #{trd_money} , #{trd_fee} , now() , #{pro_no} , #{buy_id} , #{sell_id} , #{cop_no} , #{address} , #{delivery} , #{rv_chk})")
 		void createtrade(Trade trade);

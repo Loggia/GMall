@@ -12,8 +12,8 @@ import logic.Member;
 
 public interface MemberMapper 
 {
-	@Insert("insert into member (type,id,pass,name,nickname,gender,tel,address,interest,bis_no,bis_name) "
-		  + "values(#{type},#{id},#{pass},#{name},#{nickname},#{gender},#{tel},#{address},#{interest},#{bis_no},#{bis_name})")
+	@Insert("insert into member (type,id,pass,name,nickname,gender,tel,address,interest,bis_no,bis_name,prim) "
+		  + "values(#{type},#{id},#{pass},#{name},#{nickname},#{gender},#{tel},#{address},#{interest},#{bis_no},#{bis_name},0)")
 	void insert(Member member);
 	
 	@Update("update member set pass=#{pass},name=#{name},nickname=#{nickname},gender=#{gender},"
