@@ -415,7 +415,12 @@ body {
 									<tr>
 										<td>${mark.bis_name }</td>
 										<td>${mark.tel }</td>
-										<td>${mark.prim }</td>
+										<c:if test="${mark.prim == false }">
+											<td>일반 사업자</td>
+										</c:if>
+										<c:if test="${mark.prim == true }">
+											<td>프리미엄 사업자</td>
+										</c:if>	
 										<td><a href="${path }/member/deleteBookmark.mall?mark_no=${mark.mark_no}" style="color: red;">해제하기</a></td>
 									</tr>
 								</c:forEach>
