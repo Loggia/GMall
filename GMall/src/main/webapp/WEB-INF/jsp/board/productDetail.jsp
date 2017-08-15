@@ -27,9 +27,9 @@
 } 
 #loc5            
 {          
-  width : 150px;  
+  width : 100px;   
   float : left;   
-  margin-right : 15px;  
+  margin-right : 15px; 
 }   
 #arrange      
 {         
@@ -162,19 +162,19 @@ function productlist(pageNum)
         <form:form modelAttribute="trade" action="cartAdd.mall" name="tradeForm">
           <input type="hidden" name="pro_no" value="${product.pro_no}">
             <table align="left">    
-            <tr>           
-              <td width="120"><h4>수량</h4></td>      
-              <td width="180" align="left">                                                    
+            <tr>   
+              <td width="150" align="left">      
+                 <h4>수량</h4>                                                                 
                  <select name="quantity">
 				  <c:forEach begin="1" end="10" var="idx">
 			        <option>${idx}</option>
-				  </c:forEach>
+				  </c:forEach>  
 			     </select>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <br><br><br> 
+              </td>        
+            </tr>       
+            <tr>   
+              <td width="500">                                    
+                <br><br>                          
                 &nbsp;&nbsp;&nbsp;
                 <c:if test="${usertype == 0}">              
                   <input id="loc5" type="button" class="btn btn-success" value="목록보기" onclick="location.href='proList.mall?category=${category}'">
@@ -185,7 +185,7 @@ function productlist(pageNum)
                   <input id="loc5" type="button" class="btn btn-success" value="즐겨찾기" onclick="location.href='addBookmark.mall?pro_no=${product.pro_no }'">
                 </c:if>
                 <c:if test="${usertype == 2 && probis.bis_no == proinfo.bis_no}">
-                  <input id="loc5" type="submit" class="btn btn-success" value="수정하기" onclick="">
+                  <!-- <input id="loc5" type="submit" class="btn btn-success" value="수정하기" onclick=""> -->
                   <input id="loc5" type="button" class="btn btn-success" value="목록보기" onclick="location.href='proList.mall?category=${category}'">
                 </c:if>
                 <c:if test="${usertype == 2 && probis.bis_no != proinfo.bis_no}">
