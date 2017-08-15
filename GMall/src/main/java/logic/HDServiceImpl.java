@@ -120,8 +120,8 @@ public class HDServiceImpl implements HDService{
 	@Override
 	public Product prim2() {
 		String id = boardDao.primGetId2();
-		return boardDao.prim(id);
-	}
+		return boardDao.prim(id);  
+	} 
 
 	@Override
 	public Product prim3() {
