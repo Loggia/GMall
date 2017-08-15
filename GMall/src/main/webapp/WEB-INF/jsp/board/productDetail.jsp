@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/jsp/jspHeader.jsp" %> 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" type="text/css" href="${path }/css/delvpage.css">
 <title>Insert title here</title>
 <style type="text/css">
 #loc
@@ -249,25 +248,25 @@ function productlist(pageNum)
 	  <c:if test="${userid != 'admin' && userid != 'guest' && userid == rvlist.id && empty param.pageNum}">
 	    <td width="20%" align="center">  
 	      <br>  
-	      <button class="btn btn-default"><a href="reviewupdateForm.mall?pro_no=${pro_no}&num=${rvlist.board_no}&pageNum=1">수정</a>
-	      <button class="btn btn-default"><a href="reviewdeleteForm.mall?pro_no=${pro_no}&num=${rvlist.board_no}&pageNum=1">삭제</a>
+	      <button class="btn btn-default"><a href="reviewupdateForm.mall?pro_no=${pro_no}&num=${rvlist.board_no}&pageNum=1">수정</a></button>
+	      <button class="btn btn-default"><a href="reviewdeleteForm.mall?pro_no=${pro_no}&num=${rvlist.board_no}&pageNum=1">삭제</a></button>
 	    </td>        
       </c:if>       
 	  <c:if test="${userid != 'admin' && userid != 'guest' && userid == rvlist.id && not empty param.pageNum}">
 	    <td width="20%" align="center">
 	      <br>  
-	      <button class="btn btn-default"><a href="reviewupdateForm.mall?pro_no=${pro_no}&num=${rvlist.board_no}&pageNum=${param.pageNum}">수정</a>
-	      <button class="btn btn-default"><a href="reviewdeleteForm.mall?pro_no=${pro_no}&num=${rvlist.board_no}&pageNum=${param.pageNum}">삭제</a>
+	      <button class="btn btn-default"><a href="reviewupdateForm.mall?pro_no=${pro_no}&num=${rvlist.board_no}&pageNum=${param.pageNum}">수정</a></button>
+	      <button class="btn btn-default"><a href="reviewdeleteForm.mall?pro_no=${pro_no}&num=${rvlist.board_no}&pageNum=${param.pageNum}">삭제</a></button>
 	    </td>  
       </c:if>
 	  <c:if test="${userid == 'admin' && userid != 'guest' && empty param.pageNum}">
 	    <td width="20%" align="center">  
-	      <button class="btn btn-default"><a href="reviewupdateForm.mall?pro_no=${pro_no}&num=${rvlist.board_no}&pageNum=1">수정</a>
+	      <button class="btn btn-default"><a href="reviewupdateForm.mall?pro_no=${pro_no}&num=${rvlist.board_no}&pageNum=1">수정</a></button>
 	    </td>
 	  </c:if>
 	  <c:if test="${userid == 'admin' && userid != 'guest' && not empty param.pageNum}">
 	    <td width="20%" align="center">
-	      <button class="btn btn-default"><a href="reviewdeleteForm.mall?pro_no=${pro_no}&num=${rvlist.board_no}&pageNum=${param.pageNum}">삭제</a>
+	      <button class="btn btn-default"><a href="reviewdeleteForm.mall?pro_no=${pro_no}&num=${rvlist.board_no}&pageNum=${param.pageNum}">삭제</a></button>
         </td>  
       </c:if>
       <c:if test="${userid != 'admin' && userid != 'guest' && userid != rvlist.id && empty param.pageNum}">
