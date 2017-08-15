@@ -36,4 +36,12 @@ public interface HDService {
 
 	List<Product> primList4();
 
+	Product prim1();
+
+	Product prim2();
+
+	Product prim3();
+
+	Product prim4();
+
 }
