@@ -76,7 +76,6 @@ body {
 					<li data-target="#carousel1" data-slide-to="0" class="active"></li>
 					<li data-target="#carousel1" data-slide-to="1"></li>
 					<li data-target="#carousel1" data-slide-to="2"></li>
-					<li data-target="#carousel1" data-slide-to="3"></li>
 				</ol>
 
 				<!-- Wrapper for slides -->
@@ -89,12 +88,11 @@ body {
 								</div>
 							</div>
 
-							<%-- <c:forEach items="${primList1 }" var="primList1"> --%>
-							<c:forEach begin="1" end="3" step="1">
+							<c:forEach items="${primList1 }" var="primList1">
 								<div class="item">
 									<img src="../img/sanaprof.PNG" alt="" align="middle" style="width: 300px; height: 300px;">
 									<div class="carousel-caption">
-										<h4 style="margin-bottom: 20px;">사나 이미지</h4>
+										<h4 style="margin-bottom: 20px;">${primList1.pro_name }</h4>
 									</div>
 								</div>
 							</c:forEach>
