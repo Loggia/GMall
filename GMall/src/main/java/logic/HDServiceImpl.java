@@ -18,11 +18,6 @@ public class HDServiceImpl implements HDService{
 	MessageDao messageDao;
 	
 	@Override
-	public List<Product> primList() {
-		return boardDao.primList();
-	}
-
-	@Override
 	public List<Product> newList() {
 		return boardDao.newList();
 	}
@@ -90,6 +85,30 @@ public class HDServiceImpl implements HDService{
 	@Override
 	public int sendListCount(String loginUserId) {
 		return messageDao.sendListCount(loginUserId);
+	}
+
+	@Override
+	public List<Product> primList1() {
+		String id = boardDao.primGetId1();
+		return boardDao.primList(id);
+	}
+
+	@Override
+	public List<Product> primList2() {
+		String id = boardDao.primGetId2();
+		return boardDao.primList(id);
+	}
+
+	@Override
+	public List<Product> primList3() {
+		String id = boardDao.primGetId3();
+		return boardDao.primList(id);
+	}
+
+	@Override
+	public List<Product> primList4() {
+		String id = boardDao.primGetId4();
+		return boardDao.primList(id);
 	}
 	
 	

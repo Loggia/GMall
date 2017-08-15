@@ -276,14 +276,28 @@ public class BoardDaoImpl implements BoardDao{
 	}
 
 	@Override
-	public List<Product> primList() {
-		return sqlSession.getMapper(BoardMapper.class).primList();
+	public List<Product> primList(String id) {
+		return sqlSession.getMapper(BoardMapper.class).primList(id);
 	}
-	
-	
-	
-	
-	
-	
+
+	@Override
+	public String primGetId1() {
+		return sqlSession.getMapper(BoardMapper.class).primGetId1();
+	}
+
+	@Override
+	public String primGetId2() {
+		return sqlSession.getMapper(BoardMapper.class).primGetId2();
+	}
+
+	@Override
+	public String primGetId3() {
+		return sqlSession.getMapper(BoardMapper.class).primGetId3();
+	}
+
+	@Override
+	public String primGetId4() {
+		return sqlSession.getMapper(BoardMapper.class).primGetId4();
+	}
 	
 }

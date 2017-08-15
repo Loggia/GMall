@@ -49,6 +49,10 @@ public interface BoardDao {
 	List<Product> interList(String inter);
 	List<Product> popuList();
 	List<Product> newList();
-	List<Product> primList();
+	List<Product> primList(String id);
+	String primGetId1();
+	String primGetId2();
+	String primGetId3();
+	String primGetId4();
 	
 }

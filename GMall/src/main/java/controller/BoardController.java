@@ -59,10 +59,16 @@ public class BoardController
 			mav.addObject("interList",interList);
 		}
 		
-		List<Product> primList = hdService.primList();
+		List<Product> primList1 = hdService.primList1();
+		List<Product> primList2 = hdService.primList2();
+		List<Product> primList3 = hdService.primList3();
+		List<Product> primList4 = hdService.primList4();
 		List<Product> newList = hdService.newList();
 		List<Product> popuList = hdService.popuList();
-		mav.addObject("primList", primList);
+		mav.addObject("primList1", primList1);
+		mav.addObject("primList1", primList2);
+		mav.addObject("primList1", primList3);
+		mav.addObject("primList1", primList4);
 		mav.addObject("newList", newList);
 		mav.addObject("popuList", popuList);
 		return mav;

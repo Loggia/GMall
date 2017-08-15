@@ -4,8 +4,6 @@ import java.util.List;
 
 public interface HDService {
 
-	List<Product> primList();
-
 	List<Product> newList();
 
 	List<Product> popuList();
@@ -29,5 +27,13 @@ public interface HDService {
 	int reciveListCount(String loginUserId);
 
 	int sendListCount(String loginUserId);
+
+	List<Product> primList1();
+
+	List<Product> primList2();
+
+	List<Product> primList3();
+
+	List<Product> primList4();
 
 }
