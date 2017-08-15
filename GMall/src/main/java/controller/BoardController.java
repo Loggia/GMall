@@ -75,7 +75,7 @@ public class BoardController
 		mav.addObject("primList1", primList1);
 		mav.addObject("primList2", primList2);
 		mav.addObject("primList3", primList3);
-		mav.addObject("primList4", primList4);
+		mav.addObject("primList4", primList4); 
 		mav.addObject("newList", newList);
 		mav.addObject("popuList", popuList);
 		System.out.println("prim1 :" + prim1);
