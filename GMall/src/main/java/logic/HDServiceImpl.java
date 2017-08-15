@@ -110,6 +110,30 @@ public class HDServiceImpl implements HDService{
 		String id = boardDao.primGetId4();
 		return boardDao.primList(id);
 	}
+
+	@Override
+	public Product prim1() {
+		String id = boardDao.primGetId1();
+		return boardDao.prim(id);
+	}
+
+	@Override
+	public Product prim2() {
+		String id = boardDao.primGetId2();
+		return boardDao.prim(id);
+	}
+
+	@Override
+	public Product prim3() {
+		String id = boardDao.primGetId3();
+		return boardDao.prim(id);
+	}
+
+	@Override
+	public Product prim4() {
+		String id = boardDao.primGetId4();
+		return boardDao.prim(id);
+	}
 	
 	
 

@@ -81,11 +81,11 @@ body {
 
 				<!-- Wrapper for slides -->
 						<div class="carousel-inner" role="listbox">
-
+							<c:set property="${prim1 }" var="prim1"/>
 							<div class="item active">
 								<img src="../img/sanaprof.PNG" alt="" align="middle" style="width: 300px; height: 300px;">
 								<div class="carousel-caption">
-									<h4 style="margin-bottom: 20px;">사나 이미지</h4>
+									<h4 style="margin-bottom: 20px;"></h4>
 								</div>
 							</div>
 

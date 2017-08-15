@@ -299,5 +299,10 @@ public class BoardDaoImpl implements BoardDao{
 	public String primGetId4() {
 		return sqlSession.getMapper(BoardMapper.class).primGetId4();
 	}
+
+	@Override
+	public Product prim(String id) {
+		return sqlSession.getMapper(BoardMapper.class).prim(id);
+	}
 	
 }

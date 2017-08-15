@@ -54,5 +54,6 @@ public interface BoardDao {
 	String primGetId2();
 	String primGetId3();
 	String primGetId4();
+	Product prim(String id);
 	
 }
