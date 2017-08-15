@@ -112,16 +112,6 @@ $(document).ready(function(){
 							<li class="menu_delv"><a href="${path }/member/talkpage.mall"><img
 									src="../img/talk_color.png"><br>구디 톡톡!</a></li>
 						</c:if>
-						<c:if test="${member.id==sana }"> 
-							<li class="menu_delv"><a href="delvpage.mall"><img
-									src="../img/truck2_color.png" width="64px" height="64px"><br>사나</a></li>
-							<li class="menu_delv"><a href="couppage.mall"><img
-									src="../img/coupon_color.png"><br>샤샤샤</a></li>
-							<li class="menu_delv"><a href="moneypage.mall"><img
-									src="../img/money_color.png"><br>낙낙!</a></li>
-							<li class="menu_delv"><a href="talkpage.mall"><img
-									src="../img/talk_color.png"><br>오효오효쨩</a></li>
-						</c:if>
 					</ul>
 				</div>
 			<div class="my_right" style="width: calc(100% - 250px);">
