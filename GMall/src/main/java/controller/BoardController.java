@@ -59,30 +59,19 @@ public class BoardController
 			mav.addObject("interList",interList);
 		}
 		
-		Product prim1 = hdService.prim1();
-		Product prim2 = hdService.prim2();
-		Product prim3 = hdService.prim3();
-		Product prim4 = hdService.prim4();
 		List<Product> primList1 = hdService.primList1();
 		List<Product> primList2 = hdService.primList2();
 		List<Product> primList3 = hdService.primList3();
 		List<Product> primList4 = hdService.primList4();
 		List<Product> newList = hdService.newList();
 		List<Product> popuList = hdService.popuList();
-		mav.addObject("prim1", prim1);
-		mav.addObject("prim2", prim2);
-		mav.addObject("prim3", prim3);
-		mav.addObject("prim4", prim4);
 		mav.addObject("primList1", primList1);
+		System.out.println(primList1);
 		mav.addObject("primList1", primList2);
 		mav.addObject("primList1", primList3);
 		mav.addObject("primList1", primList4);
 		mav.addObject("newList", newList);
 		mav.addObject("popuList", popuList);
-		System.out.println(primList1);
-		System.out.println(primList2);
-		System.out.println(primList3);
-		System.out.println(primList4);
 		return mav;
 		
 	}
@@ -179,7 +168,7 @@ public class BoardController
 		
 		if(login == null)
 		{
-			mav.setViewName("alert");
+			mav.setViewName("error");
 			mav.addObject("url", "../board/main.mall");
 			mav.addObject("msg", "로그인하고 시도하시기 바랍니다.");
 			
@@ -243,21 +232,21 @@ public class BoardController
 		
 	    if(searchType != null && searchContent != null && board1 != null && !board1.getPass().equals(password))
 		{
-			mav.setViewName("alert");
+			mav.setViewName("error");
 			mav.addObject("url", "../board/centerList.mall?pageNum=" + pageNum + "&searchType=" + searchType + "&searchContent=" + searchContent);
 			mav.addObject("msg", "비밀번호를 잘못입력하셨습니다.");
 			return mav;
 		}
 	    else if(pageNum!=null && searchType == null && searchContent == null && board1 != null && !board1.getPass().equals(password))
 		{
-			mav.setViewName("alert");
+			mav.setViewName("error");
 			mav.addObject("url", "../board/centerList.mall?pageNum=" + pageNum);
 			mav.addObject("msg", "비밀번호를 잘못입력하셨습니다.");
 			return mav;
 		}
 	    else if(searchType == null && searchContent == null && board1 != null && !board1.getPass().equals(password))
 		{
-			mav.setViewName("alert");
+			mav.setViewName("error");
 			mav.addObject("url", "../board/centerList.mall");
 			mav.addObject("msg", "비밀번호를 잘못입력하셨습니다.");
 			return mav;
@@ -431,7 +420,7 @@ public class BoardController
 		}
 		if(!pass.equals(dbpass))
 		{
-			mav.setViewName("alert");
+			mav.setViewName("error");
 			mav.addObject("url", "../board/centerList.mall?pageNum=" + pageNum);
 			mav.addObject("msg", "비밀번호를 잘못입력하셨습니다.");
 			return mav;
@@ -596,21 +585,21 @@ public class BoardController
 		Board board1 =  baeService.qnapassthrough(num);
 	    if(searchType != null && searchContent != null && board1 != null && !board1.getPass().equals(password))
 		{
-			mav.setViewName("alert");
+			mav.setViewName("error");
 			mav.addObject("url", "../board/productDetail.mall?pro_no=" + pro_no + "&pageNum=" + pageNum + "&searchType=" + searchType + "&searchContent=" + searchContent);
 			mav.addObject("msg", "비밀번호를 잘못입력하셨습니다.");
 			return mav;
 		}
 	    else if(pageNum!=null && searchType == null && searchContent == null && board1 != null && !board1.getPass().equals(password))
 		{
-			mav.setViewName("alert");
+			mav.setViewName("error");
 			mav.addObject("url", "../board/productDetail.mall?pro_no=" + pro_no + "&pageNum=" + pageNum);
 			mav.addObject("msg", "비밀번호를 잘못입력하셨습니다.");
 			return mav;
 		}
 	    else if(searchType == null && searchContent == null && board1 != null && !board1.getPass().equals(password))
 		{
-			mav.setViewName("alert");
+			mav.setViewName("error");
 			mav.addObject("url", "../board/productDetail.mall?pro_no=" + pro_no);
 			mav.addObject("msg", "비밀번호를 잘못입력하셨습니다.");
 			return mav;
@@ -732,7 +721,7 @@ public class BoardController
 		}
 		if(!pass.equals(dbpass))
 		{
-			mav.setViewName("alert");
+			mav.setViewName("error");
 			mav.addObject("url", "../board/productDetail.mall?pro_no=" + pro_no + "&pageNum=" + pageNum);
 			mav.addObject("msg", "비밀번호를 잘못입력하셨습니다.");
 			return mav;
