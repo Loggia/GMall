@@ -99,16 +99,20 @@ public interface BoardMapper {
 	@Select("select * ,p.main_img fileurl from member m, product p where m.bis_no=p.bis_no and m.id=#{id} order by date limit 3;")
 	List<Product> primList(String id);
 	
-	@Select("")
+	@Select("select * from member m where type = 2 and m.money > 500000 and m.prim = true and\r\n" + 
+			"(select m.score/count(*) from trade t where t.sell_id=m.id and t.rv_chk=2) > 7.5 order by money DESC limit 0,1;")
 	String primGetId1();
 	
-	@Select("")
+	@Select("select * from member m where type = 2 and m.money > 500000 and m.prim = true and\r\n" + 
+			"(select m.score/count(*) from trade t where t.sell_id=m.id and t.rv_chk=2) > 7.5 order by money DESC limit 1,1;")
 	String primGetId2();
 	
-	@Select("")
+	@Select("select * from member m where type = 2 and m.money > 500000 and m.prim = true and\r\n" + 
+			"(select m.score/count(*) from trade t where t.sell_id=m.id and t.rv_chk=2) > 7.5 order by money DESC limit 2,1;")
 	String primGetId3();
 	
-	@Select("")
+	@Select("select * from member m where type = 2 and m.money > 500000 and m.prim = true and\r\n" + 
+			"(select m.score/count(*) from trade t where t.sell_id=m.id and t.rv_chk=2) > 7.5 order by money DESC limit 3,1;")
 	String primGetId4();
 	
 	
