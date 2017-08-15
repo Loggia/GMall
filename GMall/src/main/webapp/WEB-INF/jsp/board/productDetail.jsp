@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="${path }/css/delvpage.css">
 <title>Insert title here</title>
 <style type="text/css">
 #loc
@@ -542,7 +543,7 @@ function productlist(pageNum)
 		  </li>
 		</c:if>
       </ul>
-    </div>
+</div>
 <div id="loc2">
 <c:if test="${userid != 'admin' && userid != 'guest'}">
    <tr>
