@@ -66,6 +66,7 @@ public class BoardController
 		List<Product> newList = hdService.newList();
 		List<Product> popuList = hdService.popuList();
 		mav.addObject("primList1", primList1);
+		System.out.println(primList1);
 		mav.addObject("primList1", primList2);
 		mav.addObject("primList1", primList3);
 		mav.addObject("primList1", primList4);
