@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="${path }/css/delvpage.css">
 <title>Insert title here</title>
 <style type="text/css">
 #loc
@@ -307,7 +308,7 @@ function productlist(pageNum)
 		  <li class="disabled">
 		    <a aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
 		  </li>
-	    </c:if>
+	    </c:if>  
 		<c:if test="${pageNum > 1}">
 		  <li class="">
 		    <a href="javascript:productlist(${pageNum - 1})" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
@@ -336,7 +337,7 @@ function productlist(pageNum)
 		  </li>
 		</c:if>
       </ul>
-    </div>
+</div>
 <div id="loc2">
 <c:if test="${userid != 'admin' && userid != 'guest' && codeequal == 1}">
    <div id="loc"><button type="button" class="btn btn-info" onclick="location.href='reviewAdd.mall?pro_no=${param.pro_no}'">리뷰 남기기</button></div>
