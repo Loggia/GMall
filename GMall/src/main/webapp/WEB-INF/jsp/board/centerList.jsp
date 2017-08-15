@@ -334,7 +334,7 @@ body {
 							<c:if test="${listcount > 0}">
 								<c:forEach items="${centerlist}" var="clist" varStatus="stat">
 									<tr>
-									  <td align="left" onclick="javascript:list_disp('listLine${stat.count}')">${clist.board_no}</td>
+									  <td align="left" onclick="javascript:list_disp('listLine${stat.count}')">${stat.count}</td>
 							          <td align="left">
 							          <c:if test="${(clist.ans_chk == 0) && userid != 'admin' && userid == clist.id && empty param.pageNum}"> 
 							            <a href="centerupdateForm.mall?num=${clist.board_no}&pageNum=1">[수정]</a>
