@@ -205,20 +205,20 @@ dd {
 							<c:if test="${message.rec_id == member.id }">
 							</c:if>
 							<c:if test="${message.rec_id != member.id }">
-								<dt>받는사람&nbsp;&nbsp;</dt>
+								<dt><span style="color: #FFBB00">받는</span>사람&nbsp;&nbsp;</dt>
 								<dd>${message.rec_id }</dd>
 							</c:if>
 							
 							<c:if test="${message.send_id == member.id }">
 							</c:if>
 							<c:if test="${message.send_id != member.id }">
-								<dt>보낸사람&nbsp;&nbsp;</dt>
+								<dt><span style="color: #1DDB16">보낸</span>사람&nbsp;&nbsp;</dt>
 								<dd>${message.send_id }</dd>
 							</c:if>
 							
 							<hr>
 							<dt>날짜&nbsp;&nbsp;</dt>
-							<dd>${message.msg_date }</dd>
+							<dd><fmt:formatDate value="${message.msg_date }" pattern="yyyy-MM-dd"/></dd>
 							<hr>
 						</dl>
 					</div>

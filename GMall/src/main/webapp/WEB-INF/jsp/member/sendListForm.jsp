@@ -190,7 +190,11 @@ $(document).ready(function(){
 				<button type="button" class="btn btn-default" onclick="location.href='${path }/member/sendListForm.mall'">보낸쪽지</button>
 				<button type="button" class="btn btn-default" onclick="location.href='${path }/member/msgWriteForm.mall'">쪽지 쓰기</button>
 				
-				<div style="display: block; margin: 10px 0px;">보낸 쪽지함</div>
+				<div style="display: block; margin: 10px 0px;">
+					<span style="font-family: 'Patrick Hand', cursive; font-size: 25px;">
+						<span style="color: #1DDB16;">Send</span> List
+					</span>
+				</div>
 				
 				<ul class="msgListHead" style="margin-top: 10px;">
 					<li style="width: 12%">받는사람</li>
@@ -251,8 +255,10 @@ $(document).ready(function(){
 					</c:if>
 					<c:if test="${empty sendList}">
 					<br><br><br>
-					보낸 쪽지가 엄서영
-					<br><br><br>
+					<span style="font-size: 100px; color: rgba(0,0,0,0.4);">/(o_o)/</span>
+					<br>
+					<span style="font-size: 40px; color: rgba(0,0,0,0.4);">No Message!</span>
+					<br><br>
 					<hr>
 					</c:if>
 				</div>

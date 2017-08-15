@@ -190,13 +190,21 @@ $(document).ready(function(){
 					<button type="button" class="btn btn-default" onclick="location.href='${path }/member/sendListForm.mall'">보낸쪽지</button>
 					<button type="button" class="btn btn-default" onclick="location.href='${path }/member/msgWriteForm.mall'">쪽지 쓰기</button>
 					
-					<div style="display: block; margin: 10px 0px;">쪽지 쓰기</div>
+					<div style="display: block; margin: 10px 0px;">
+						<span style="font-family: 'Patrick Hand', cursive; font-size: 25px;">
+							<span style="color: #00D8FF;">Write</span> Message
+						</span>
+					</div>
 					
 					<form:form action="${path }/member/msgSend.mall" modelAttribute="message">
-						<form:input path="rec_id" style="pistion: block;"/>
-						<form:textarea path="msg_content" cols="67" rows="15" style="pistion: block;"/>
+						<hr>
+						<span style="display: inline-block; float: left;"><strong><span style="color: #FFBB00;">받는</span> 사람&nbsp;&nbsp;</strong></span>
+						<form:input path="rec_id" style="display: block;"/>
+						<hr>
+						<form:textarea path="msg_content" cols="65" rows="15" style="display: block;"/>
 					
 						<form:input type="hidden" path="send_id" value="${member.id }" />
+						<hr>
 						<button type="submit" class="btn btn-default" style="pistion: block;">쪽지 전송</button>
 					</form:form>
 				</div>

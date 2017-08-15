@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="${path }/css/delvpage.css">
+<link href="https://fonts.googleapis.com/css?family=Patrick+Hand" rel="stylesheet">
 <title></title>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -202,7 +203,11 @@ $(document).ready(function(){
 				<button type="button" class="btn btn-default" onclick="location.href='${path }/member/sendListForm.mall'">보낸쪽지</button>
 				<button type="button" class="btn btn-default" onclick="location.href='${path }/member/msgWriteForm.mall'">쪽지 쓰기</button>
 				
-				<div style="display: block; margin: 10px 0px;">받은 쪽지함</div>
+				<div style="display: block; margin: 10px 0px;">
+					<span style="font-family: 'Patrick Hand', cursive; font-size: 25px;">
+						<span style="color: #FFBB00;">Recive</span> List
+					</span>
+				</div>
 				
 				<ul class="msgListHead" style="margin-top: 10px;">
 					<li style="width: 12%">보낸사람</li>
@@ -264,8 +269,9 @@ $(document).ready(function(){
 				
 				<c:if test="${empty reciveList}">
 					<br><br><br>
-					받은 쪽지가 엄서영
-					<br><br><br>
+					<span style="font-size: 100px; color: rgba(0,0,0,0.4);">/(o_o)/</span>
+					<br>
+					<span style="font-size: 40px; color: rgba(0,0,0,0.4);">No Message!</span>
 					<hr>
 				</c:if>
 				</div>
