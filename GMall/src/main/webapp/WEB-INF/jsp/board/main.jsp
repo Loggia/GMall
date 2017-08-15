@@ -9,8 +9,9 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <script type="text/javascript">
 $(document).ready(function() {
-	$('carousel-inner:first-child').addClass('active');
+	
 });
+    $('.carousel-inner:first-child').addClass('active');
 </script>
 <style type="text/css">
 body {
@@ -75,26 +76,174 @@ body {
 					<li data-target="#carousel1" data-slide-to="0" class="active"></li>
 					<li data-target="#carousel1" data-slide-to="1"></li>
 					<li data-target="#carousel1" data-slide-to="2"></li>
+					<li data-target="#carousel1" data-slide-to="3"></li>
 				</ol>
 
 				<!-- Wrapper for slides -->
-				<div class="carousel-inner" role="listbox">
-					<c:forEach items="${primList1 }" var="primList1">
-					<div class="item">
-						<img src="../img/sanaprof.PNG" alt="" align="middle" style="width: 300px; height: 300px;">
-						<div class="carousel-caption">
-						<h4 style="margin-bottom: 20px;">사나 이미지</h4>
-						</div>
-					</div>
-					</c:forEach>
-				</div>
+						<div class="carousel-inner" role="listbox">
 
-				<!-- Controls -->
+							<div class="item active">
+								<img src="../img/sanaprof.PNG" alt="" align="middle" style="width: 300px; height: 300px;">
+								<div class="carousel-caption">
+									<h4 style="margin-bottom: 20px;">사나 이미지</h4>
+								</div>
+							</div>
+
+							<%-- <c:forEach items="${primList1 }" var="primList1"> --%>
+							<c:forEach begin="1" end="3" step="1">
+								<div class="item">
+									<img src="../img/sanaprof.PNG" alt="" align="middle" style="width: 300px; height: 300px;">
+									<div class="carousel-caption">
+										<h4 style="margin-bottom: 20px;">사나 이미지</h4>
+									</div>
+								</div>
+							</c:forEach>
+
+						</div>
+
+						<!-- Controls -->
 				<a class="left carousel-control" href="#carousel1" role="button" data-slide="prev" style="background-image: linear-gradient(to right,rgba(0,0,0,0) 0,rgba(0,0,0,0) 100%);">
 					<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
 					<span class="sr-only">Previous</span>
 				</a>
 				<a class="right carousel-control" href="#carousel1" role="button" data-slide="next" style="background-image: linear-gradient(to right,rgba(0,0,0,0) 0,rgba(0,0,0,0) 100%);">
+					<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					<span class="sr-only">Next</span>
+				</a>
+			</div>
+			</div>
+			
+			
+			
+			<div class="col-xs-3">
+			<div id="carousel2" class="carousel slide 1st-line mask" data-ride="carousel" style="background-color: white; margin-left: 15px; margin-bottom: 15px;">
+				<!-- Indicators -->
+				<ol class="carousel-indicators" style="margin-top: 10px;">
+					<li data-target="#carousel2" data-slide-to="0" class="active"></li>
+					<li data-target="#carousel2" data-slide-to="1"></li>
+					<li data-target="#carousel2" data-slide-to="2"></li>
+					<li data-target="#carousel1" data-slide-to="3"></li>
+				</ol>
+
+				<!-- Wrapper for slides -->
+						<div class="carousel-inner" role="listbox">
+
+							<div class="item active">
+								<img src="../img/sanaprof.PNG" alt="" align="middle" style="width: 300px; height: 300px;">
+								<div class="carousel-caption">
+									<h4 style="margin-bottom: 20px;">사나 이미지</h4>
+								</div>
+							</div>
+
+							<%-- <c:forEach items="${primList2 }" var="primList2"> --%>
+							<c:forEach begin="1" end="3" step="1">
+								<div class="item">
+									<img src="../img/sanaprof.PNG" alt="" align="middle" style="width: 300px; height: 300px;">
+									<div class="carousel-caption">
+										<h4 style="margin-bottom: 20px;">사나 이미지</h4>
+									</div>
+								</div>
+							</c:forEach>
+
+						</div>
+
+				<!-- Controls -->
+				<a class="left carousel-control" href="#carousel2" role="button" data-slide="prev" style="background-image: linear-gradient(to right,rgba(0,0,0,0) 0,rgba(0,0,0,0) 100%);">
+					<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					<span class="sr-only">Previous</span>
+				</a>
+				<a class="right carousel-control" href="#carousel2" role="button" data-slide="next" style="background-image: linear-gradient(to right,rgba(0,0,0,0) 0,rgba(0,0,0,0) 100%);">
+					<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					<span class="sr-only">Next</span>
+				</a>
+			</div>
+			</div>
+			
+			
+			
+			<div class="col-xs-3">
+			<div id="carousel3" class="carousel slide 1st-line mask" data-ride="carousel" style="background-color: white; margin-left: 15px; margin-bottom: 15px;">
+				<!-- Indicators -->
+				<ol class="carousel-indicators" style="margin-top: 10px;">
+					<li data-target="#carousel3" data-slide-to="0" class="active"></li>
+					<li data-target="#carousel3" data-slide-to="1"></li>
+					<li data-target="#carousel3" data-slide-to="2"></li>
+					<li data-target="#carousel1" data-slide-to="3"></li>
+				</ol>
+
+				<!-- Wrapper for slides -->
+						<div class="carousel-inner" role="listbox">
+
+							<div class="item active">
+								<img src="../img/sanaprof.PNG" alt="" align="middle" style="width: 300px; height: 300px;">
+								<div class="carousel-caption">
+									<h4 style="margin-bottom: 20px;">사나 이미지</h4>
+								</div>
+							</div>
+
+							<%-- <c:forEach items="${primList3 }" var="primList3"> --%>
+							<c:forEach begin="1" end="3" step="1">
+								<div class="item">
+									<img src="../img/sanaprof.PNG" alt="" align="middle" style="width: 300px; height: 300px;">
+									<div class="carousel-caption">
+										<h4 style="margin-bottom: 20px;">사나 이미지</h4>
+									</div>
+								</div>
+							</c:forEach>
+
+						</div>
+
+				<!-- Controls -->
+				<a class="left carousel-control" href="#carousel3" role="button" data-slide="prev" style="background-image: linear-gradient(to right,rgba(0,0,0,0) 0,rgba(0,0,0,0) 100%);">
+					<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					<span class="sr-only">Previous</span>
+				</a>
+				<a class="right carousel-control" href="#carousel3" role="button" data-slide="next" style="background-image: linear-gradient(to right,rgba(0,0,0,0) 0,rgba(0,0,0,0) 100%);">
+					<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					<span class="sr-only">Next</span>
+				</a>
+			</div>
+			</div>
+			
+			
+			
+			<div class="col-xs-3">
+			<div id="carousel4" class="carousel slide 1st-line mask" data-ride="carousel" style="background-color: white; margin-left: 15px; margin-bottom: 15px;">
+				<!-- Indicators -->
+				<ol class="carousel-indicators" style="margin-top: 10px;">
+					<li data-target="#carousel4" data-slide-to="0" class="active"></li>
+					<li data-target="#carousel4" data-slide-to="1"></li>
+					<li data-target="#carousel4" data-slide-to="2"></li>
+				</ol>
+
+				<!-- Wrapper for slides -->
+						<div class="carousel-inner" role="listbox">
+
+							<div class="item active">
+								<img src="../img/sanaprof.PNG" alt="" align="middle" style="width: 300px; height: 300px;">
+								<div class="carousel-caption">
+									<h4 style="margin-bottom: 20px;">사나 이미지</h4>
+								</div>
+							</div>
+
+							<%-- <c:forEach items="${primList4 }" var="primList4"> --%>
+							<c:forEach begin="1" end="3" step="1">
+								<div class="item">
+									<img src="../img/sanaprof.PNG" alt="" align="middle" style="width: 300px; height: 300px;">
+									<div class="carousel-caption">
+										<h4 style="margin-bottom: 20px;">사나 이미지</h4>
+									</div>
+								</div>
+							</c:forEach>
+
+						</div>
+
+				<!-- Controls -->
+				<a class="left carousel-control" href="#carousel4" role="button" data-slide="prev" style="background-image: linear-gradient(to right,rgba(0,0,0,0) 0,rgba(0,0,0,0) 100%);">
+					<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					<span class="sr-only">Previous</span>
+				</a>
+				<a class="right carousel-control" href="#carousel4" role="button" data-slide="next" style="background-image: linear-gradient(to right,rgba(0,0,0,0) 0,rgba(0,0,0,0) 100%);">
 					<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 					<span class="sr-only">Next</span>
 				</a>
