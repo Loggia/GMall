@@ -80,17 +80,20 @@ body {
 
 				<!-- Wrapper for slides -->
 						<div class="carousel-inner" role="listbox">
-							<c:set property="${prim1 }" var="prim1"/>
 							<div class="item active">
-								<img src="../img/sanaprof.PNG" alt="" align="middle" style="width: 300px; height: 300px;">
+								<a href="${path }/board/productDetail.mall?pro_no=${prim1.pro_no}&category=${prim1.category}">
+									<img src="../img/sanaprof.PNG" alt="" align="middle" style="width: 300px; height: 300px;">
+								</a>
 								<div class="carousel-caption">
-									<h4 style="margin-bottom: 20px;"></h4>
+									<h4 style="margin-bottom: 20px;">${prim1.pro_name }</h4>
 								</div>
 							</div>
 
 							<c:forEach items="${primList1 }" var="primList1">
 								<div class="item">
-									<img src="../img/sanaprof.PNG" alt="" align="middle" style="width: 300px; height: 300px;">
+									<a href="${path }/board/productDetail.mall?pro_no=${primList1.pro_no}&category=${primList1.category}">
+										<img src="../img/sanaprof.PNG" alt="" align="middle" style="width: 300px; height: 300px;">
+									</a>
 									<div class="carousel-caption">
 										<h4 style="margin-bottom: 20px;">${primList1.pro_name }</h4>
 									</div>
@@ -120,25 +123,26 @@ body {
 					<li data-target="#carousel2" data-slide-to="0" class="active"></li>
 					<li data-target="#carousel2" data-slide-to="1"></li>
 					<li data-target="#carousel2" data-slide-to="2"></li>
-					<li data-target="#carousel1" data-slide-to="3"></li>
 				</ol>
 
 				<!-- Wrapper for slides -->
 						<div class="carousel-inner" role="listbox">
-
 							<div class="item active">
-								<img src="../img/sanaprof.PNG" alt="" align="middle" style="width: 300px; height: 300px;">
+								<a href="${path }/board/productDetail.mall?pro_no=${prim2.pro_no}&category=${prim2.category}">
+									<img src="../img/sanaprof.PNG" alt="" align="middle" style="width: 300px; height: 300px;">
+								</a>
 								<div class="carousel-caption">
-									<h4 style="margin-bottom: 20px;">사나 이미지</h4>
+									<h4 style="margin-bottom: 20px;">${prim2.pro_name }</h4>
 								</div>
 							</div>
 
-							<%-- <c:forEach items="${primList2 }" var="primList2"> --%>
-							<c:forEach begin="1" end="3" step="1">
+							<c:forEach items="${primList2 }" var="primList2">
 								<div class="item">
-									<img src="../img/sanaprof.PNG" alt="" align="middle" style="width: 300px; height: 300px;">
+									<a href="${path }/board/productDetail.mall?pro_no=${primList2.pro_no}&category=${primList2.category}">
+										<img src="../img/sanaprof.PNG" alt="" align="middle" style="width: 300px; height: 300px;">
+									</a>
 									<div class="carousel-caption">
-										<h4 style="margin-bottom: 20px;">사나 이미지</h4>
+										<h4 style="margin-bottom: 20px;">${primList2.pro_name }</h4>
 									</div>
 								</div>
 							</c:forEach>
@@ -166,25 +170,26 @@ body {
 					<li data-target="#carousel3" data-slide-to="0" class="active"></li>
 					<li data-target="#carousel3" data-slide-to="1"></li>
 					<li data-target="#carousel3" data-slide-to="2"></li>
-					<li data-target="#carousel1" data-slide-to="3"></li>
 				</ol>
 
 				<!-- Wrapper for slides -->
 						<div class="carousel-inner" role="listbox">
-
 							<div class="item active">
-								<img src="../img/sanaprof.PNG" alt="" align="middle" style="width: 300px; height: 300px;">
+								<a href="${path }/board/productDetail.mall?pro_no=${prim3.pro_no}&category=${prim3.category}">
+									<img src="../img/sanaprof.PNG" alt="" align="middle" style="width: 300px; height: 300px;">
+								</a>
 								<div class="carousel-caption">
-									<h4 style="margin-bottom: 20px;">사나 이미지</h4>
+									<h4 style="margin-bottom: 20px;">${prim3.pro_name }</h4>
 								</div>
 							</div>
 
-							<%-- <c:forEach items="${primList3 }" var="primList3"> --%>
-							<c:forEach begin="1" end="3" step="1">
+							<c:forEach items="${primList3 }" var="primList3">
 								<div class="item">
-									<img src="../img/sanaprof.PNG" alt="" align="middle" style="width: 300px; height: 300px;">
+									<a href="${path }/board/productDetail.mall?pro_no=${primList3.pro_no}&category=${primList3.category}">
+										<img src="../img/sanaprof.PNG" alt="" align="middle" style="width: 300px; height: 300px;">
+									</a>
 									<div class="carousel-caption">
-										<h4 style="margin-bottom: 20px;">사나 이미지</h4>
+										<h4 style="margin-bottom: 20px;">${primList3.pro_name }</h4>
 									</div>
 								</div>
 							</c:forEach>
@@ -216,20 +221,22 @@ body {
 
 				<!-- Wrapper for slides -->
 						<div class="carousel-inner" role="listbox">
-
 							<div class="item active">
-								<img src="../img/sanaprof.PNG" alt="" align="middle" style="width: 300px; height: 300px;">
+								<a href="${path }/board/productDetail.mall?pro_no=${prim4.pro_no}&category=${prim4.category}">
+									<img src="../img/sanaprof.PNG" alt="" align="middle" style="width: 300px; height: 300px;">
+								</a>
 								<div class="carousel-caption">
-									<h4 style="margin-bottom: 20px;">사나 이미지</h4>
+									<h4 style="margin-bottom: 20px;">${prim4.pro_name }</h4>
 								</div>
 							</div>
 
-							<%-- <c:forEach items="${primList4 }" var="primList4"> --%>
-							<c:forEach begin="1" end="3" step="1">
+							<c:forEach items="${primList4 }" var="primList4">
 								<div class="item">
-									<img src="../img/sanaprof.PNG" alt="" align="middle" style="width: 300px; height: 300px;">
+									<a href="${path }/board/productDetail.mall?pro_no=${primList4.pro_no}&category=${primList4.category}">
+										<img src="../img/sanaprof.PNG" alt="" align="middle" style="width: 300px; height: 300px;">
+									</a>
 									<div class="carousel-caption">
-										<h4 style="margin-bottom: 20px;">사나 이미지</h4>
+										<h4 style="margin-bottom: 20px;">${primList4.pro_name }</h4>
 									</div>
 								</div>
 							</c:forEach>
