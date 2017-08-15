@@ -98,8 +98,12 @@ $(document).ready(function(){
 			<div class="my_left">
 				<div class="left_prof">
 					<div style="text-align: center;">
-						<img style="margin-top: 30px;" src="../prof/${member.picture }"
-							class="img-circle" width="150px" height="150px">
+						<c:if test="${member.picture!=null }">
+							<img style="margin-top: 30px;" src="../prof/${member.picture }" class="img-circle" width="150px" height="150px">
+						</c:if>
+						<c:if test="${member.picture==null }">
+							<img style="margin-top: 30px;" class="img-circle updateimg" src="../prof/prof_1.png" width="150px" height="150px">
+						</c:if>
 					</div>
 					<a href="${path }/member/passConfirmForm.mall"><img
 						style="position: absolute; margin-left: 150px; margin-top: 18px;"
