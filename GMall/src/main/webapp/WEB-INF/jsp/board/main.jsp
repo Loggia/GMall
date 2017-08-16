@@ -82,7 +82,7 @@ body {
 						<div class="carousel-inner" role="listbox">
 							<div class="item active">
 								<a href="${path }/board/productDetail.mall?pro_no=${prim1.pro_no}&category=${prim1.category}">
-									<img src="../img/${prim1.main_img }" alt="" align="middle" style="width: 300px; height: 300px;">
+									<img src="../picture/${prim1.fileurl }" alt="" align="middle" style="width: 300px; height: 300px;">
 								</a>
 								<div class="carousel-caption">
 									<h4 style="margin-bottom: 20px;">${prim1.pro_name }</h4>
@@ -92,7 +92,7 @@ body {
 							<c:forEach items="${primList1 }" var="primList1">
 								<div class="item">
 									<a href="${path }/board/productDetail.mall?pro_no=${primList1.pro_no}&category=${primList1.category}">
-										<img src="../img/${primList1.main_img }" alt="" align="middle" style="width: 300px; height: 300px;">
+										<img src="../picture/${primList1.fileurl }" alt="" align="middle" style="width: 300px; height: 300px;">
 									</a>
 									<div class="carousel-caption">
 										<h4 style="margin-bottom: 20px;">${primList1.pro_name }</h4>
@@ -129,7 +129,7 @@ body {
 						<div class="carousel-inner" role="listbox">
 							<div class="item active">
 								<a href="${path }/board/productDetail.mall?pro_no=${prim2.pro_no}&category=${prim2.category}">
-									<img src="../img/${prim2.main_img }" alt="" align="middle" style="width: 300px; height: 300px;">
+									<img src="../picture/${prim2.fileurl }" alt="" align="middle" style="width: 300px; height: 300px;">
 								</a>
 								<div class="carousel-caption">
 									<h4 style="margin-bottom: 20px;">${prim2.pro_name }</h4>
@@ -139,7 +139,7 @@ body {
 							<c:forEach items="${primList2 }" var="primList2">
 								<div class="item">
 									<a href="${path }/board/productDetail.mall?pro_no=${primList2.pro_no}&category=${primList2.category}">
-										<img src="../img/${primList2.main_img }" alt="" align="middle" style="width: 300px; height: 300px;">
+										<img src="../picture/${primList2.fileurl }" alt="" align="middle" style="width: 300px; height: 300px;">
 									</a>
 									<div class="carousel-caption">
 										<h4 style="margin-bottom: 20px;">${primList2.pro_name }</h4>
@@ -176,7 +176,7 @@ body {
 						<div class="carousel-inner" role="listbox">
 							<div class="item active">
 								<a href="${path }/board/productDetail.mall?pro_no=${prim3.pro_no}&category=${prim3.category}">
-									<img src="../img/${prim3.main_img }" alt="" align="middle" style="width: 300px; height: 300px;">
+									<img src="../picture/${prim3.fileurl }" alt="" align="middle" style="width: 300px; height: 300px;">
 								</a>
 								<div class="carousel-caption">
 									<h4 style="margin-bottom: 20px;">${prim3.pro_name }</h4>
@@ -186,7 +186,7 @@ body {
 							<c:forEach items="${primList3 }" var="primList3">
 								<div class="item">
 									<a href="${path }/board/productDetail.mall?pro_no=${primList3.pro_no}&category=${primList3.category}">
-										<img src="../img/${primList3.main_img }" alt="" align="middle" style="width: 300px; height: 300px;">
+										<img src="../picture/${primList3.fileurl }" alt="" align="middle" style="width: 300px; height: 300px;">
 									</a>
 									<div class="carousel-caption">
 										<h4 style="margin-bottom: 20px;">${primList3.pro_name }</h4>
@@ -223,17 +223,17 @@ body {
 						<div class="carousel-inner" role="listbox">
 							<div class="item active">
 								<a href="${path }/board/productDetail.mall?pro_no=${prim4.pro_no}&category=${prim4.category}">
-									<img src="../img/${prim4.main_img }" alt="" align="middle" style="width: 300px; height: 300px;">
+									<img src="../picture/${prim4.fileurl }" alt="" align="middle" style="width: 300px; height: 300px;">
 								</a>
 								<div class="carousel-caption">
-									<h4 style="margin-bottom: 20px;">${prim4.pro_name }</h4>
+									<h4 style="margin-bottom: 20px;">${prim4.fileurl }</h4>
 								</div>
 							</div>
 
 							<c:forEach items="${primList4 }" var="primList4">
 								<div class="item">
 									<a href="${path }/board/productDetail.mall?pro_no=${primList4.pro_no}&category=${primList4.category}">
-										<img src="../img/${primList4.main_img }" alt="" align="middle" style="width: 300px; height: 300px;">
+										<img src="../picture/${primList4.main_img }" alt="" align="middle" style="width: 300px; height: 300px;">
 									</a>
 									<div class="carousel-caption">
 										<h4 style="margin-bottom: 20px;">${primList4.pro_name }</h4>

@@ -96,26 +96,26 @@ public interface BoardMapper {
 	@Select("select price from product where favorite='${value}'")
 	List<Product> favorPrice(String favor);
 	
-	@Select("select * ,p.main_img fileurl from member m, product p where m.bis_no=p.bis_no and m.id=#{id} order by date limit 0,1;")
+	@Select("select * ,p.main_img fileurl from member m, product p where m.bis_no=p.bis_no and m.id=#{id} order by p.pro_no desc limit 0,1")
 	Product prim(String id);
 	
-	@Select("select * ,p.main_img fileurl from member m, product p where m.bis_no=p.bis_no and m.id=#{id} order by date limit 1,2;")
+	@Select("select * ,p.main_img fileurl from member m, product p where m.bis_no=p.bis_no and m.id=#{id} order by p.pro_no desc limit 1,2")
 	List<Product> primList(String id);
 	
-	@Select("select m.id from member m where type = 2 and m.money > 500000 and m.prim = true and\r\n" + 
-			"(select m.score/count(*) from trade t where t.sell_id=m.id and t.rv_chk=2) > 7.5 order by money DESC limit 0,1;")
+	@Select("select m.id from member m where type = 2 and m.money > 500000 and m.prim = true and " + 
+			"(select m.score/count(*) from trade t where t.sell_id=m.id and t.rv_chk=2) > 7.5 order by money DESC limit 0,1")
 	String primGetId1();
 	
-	@Select("select m.id from member m where type = 2 and m.money > 500000 and m.prim = true and\r\n" + 
-			"(select m.score/count(*) from trade t where t.sell_id=m.id and t.rv_chk=2) > 7.5 order by money DESC limit 1,1;")
+	@Select("select m.id from member m where type = 2 and m.money > 500000 and m.prim = true and " + 
+			"(select m.score/count(*) from trade t where t.sell_id=m.id and t.rv_chk=2) > 7.5 order by money DESC limit 1,1")
 	String primGetId2();
 	
-	@Select("select m.id from member m where type = 2 and m.money > 500000 and m.prim = true and\r\n" + 
-			"(select m.score/count(*) from trade t where t.sell_id=m.id and t.rv_chk=2) > 7.5 order by money DESC limit 2,1;")
+	@Select("select m.id from member m where type = 2 and m.money > 500000 and m.prim = true and " + 
+			"(select m.score/count(*) from trade t where t.sell_id=m.id and t.rv_chk=2) > 7.5 order by money DESC limit 2,1")
 	String primGetId3();
 	
-	@Select("select m.id from member m where type = 2 and m.money > 500000 and m.prim = true and\r\n" + 
-			"(select m.score/count(*) from trade t where t.sell_id=m.id and t.rv_chk=2) > 7.5 order by money DESC limit 3,1;")
+	@Select("select m.id from member m where type = 2 and m.money > 500000 and m.prim = true and " + 
+			"(select m.score/count(*) from trade t where t.sell_id=m.id and t.rv_chk=2) > 7.5 order by money DESC limit 3,1")
 	String primGetId4();
 	
 	
