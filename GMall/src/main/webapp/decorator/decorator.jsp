@@ -522,6 +522,7 @@ function list(pageNum)
 					<li><a href="${path}/board/proList.mall?category=과일"><b>과일</b></a></li>
 					<li><a href="${path}/board/proList.mall?category=곡류"><b>곡류</b></a></li>
 					<li><a href="${path}/board/proList.mall?category=조미료"><b>조미료</b></a></li>
+					<li><a href="${path}/board/proList.mall?category=견과류"><b>견과류</b></a></li>
 				</ul>
 			</div>
 		</div>
