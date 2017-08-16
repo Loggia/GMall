@@ -264,7 +264,7 @@ body {
 				<c:forEach items="${popuList }" var="popu">
 					<div class="col-xs-3">
 						<div class="2nd-line mask" style="background-color: white; margin-left: 15px; margin-bottom: 15px;">
-							<img src="../picture/${popu.fileurl }">
+							<img src="../picture/${popu.fileurl }" style="width: 300px; height: 300px;">
 						</div>
 					</div>
 				</c:forEach>
@@ -274,7 +274,7 @@ body {
 				<c:forEach items="${newList }" var="newL">
 					<div class="col-xs-3">
 						<div class="3th-line mask" style="background-color: white; margin-left: 15px; margin-bottom: 15px;">
-							<img src="../picture/${newL.fileurl }">
+							<img src="../picture/${newL.fileurl }" style="width: 300px; height: 300px;">
 						</div>
 					</div>
 				</c:forEach>
@@ -284,7 +284,7 @@ body {
 				<c:forEach items="${interList }" var="inter">
 					<div class="col-xs-3">
 						<div class="4th-line mask" style="background-color: white; margin-left: 15px; margin-bottom: 15px;">
-							<img src="../picture/${inter.fileurl }">
+							<img src="../picture/${inter.fileurl }" style="width: 300px; height: 300px;">
 						</div>
 					</div>
 				</c:forEach>

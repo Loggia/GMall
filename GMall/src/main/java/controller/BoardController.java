@@ -78,14 +78,6 @@ public class BoardController
 		mav.addObject("primList4", primList4); 
 		mav.addObject("newList", newList);
 		mav.addObject("popuList", popuList);
-		System.out.println("prim1 :" + prim1.getFileurl());
-		System.out.println("prim2 :" + prim2.getFileurl());
-		System.out.println("prim3 :" + prim3.getFileurl());
-		System.out.println("prim4 :" + prim4.getFileurl());
-		System.out.println("primList1 :" + primList1);
-		System.out.println("primList2 :" + primList2);
-		System.out.println("primList3 :" + primList3);
-		System.out.println("primList4 :" + primList4);
 		return mav;
 		
 	}
