@@ -82,7 +82,7 @@ body {
 						<div class="carousel-inner" role="listbox">
 							<div class="item active">
 								<a href="${path }/board/productDetail.mall?pro_no=${prim1.pro_no}&category=${prim1.category}">
-									<img src="../img/sanaprof.PNG" alt="" align="middle" style="width: 300px; height: 300px;">
+									<img src="../img/${prim1.main_img }" alt="" align="middle" style="width: 300px; height: 300px;">
 								</a>
 								<div class="carousel-caption">
 									<h4 style="margin-bottom: 20px;">${prim1.pro_name }</h4>
@@ -92,7 +92,7 @@ body {
 							<c:forEach items="${primList1 }" var="primList1">
 								<div class="item">
 									<a href="${path }/board/productDetail.mall?pro_no=${primList1.pro_no}&category=${primList1.category}">
-										<img src="../img/sanaprof.PNG" alt="" align="middle" style="width: 300px; height: 300px;">
+										<img src="../img/${primList1.main_img }" alt="" align="middle" style="width: 300px; height: 300px;">
 									</a>
 									<div class="carousel-caption">
 										<h4 style="margin-bottom: 20px;">${primList1.pro_name }</h4>
